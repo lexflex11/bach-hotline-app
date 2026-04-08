@@ -33,7 +33,7 @@ export default function App() {
   if (!user) return <AuthScreen onLogin={setUser} LOGO_SRC={LOGO_SRC} />;
 
   return (
-    <div style={{ minHeight:"100vh", background:PAGE, color:DARK, maxWidth:430, margin:"0 auto", fontFamily:"'Playfair Display',Georgia,serif" }}>
+    <div style={{ minHeight:"100vh", background:PAGE, color:DARK, fontFamily:"'Playfair Display',Georgia,serif" }}>
       <div style={{ background:WHITE, borderBottom:`2px solid ${SOFT}`, position:"sticky", top:0, zIndex:100, boxShadow:`0 2px 12px rgba(230,101,130,0.08)` }}>
         <div style={{ padding:"2px 16px 0px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
           <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:90, width:"auto", objectFit:"contain" }} />
@@ -54,7 +54,7 @@ export default function App() {
           Group of {groupSize} · {user.name.split(" ")[0]}
         </div>
       </div>
-      <div style={{ padding:"16px 14px 120px", background:PAGE }}>
+      <div style={{ padding:"16px 14px 120px", background:PAGE, maxWidth:900, margin:"0 auto" }}>
         {tab==="home"    && <HomeTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} user={user} />}
         {tab==="flights" && <FlightsTab groupSize={groupSize} />}
         {tab==="stays"   && <StaysTab groupSize={groupSize} />}
@@ -72,8 +72,8 @@ export default function App() {
         {tab==="polls"   && <PollsTab user={user} />}
       </div>
       {/* ── BOTTOM NAV — 5 tabs + More drawer ── */}
-      <div style={{ position:"fixed", bottom:0, left:"50%", transform:"translateX(-50%)", width:"100%", maxWidth:430, background:WHITE, borderTop:`1.5px solid ${SOFT}`, zIndex:200, boxShadow:`0 -2px 16px rgba(230,101,130,0.10)` }}>
-        <div style={{ display:"flex" }}>
+      <div style={{ position:"fixed", bottom:0, left:0, width:"100%", background:WHITE, borderTop:`1.5px solid ${SOFT}`, zIndex:200, boxShadow:`0 -2px 16px rgba(230,101,130,0.10)` }}>
+        <div style={{ display:"flex", maxWidth:900, margin:"0 auto" }}>
           {[
             { id:"home",  label:"Home" },
             { id:"plan",  label:"Plan" },
@@ -103,7 +103,7 @@ export default function App() {
       {drawerOpen && (
         <>
           <div onClick={() => setDrawerOpen(false)} style={{ position:"fixed", inset:0, background:"rgba(45,10,24,0.3)", zIndex:190, backdropFilter:"blur(3px)" }} />
-          <div style={{ position:"fixed", bottom:0, left:"50%", transform:"translateX(-50%)", width:"100%", maxWidth:430, background:WHITE, borderRadius:"20px 20px 0 0", zIndex:195, boxShadow:`0 -4px 32px rgba(230,101,130,0.18)` }}>
+          <div style={{ position:"fixed", bottom:0, left:"50%", transform:"translateX(-50%)", width:"min(100%, 600px)", background:WHITE, borderRadius:"20px 20px 0 0", zIndex:195, boxShadow:`0 -4px 32px rgba(230,101,130,0.18)` }}>
             <div style={{ width:36, height:4, borderRadius:2, background:MID, margin:"14px auto 0" }} />
             <div style={{ padding:"16px 20px 32px" }}>
               <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"1.5px", marginBottom:18 }}>All Features</div>
