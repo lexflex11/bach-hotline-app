@@ -36,7 +36,7 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user }) {
       <SH title="What do you need?" />
       {[
         { icon:"✈️", label:"Group Flights",      sub:"Real booking links via Expedia & Kayak",   tab:"flights" },
-        { icon:"🏠", label:"Airbnb & Vrbo Stays", sub:"Entire homes — real booking links",        tab:"stays"   },
+        { icon:"🏠", label:"Accommodations",        sub:"Entire homes — real booking links",        tab:"stays"   },
         { icon:"🍾", label:"Eats & Experiences",  sub:"Curated bachelorette activities",          tab:"eats"    },
         { icon:"🧾", label:"Split the Bill",       sub:"Who owes what — bride pays nothing",       tab:"split"   },
         { icon:"🔔", label:"Deal Alerts",          sub:"Get pinged when prices drop",              tab:"alerts"  },
