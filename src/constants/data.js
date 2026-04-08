@@ -21,7 +21,7 @@ export const AESTHETICS = [
     decor:["Hay bales wrapped in linen","Mason jar flower arrangements","Rope fairy lights","Bandana table runners","Sunflower + wildflower centerpieces"],
     shots:["Golden hour silhouette with hats","Boots in the sand overhead shot","Circle formation holding drinks","Bonfire sparkler photos"],
     hashtags:["#CoastalCowgirl","#BachWeekend","#BohoBride","#WesternWedding","#SunsetBach"],
-    shopItems:[6,7,9],
+    shopItems:[11,10,7], // Cowgirl Espresso Cup · Let's Go Girls Kit · Custom Face Beach Towel
   },
   {
     id:"old_hollywood", name:"Old Hollywood Glam", emoji:"🎬✨",
@@ -32,7 +32,7 @@ export const AESTHETICS = [
     decor:["Gold candelabras","Black and gold balloons","Vintage Hollywood marquee letters","Feather centerpieces","Film reel props"],
     shots:["Vanity mirror reflection with lights","Staircase descent shot","Champagne tower moment","Black and white filter group shot"],
     hashtags:["#OldHollywood","#GlamBach","#GoldenAgeBride","#BlackAndGold","#VintageBride"],
-    shopItems:[6,12,9],
+    shopItems:[12,6,15], // In My Bride Era Kit · Custom Poker Cards · Cocktail Club Towel
   },
   {
     id:"maximalist_pink", name:"Maximalist Pink", emoji:"🩷🎀",
@@ -43,7 +43,7 @@ export const AESTHETICS = [
     decor:["Floor-to-ceiling balloon arch","Pink flower walls","Giant BRIDE marquee sign","Pink feather table runners","Disco ball + pink lighting"],
     shots:["Balloon arch group photo","Pink flower wall flat lay","Confetti cannon moment","Mirror selfie in matching outfits"],
     hashtags:["#MaximalistPink","#PinkBach","#BarbieCore","#HotPinkBride","#PinkEverything"],
-    shopItems:[1,9,12],
+    shopItems:[12,1,2], // In My Bride Era Kit · Disco Ball Headband · Garden Foil Balloon
   },
   {
     id:"disco_fever", name:"Disco Fever 🪩", emoji:"🪩🕺",
@@ -54,7 +54,7 @@ export const AESTHETICS = [
     decor:["Hanging disco balls (all sizes)","Lava lamp centerpieces","Retro neon signs","Metallic fringe curtains","Vinyl record table decor"],
     shots:["Under the disco ball golden hour","Neon sign light photos","Group shot in sequins","Overhead arms-up formation"],
     hashtags:["#DiscoFever","#BachHotline","#DiscoBride","#SeventiesBach","#GlitterAndGold"],
-    shopItems:[1,6,9],
+    shopItems:[1,3,12], // Disco Ball Headband · Zebra Foil Balloon · In My Bride Era Kit
   },
   {
     id:"garden_party", name:"Garden Party", emoji:"🌸🍃",
@@ -65,7 +65,7 @@ export const AESTHETICS = [
     decor:["Wildflower centerpieces","Twig and vine arch","Pastel balloon clusters","Vintage china teacups","Garden lanterns + candles"],
     shots:["Flower crown flat lay","Walking through a garden path","Picnic blanket overhead","Champagne toast under florals"],
     hashtags:["#GardenPartyBride","#CottageCore","#FloralBach","#EnglishGardenBride","#WildflowerWedding"],
-    shopItems:[7,13,15],
+    shopItems:[2,16,13], // Garden Foil Balloon · Floral Groovy Beach Towel · Sardinas Towel
   },
   {
     id:"dark_romance", name:"Dark Romance", emoji:"🖤🌹",
@@ -76,7 +76,7 @@ export const AESTHETICS = [
     decor:["Black rose centerpieces","Red taper candles","Gothic arch with draping","Velvet table linens","Antique gold candelabras"],
     shots:["Candlelit portrait session","Moody red rose flat lay","Group shot with dramatic lighting","Wine glass cheers silhouette"],
     hashtags:["#DarkRomance","#MoodyBride","#GothicBach","#DarkAcademiaBride","#RedRoseBach"],
-    shopItems:[9,12,6],
+    shopItems:[12,14,9], // In My Bride Era Kit · Panther Beach Towel · Bach Weekend Survival Kit
   },
 ];
 
