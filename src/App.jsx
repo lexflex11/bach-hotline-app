@@ -61,13 +61,13 @@ export default function App() {
         {tab==="eats"    && <EatsTab />}
         {tab==="plan"    && <PlanTab groupSize={groupSize} />}
         {tab==="budget"  && <BudgetTab groupSize={groupSize} />}
-        {tab==="mood"    && <MoodTab />}
+        {tab==="mood"    && <MoodTab setTab={setTab} />}
         {tab==="moh"     && <MOHTab groupSize={groupSize} />}
         {tab==="dayof"   && <DayOfTab />}
         {tab==="split"   && <SplitTab groupSize={groupSize} />}
         {tab==="shop"    && <ShopTab cart={cart} setCart={setCart} />}
         {tab==="alerts"  && <AlertsTab />}
-        {tab==="decor"   && <DecorTab setTab={setTab} />}
+        {tab==="decor"   && <MoodTab setTab={setTab} />}
         {tab==="profile" && <ProfileTab user={user} onLogout={()=>setUser(null)} cart={cart} />}
         {tab==="polls"   && <PollsTab user={user} />}
       </div>
