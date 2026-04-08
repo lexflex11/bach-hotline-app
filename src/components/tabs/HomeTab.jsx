@@ -33,17 +33,6 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user }) {
           <button onClick={()=>setGroupSize(groupSize+1)} style={SM}>+</button>
         </div>
       </div>
-      <SH title="Trending Destinations 🔥" sub="Where bride tribes are booking right now" />
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:20 }}>
-        {DESTS.filter(d => d.featured).map(d => (
-          <button key={d.id} onClick={()=>setTab("flights")} style={{ ...C, textAlign:"left", cursor:"pointer", padding:"13px 12px", display:"block" }}>
-            <div style={{ fontSize:26, marginBottom:5 }}>{d.emoji}</div>
-            <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{d.name}</div>
-            <div style={{ fontSize:11, color:HOT, fontFamily:"'DM Sans',sans-serif", marginTop:2, opacity:0.75 }}>{d.vibe}</div>
-            <div style={{ marginTop:8 }}><Tag label={d.trend} /></div>
-          </button>
-        ))}
-      </div>
       <SH title="What do you need?" />
       {[
         { icon:"✈️", label:"Group Flights",      sub:"Real booking links via Expedia & Kayak",   tab:"flights" },
@@ -63,6 +52,17 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user }) {
           <span style={{ color:HOT, fontSize:20 }}>›</span>
         </button>
       ))}
+      <SH title="Trending Destinations 🔥" sub="Where bride tribes are booking right now" />
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:20 }}>
+        {DESTS.filter(d => d.featured).map(d => (
+          <button key={d.id} onClick={()=>setTab("flights")} style={{ ...C, textAlign:"left", cursor:"pointer", padding:"13px 12px", display:"block" }}>
+            <div style={{ fontSize:26, marginBottom:5 }}>{d.emoji}</div>
+            <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{d.name}</div>
+            <div style={{ fontSize:11, color:HOT, fontFamily:"'DM Sans',sans-serif", marginTop:2, opacity:0.75 }}>{d.vibe}</div>
+            <div style={{ marginTop:8 }}><Tag label={d.trend} /></div>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
