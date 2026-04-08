@@ -7,13 +7,15 @@ export const ANTHROPIC_API_KEY = import.meta.env.VITE_ANTHROPIC_KEY || "";
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── YOUR AFFILIATE IDs ───────────────────────────────────────────────────────
+// expediaTag: get this from your Expedia Creator dashboard → Link Builder
+//   Paste https://www.expedia.com/Flights-Search into Link Builder,
+//   copy the generated URL, and paste the full URL as expediaTag below.
 export const AFFILIATE = {
-  expedia:    "https://expedia.com/affiliate/bKcGxuS",  // ✅ Expedia Travel Creator
-  kayak:      "",   // add when ready — kayak.com/affiliate-program
-  skyscanner: "",   // add when ready — partners.skyscanner.net
-  airbnb:     "",   // add when ready — airbnb.com/d/affiliates
-  vrbo:       "",   // add when ready — vrbo.com/affiliates
-  viator:     "",   // add when ready — viator.com/partner
+  expediaTag:  "",   // e.g. the full tracked URL from Link Builder
+  kayak:       "",   // add when ready — kayak.com/affiliate-program
+  skyscanner:  "",   // add when ready — partners.skyscanner.net
+  vrbo:        "",   // add when ready — vrbo.com/affiliates
+  viator:      "",   // add when ready — viator.com/partner
 };
 
 // ─── IMAGE PROXY ──────────────────────────────────────────────────────────────
@@ -21,30 +23,24 @@ export const px = url => `https://images.weserv.nl/?url=${encodeURIComponent(url
 
 // ─── FLIGHT LINK BUILDERS ─────────────────────────────────────────────────────
 
-// Expedia — builds a pre-filled flight search with your affiliate tracking
-// Opens Expedia with FROM, TO, DATE, TIME OF DAY, and GROUP SIZE already entered
+// Expedia — builds a pre-filled search URL that opens directly to results
+// FROM, TO, DATE, TIME OF DAY, and PASSENGERS are all pre-filled
 export function expediaFlightUrl(fromCode, toCode, depDate, retDate, passengers, depTime="ANYTIME", retTime="ANYTIME") {
-  // Convert YYYY-MM-DD → MMDDYYYY for Expedia's URL format
+  // Convert YYYY-MM-DD → MMDDYYYY (Expedia's required date format)
   const fmt = d => { const [y,m,day] = d.split("-"); return `${m}${day}${y}`; };
+
+  const trip = retDate ? "roundtrip" : "oneway";
 
   let leg1 = `from%3A${fromCode}%2Cto%3A${toCode}`;
   if (depDate) leg1 += `%2Cdeparture%3A${fmt(depDate)}${depTime}`;
 
-  const trip = retDate ? "roundtrip" : "oneway";
   let legs = `leg1=${leg1}`;
-
   if (retDate) {
-    const leg2 = `from%3A${toCode}%2Cto%3A${fromCode}%2Cdeparture%3A${fmt(retDate)}${retTime}`;
-    legs += `&leg2=${leg2}`;
+    legs += `&leg2=from%3A${toCode}%2Cto%3A${fromCode}%2Cdeparture%3A${fmt(retDate)}${retTime}`;
   }
 
-  const searchUrl = `https://www.expedia.com/Flights-Search?trip=${trip}&${legs}&passengers=adults%3A${passengers}%2Cseniors%3A0%2Cchildren%3A0&options=cabinClass%3Aeconomy&mode=search`;
-
-  // Wrap with affiliate deep link — passes your tracking + opens pre-filled search
-  if (AFFILIATE.expedia) {
-    return `${AFFILIATE.expedia}?url=${encodeURIComponent(searchUrl)}`;
-  }
-  return searchUrl;
+  // Direct Expedia search URL — opens straight to results, no extra searching needed
+  return `https://www.expedia.com/Flights-Search?trip=${trip}&${legs}&passengers=adults%3A${passengers}%2Cseniors%3A0%2Cchildren%3A0&options=cabinClass%3Aeconomy&mode=search`;
 }
 
 // Kayak — backup flight search (affiliate-ready)
@@ -68,9 +64,9 @@ export function googleFlightsUrl(fromCode, toCode, date, passengers) {
   return `https://www.google.com/travel/flights/search?q=flights+from+${fromCode}+to+${toCode}&hl=en`;
 }
 
-// Used in PlanTab CTA — sends to Expedia with affiliate tracking
+// Used in PlanTab CTA
 export function flightUrl(toFull, groupSize) {
-  return AFFILIATE.expedia || `https://www.expedia.com/Flights-Search?mode=search`;
+  return `https://www.expedia.com/Flights-Search?mode=search`;
 }
 
 // Build a real Airbnb search URL
