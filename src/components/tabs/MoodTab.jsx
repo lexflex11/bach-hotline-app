@@ -6,13 +6,19 @@ import { ANTHROPIC_API_KEY } from '../../constants/api.js';
 import SH from '../ui/SH.jsx';
 
 export default function MoodTab({ setTab }) {
-  const [selected, setSelected]   = useState(null);
-  const [photo,    setPhoto]      = useState(null);
-  const [loading,  setLoading]    = useState(false);
-  const [result,   setResult]     = useState(null);
+  const [selected,    setSelected]    = useState(null);
+  const [photo,       setPhoto]       = useState(null);
+  const [loading,     setLoading]     = useState(false);
+  const [result,      setResult]      = useState(null);
+  const [customMode,  setCustomMode]  = useState(false);
+  const [customName,  setCustomName]  = useState("");
+  const [customVibe,  setCustomVibe]  = useState("");
+  const [customColors,setCustomColors]= useState("#FF6B9D");
   const fileRef = useRef();
 
-  const aesthetic = AESTHETICS.find(a => a.id === selected);
+  const aesthetic = selected === "custom"
+    ? { id:"custom", name:customName||"My Custom Theme", emoji:"✨", vibe:customVibe||"Your unique vibe", colors:[customColors,"#FFB3D1","#FFE4F0"], palette:["Primary","Accent","Light"], outfits:[], decor:[], shots:[], hashtags:[], shopItems:[9,12,6] }
+    : AESTHETICS.find(a => a.id === selected);
 
   const handleFile = e => {
     const file = e.target.files[0]; if (!file) return;
@@ -21,7 +27,7 @@ export default function MoodTab({ setTab }) {
     reader.readAsDataURL(file);
   };
 
-  const goBack = () => { setSelected(null); setPhoto(null); setResult(null); };
+  const goBack = () => { setSelected(null); setPhoto(null); setResult(null); setCustomMode(false); };
 
   const runAI = async () => {
     if (!photo || !aesthetic) return;
@@ -41,7 +47,7 @@ export default function MoodTab({ setTab }) {
           model: "claude-sonnet-4-20250514", max_tokens: 1000,
           messages: [{ role: "user", content: [
             { type: "image", source: { type: "base64", media_type: mime, data: b64 } },
-            { type: "text", text: `You are a bachelorette décor designer. Analyze this space for a "${aesthetic.name}" theme using these colors: ${aesthetic.colors.join(", ")}. Give specific placement advice based on what you see in the photo. JSON only (no fences): {"headline":"punchy headline for this theme","vision":"2-3 sentences describing the transformation","keyPieces":["5 specific décor items with exact placement in the space"],"lighting":"one specific lighting tip","photoMoment":"best backdrop spot in this space","shoppingList":["3 items to buy"]}` }
+            { type: "text", text: `You are a bachelorette décor designer. Analyze this space for a "${aesthetic.name}" theme. Vibe: ${aesthetic.vibe}. Colors: ${aesthetic.colors.join(", ")}. Give specific placement advice based on what you actually see in the photo. JSON only (no fences): {"headline":"punchy headline for this theme","vision":"2-3 sentences describing the transformation","keyPieces":["5 specific décor items with exact placement in the space"],"lighting":"one specific lighting tip","photoMoment":"best backdrop spot in this space","shoppingList":["3 items to buy"]}` }
           ]}]
         })
       });
@@ -55,7 +61,7 @@ export default function MoodTab({ setTab }) {
   };
 
   // ── THEME GRID (home screen) ──────────────────────────────────────────────
-  if (!selected) return (
+  if (!selected && !customMode) return (
     <div>
       <SH title="Vibes & Décor" sub="Pick your aesthetic — outfits, décor, AI space visualizer" />
       <div style={{fontSize:13,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:14,opacity:0.8}}>
@@ -75,7 +81,74 @@ export default function MoodTab({ setTab }) {
             </div>
           </button>
         ))}
+
+        {/* Custom Theme card */}
+        <button onClick={() => setCustomMode(true)}
+          style={{background:`linear-gradient(135deg,${SOFT},${MID})`,border:`2px dashed ${HOT}`,borderRadius:18,padding:"16px 14px",cursor:"pointer",textAlign:"left",transition:"all 0.2s",boxShadow:`0 2px 10px rgba(230,101,130,0.07)`}}
+          onMouseEnter={e=>{e.currentTarget.style.boxShadow=`0 6px 20px rgba(230,101,130,0.18)`;e.currentTarget.style.transform="translateY(-2px)"}}
+          onMouseLeave={e=>{e.currentTarget.style.boxShadow=`0 2px 10px rgba(230,101,130,0.07)`;e.currentTarget.style.transform="translateY(0)"}}>
+          <div style={{fontSize:28,marginBottom:8}}>🎨</div>
+          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:HOT,marginBottom:4}}>Build Your Own</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.4,opacity:0.8}}>Name your vibe, pick your colors, get a custom AI décor plan</div>
+        </button>
       </div>
+    </div>
+  );
+
+  // ── CUSTOM THEME BUILDER ──────────────────────────────────────────────────
+  if (customMode && !selected) return (
+    <div>
+      <button onClick={() => setCustomMode(false)} style={{...BG,marginBottom:16,fontSize:12,padding:"7px 14px"}}>← All Themes</button>
+      <SH title="Build Your Own Theme" sub="Name your vibe and let AI do the rest" />
+
+      <div style={{...C, marginBottom:12}}>
+        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>What's your theme called?</div>
+        <input
+          value={customName}
+          onChange={e => setCustomName(e.target.value)}
+          placeholder="e.g. Pink Safari, Vegas Glam, Coastal Queen..."
+          style={{width:"100%",padding:"12px",borderRadius:10,border:`1.5px solid ${customName?HOT:BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:13,color:DARK,background:WHITE,boxSizing:"border-box"}}
+        />
+      </div>
+
+      <div style={{...C, marginBottom:12}}>
+        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>Describe the vibe</div>
+        <textarea
+          value={customVibe}
+          onChange={e => setCustomVibe(e.target.value)}
+          placeholder="e.g. Luxury resort meets wild west. Think gold, turquoise, and cowboy hats by the pool..."
+          rows={3}
+          style={{width:"100%",padding:"12px",borderRadius:10,border:`1.5px solid ${customVibe?HOT:BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:13,color:DARK,background:WHITE,boxSizing:"border-box",resize:"none"}}
+        />
+      </div>
+
+      <div style={{...C, marginBottom:16}}>
+        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>Pick your main color</div>
+        <div style={{display:"flex",alignItems:"center",gap:14}}>
+          <input
+            type="color"
+            value={customColors}
+            onChange={e => setCustomColors(e.target.value)}
+            style={{width:52,height:52,borderRadius:12,border:`1.5px solid ${BORDER}`,cursor:"pointer",padding:2}}
+          />
+          <div>
+            <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:DARK,fontWeight:700}}>{customColors.toUpperCase()}</div>
+            <div style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:2}}>AI will build your full palette from this</div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        onClick={() => { if (customName && customVibe) setSelected("custom"); }}
+        disabled={!customName || !customVibe}
+        style={{...BP,width:"100%",padding:"13px",fontSize:14,borderRadius:14,opacity:(!customName||!customVibe)?0.4:1}}>
+        ✨ Build My Custom Theme
+      </button>
+      {(!customName || !customVibe) && (
+        <div style={{textAlign:"center",fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:8}}>
+          Add a name and vibe description to continue
+        </div>
+      )}
     </div>
   );
 
@@ -100,7 +173,7 @@ export default function MoodTab({ setTab }) {
       </div>
 
       {/* Outfits */}
-      <div style={{...C,marginBottom:12}}>
+      {aesthetic.outfits?.length > 0 && <div style={{...C,marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>What to Wear</div>
         {aesthetic.outfits.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
@@ -108,10 +181,10 @@ export default function MoodTab({ setTab }) {
             <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:DARK}}>{item}</div>
           </div>
         ))}
-      </div>
+      </div>}
 
       {/* Décor */}
-      <div style={{...C,marginBottom:12}}>
+      {aesthetic.decor?.length > 0 && <div style={{...C,marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Décor Ideas</div>
         {aesthetic.decor.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
@@ -122,7 +195,7 @@ export default function MoodTab({ setTab }) {
       </div>
 
       {/* Photo shots */}
-      <div style={{...C,marginBottom:12}}>
+      {aesthetic.shots?.length > 0 && <div style={{...C,marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Photo Moments</div>
         {aesthetic.shots.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
@@ -130,17 +203,17 @@ export default function MoodTab({ setTab }) {
             <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:DARK}}>{item}</div>
           </div>
         ))}
-      </div>
+      </div>}
 
       {/* Hashtags */}
-      <div style={{...C,marginBottom:12}}>
+      {aesthetic.hashtags?.length > 0 && <div style={{...C,marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Hashtag Pack</div>
         <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
           {aesthetic.hashtags.map((tag,i) => (
             <span key={i} style={{fontSize:11,padding:"4px 11px",borderRadius:50,background:SOFT,border:`1.5px solid ${MID}`,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:600}}>{tag}</span>
           ))}
         </div>
-      </div>
+      </div>}
 
       {/* ── AI DÉCOR VISUALIZER ───────────────────────────────────────────── */}
       <div style={{...C, marginBottom:12, border:`2px solid ${HOT}`, background:SOFT}}>

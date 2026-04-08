@@ -78,6 +78,61 @@ export const AESTHETICS = [
     hashtags:["#DarkRomance","#MoodyBride","#GothicBach","#DarkAcademiaBride","#RedRoseBach"],
     shopItems:[12,14,9], // In My Bride Era Kit · Panther Beach Towel · Bach Weekend Survival Kit
   },
+  {
+    id:"mob_wives", name:"Mob Wives", emoji:"🐆🕶️",
+    colors:["#1C1C1C","#8B6914","#D4AF37","#4A0404"],
+    palette:["Noir Black","Rich Camel","Champagne Gold","Deep Burgundy"],
+    vibe:"Fur coats, oversized sunglasses, Italian glam. Power in every outfit.",
+    outfits:["Faux fur coat over bodycon dress","Animal print co-ord","Oversized blazer + leather pants","Floor-length fur stole + heels"],
+    decor:["Leopard print table runners","Gold candle towers","Black roses in gold vases","Velvet chairs","Vintage cigar box centerpieces"],
+    shots:["Fur coat drama shot from behind","Sunglasses gang flat lay","Moody candlelit portrait","Power pose group shot"],
+    hashtags:["#MobWives","#MobWifeBach","#FurCoatSzn","#GlamBride","#PowerBride"],
+    shopItems:[14,12,9], // Panther Beach Towel · In My Bride Era Kit · Bach Survival Kit
+  },
+  {
+    id:"mermaid_core", name:"Mermaid Core", emoji:"🧜‍♀️🌊",
+    colors:["#006994","#40E0D0","#B8860B","#7FFFD4"],
+    palette:["Ocean Deep","Turquoise","Antique Gold","Aquamarine"],
+    vibe:"Iridescent, ethereal, and underwater luxe. Sequins that shimmer like scales.",
+    outfits:["Iridescent sequin dress","Ombre blue-to-green co-ord","Holographic swimsuit","Mermaid-cut bodycon gown"],
+    decor:["Seashell centerpieces","Iridescent balloon clouds","Blue and teal fairy lights","Pearl garland table runners","Starfish + net décor"],
+    shots:["Underwater pool photo","Shell flat lay at the beach","Iridescent backdrop group shot","Sunset ocean silhouette"],
+    hashtags:["#MermaidBach","#MermaidCore","#UnderTheSea","#OceanBride","#IridescentVibes"],
+    shopItems:[7,8,9], // Custom Face Beach Towel · Custom Face Bikini · Bach Survival Kit
+  },
+  {
+    id:"white_party", name:"White Party", emoji:"🤍✨",
+    colors:["#FFFFFF","#F5F0E8","#E8E0D5","#D4AF37"],
+    palette:["Pure White","Ivory","Linen","Gold Accent"],
+    vibe:"All white everything. Clean, luxe, and effortlessly chic. Less is more.",
+    outfits:["White linen co-ord","White mini dress + gold accessories","White bikini + cover-up","White bodysuit + wide-leg trousers"],
+    decor:["All-white balloon arch","White flower walls","Gold candle clusters","White feather centerpieces","Linen table settings"],
+    shots:["All-white outfit flat lay","White on white group shot","Pool float aerial","Champagne in white with gold foil"],
+    hashtags:["#WhiteParty","#AllWhiteBach","#WhitePartyVibes","#LuxeBride","#WhiteAndGold"],
+    shopItems:[12,9,6], // In My Bride Era Kit · Bach Survival Kit · Custom Poker Cards
+  },
+  {
+    id:"retro_y2k", name:"Retro Y2K", emoji:"💿🦋",
+    colors:["#FF69B4","#00BFFF","#9370DB","#FFD700"],
+    palette:["Bubblegum Pink","Electric Blue","Lavender","Butter Yellow"],
+    vibe:"Early 2000s nostalgia. Butterfly clips, baby tees, low-rise everything, and total chaos.",
+    outfits:["Velour tracksuit","Baby tee + low-rise skirt","Bedazzled co-ord","Butterfly clip hair + crop top"],
+    decor:["CD/DVD mirror mobiles","Y2K poster prints","Inflatable furniture","Butterfly decorations","Throwback candy table"],
+    shots:["Disposable camera aesthetic","Flip phone group selfie pose","Mall photo booth recreation","Butterfly clip hair moment"],
+    hashtags:["#Y2KBach","#RetroVibes","#2000sBride","#Y2KAesthetic","#ButterflyBride"],
+    shopItems:[1,3,12], // Disco Ball Headband · Zebra Balloon · In My Bride Era Kit
+  },
+  {
+    id:"tropical_luxe", name:"Tropical Luxe", emoji:"🌺🍹",
+    colors:["#FF6B35","#FFD700","#228B22","#FF1493"],
+    palette:["Sunset Orange","Golden Yellow","Tropical Green","Hibiscus Pink"],
+    vibe:"Resort-ready luxury. Palm prints, fresh florals, gold jewelry, and endless sunsets.",
+    outfits:["Palm print co-ord set","Colorful resort maxi dress","Tropical bikini + sarong","Gold jewelry + linen jumpsuit"],
+    decor:["Fresh tropical flower centerpieces","Palm leaf table runners","Tiki torch lighting","Pineapple + mango table decor","Colorful paper lanterns"],
+    shots:["Golden hour pool float shot","Tropical flower crown portrait","Cheers with colorful cocktails","Hammock between palm trees"],
+    hashtags:["#TropicalBach","#ResortMode","#TropicalLuxe","#IslandBride","#SunsetBach"],
+    shopItems:[7,15,9], // Custom Face Beach Towel · Cocktail Club Towel · Bach Survival Kit
+  },
 ];
 
 // ─── VENDOR REVIEW DATA ───────────────────────────────────────────────────────
