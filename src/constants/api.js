@@ -22,19 +22,19 @@ export const px = url => `https://images.weserv.nl/?url=${encodeURIComponent(url
 // ─── FLIGHT LINK BUILDERS ─────────────────────────────────────────────────────
 
 // Expedia — builds a pre-filled flight search with your affiliate tracking
-// Opens Expedia with FROM, TO, DATE, and GROUP SIZE already entered
-export function expediaFlightUrl(fromCode, toCode, depDate, retDate, passengers) {
+// Opens Expedia with FROM, TO, DATE, TIME OF DAY, and GROUP SIZE already entered
+export function expediaFlightUrl(fromCode, toCode, depDate, retDate, passengers, depTime="ANYTIME", retTime="ANYTIME") {
   // Convert YYYY-MM-DD → MMDDYYYY for Expedia's URL format
   const fmt = d => { const [y,m,day] = d.split("-"); return `${m}${day}${y}`; };
 
   let leg1 = `from%3A${fromCode}%2Cto%3A${toCode}`;
-  if (depDate) leg1 += `%2Cdeparture%3A${fmt(depDate)}ANYTIME`;
+  if (depDate) leg1 += `%2Cdeparture%3A${fmt(depDate)}${depTime}`;
 
   const trip = retDate ? "roundtrip" : "oneway";
   let legs = `leg1=${leg1}`;
 
   if (retDate) {
-    const leg2 = `from%3A${toCode}%2Cto%3A${fromCode}%2Cdeparture%3A${fmt(retDate)}ANYTIME`;
+    const leg2 = `from%3A${toCode}%2Cto%3A${fromCode}%2Cdeparture%3A${fmt(retDate)}${retTime}`;
     legs += `&leg2=${leg2}`;
   }
 

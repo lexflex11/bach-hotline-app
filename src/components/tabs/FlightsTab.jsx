@@ -46,8 +46,17 @@ export default function FlightsTab({ groupSize }) {
   const [fromCode, setFromCode]   = useState("IAH");
   const [depDate,  setDepDate]    = useState("");
   const [retDate,  setRetDate]    = useState("");
+  const [depTime,  setDepTime]    = useState("ANYTIME");
+  const [retTime,  setRetTime]    = useState("ANYTIME");
   const [dest,     setDest]       = useState(null);
   const [section,  setSection]    = useState("us"); // "us" | "intl"
+
+  const TIMES = [
+    { code:"ANYTIME",   label:"Any Time",  icon:"🕐" },
+    { code:"MORNING",   label:"Morning",   icon:"🌅", sub:"6am – 12pm" },
+    { code:"AFTERNOON", label:"Afternoon", icon:"☀️",  sub:"12pm – 6pm" },
+    { code:"EVENING",   label:"Evening",   icon:"🌙", sub:"6pm – midnight" },
+  ];
 
   const selectedDest = DESTS.find(d => d.id === dest);
   const minDate      = new Date().toISOString().split("T")[0];
@@ -57,7 +66,7 @@ export default function FlightsTab({ groupSize }) {
     if (!selectedDest) return;
     const toCode = selectedDest.airportCode;
     let url;
-    if (platform === "expedia")     url = expediaFlightUrl(fromCode, toCode, depDate, retDate, groupSize);
+    if (platform === "expedia")     url = expediaFlightUrl(fromCode, toCode, depDate, retDate, groupSize, depTime, retTime);
     else if (platform === "kayak")  url = kayakFlightUrl(fromCode, toCode, depDate, groupSize);
     else if (platform === "sky")    url = skyscannerUrl(fromCode, toCode, depDate, groupSize);
     else                            url = googleFlightsUrl(fromCode, toCode, depDate, groupSize);
@@ -115,14 +124,16 @@ export default function FlightsTab({ groupSize }) {
         </div>
       </div>
 
-      {/* ── STEP 3 — Dates ── */}
+      {/* ── STEP 3 — Dates & Times ── */}
       <div style={{...C, marginBottom:14}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
-          📅 Step 3 — Trip dates <span style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>(optional — fills in Expedia automatically)</span>
+        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>
+          📅 Step 3 — Dates & preferred times
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
-          <div>
-            <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,marginBottom:5,textTransform:"uppercase",letterSpacing:0.5}}>Departure</div>
+
+        {/* Departure row */}
+        <div style={{marginBottom:14}}>
+          <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,marginBottom:6,textTransform:"uppercase",letterSpacing:0.5}}>✈️ Departure</div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:8}}>
             <input
               type="date"
               value={depDate}
@@ -130,9 +141,26 @@ export default function FlightsTab({ groupSize }) {
               onChange={e => { setDepDate(e.target.value); if(retDate && e.target.value >= retDate) setRetDate(""); }}
               style={{width:"100%",padding:"10px 8px",borderRadius:10,border:`1.5px solid ${depDate?HOT:BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:12,color:DARK,background:WHITE,boxSizing:"border-box"}}
             />
+            <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif",display:"flex",alignItems:"center"}}>
+              {depDate ? "Pick a time below ↓" : "Add date first"}
+            </div>
           </div>
-          <div>
-            <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,marginBottom:5,textTransform:"uppercase",letterSpacing:0.5}}>Return</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:6}}>
+            {TIMES.map(t => (
+              <button key={t.code} onClick={()=>setDepTime(t.code)}
+                style={{padding:"8px 4px",borderRadius:10,border:`1.5px solid ${depTime===t.code?HOT:BORDER}`,background:depTime===t.code?SOFT:WHITE,cursor:"pointer",textAlign:"center"}}>
+                <div style={{fontSize:14}}>{t.icon}</div>
+                <div style={{fontSize:9,fontWeight:700,color:depTime===t.code?HOT:DARK,fontFamily:"'DM Sans',sans-serif",marginTop:2}}>{t.label}</div>
+                {t.sub && <div style={{fontSize:8,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:1,lineHeight:1.2}}>{t.sub}</div>}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Return row */}
+        <div style={{paddingTop:12,borderTop:`1px solid ${SOFT}`}}>
+          <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,marginBottom:6,textTransform:"uppercase",letterSpacing:0.5}}>🏠 Return</div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:8}}>
             <input
               type="date"
               value={retDate}
@@ -140,9 +168,21 @@ export default function FlightsTab({ groupSize }) {
               onChange={e => setRetDate(e.target.value)}
               style={{width:"100%",padding:"10px 8px",borderRadius:10,border:`1.5px solid ${retDate?HOT:BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:12,color:DARK,background:WHITE,boxSizing:"border-box"}}
             />
+            <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif",display:"flex",alignItems:"center"}}>
+              {retDate ? "Pick a time below ↓" : "Leave blank = one way"}
+            </div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:6}}>
+            {TIMES.map(t => (
+              <button key={t.code} onClick={()=>setRetTime(t.code)}
+                style={{padding:"8px 4px",borderRadius:10,border:`1.5px solid ${retTime===t.code?HOT:BORDER}`,background:retTime===t.code?SOFT:WHITE,cursor:"pointer",textAlign:"center"}}>
+                <div style={{fontSize:14}}>{t.icon}</div>
+                <div style={{fontSize:9,fontWeight:700,color:retTime===t.code?HOT:DARK,fontFamily:"'DM Sans',sans-serif",marginTop:2}}>{t.label}</div>
+                {t.sub && <div style={{fontSize:8,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:1,lineHeight:1.2}}>{t.sub}</div>}
+              </button>
+            ))}
           </div>
         </div>
-        {!depDate && <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:6}}>Skip dates to see all available flights</div>}
       </div>
 
       {/* ── SEARCH CTA ── */}
