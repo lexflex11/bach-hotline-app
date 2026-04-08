@@ -196,30 +196,27 @@ export default function FlightsTab({ groupSize }) {
               {groupSize} travelers · {depDate ? `${depDate}${retDate ? ` → ${retDate}` : " (one way)"}` : "flexible dates"} · real-time prices
             </div>
 
-            {/* Expedia — primary (affiliate) */}
-            <button onClick={()=>open("expedia")} style={{...BP,width:"100%",fontSize:13,padding:"13px",marginBottom:8,display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
-              <span>✈️</span>
-              <span>Search Expedia for {groupSize} People</span>
-              <span style={{fontSize:10,opacity:0.75}}>→</span>
-            </button>
-
-            {/* Kayak — secondary */}
-            <button onClick={()=>open("kayak")} style={{width:"100%",background:"linear-gradient(135deg,#FF690F,#e05500)",color:WHITE,border:"none",borderRadius:50,padding:"12px",fontFamily:"'DM Sans',sans-serif",fontSize:13,fontWeight:700,cursor:"pointer",marginBottom:8}}>
-              🔍 Search Kayak →
-            </button>
-
-            {/* Skyscanner */}
-            <button onClick={()=>open("sky")} style={{width:"100%",background:"linear-gradient(135deg,#0770E3,#055DBF)",color:WHITE,border:"none",borderRadius:50,padding:"12px",fontFamily:"'DM Sans',sans-serif",fontSize:13,fontWeight:700,cursor:"pointer",marginBottom:8}}>
-              🛩️ Search Skyscanner →
-            </button>
-
-            {/* Google Flights — free */}
-            <button onClick={()=>open("google")} style={{width:"100%",background:WHITE,color:"#555",border:`1.5px solid ${BORDER}`,borderRadius:50,padding:"11px",fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,cursor:"pointer"}}>
-              🔎 Google Flights (free backup)
-            </button>
-
-            <div style={{fontSize:9,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:10,textAlign:"center"}}>
-              Prices update in real time on each platform · Results open in a new tab
+            {/* Search grid — 2x2 compact buttons */}
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+              <button onClick={()=>open("expedia")} style={{background:"linear-gradient(135deg,#00355F,#00509E)",color:WHITE,border:"none",borderRadius:12,padding:"12px 8px",fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
+                <span style={{fontSize:18}}>✈️</span>
+                <span>Expedia</span>
+              </button>
+              <button onClick={()=>open("kayak")} style={{background:"linear-gradient(135deg,#FF690F,#e05500)",color:WHITE,border:"none",borderRadius:12,padding:"12px 8px",fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
+                <span style={{fontSize:18}}>🔍</span>
+                <span>Kayak</span>
+              </button>
+              <button onClick={()=>open("sky")} style={{background:"linear-gradient(135deg,#0770E3,#055DBF)",color:WHITE,border:"none",borderRadius:12,padding:"12px 8px",fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
+                <span style={{fontSize:18}}>🛩️</span>
+                <span>Skyscanner</span>
+              </button>
+              <button onClick={()=>open("google")} style={{background:WHITE,color:"#555",border:`1.5px solid ${BORDER}`,borderRadius:12,padding:"12px 8px",fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:4}}>
+                <span style={{fontSize:18}}>🔎</span>
+                <span>Google</span>
+              </button>
+            </div>
+            <div style={{fontSize:9,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:8,textAlign:"center"}}>
+              All search real-time prices · Opens in a new tab
             </div>
           </>
         ) : (
