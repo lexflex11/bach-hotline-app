@@ -78,7 +78,7 @@ export default function App() {
         <div style={{ display:"flex", maxWidth:900, margin:"0 auto" }}>
           {[
             { id:"home",  label:"Home" },
-            { id:"plan",  label:"Plan" },
+            { id:"plan",  label:"Itinerary" },
             { id:"explore", label:"Explore" },
             { id:"decor", label:"Studio" },
             { id:"more",  label:"More" },
