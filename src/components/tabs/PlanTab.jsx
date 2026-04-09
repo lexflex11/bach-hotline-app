@@ -41,7 +41,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
           "anthropic-dangerous-direct-browser-access": "true",
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514", max_tokens: 1200,
+          model: "claude-sonnet-4-6", max_tokens: 1200,
           messages: [{ role:"user", content:
             `Create a ${days}-day bachelorette itinerary for ${groupSize} ladies in ${d.name}.\n\nBRIDE TYPE: ${b.label} — ${b.desc}\nVIBE: ${b.vibe}\nACTIVITIES TO INCLUDE: ${b.activities}\nDESTINATION VIBE: ${d.vibe}\n\nTailor EVERYTHING to this exact bride personality. JSON only (no fences):\n{"title":"fun title matching personality","tagline":"one punchy vibe line","brideMessage":"personal hype message to the bride 1-2 sentences","days":[{"day":1,"theme":"day theme","morning":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book this"},"afternoon":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"},"evening":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"},"nightlife":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"}}],"mustPack":["3 items for this bride type"],"proTip":"amazing tip for this personality+destination","estimatedBudget":"$XXX–$XXX per person"}`
           }]
@@ -134,36 +134,35 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
             </div>
           </div>
 
-          {/* US / International toggle */}
-          <div style={{display:"flex",gap:8,marginBottom:14}}>
-            {[{id:"us",label:"🇺🇸 United States"},{id:"intl",label:"✈️ International"}].map(r=>(
-              <button key={r.id} onClick={()=>{setRegion(r.id);setDest(null);}} style={{
-                flex:1,padding:"9px 8px",borderRadius:10,
-                border:region===r.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-                background:region===r.id?SOFT:WHITE,
-                color:region===r.id?HOT:DARK,
-                fontWeight:700,fontSize:12,
-                fontFamily:"'DM Sans',sans-serif",
-                cursor:"pointer",transition:"all 0.15s",
-              }}>{r.label}</button>
-            ))}
-          </div>
+          {/* Region dropdown */}
+          <select
+            value={region}
+            onChange={e=>{setRegion(e.target.value);setDest(null);}}
+            style={{width:"100%",marginBottom:10,padding:"10px 12px",borderRadius:10,border:`1.5px solid ${BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:13,color:DARK,background:WHITE,appearance:"none",backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e66582' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`,backgroundRepeat:"no-repeat",backgroundPosition:"right 12px center",cursor:"pointer"}}
+          >
+            <option value="us">🇺🇸 United States</option>
+            <option value="intl">✈️ International</option>
+          </select>
 
-          {/* City grid */}
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+          {/* City dropdown */}
+          <select
+            value={dest||""}
+            onChange={e=>setDest(e.target.value||null)}
+            style={{width:"100%",padding:"10px 12px",borderRadius:10,border:dest?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:13,color:dest?HOT:DARK,background:dest?SOFT:WHITE,appearance:"none",backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e66582' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`,backgroundRepeat:"no-repeat",backgroundPosition:"right 12px center",cursor:"pointer"}}
+          >
+            <option value="">Choose a city…</option>
             {DESTS.filter(d => region==="us" ? !d.international : d.international).map(d=>(
-              <button key={d.id} onClick={()=>setDest(d.id)} style={{
-                background:dest===d.id?SOFT:WHITE,
-                border:dest===d.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-                borderRadius:12,padding:"10px",cursor:"pointer",color:DARK,textAlign:"left",transition:"all 0.2s",
-              }}>
-                <div style={{fontSize:20,marginBottom:3}}>{d.emoji}</div>
-                <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:dest===d.id?HOT:DARK}}>{d.name}</div>
-                <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.75,marginTop:2}}>{d.vibe}</div>
-                {d.trend&&<div style={{fontSize:9,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:3}}>{d.trend}</div>}
-              </button>
+              <option key={d.id} value={d.id}>{d.emoji} {d.name} — {d.vibe}</option>
             ))}
-          </div>
+          </select>
+
+          {/* Vibe hint after selection */}
+          {dest && selectedDest && (
+            <div style={{marginTop:10,padding:"8px 12px",borderRadius:10,background:SOFT,border:`1px solid ${MID}`,fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>
+              {selectedDest.emoji} <strong>{selectedDest.name}</strong> — {selectedDest.vibe}
+              {selectedDest.trend && <span style={{color:"#bbb",marginLeft:6}}>{selectedDest.trend}</span>}
+            </div>
+          )}
         </div>
       )}
 
