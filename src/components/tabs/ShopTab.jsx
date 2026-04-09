@@ -1,204 +1,328 @@
 import React, { useState } from 'react';
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
-import { C, BP, BS, BG, IN } from '../../constants/styles.js';
+import { BP, BS, IN } from '../../constants/styles.js';
 import { PRODUCTS, SHOP_CATS } from '../../constants/data.js';
-import SH from '../ui/SH.jsx';
-import Chip from '../ui/Chip.jsx';
 
-function ProductCard({ p, onAdd, inCart, onView }) {
-  const [loaded, setLoaded] = useState(false);
-  const [err, setErr] = useState(false);
-  const catE = { "Party Accessories":"🎀","Balloons":"🎈","Apparel":"👙","Cups":"🥂","Curated Itineraries":"📋" };
+// ─── Pink corner brackets — signature Squarespace look ───────────────────────
+function Brackets({ size = 14, thick = 3, color = "#E91E8C", gap = 7 }) {
+  const base = { position:"absolute", width:size, height:size };
+  const c = `${thick}px solid ${color}`;
   return (
-    <div style={{ background:WHITE, border:`1.5px solid ${BORDER}`, borderRadius:18, overflow:"hidden", display:"flex", flexDirection:"column", position:"relative", boxShadow:`0 2px 10px rgba(230,101,130,0.08)`, transition:"all 0.2s" }}
-      onMouseEnter={e=>{e.currentTarget.style.boxShadow=`0 6px 22px rgba(230,101,130,0.18)`;e.currentTarget.style.transform="translateY(-2px)"}}
-      onMouseLeave={e=>{e.currentTarget.style.boxShadow=`0 2px 10px rgba(230,101,130,0.08)`;e.currentTarget.style.transform="translateY(0)"}}>
-      <div style={{ position:"absolute", top:8, left:8, zIndex:3, display:"flex", flexDirection:"column", gap:3 }}>
-        {p.bestseller && <div style={{ background:PUNCH, color:WHITE, borderRadius:6, fontSize:8, fontFamily:"'DM Sans',sans-serif", fontWeight:900, padding:"3px 8px", textTransform:"uppercase" }}>⭐ Best Seller</div>}
-        {p.isDigital  && <div style={{ background:HOT,   color:WHITE, borderRadius:6, fontSize:8, fontFamily:"'DM Sans',sans-serif", fontWeight:900, padding:"3px 8px" }}>⚡ Digital</div>}
-      </div>
-      <button style={{ position:"absolute", top:8, right:8, zIndex:3, background:"rgba(255,255,255,0.9)", border:`1px solid ${BORDER}`, borderRadius:"50%", width:28, height:28, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontSize:14, color:HOT }}>♡</button>
-      <div onClick={onView} style={{ width:"100%", aspectRatio:"1/1", overflow:"hidden", cursor:"pointer", position:"relative", background:SOFT, flexShrink:0 }}>
-        {!loaded && !err && <div style={{ position:"absolute", inset:0, background:`linear-gradient(90deg,${SOFT} 25%,${MID}66 50%,${SOFT} 75%)`, backgroundSize:"200% 100%", animation:"shimmer 1.4s infinite" }} />}
+    <>
+      <div style={{...base, top:gap, left:gap,    borderTop:c, borderLeft:c  }}/>
+      <div style={{...base, top:gap, right:gap,   borderTop:c, borderRight:c }}/>
+      <div style={{...base, bottom:gap, left:gap,  borderBottom:c, borderLeft:c }}/>
+      <div style={{...base, bottom:gap, right:gap, borderBottom:c, borderRight:c}}/>
+    </>
+  );
+}
+
+// ─── Product image tile ───────────────────────────────────────────────────────
+function ProductTile({ p, onView }) {
+  const [loaded, setLoaded] = useState(false);
+  const [err,    setErr]    = useState(false);
+  return (
+    <div onClick={onView} style={{ cursor:"pointer" }}>
+      {/* Image box with brackets */}
+      <div style={{
+        position:"relative", width:"100%", aspectRatio:"1/1",
+        background:"#FDF5F8", borderRadius:4, overflow:"hidden",
+        marginBottom:8,
+      }}>
         {!err ? (
-          <img src={p.image} alt={p.name} onLoad={()=>setLoaded(true)} onError={()=>setErr(true)}
-            style={{ width:"100%", height:"100%", objectFit:"cover", opacity:loaded?1:0, transition:"opacity 0.4s, transform 0.3s", display:"block" }}
-            onMouseEnter={e=>e.currentTarget.style.transform="scale(1.06)"}
-            onMouseLeave={e=>e.currentTarget.style.transform="scale(1)"} />
+          <img
+            src={p.image} alt={p.name}
+            onLoad={()=>setLoaded(true)}
+            onError={()=>setErr(true)}
+            style={{
+              width:"100%", height:"100%", objectFit:"cover",
+              opacity:loaded?1:0, transition:"opacity 0.35s",
+              display:"block",
+            }}
+          />
         ) : (
-          <div style={{ width:"100%", height:"100%", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:6 }}>
-            <div style={{ fontSize:34 }}>{catE[p.category]||"🎀"}</div>
-            <div style={{ fontSize:9, color:HOT, fontFamily:"'DM Sans',sans-serif", textAlign:"center", padding:"0 8px" }}>{p.name}</div>
+          <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:36}}>
+            🎀
           </div>
         )}
+        {/* Pink corner brackets */}
+        <Brackets />
+        {p.bestseller && (
+          <div style={{
+            position:"absolute",bottom:8,left:8,
+            background:PUNCH,color:WHITE,fontSize:8,fontWeight:900,
+            fontFamily:"'DM Sans',sans-serif",padding:"3px 7px",borderRadius:4,
+            textTransform:"uppercase",letterSpacing:0.5,
+          }}>Best Seller</div>
+        )}
       </div>
-      <div style={{ padding:"11px 12px 13px", flex:1, display:"flex", flexDirection:"column", background:WHITE }}>
-        <div style={{ fontSize:9, color:HOT, fontFamily:"'DM Sans',sans-serif", fontWeight:700, textTransform:"uppercase", letterSpacing:1, marginBottom:3 }}>{p.category}</div>
-        <div onClick={onView} style={{ fontSize:12, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, lineHeight:1.35, marginBottom:6, cursor:"pointer", flex:1 }}>{p.name}</div>
-        <div style={{ display:"flex", alignItems:"center", gap:4, marginBottom:8 }}>
-          <span style={{ fontSize:10, color:HOT }}>{"★".repeat(Math.floor(p.rating))}</span>
-          <span style={{ fontSize:9, color:"#bbb", fontFamily:"'DM Sans',sans-serif" }}>({p.reviews})</span>
-        </div>
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", gap:6 }}>
-          <div>
-            <div style={{ fontSize:15, fontWeight:900, color:inCart?HOT:PUNCH, fontFamily:"'Playfair Display',Georgia,serif" }}>${p.price.toFixed(2)}</div>
-            {p.isDigital && <div style={{ fontSize:8, color:HOT, fontFamily:"'DM Sans',sans-serif" }}>Instant download</div>}
-          </div>
-          <button onClick={()=>onAdd(p)} style={{ background:inCart?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`, color:inCart?HOT:WHITE, border:inCart?`1.5px solid ${HOT}`:"none", borderRadius:50, padding:"7px 12px", fontFamily:"'DM Sans',sans-serif", fontSize:10, fontWeight:800, cursor:"pointer", transition:"all 0.2s", whiteSpace:"nowrap" }}>
-            {inCart?"Added":"Add"}
-          </button>
-        </div>
+      {/* Name + Price */}
+      <div style={{fontSize:12,fontWeight:600,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.35,marginBottom:3}}>
+        {p.name}
       </div>
-      <style>{`@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}`}</style>
+      <div style={{fontSize:13,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>
+        ${p.price.toFixed(2)}
+      </div>
     </div>
   );
 }
 
+// ─── Product Detail Modal ─────────────────────────────────────────────────────
 function ProductModal({ p, onClose, onAdd, inCart }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   if (!p) return null;
   return (
-    <div style={{ position:"fixed", inset:0, zIndex:500, display:"flex", alignItems:"flex-end", justifyContent:"center" }}>
-      <div onClick={onClose} style={{ position:"absolute", inset:0, background:`rgba(45,10,24,0.45)`, backdropFilter:"blur(6px)" }} />
-      <div style={{ position:"relative", zIndex:1, width:"100%", maxWidth:430, background:WHITE, borderRadius:"26px 26px 0 0", border:`1.5px solid ${BORDER}`, borderBottom:"none", maxHeight:"90vh", overflowY:"auto", paddingBottom:36 }}>
-        <div style={{ width:44, height:4, borderRadius:2, background:MID, margin:"14px auto 0" }} />
-        <button onClick={onClose} style={{ position:"absolute", top:14, right:16, background:SOFT, border:`1px solid ${BORDER}`, borderRadius:"50%", width:32, height:32, cursor:"pointer", color:HOT, fontSize:18, display:"flex", alignItems:"center", justifyContent:"center" }}>×</button>
-        <div style={{ margin:"16px 16px 0", borderRadius:18, overflow:"hidden", aspectRatio:"1/1", background:SOFT, position:"relative" }}>
-          {!imgLoaded && <div style={{ position:"absolute", inset:0, display:"flex", alignItems:"center", justifyContent:"center", fontSize:48 }}>🎀</div>}
-          <img src={p.image} alt={p.name} onLoad={()=>setImgLoaded(true)} style={{ width:"100%", height:"100%", objectFit:"cover", opacity:imgLoaded?1:0, transition:"opacity 0.4s" }} />
+    <div style={{ position:"fixed",inset:0,zIndex:500,display:"flex",alignItems:"flex-end",justifyContent:"center" }}>
+      <div onClick={onClose} style={{ position:"absolute",inset:0,background:"rgba(45,10,24,0.45)",backdropFilter:"blur(6px)" }}/>
+      <div style={{
+        position:"relative",zIndex:1,width:"100%",maxWidth:430,
+        background:WHITE,borderRadius:"26px 26px 0 0",
+        border:`1.5px solid ${BORDER}`,borderBottom:"none",
+        maxHeight:"92vh",overflowY:"auto",paddingBottom:40,
+      }}>
+        {/* Drag handle */}
+        <div style={{width:44,height:4,borderRadius:2,background:MID,margin:"14px auto 0"}}/>
+        <button onClick={onClose} style={{
+          position:"absolute",top:14,right:16,background:SOFT,
+          border:`1px solid ${BORDER}`,borderRadius:"50%",width:32,height:32,
+          cursor:"pointer",color:HOT,fontSize:18,display:"flex",alignItems:"center",justifyContent:"center",
+        }}>×</button>
+
+        {/* Large image with brackets */}
+        <div style={{margin:"16px 16px 0",position:"relative",aspectRatio:"1/1",background:"#FDF5F8",borderRadius:8,overflow:"hidden"}}>
+          {!imgLoaded && (
+            <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:52}}>🎀</div>
+          )}
+          <img
+            src={p.image} alt={p.name}
+            onLoad={()=>setImgLoaded(true)}
+            style={{width:"100%",height:"100%",objectFit:"cover",opacity:imgLoaded?1:0,transition:"opacity 0.4s"}}
+          />
+          <Brackets size={18} thick={3} gap={10}/>
         </div>
-        <div style={{ padding:"18px 18px 0" }}>
-          <div style={{ display:"flex", gap:6, marginBottom:10, flexWrap:"wrap", alignItems:"center" }}>
-            <span style={{ fontSize:10, color:HOT, fontFamily:"'DM Sans',sans-serif", fontWeight:700, textTransform:"uppercase", letterSpacing:1 }}>{p.category}</span>
-            {p.bestseller && <span style={{ background:PUNCH, color:WHITE, borderRadius:7, fontSize:8, fontFamily:"'DM Sans',sans-serif", fontWeight:900, padding:"3px 8px" }}>⭐ Best Seller</span>}
-            {p.isDigital && <span style={{ background:SOFT, color:HOT, borderRadius:7, fontSize:8, fontFamily:"'DM Sans',sans-serif", fontWeight:900, padding:"3px 8px", border:`1px solid ${MID}` }}>⚡ Digital</span>}
+
+        <div style={{padding:"20px 18px 0"}}>
+          {/* Category breadcrumb */}
+          <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:6}}>
+            Bach Hotline › {p.category}
           </div>
-          <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:18, fontWeight:700, color:DARK, marginBottom:8, lineHeight:1.3 }}>{p.fullName}</h2>
-          <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:14 }}>
-            <span style={{ fontSize:13, color:HOT }}>{"★".repeat(Math.floor(p.rating))}</span>
-            <span style={{ fontSize:11, color:"#bbb", fontFamily:"'DM Sans',sans-serif" }}>{p.rating} · {p.reviews} reviews</span>
+
+          {/* Product name */}
+          <h2 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:20,fontWeight:700,color:HOT,margin:"0 0 8px",lineHeight:1.3}}>
+            {p.fullName || p.name}
+          </h2>
+
+          {/* Price */}
+          <div style={{fontSize:22,fontWeight:900,color:DARK,fontFamily:"'DM Sans',sans-serif",marginBottom:16}}>
+            ${p.price.toFixed(2)}
           </div>
-          <div style={{ display:"flex", gap:6, flexWrap:"wrap", marginBottom:18 }}>
-            {p.tags.map(t => <span key={t} style={{ fontSize:10, padding:"3px 10px", borderRadius:20, background:SOFT, border:`1px solid ${MID}`, color:HOT, fontFamily:"'DM Sans',sans-serif" }}>#{t}</span>)}
+
+          {/* Qty + Add to Cart row */}
+          <div style={{display:"flex",gap:10,marginBottom:14,alignItems:"center"}}>
+            <button onClick={()=>onAdd(p)} style={{
+              ...BP, flex:1, padding:"13px", fontSize:14,
+              background:inCart?SOFT:undefined,
+              color:inCart?HOT:undefined,
+              border:inCart?`1.5px solid ${HOT}`:undefined,
+            }}>
+              {inCart ? "✓ In Cart" : "Add To Cart"}
+            </button>
+            <a href={p.url} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+              <button style={{...BS,padding:"13px 16px",fontSize:13,whiteSpace:"nowrap"}}>
+                View on Etsy
+              </button>
+            </a>
           </div>
-          <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:16 }}>
-            <div style={{ fontSize:28, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif" }}>${p.price.toFixed(2)}</div>
-            {p.isDigital && <div style={{ fontSize:12, color:HOT, fontFamily:"'DM Sans',sans-serif" }}>📥 Instant PDF</div>}
+
+          {/* Tags */}
+          {p.tags?.length > 0 && (
+            <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:16}}>
+              {p.tags.map(t=>(
+                <span key={t} style={{fontSize:10,padding:"3px 10px",borderRadius:20,background:SOFT,border:`1px solid ${MID}`,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>
+                  #{t}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Ratings */}
+          <div style={{display:"flex",alignItems:"center",gap:6,paddingTop:12,borderTop:`1px solid ${BORDER}`}}>
+            <span style={{fontSize:13,color:HOT}}>{"★".repeat(Math.floor(p.rating))}</span>
+            <span style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>{p.rating} · {p.reviews} reviews</span>
+            {p.isDigital && <span style={{marginLeft:"auto",fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700}}>📥 Instant Download</span>}
           </div>
-          <div style={{ display:"flex", gap:10, marginBottom:14 }}>
-            <button onClick={()=>{onAdd(p);onClose();}} style={{ ...BP, flex:2, padding:"13px", fontSize:14 }}>{inCart?"In Cart":"Add to Cart"}</button>
-            <a href={p.url} target="_blank" rel="noreferrer" style={{ ...BS, flex:1, padding:"13px", fontSize:12, textDecoration:"none", display:"flex", alignItems:"center", justifyContent:"center" }}>🛍️ Etsy</a>
-          </div>
-          <div style={{ fontSize:11, color:"#bbb", fontFamily:"'DM Sans',sans-serif", textAlign:"center" }}>BachHotlineSupplies · Houston, TX · 420 sales · ⭐ 4.9</div>
         </div>
       </div>
     </div>
   );
 }
 
+// ─── Cart Drawer ──────────────────────────────────────────────────────────────
+function CartDrawer({ cart, onRemove, onClose }) {
+  const total = cart.reduce((s,i)=>s+i.price,0);
+  return (
+    <div style={{position:"fixed",inset:0,zIndex:500,display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
+      <div onClick={onClose} style={{position:"absolute",inset:0,background:"rgba(45,10,24,0.45)",backdropFilter:"blur(6px)"}}/>
+      <div style={{
+        position:"relative",zIndex:1,width:"100%",maxWidth:430,
+        background:WHITE,borderRadius:"26px 26px 0 0",
+        border:`1.5px solid ${BORDER}`,borderBottom:"none",
+        maxHeight:"80vh",overflowY:"auto",paddingBottom:36,
+      }}>
+        <div style={{width:44,height:4,borderRadius:2,background:MID,margin:"14px auto 10px"}}/>
+        <div style={{padding:"0 18px"}}>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
+            <h3 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:18,fontWeight:700,color:DARK,margin:0}}>
+              Your Cart ({cart.length})
+            </h3>
+            <button onClick={onClose} style={{background:"none",border:"none",fontSize:20,cursor:"pointer",color:"#aaa"}}>×</button>
+          </div>
+
+          {cart.length === 0 ? (
+            <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'DM Sans',sans-serif",fontSize:13}}>
+              Your cart is empty 💔
+            </div>
+          ) : (
+            <>
+              {cart.map(item=>(
+                <div key={item.id} style={{display:"flex",alignItems:"center",gap:12,marginBottom:14,paddingBottom:14,borderBottom:`1px solid ${BORDER}`}}>
+                  <div style={{position:"relative",width:58,height:58,borderRadius:6,overflow:"hidden",background:"#FDF5F8",flexShrink:0}}>
+                    <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+                    <Brackets size={8} thick={2} gap={4}/>
+                  </div>
+                  <div style={{flex:1,minWidth:0}}>
+                    <div style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'DM Sans',sans-serif",marginBottom:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
+                    <div style={{fontSize:14,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>${item.price.toFixed(2)}</div>
+                  </div>
+                  <button onClick={()=>onRemove(item.id)} style={{background:SOFT,border:`1px solid ${BORDER}`,borderRadius:"50%",width:28,height:28,cursor:"pointer",color:PUNCH,fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}}>×</button>
+                </div>
+              ))}
+              <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'DM Sans',sans-serif",fontWeight:700,fontSize:15}}>
+                <span>Total</span>
+                <span>${total.toFixed(2)}</span>
+              </div>
+              <button style={{...BP,width:"100%",padding:"14px",fontSize:14}}>Checkout — ${total.toFixed(2)}</button>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main Shop Tab ────────────────────────────────────────────────────────────
 export default function ShopTab({ cart, setCart }) {
-  const [cat, setCat] = useState("all");
-  const [sort, setSort] = useState("featured");
-  const [search, setSearch] = useState("");
-  const [digitalOnly, setDig] = useState(false);
+  const [cat,      setCat]      = useState("all");
+  const [search,   setSearch]   = useState("");
   const [selected, setSelected] = useState(null);
   const [cartOpen, setCartOpen] = useState(false);
+
   const inCart = id => cart.some(c=>c.id===id);
   const add    = p  => { if (!inCart(p.id)) setCart(prev=>[...prev,p]); };
   const remove = id => setCart(prev=>prev.filter(c=>c.id!==id));
-  const total  = cart.reduce((s,i)=>s+i.price,0);
-  const filtered = PRODUCTS.filter(p=>{
-    const mc=cat==="all"||p.category===cat;
-    const ms=!search||p.name.toLowerCase().includes(search.toLowerCase())||p.tags.some(t=>t.includes(search.toLowerCase()));
-    const md=!digitalOnly||p.isDigital;
-    return mc&&ms&&md;
-  }).sort((a,b)=>{
-    if(sort==="price_asc") return a.price-b.price;
-    if(sort==="price_desc") return b.price-a.price;
-    if(sort==="rating") return b.rating-a.rating;
-    return (b.bestseller?1:0)-(a.bestseller?1:0);
+
+  const filtered = PRODUCTS.filter(p => {
+    const mc = cat === "all" || p.category === cat;
+    const ms = !search || p.name.toLowerCase().includes(search.toLowerCase());
+    return mc && ms;
   });
+
   return (
-    <div>
-      <div style={{ marginBottom:14 }}>
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:8 }}>
-          <div>
-            <div style={{ fontSize:17, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>🎀 Party Supply Shop</div>
-            <div style={{ fontSize:10, color:HOT, fontFamily:"'DM Sans',sans-serif", marginTop:2, opacity:0.75 }}>bachhotlinesupplies.etsy.com · 534 products · ⭐ 4.9</div>
+    <div style={{paddingBottom:24}}>
+
+      {/* ── Header ── */}
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:14}}>
+        <div>
+          <div style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:20,fontWeight:700,color:HOT}}>
+            Bach Hotline
           </div>
-          <button onClick={()=>setCartOpen(!cartOpen)} style={{ background:cart.length>0?`linear-gradient(135deg,${HOT},${PUNCH})`:SOFT, border:`1.5px solid ${cart.length>0?HOT:BORDER}`, borderRadius:50, padding:"8px 14px", cursor:"pointer", fontFamily:"'DM Sans',sans-serif", fontSize:12, fontWeight:700, color:cart.length>0?WHITE:HOT, display:"flex", alignItems:"center", gap:5 }}>
-            🛒 {cart.length}{cart.length>0&&<span>${total.toFixed(0)}</span>}
+          <div style={{fontSize:11,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>
+            Party Supplies · {filtered.length} products
+          </div>
+        </div>
+        {/* Cart button */}
+        <button onClick={()=>setCartOpen(true)} style={{
+          position:"relative",background:cart.length>0?`linear-gradient(135deg,${HOT},${PUNCH})`:SOFT,
+          border:`1.5px solid ${cart.length>0?HOT:BORDER}`,borderRadius:50,
+          padding:"8px 16px",cursor:"pointer",
+          fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,
+          color:cart.length>0?WHITE:HOT,display:"flex",alignItems:"center",gap:6,
+        }}>
+          🛒 Cart
+          {cart.length>0&&(
+            <span style={{background:WHITE,color:HOT,borderRadius:"50%",width:18,height:18,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:900}}>
+              {cart.length}
+            </span>
+          )}
+        </button>
+      </div>
+
+      {/* ── Search ── */}
+      <div style={{position:"relative",marginBottom:14}}>
+        <span style={{position:"absolute",left:14,top:"50%",transform:"translateY(-50%)",fontSize:14,opacity:0.35,pointerEvents:"none"}}>🔍</span>
+        <input
+          value={search} onChange={e=>setSearch(e.target.value)}
+          placeholder="Search products..."
+          style={{...IN,paddingLeft:38,borderRadius:50,border:`1.5px solid ${BORDER}`}}
+        />
+        {search && (
+          <button onClick={()=>setSearch("")} style={{position:"absolute",right:14,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",cursor:"pointer",color:HOT,fontSize:16}}>×</button>
+        )}
+      </div>
+
+      {/* ── Category list — matches Squarespace sidebar style ── */}
+      <div style={{display:"flex",gap:6,overflowX:"auto",paddingBottom:6,marginBottom:16,scrollbarWidth:"none"}}>
+        {SHOP_CATS.map(c=>(
+          <button key={c.id} onClick={()=>setCat(c.id)} style={{
+            flexShrink:0,padding:"7px 16px",borderRadius:50,
+            background:cat===c.id?DARK:WHITE,
+            color:cat===c.id?WHITE:DARK,
+            border:cat===c.id?`1.5px solid ${DARK}`:`1.5px solid ${BORDER}`,
+            fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:600,
+            cursor:"pointer",transition:"all 0.15s",whiteSpace:"nowrap",
+          }}>
+            {c.label}
           </button>
-        </div>
-        {cartOpen && (
-          <div style={{ background:SOFT, border:`1.5px solid ${MID}`, borderRadius:16, padding:14, marginBottom:12 }}>
-            <div style={{ display:"flex", justifyContent:"space-between", marginBottom:12 }}>
-              <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>Your Cart ({cart.length})</div>
-              <div style={{ fontSize:13, color:PUNCH, fontFamily:"'DM Sans',sans-serif", fontWeight:700 }}>${total.toFixed(2)}</div>
-            </div>
-            {cart.length===0 ? <div style={{ textAlign:"center", color:HOT, fontFamily:"'DM Sans',sans-serif", fontSize:13, opacity:0.65 }}>Your cart is empty 💔</div> : (
-              <>
-                {cart.map(item=>(
-                  <div key={item.id} style={{ display:"flex", alignItems:"center", gap:10, marginBottom:10, paddingBottom:10, borderBottom:`1px solid ${MID}` }}>
-                    <img src={item.image} alt={item.name} style={{ width:42, height:42, borderRadius:10, objectFit:"cover", border:`1px solid ${MID}`, flexShrink:0 }} />
-                    <div style={{ flex:1, minWidth:0 }}>
-                      <div style={{ fontSize:12, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>{item.name}</div>
-                      <div style={{ fontSize:12, color:PUNCH, fontFamily:"'DM Sans',sans-serif", fontWeight:700 }}>${item.price.toFixed(2)}</div>
-                    </div>
-                    <button onClick={()=>remove(item.id)} style={{ background:`rgba(213,36,56,0.1)`, border:"none", borderRadius:"50%", width:26, height:26, cursor:"pointer", color:PUNCH, fontSize:14, display:"flex", alignItems:"center", justifyContent:"center" }}>×</button>
-                  </div>
-                ))}
-                <button style={{ ...BP, width:"100%", padding:"12px", fontSize:13 }}>Checkout — ${total.toFixed(2)}</button>
-              </>
-            )}
-          </div>
-        )}
-        <div style={{ position:"relative", marginBottom:10 }}>
-          <span style={{ position:"absolute", left:14, top:"50%", transform:"translateY(-50%)", fontSize:14, opacity:0.35, pointerEvents:"none" }}>🔍</span>
-          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search 534 products..." style={{ ...IN, paddingLeft:38 }} />
-          {search && <button onClick={()=>setSearch("")} style={{ position:"absolute", right:14, top:"50%", transform:"translateY(-50%)", background:"none", border:"none", cursor:"pointer", color:HOT, fontSize:16 }}>×</button>}
-        </div>
-        <div style={{ display:"flex", gap:6, overflowX:"auto", paddingBottom:4, scrollbarWidth:"none" }}>
-          {SHOP_CATS.map(c=><Chip key={c.id} label={`${c.emoji} ${c.label}`} active={cat===c.id} onClick={()=>setCat(c.id)} />)}
-        </div>
-      </div>
-      <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:10, flexWrap:"wrap" }}>
-        <span style={{ fontSize:10, color:"#bbb", fontFamily:"'DM Sans',sans-serif" }}>Sort:</span>
-        {[["featured","Featured"],["price_asc","Price ↑"],["price_desc","Price ↓"],["rating","Top Rated"]].map(([v,l])=>(
-          <button key={v} onClick={()=>setSort(v)} style={{ ...BG, fontSize:10, padding:"5px 11px", background:sort===v?SOFT:WHITE, color:sort===v?HOT:"#bbb", border:sort===v?`1.5px solid ${HOT}`:`1.5px solid ${BORDER}` }}>{l}</button>
         ))}
-        <button onClick={()=>setDig(!digitalOnly)} style={{ ...BG, fontSize:10, padding:"5px 11px", marginLeft:"auto", background:digitalOnly?SOFT:WHITE, color:digitalOnly?HOT:"#bbb", border:digitalOnly?`1.5px solid ${HOT}`:`1.5px solid ${BORDER}` }}>⚡ Digital</button>
       </div>
-      {cat==="all"&&!search&&(
-        <div onClick={()=>setSelected(PRODUCTS[8])} style={{ borderRadius:18, overflow:"hidden", position:"relative", cursor:"pointer", aspectRatio:"2.5/1", marginBottom:14, boxShadow:`0 4px 18px rgba(230,101,130,0.18)` }}>
-          <img src={PRODUCTS[8].image} alt="Featured" style={{ width:"100%", height:"100%", objectFit:"cover", filter:"brightness(0.6)" }} />
-          <div style={{ position:"absolute", inset:0, background:"linear-gradient(90deg,rgba(45,10,24,0.88),transparent 65%)", display:"flex", alignItems:"center", padding:"0 18px" }}>
-            <div>
-              <div style={{ fontSize:9, color:MID, fontFamily:"'DM Sans',sans-serif", fontWeight:700, textTransform:"uppercase", letterSpacing:2, marginBottom:5 }}>🔥 Featured</div>
-              <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:WHITE, marginBottom:5 }}>{PRODUCTS[8].name}</div>
-              <div style={{ fontSize:20, fontWeight:900, color:MID, fontFamily:"'Playfair Display',Georgia,serif" }}>${PRODUCTS[8].price.toFixed(2)}</div>
-            </div>
+
+      {/* ── Product Grid — Squarespace style ── */}
+      {filtered.length > 0 ? (
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"20px 14px"}}>
+          {filtered.map(p=>(
+            <ProductTile key={p.id} p={p} onView={()=>setSelected(p)}/>
+          ))}
+        </div>
+      ) : (
+        <div style={{textAlign:"center",padding:"48px 20px"}}>
+          <div style={{fontSize:36,marginBottom:12}}>🔍</div>
+          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>No products found</div>
+          <button onClick={()=>{setSearch("");setCat("all");}} style={{...BS,fontSize:12}}>Clear filters</button>
+        </div>
+      )}
+
+      {/* ── View all on Etsy ── */}
+      {filtered.length > 0 && (
+        <div style={{textAlign:"center",marginTop:28,paddingTop:20,borderTop:`1px solid ${BORDER}`}}>
+          <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+            <button style={{...BP,fontSize:13,padding:"12px 28px"}}>
+              View All Products on Etsy →
+            </button>
+          </a>
+          <div style={{marginTop:8,fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
+            bachhotlinesupplies.etsy.com · ⭐ 4.9 · Houston, TX
           </div>
         </div>
       )}
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
-        {filtered.length>0 ? filtered.map(p=>(
-          <ProductCard key={p.id} p={p} onAdd={add} inCart={inCart(p.id)} onView={()=>setSelected(p)} />
-        )) : (
-          <div style={{ gridColumn:"span 2", textAlign:"center", padding:"40px 20px" }}>
-            <div style={{ fontSize:36, marginBottom:10 }}>🔍</div>
-            <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:6 }}>No products found</div>
-            <button onClick={()=>{setSearch("");setCat("all");}} style={{ ...BS, marginTop:10, fontSize:12 }}>Clear filters</button>
-          </div>
-        )}
-      </div>
-      {filtered.length>0&&(
-        <div style={{ padding:"22px 0 0", textAlign:"center" }}>
-          <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer" style={{ ...BP, textDecoration:"none", display:"inline-block", fontSize:14, padding:"12px 26px" }}>View All 534 Products on Etsy</a>
-          <div style={{ marginTop:10, fontSize:10, color:"#bbb", fontFamily:"'DM Sans',sans-serif" }}>bachhotlinesupplies.etsy.com · ⭐ 4.9 · 420 sales · Houston, TX</div>
-        </div>
-      )}
-      <ProductModal p={selected} onClose={()=>setSelected(null)} onAdd={add} inCart={selected?inCart(selected.id):false} />
+
+      {/* ── Modals ── */}
+      <ProductModal
+        p={selected}
+        onClose={()=>setSelected(null)}
+        onAdd={add}
+        inCart={selected ? inCart(selected.id) : false}
+      />
+      {cartOpen && <CartDrawer cart={cart} onRemove={remove} onClose={()=>setCartOpen(false)}/>}
     </div>
   );
 }

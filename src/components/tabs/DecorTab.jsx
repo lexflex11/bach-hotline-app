@@ -39,48 +39,50 @@ const STYLES = [
 ];
 
 // ─── Shop items per style ─────────────────────────────────────────────────────
+// Links to Bach Hotline's own shop products
+const BH = url => url; // Bach Hotline Etsy store
 const SHOP_ITEMS = {
   balloonarch: [
-    { name:"Balloon Arch & Garland Kit",   where:"Amazon", icon:"🎈", q:"bachelorette balloon arch garland kit pink" },
-    { name:"Bride Balloon Letters",         where:"Amazon", icon:"💍", q:"BRIDE balloon letters rose gold" },
-    { name:"Metallic Balloon Bouquet",      where:"Amazon", icon:"✨", q:"metallic foil balloon bouquet bachelorette" },
-    { name:"Balloon Pump",                  where:"Amazon", icon:"💨", q:"electric balloon pump inflator" },
-    { name:"Custom Balloon Banner",         where:"Etsy",   icon:"🎀", q:"custom name balloon banner bachelorette" },
+    { name:"Garden Foil Balloon 40\"",     where:"Bach Hotline", icon:"🎈", url:"https://www.etsy.com/listing/1861810967" },
+    { name:"Zebra Foil Balloon 40\"",      where:"Bach Hotline", icon:"🎈", url:"https://www.etsy.com/listing/1840533580" },
+    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"🎀", url:"https://www.etsy.com/listing/4464005263" },
+    { name:"In My Bride Era Bach Kit",     where:"Bach Hotline", icon:"💍", url:"https://www.etsy.com/listing/4463704232" },
+    { name:"Let's Go Girls Bach Kit",      where:"Bach Hotline", icon:"✨", url:"https://www.etsy.com/listing/4464002387" },
   ],
   boho: [
-    { name:"Pampas Grass Centerpiece",     where:"Amazon", icon:"🌾", q:"pampas grass dried floral centerpiece" },
-    { name:"Macramé Backdrop",             where:"Etsy",   icon:"🪢", q:"macrame backdrop bachelorette boho" },
-    { name:"Dried Flower Garland",         where:"Amazon", icon:"🌸", q:"dried flower garland wedding boho" },
-    { name:"Rattan Charger Plates",        where:"Amazon", icon:"🌿", q:"rattan charger plates boho table" },
-    { name:"Boho Bride Sash",              where:"Etsy",   icon:"🤍", q:"boho bride sash personalized" },
+    { name:"Custom Face Beach Towel",      where:"Bach Hotline", icon:"🌸", url:"https://www.etsy.com/listing/4479721592" },
+    { name:"Floral Groovy Beach Towel",    where:"Bach Hotline", icon:"🌺", url:"https://www.etsy.com/listing/4462571690" },
+    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"🎀", url:"https://www.etsy.com/listing/4464005263" },
+    { name:"Corpus Christi Itinerary PDF", where:"Bach Hotline", icon:"📋", url:"https://www.etsy.com/listing/1845781336" },
+    { name:"Custom Puzzle — Bach Favor",   where:"Bach Hotline", icon:"🧩", url:"https://www.etsy.com/listing/4480916715" },
   ],
   glam: [
-    { name:"Disco Ball Mirror Centerpiece",where:"Amazon", icon:"🪩", q:"disco ball mirror centerpiece party" },
-    { name:"Sequin Table Runner",          where:"Amazon", icon:"✨", q:"gold sequin table runner party" },
-    { name:"Feather Boa Garland",          where:"Amazon", icon:"🪶", q:"feather boa party decoration" },
-    { name:"LED Neon 'Bride' Sign",        where:"Etsy",   icon:"💡", q:"bride LED neon sign bachelorette" },
-    { name:"Champagne Tower Flutes",       where:"Amazon", icon:"🥂", q:"champagne tower flutes set gold" },
+    { name:"Disco Ball Headband",          where:"Bach Hotline", icon:"🪩", url:"https://www.etsy.com/listing/1861486865" },
+    { name:"Custom Face Bikini",           where:"Bach Hotline", icon:"👙", url:"https://www.etsy.com/listing/4476018031" },
+    { name:"Cowgirl Espresso Cup",         where:"Bach Hotline", icon:"☕", url:"https://www.etsy.com/listing/4472132477" },
+    { name:"Custom Poker Playing Cards",   where:"Bach Hotline", icon:"🃏", url:"https://www.etsy.com/listing/4480941333" },
+    { name:"In My Bride Era Bach Kit",     where:"Bach Hotline", icon:"💅", url:"https://www.etsy.com/listing/4463704232" },
   ],
   minimal: [
-    { name:"White Linen Table Runner",     where:"Amazon", icon:"🤍", q:"white linen table runner minimalist" },
-    { name:"Clear Balloon Orbs",           where:"Amazon", icon:"🫧", q:"clear transparent balloon orbs confetti" },
-    { name:"Dried White Flowers",          where:"Etsy",   icon:"🌷", q:"dried white flowers arrangement" },
-    { name:"Acrylic Signs Custom",         where:"Etsy",   icon:"🔷", q:"acrylic custom sign bachelorette" },
-    { name:"Vellum Table Menus",           where:"Etsy",   icon:"📄", q:"vellum menu cards custom" },
+    { name:"Custom Puzzle — Bach Favor",   where:"Bach Hotline", icon:"🧩", url:"https://www.etsy.com/listing/4480916715" },
+    { name:"Custom Poker Playing Cards",   where:"Bach Hotline", icon:"🃏", url:"https://www.etsy.com/listing/4480941333" },
+    { name:"Corpus Christi Itinerary PDF", where:"Bach Hotline", icon:"📋", url:"https://www.etsy.com/listing/1845781336" },
+    { name:"Custom Face Beach Towel",      where:"Bach Hotline", icon:"🤍", url:"https://www.etsy.com/listing/4479721592" },
+    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"🎀", url:"https://www.etsy.com/listing/4464005263" },
   ],
   tropical: [
-    { name:"Tropical Flower Leis",         where:"Amazon", icon:"🌺", q:"tropical flower leis set party" },
-    { name:"Palm Leaf Table Decor",        where:"Amazon", icon:"🌴", q:"palm leaf table decoration tropical" },
-    { name:"Flamingo Balloon Set",         where:"Amazon", icon:"🦩", q:"flamingo balloon set tropical party" },
-    { name:"Pineapple Centerpieces",       where:"Amazon", icon:"🍍", q:"pineapple centerpiece tropical party" },
-    { name:"Tiki Bar Supplies",            where:"Amazon", icon:"🍹", q:"tiki bar party supplies set" },
+    { name:"Cocktail Club Beach Towel",    where:"Bach Hotline", icon:"🌊", url:"https://www.etsy.com/listing/4463167702" },
+    { name:"Custom Face Beach Towel",      where:"Bach Hotline", icon:"🌴", url:"https://www.etsy.com/listing/4479721592" },
+    { name:"Sardinas Beach Towel",         where:"Bach Hotline", icon:"🐠", url:"https://www.etsy.com/listing/4463176097" },
+    { name:"Cowgirl Espresso Cup",         where:"Bach Hotline", icon:"🍹", url:"https://www.etsy.com/listing/4472132477" },
+    { name:"Let's Go Girls Bach Kit",      where:"Bach Hotline", icon:"🦩", url:"https://www.etsy.com/listing/4464002387" },
   ],
   neon: [
-    { name:"Neon 'Bachelorette' Sign",     where:"Etsy",   icon:"💜", q:"neon bachelorette sign LED custom" },
-    { name:"Glow in the Dark Balloons",    where:"Amazon", icon:"🎈", q:"glow dark neon balloons party set" },
-    { name:"LED Strip Light Kit",          where:"Amazon", icon:"💡", q:"LED strip lights color changing party" },
-    { name:"Neon Cups & Drinkware",        where:"Amazon", icon:"🥤", q:"neon glow cups bachelorette party" },
-    { name:"UV Body Paint",               where:"Amazon", icon:"🎨", q:"UV body paint neon glow bachelorette" },
+    { name:"Disco Ball Headband",          where:"Bach Hotline", icon:"🪩", url:"https://www.etsy.com/listing/1861486865" },
+    { name:"In My Bride Era Bach Kit",     where:"Bach Hotline", icon:"💜", url:"https://www.etsy.com/listing/4463704232" },
+    { name:"Custom Poker Playing Cards",   where:"Bach Hotline", icon:"🃏", url:"https://www.etsy.com/listing/4480941333" },
+    { name:"Custom Face Bikini",           where:"Bach Hotline", icon:"💡", url:"https://www.etsy.com/listing/4476018031" },
+    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"✨", url:"https://www.etsy.com/listing/4464005263" },
   ],
 };
 
@@ -281,9 +283,6 @@ export default function DecorTab({ groupSize }) {
 
   const shopItems = SHOP_ITEMS[style.id] || [];
 
-  const amazonUrl = q => `https://www.amazon.com/s?k=${encodeURIComponent(q)}&tag=bachhotline-20`;
-  const etsyUrl   = q => `https://www.etsy.com/search?q=${encodeURIComponent(q)}`;
-
   return (
     <div style={{paddingBottom:24}}>
 
@@ -386,30 +385,20 @@ export default function DecorTab({ groupSize }) {
         </div>
         <div style={{display:"flex",flexDirection:"column",gap:8}}>
           {shopItems.map((item,i)=>(
-            <a
-              key={i}
-              href={item.where==="Etsy" ? etsyUrl(item.q) : amazonUrl(item.q)}
-              target="_blank" rel="noreferrer"
-              style={{textDecoration:"none"}}
-            >
+            <a key={i} href={item.url} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
               <div style={{
                 display:"flex",alignItems:"center",justifyContent:"space-between",
                 padding:"10px 12px",background:WHITE,borderRadius:12,border:`1px solid ${BORDER}`,
-                transition:"all 0.15s",
               }}>
                 <div style={{display:"flex",alignItems:"center",gap:10}}>
                   <span style={{fontSize:20}}>{item.icon}</span>
                   <div>
                     <div style={{fontSize:12,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>{item.name}</div>
-                    <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>on {item.where}</div>
+                    <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",marginTop:1,fontWeight:600}}>Bach Hotline Shop</div>
                   </div>
                 </div>
-                <div style={{
-                  background:item.where==="Etsy"?`linear-gradient(135deg,#F56400,#E05200)`:`linear-gradient(135deg,${HOT},${PUNCH})`,
-                  color:WHITE,borderRadius:20,padding:"5px 12px",
-                  fontSize:11,fontWeight:700,fontFamily:"'DM Sans',sans-serif",flexShrink:0,
-                }}>
-                  {item.where==="Etsy"?"Shop Etsy":"Shop →"}
+                <div style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,borderRadius:20,padding:"5px 12px",fontSize:11,fontWeight:700,fontFamily:"'DM Sans',sans-serif",flexShrink:0}}>
+                  Shop →
                 </div>
               </div>
             </a>
