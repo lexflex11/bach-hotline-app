@@ -142,38 +142,50 @@ function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-function buildItinerary(cityExps) {
+// Slot rotation so each day pulls from a different pool order
+const DAY_SLOT_ORDERS = [
+  ["morning",   "afternoon", "evening", "night"],
+  ["afternoon", "morning",   "evening", "night"],
+  ["morning",   "afternoon", "night",   "evening"],
+  ["afternoon", "night",     "morning", "evening"],
+  ["morning",   "night",     "afternoon","evening"],
+  ["afternoon", "morning",   "night",   "evening"],
+  ["morning",   "evening",   "afternoon","night"],
+];
+
+function buildItinerary(cityExps, numDays) {
+  // Separate stays from schedulable experiences
+  const schedulable = cityExps.filter(e => e.cat !== "stay");
+
   const slots = { morning:[], afternoon:[], evening:[], night:[] };
-  cityExps.forEach(e => {
+  schedulable.forEach(e => {
     const s = CAT_SLOT[e.cat];
     if (s) slots[s].push(e);
   });
+  // Shuffle each bucket fresh
   Object.keys(slots).forEach(k => { slots[k] = shuffle(slots[k]); });
 
-  const days = [];
-  const used = new Set();
+  // Pointers per slot so we cycle through all items across days
+  const ptrs = { morning:0, afternoon:0, evening:0, night:0 };
 
-  const pick = (slot, exclude) => {
-    const item = slots[slot].find(e => !used.has(e.id) && e.id !== exclude);
-    if (item) used.add(item.id);
-    return item || null;
+  const pick = (slot) => {
+    const pool = slots[slot];
+    if (!pool.length) return null;
+    const item = pool[ptrs[slot] % pool.length];
+    ptrs[slot]++;
+    return item;
   };
 
-  // Day 1
-  const d1 = [];
-  const d1m = pick("morning");   if (d1m) d1.push({ slot:"morning",   ...d1m });
-  const d1a = pick("afternoon"); if (d1a) d1.push({ slot:"afternoon", ...d1a });
-  const d1e = pick("evening");   if (d1e) d1.push({ slot:"evening",   ...d1e });
-  const d1n = pick("night");     if (d1n) d1.push({ slot:"night",     ...d1n });
-  if (d1.length) days.push(d1);
-
-  // Day 2 — use remaining items
-  const d2 = [];
-  const d2m = pick("afternoon"); if (d2m) d2.push({ slot:"morning",   ...d2m });
-  const d2a = pick("morning");   if (d2a) d2.push({ slot:"afternoon", ...d2a });
-  const d2e = pick("evening");   if (d2e) d2.push({ slot:"evening",   ...d2e });
-  const d2n = pick("night");     if (d2n) d2.push({ slot:"night",     ...d2n });
-  if (d2.length) days.push(d2);
+  const days = [];
+  for (let d = 0; d < numDays; d++) {
+    const order = DAY_SLOT_ORDERS[d % DAY_SLOT_ORDERS.length];
+    const day = [];
+    order.forEach(slot => {
+      const item = pick(slot);
+      if (item) day.push({ slot, ...item });
+    });
+    if (day.length) days.push(day);
+  }
 
   return days;
 }
@@ -184,6 +196,7 @@ export default function ExploreTab({ groupSize }) {
   const [saved, setSaved]     = useState(new Set());
   const [itin,  setItin]      = useState(null);
   const [generating, setGen]  = useState(false);
+  const [numDays, setNumDays] = useState(3);
 
   const toggleSave = id => setSaved(prev => {
     const n = new Set(prev);
@@ -197,7 +210,7 @@ export default function ExploreTab({ groupSize }) {
     setItin(null);
     setTimeout(() => {
       const cityExps = EXP.filter(e => e.city === city);
-      setItin(buildItinerary(cityExps));
+      setItin(buildItinerary(cityExps, numDays));
       setGen(false);
     }, 1200);
   };
@@ -396,6 +409,26 @@ export default function ExploreTab({ groupSize }) {
           </div>
         </div>
 
+        {/* Day picker */}
+        <div style={{ marginBottom:16 }}>
+          <div style={{ fontSize:12, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:DARK, marginBottom:10, textAlign:"center" }}>
+            How many days?
+          </div>
+          <div style={{ display:"flex", gap:8, justifyContent:"center" }}>
+            {[1,2,3,4,5,6,7].map(d => (
+              <button key={d} onClick={() => setNumDays(d)} style={{
+                width:40, height:40, borderRadius:10, border:"none",
+                background: numDays===d ? `linear-gradient(135deg,${PUNCH},${HOT})` : SOFT,
+                color: numDays===d ? WHITE : DARK,
+                fontWeight:700, fontSize:14,
+                fontFamily:"'DM Sans',sans-serif",
+                cursor:"pointer", transition:"all 0.15s",
+                boxShadow: numDays===d ? `0 2px 10px rgba(213,36,56,0.3)` : "none",
+              }}>{d}</button>
+            ))}
+          </div>
+        </div>
+
         <button
           onClick={handleGenerate}
           style={{
@@ -408,7 +441,7 @@ export default function ExploreTab({ groupSize }) {
             transition:"all 0.2s",
           }}
         >
-          {generating ? "✨ Building your itinerary..." : "✨ Generate My Itinerary"}
+          {generating ? "✨ Building your itinerary..." : `✨ Generate ${numDays}-Day Itinerary`}
         </button>
 
         {/* Prompt to pick a city */}
