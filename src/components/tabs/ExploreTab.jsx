@@ -439,44 +439,57 @@ export default function ExploreTab({ groupSize }) {
           Where are you going?
         </div>
 
-        {/* US / International toggle dropdown */}
-        <div style={{display:"flex",gap:8,marginBottom:14}}>
-          {[
-            { id:"us",   label:"🇺🇸 United States" },
-            { id:"intl", label:"✈️ International" },
-          ].map(r=>(
-            <button key={r.id} onClick={()=>handleRegion(r.id)} style={{
-              flex:1, padding:"9px 8px", borderRadius:10,
-              border: region===r.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-              background: region===r.id?SOFT:WHITE,
-              color: region===r.id?HOT:DARK,
-              fontWeight:700,fontSize:12,
-              fontFamily:"'DM Sans',sans-serif",
-              cursor:"pointer",transition:"all 0.15s",
-            }}>{r.label}</button>
-          ))}
+        {/* Region dropdown */}
+        <div style={{position:"relative",marginBottom:10}}>
+          <select
+            value={region}
+            onChange={e => handleRegion(e.target.value)}
+            style={{
+              width:"100%", padding:"13px 44px 13px 16px",
+              borderRadius:12, border:`1.5px solid ${BORDER}`,
+              fontFamily:"'DM Sans',sans-serif", fontSize:14, fontWeight:700,
+              color:DARK, background:WHITE, cursor:"pointer", appearance:"none",
+            }}
+          >
+            <option value="us">🇺🇸 United States</option>
+            <option value="intl">✈️ International</option>
+          </select>
+          <span style={{position:"absolute",right:14,top:"50%",transform:"translateY(-50%)",fontSize:16,pointerEvents:"none",color:HOT}}>▾</span>
         </div>
 
-        {/* City grid */}
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-          {destList.map(d=>{
-            const hasData = EXPLORE_CITY_IDS.has(d.id);
-            return (
-              <button key={d.id} onClick={()=>hasData && setCity(d.id)} style={{
-                background:city===d.id?SOFT:WHITE,
-                border:city===d.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-                borderRadius:12,padding:"10px",cursor:hasData?"pointer":"default",
-                color:DARK,textAlign:"left",transition:"all 0.2s",
-                opacity:hasData?1:0.5,
-              }}>
-                <div style={{fontSize:20,marginBottom:3}}>{d.emoji}</div>
-                <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:city===d.id?HOT:DARK}}>{d.name}</div>
-                <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.75}}>{d.vibe}</div>
-                {!hasData && <div style={{fontSize:9,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:2}}>Coming soon</div>}
-              </button>
-            );
-          })}
+        {/* City dropdown */}
+        <div style={{position:"relative"}}>
+          <select
+            value={city}
+            onChange={e => setCity(e.target.value)}
+            style={{
+              width:"100%", padding:"13px 44px 13px 16px",
+              borderRadius:12, border:`1.5px solid ${city !== "all" ? HOT : BORDER}`,
+              fontFamily:"'DM Sans',sans-serif", fontSize:14, fontWeight:700,
+              color: city !== "all" ? HOT : "#aaa",
+              background:WHITE, cursor:"pointer", appearance:"none",
+            }}
+          >
+            <option value="all">Choose a city...</option>
+            {destList.map(d => {
+              const hasData = EXPLORE_CITY_IDS.has(d.id);
+              return (
+                <option key={d.id} value={d.id} disabled={!hasData}>
+                  {d.emoji} {d.name}{!hasData ? " (coming soon)" : ""}
+                </option>
+              );
+            })}
+          </select>
+          <span style={{position:"absolute",right:14,top:"50%",transform:"translateY(-50%)",fontSize:16,pointerEvents:"none",color:HOT}}>▾</span>
         </div>
+
+        {/* Show selected city vibe as a hint */}
+        {city !== "all" && (
+          <div style={{marginTop:8,padding:"8px 12px",borderRadius:10,background:SOFT,border:`1px solid ${MID}`}}>
+            <span style={{fontSize:20,marginRight:8}}>{DESTS.find(d=>d.id===city)?.emoji}</span>
+            <span style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700}}>{DESTS.find(d=>d.id===city)?.vibe}</span>
+          </div>
+        )}
       </div>
 
       {/* ── STEP 3: What do you want to do? ──────────────────────────────── */}
