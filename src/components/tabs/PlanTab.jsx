@@ -69,10 +69,10 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
           Bach Hotline
         </div>
         <h2 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:22,fontWeight:900,margin:"0 0 6px",color:DARK}}>
-          AI <em style={{color:HOT,fontStyle:"italic"}}>Trip Planner</em>
+          <em style={{color:HOT,fontStyle:"italic"}}>Trip Planner</em>
         </h2>
         <p style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",margin:0,opacity:0.85}}>
-          Answer 3 questions — get a custom itinerary in seconds
+          Answer 3 questions, get a custom itinerary in seconds
         </p>
       </div>
 
