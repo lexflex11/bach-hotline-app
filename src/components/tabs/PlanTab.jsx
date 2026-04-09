@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
 import { C, BP, SM } from '../../constants/styles.js';
 import { DESTS, BRIDE_TYPES } from '../../constants/data.js';
-import { ANTHROPIC_API_KEY, flightUrl, airbnbUrl, viatorUrl } from '../../constants/api.js';
+import { ANTHROPIC_API_KEY, flightUrl, airbnbUrl, viatorUrl, opentableUrl } from '../../constants/api.js';
 
 export default function PlanTab({ groupSize, setGroupSize, setTab }) {
   const [dest,    setDest]    = useState(null);
@@ -13,6 +13,12 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
   const [result,  setResult]  = useState(null);
 
   const tEmoji = { morning:"🌅", afternoon:"☀️", evening:"🌆", nightlife:"🌙" };
+
+  const slotBookingUrl = (slot, activityName, destName) => {
+    if (slot === "evening") return opentableUrl(activityName, destName);
+    return viatorUrl(activityName, destName);
+  };
+
   const selectedBride = BRIDE_TYPES.find(b => b.id === bt);
   const selectedDest  = DESTS.find(d => d.id === dest);
 
@@ -256,6 +262,13 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
                         </div>
                         <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginTop:3,fontStyle:"italic",opacity:0.8}}>💡 {item.tip}</div>
                         {item.bookingTip && <div style={{fontSize:10,color:"#888",fontFamily:"'DM Sans',sans-serif",marginTop:5,background:"#fdf5fa",border:`1px solid ${BORDER}`,borderRadius:8,padding:"4px 9px",display:"inline-block"}}>🔗 {item.bookingTip}</div>}
+                        <div style={{marginTop:8}}>
+                          <a href={slotBookingUrl(slot, item.activity, selectedDest?.name||"")} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+                            <button style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,border:"none",borderRadius:20,padding:"5px 14px",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer"}}>
+                              {slot==="evening"?"🍽 Reserve →":"🎯 Book →"}
+                            </button>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -285,18 +298,48 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
             </div>
           )}
 
-          {/* Book CTA */}
-          <div style={{...C,background:SOFT,border:`1.5px solid ${MID}`}}>
-            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>🔗 Book this trip now</div>
+          {/* Book Your Full Trip */}
+          <div style={{...C,background:SOFT,border:`1.5px solid ${MID}`,marginBottom:14}}>
+            <div style={{fontSize:15,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🗓 Book Your Full Trip</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:14,opacity:0.85}}>Tap any activity to book — she just has to show up 💅</div>
+
+            {/* Activity-by-activity checklist */}
+            {result.days.map((day,di)=>(
+              <div key={di} style={{marginBottom:12}}>
+                <div style={{fontSize:11,fontWeight:700,color:PUNCH,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:6}}>Day {day.day} — {day.theme}</div>
+                {["morning","afternoon","evening","nightlife"].map(slot=>{
+                  const item = day[slot]; if (!item) return null;
+                  return (
+                    <div key={slot} style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,marginBottom:6,padding:"8px 10px",background:WHITE,borderRadius:10,border:`1px solid ${BORDER}`}}>
+                      <div style={{display:"flex",alignItems:"center",gap:8,flex:1,minWidth:0}}>
+                        <span style={{fontSize:14,flexShrink:0}}>{tEmoji[slot]}</span>
+                        <div style={{minWidth:0}}>
+                          <div style={{fontSize:12,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.activity}</div>
+                          <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>{item.cost}</div>
+                        </div>
+                      </div>
+                      <a href={slotBookingUrl(slot, item.activity, selectedDest?.name||"")} target="_blank" rel="noreferrer" style={{textDecoration:"none",flexShrink:0}}>
+                        <button style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,border:"none",borderRadius:20,padding:"6px 14px",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",whiteSpace:"nowrap"}}>
+                          {slot==="evening"?"🍽 Reserve":"🎯 Book"}
+                        </button>
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+
+            {/* Divider */}
+            <div style={{height:1,background:MID,margin:"14px 0"}}/>
+
+            {/* Flights + Hotel always at bottom */}
+            <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Flights & Hotel</div>
             <div style={{display:"flex",flexDirection:"column",gap:8}}>
               <a href={flightUrl(selectedDest?.toFull||"",groupSize)} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
                 <button style={{...BP,width:"100%",fontSize:13,padding:"11px"}}>✈️ Search Flights on Expedia</button>
               </a>
               <a href={airbnbUrl(selectedDest?.name||"",groupSize)} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-                <button style={{width:"100%",background:"linear-gradient(135deg,#FF5A5F,#FF3D42)",color:WHITE,border:"none",borderRadius:50,padding:"11px",fontFamily:"'DM Sans',sans-serif",fontSize:13,fontWeight:700,cursor:"pointer"}}>🏠 Search Airbnbs for {groupSize}</button>
-              </a>
-              <a href={viatorUrl("bachelorette",selectedDest?.name||"")} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-                <button style={{width:"100%",background:"linear-gradient(135deg,#00B0A0,#008F82)",color:WHITE,border:"none",borderRadius:50,padding:"11px",fontFamily:"'DM Sans',sans-serif",fontSize:13,fontWeight:700,cursor:"pointer"}}>🎯 Browse Activities on Viator</button>
+                <button style={{width:"100%",background:"linear-gradient(135deg,#FF5A5F,#FF3D42)",color:WHITE,border:"none",borderRadius:50,padding:"11px",fontFamily:"'DM Sans',sans-serif",fontSize:13,fontWeight:700,cursor:"pointer"}}>🏠 Search Airbnbs for {groupSize} ladies</button>
               </a>
             </div>
           </div>
