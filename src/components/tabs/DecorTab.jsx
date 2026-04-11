@@ -5,54 +5,92 @@ import { BP, BS } from '../../constants/styles.js';
 // ─── Packages ────────────────────────────────────────────────────────────────
 const PACKAGES = [
   {
-    id: "classic",
-    name: "Classic Bride",
-    tagline: "Timeless elegance",
-    emoji: "🤍",
-    price: "$149",
-    bg: "#f9f9f9",
-    border: "#C0C0C0",
-    headlineColor: "#777",
-    description: "White & silver balloon arrangements, BRIDE letter balloons, and soft floral accents.",
-    includes: ["BRIDE foil letter balloon set", "White balloon floor clusters (20 ct)", "Silver streamer curtain", "White floral centerpiece", "Ring dish & candle set"],
-    vibes: [
-      { id:"silver", label:"Silver & White", colors:["#D8D8D8","#f0f0f0","#C8C8C8","#fff"]    },
-      { id:"blush",  label:"Blush & Gold",   colors:["#F4A7B9","#FFD700","#fff","#FFB6C1"]     },
-      { id:"ivory",  label:"Ivory & Sage",   colors:["#F5F0E8","#8FAF8F","#D4C5A9","#EFE9DF"] },
-    ],
-  },
-  {
-    id: "pink",
-    name: "Pink & Wild",
-    tagline: "Party mode: activated",
-    emoji: "💕",
-    price: "$199",
+    id: "mini",
+    name: "Mini Package",
+    tagline: "Glam on a budget",
+    emoji: "🎈",
+    price: "$99",
     bg: "#FFF0F6",
     border: "#E91E8C",
     headlineColor: "#E91E8C",
-    description: "Balloon garland arch, hot pink table settings, BACH banner, and disco flair.",
-    includes: ["Pink & fuchsia balloon garland arch", "BACH foil banner", "Pink table settings (8 ct)", "Sequin foil fringe curtain", "Disco ball + string lights"],
+    description: "For bachelorettes on a budget but still wanting some glam for their big weekend. Think balloon garland photo op + custom hanging sign.",
+    includes: [
+      "Photo area with balloon garland",
+      "Hanging tassels",
+      "Custom hanging sign",
+      "Additional balloons around the room",
+    ],
     vibes: [
+      { id:"hotpink", label:"Hot Pink & Silver", colors:["#E91E8C","#C0C0C0","#FF4081","#FFB6C1"] },
+      { id:"blush",   label:"Blush & Gold",      colors:["#F4A7B9","#FFD700","#fff","#FFB6C1"]    },
+      { id:"white",   label:"White & Chrome",    colors:["#f5f5f5","#D8D8D8","#fff","#e8e8e8"]    },
+    ],
+  },
+  {
+    id: "full",
+    name: "Full Package",
+    tagline: "Go all out — make it fun!",
+    emoji: "🪩",
+    price: "$199",
+    bg: "#F8F0FF",
+    border: "#9C27B0",
+    headlineColor: "#9C27B0",
+    description: "Let us turn your Airbnb or hotel into a sparkly bachelorette base. Photo booth, tons of balloons, decked out bridal suite, and more.",
+    includes: [
+      "Photo booth area setup",
+      "Tons of balloons throughout the space",
+      "Decked-out bridal suite",
+      "Foil fringe curtain backdrop",
+      "Disco ball + string lights",
+    ],
+    vibes: [
+      { id:"disco",   label:"Disco & Chrome",    colors:["#9C27B0","#C0C0C0","#E91E8C","#D8D8D8"] },
       { id:"hotpink", label:"Hot Pink & Fuchsia", colors:["#E91E8C","#FF4081","#FF1493","#FFB6C1"] },
-      { id:"cowgirl", label:"Last Rodeo",         colors:["#8B4513","#D2691E","#FF69B4","#C4956A"] },
       { id:"barbie",  label:"Barbie Dreamhouse",  colors:["#FF69B4","#FF1493","#FFB6C1","#FF4081"] },
     ],
   },
   {
-    id: "boho",
-    name: "Boho Luxe",
-    tagline: "Elevated & effortless",
-    emoji: "✨",
-    price: "$279",
-    bg: "#FBF7F2",
-    border: "#C4956A",
-    headlineColor: "#C4956A",
-    description: "Pampas grass, gold balloon letters, champagne flutes, and lush floral arrangements.",
-    includes: ["Pampas grass arrangements ×2", "Gold BRIDE balloon letter set", "Champagne tower setup", "Linen table runner", "Terracotta & dried floral centerpiece"],
+    id: "brides-room",
+    name: "Bride's Room",
+    tagline: "A room fit for a queen",
+    emoji: "👰",
+    price: "$149",
+    bg: "#f9f9f9",
+    border: "#C0C0C0",
+    headlineColor: "#777",
+    description: "Your bride deserves a room fit for the queen she is! Elevate her bedroom with BRIDE balloons above the bed, ring balloon, and bride sash.",
+    includes: [
+      "BRIDE foil letter balloons above the bed",
+      "Latex balloons scattered around the room",
+      "Ring balloon",
+      "Bride sash",
+    ],
     vibes: [
-      { id:"terra",    label:"Terracotta & Gold",  colors:["#C4956A","#D4956A","#FFD700","#E8C99A"] },
-      { id:"champagne",label:"Champagne & Cream",  colors:["#F5DEB3","#FAEBD7","#D4AF37","#EDE0C4"] },
-      { id:"sage",     label:"Sage & Eucalyptus",  colors:["#8FAF8F","#C8D8C8","#D4AF37","#B5CCB5"] },
+      { id:"silver", label:"Silver & White",  colors:["#D8D8D8","#f0f0f0","#C8C8C8","#fff"]    },
+      { id:"blush",  label:"Blush & Gold",    colors:["#F4A7B9","#FFD700","#fff","#FFB6C1"]     },
+      { id:"pink",   label:"Hot Pink & White", colors:["#E91E8C","#fff","#FFB6C1","#f5f5f5"]    },
+    ],
+  },
+  {
+    id: "pool",
+    name: "Pool Decor",
+    tagline: "Soak up the bach life",
+    emoji: "🏊",
+    price: "$129",
+    bg: "#F0F8FF",
+    border: "#29B6F6",
+    headlineColor: "#0288D1",
+    description: "Perfect for pool parties! Pool floats, foil balloon letters, latex balloon poofs outside, and drink pouches for every attendee.",
+    includes: [
+      "4 pool floats",
+      "Foil balloon letter sign",
+      "Latex balloon poofs (outdoor-hung)",
+      "Drink pouches for each attendee",
+    ],
+    vibes: [
+      { id:"tropical", label:"Tropical Pink",   colors:["#E91E8C","#29B6F6","#FF4081","#81D4FA"] },
+      { id:"miami",    label:"Miami Vibes",      colors:["#FF6B6B","#FFE66D","#4ECDC4","#FF8E8E"] },
+      { id:"flamingo", label:"Flamingo Dreams",  colors:["#FF69B4","#FFB6C1","#29B6F6","#FF4081"] },
     ],
   },
 ];
@@ -213,11 +251,62 @@ function BohoOverlay({ vibe }) {
   );
 }
 
+// Pool overlay — floats, foil letters, outdoor balloon poofs
+function PoolOverlay({ vibe }) {
+  const [c1, c2, c3, c4] = vibe.colors;
+  const floatEmojis = ["🦩","🦢","🍉","🦄"];
+  const poof = [
+    {l:"4%",b:"18%",s:48},{l:"16%",b:"22%",s:42},{l:"72%",b:"20%",s:46},{l:"84%",b:"16%",s:50},
+  ];
+  return (
+    <>
+      {/* Sky/water tint */}
+      <div style={{position:"absolute",inset:0,background:`linear-gradient(180deg,${c4}18 0%,${c2}12 100%)`,pointerEvents:"none"}}/>
+      {/* Foil balloon letters — BRIDE */}
+      <div style={{position:"absolute",top:"8%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:5,zIndex:10}}>
+        {"BRIDE".split("").map((l,i)=>(
+          <div key={i} style={{
+            width:36,height:44,borderRadius:"50% 50% 48% 52%/55% 55% 45% 45%",
+            background:`radial-gradient(circle at 30% 30%,rgba(255,255,255,0.7),${c1})`,
+            display:"flex",alignItems:"center",justifyContent:"center",
+            fontSize:14,fontWeight:900,color:"rgba(0,0,0,0.5)",
+            fontFamily:"'Playfair Display',Georgia,serif",
+            boxShadow:`2px 4px 12px rgba(0,0,0,0.28),inset -2px -2px 6px rgba(0,0,0,0.1)`,
+            border:`1.5px solid ${c3}`,
+          }}>{l}</div>
+        ))}
+      </div>
+      {/* Balloon poofs on sides */}
+      {poof.map((p,i)=>(
+        <div key={i} style={{
+          position:"absolute",left:p.l,bottom:p.b,width:p.s,height:p.s,
+          borderRadius:"50%",
+          background:`radial-gradient(circle at 33% 33%,rgba(255,255,255,0.6),${i%2===0?c1:c3})`,
+          boxShadow:`2px 4px 10px rgba(0,0,0,0.22),inset -2px -3px 8px rgba(0,0,0,0.1)`,
+        }}/>
+      ))}
+      {/* Pool floats */}
+      <div style={{position:"absolute",bottom:"4%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:16}}>
+        {floatEmojis.map((e,i)=>(
+          <span key={i} style={{fontSize:28,filter:"drop-shadow(2px 3px 6px rgba(0,0,0,0.3))",transform:`rotate(${-8+i*5}deg)`}}>{e}</span>
+        ))}
+      </div>
+      {/* Drink pouches */}
+      <div style={{position:"absolute",bottom:"14%",right:"10%",display:"flex",gap:6}}>
+        {["🍹","🍹","🍹"].map((e,i)=>(
+          <span key={i} style={{fontSize:20,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>{e}</span>
+        ))}
+      </div>
+    </>
+  );
+}
+
 function DecorationOverlay({ pkg, vibe }) {
   if (!pkg || !vibe) return null;
-  if (pkg.id === "classic") return <ClassicOverlay vibe={vibe}/>;
-  if (pkg.id === "pink")    return <PinkOverlay    vibe={vibe}/>;
-  if (pkg.id === "boho")    return <BohoOverlay    vibe={vibe}/>;
+  if (pkg.id === "mini")        return <ClassicOverlay vibe={vibe}/>;
+  if (pkg.id === "full")        return <PinkOverlay    vibe={vibe}/>;
+  if (pkg.id === "brides-room") return <BohoOverlay    vibe={vibe}/>;
+  if (pkg.id === "pool")        return <PoolOverlay    vibe={vibe}/>;
   return null;
 }
 
@@ -275,7 +364,7 @@ export default function DecorTab({ groupSize }) {
           <em style={{color:HOT}}>Decor Studio</em>
         </h2>
         <p style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",margin:0,opacity:0.85,lineHeight:1.6}}>
-          Upload your space · pick a package · see the vibe before you buy
+          Upload your space · choose a package · see the look before you book
         </p>
       </div>
 
@@ -321,10 +410,10 @@ export default function DecorTab({ groupSize }) {
             <div style={{width:26,height:26,borderRadius:"50%",background:pkgId?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:pkgId?WHITE:HOT,flexShrink:0}}>2</div>
             <div>
               <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Choose a Decor Package</div>
-              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Three complete setups — tap to compare</div>
+              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Four packages — tap to compare</div>
             </div>
           </div>
-          <div style={{display:"flex",gap:8}}>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
             {PACKAGES.map(p=>(
               <PackageCard key={p.id} pkg={p} selected={pkgId===p.id} onClick={()=>selectPkg(p.id)}/>
             ))}
