@@ -21,6 +21,7 @@ import DecorTab from './components/tabs/DecorTab.jsx';
 import ProfileTab from './components/tabs/ProfileTab.jsx';
 import PollsTab from './components/tabs/PollsTab.jsx';
 import ExploreTab from './components/tabs/ExploreTab.jsx';
+import MediaTab from './components/tabs/MediaTab.jsx';
 
 // ─── ROOT APP ─────────────────────────────────────────────────────────────────
 export default function App() {
@@ -72,6 +73,7 @@ export default function App() {
         {tab==="profile" && <ProfileTab user={user} onLogout={()=>setUser(null)} cart={cart} />}
         {tab==="polls"   && <PollsTab user={user} onSignUp={()=>setUser(null)} />}
         {tab==="explore"  && <ExploreTab groupSize={groupSize} setTab={setTab} />}
+        {tab==="media"    && <MediaTab user={user} onSignUp={()=>setUser(null)} />}
       </div>
       {/* ── BOTTOM NAV — 5 tabs + More drawer ── */}
       <div style={{ position:"fixed", bottom:0, left:0, width:"100%", background:WHITE, borderTop:`1.5px solid ${SOFT}`, zIndex:200, boxShadow:`0 -2px 16px rgba(230,101,130,0.10)` }}>
@@ -130,10 +132,11 @@ export default function App() {
               <div style={{ fontSize:10, color:"#bbb", fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"1px", marginBottom:10, fontWeight:600 }}>Extras</div>
               <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
                 {[
-                  { id:"mood",    label:"Vibes",      sub:"Theme & mood board"   },
-                  { id:"decor",   label:"Decor Studio", sub:"Visualize your party setup" },
-                  { id:"alerts",  label:"Alerts",     sub:"Price drop alerts"     },
-                  { id:"profile", label:"Profile",    sub:"Settings & trips"      },
+                  { id:"mood",    label:"Vibes",        sub:"Theme & mood board"          },
+                  { id:"decor",   label:"Decor Studio", sub:"Visualize your party setup"  },
+                  { id:"alerts",  label:"Alerts",       sub:"Members-only price drops"    },
+                  { id:"media",   label:"Share Media",  sub:"Upload trip pics & videos"   },
+                  { id:"profile", label:"Profile",      sub:"Settings & trips"            },
                 ].map(item => (
                   <button key={item.id} onClick={() => { setTab(item.id); setDrawerOpen(false); }}
                     style={{ background: tab===item.id ? SOFT : PAGE, border:`1.5px solid ${tab===item.id ? HOT : BORDER}`, borderRadius:14, padding:"12px 13px", cursor:"pointer", textAlign:"left", transition:"all 0.15s" }}>
