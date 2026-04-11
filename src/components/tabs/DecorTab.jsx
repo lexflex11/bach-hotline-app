@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
 import { C, BP } from '../../constants/styles.js';
 
@@ -110,6 +110,7 @@ function SceneCanvas({ venue, palette, style }) {
       background:venue?.sky || VENUES[0].sky,
       border:`2px solid ${MID}`,
       boxShadow:"0 8px 32px rgba(45,10,24,0.15)",
+      backgroundSize:"cover", backgroundPosition:"center",
     }}>
       <div style={{position:"absolute",inset:0}}>
 
@@ -277,11 +278,26 @@ function SceneCanvas({ venue, palette, style }) {
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 export default function DecorTab({ groupSize }) {
-  const [venue,   setVenue]   = useState(VENUES[0]);
+  const [photo,   setPhoto]   = useState(null);   // uploaded space photo (data URL)
   const [palette, setPalette] = useState(PALETTES[0]);
   const [style,   setStyle]   = useState(STYLES[0]);
+  const fileRef = useRef();
 
   const shopItems = SHOP_ITEMS[style.id] || [];
+
+  const handleFile = e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => setPhoto(ev.target.result);
+    reader.readAsDataURL(file);
+  };
+
+  // Use a fake venue shell so SceneCanvas still works but with photo as bg
+  const photoVenue = photo ? {
+    sky: `url("${photo}") center/cover no-repeat`,
+    floor: "transparent", floorH: 0,
+  } : null;
 
   return (
     <div style={{paddingBottom:24}}>
@@ -299,42 +315,65 @@ export default function DecorTab({ groupSize }) {
           <em style={{color:HOT,fontStyle:"italic"}}>Decor Studio</em>
         </h2>
         <p style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",margin:0,opacity:0.85}}>
-          Visualize your party setup before you buy a single thing
+          Upload your space — see your party decor come to life
         </p>
       </div>
 
-      {/* ── Live Preview ── */}
-      <div style={{marginBottom:16}}>
-        <SceneCanvas venue={venue} palette={palette} style={style} />
-        <div style={{textAlign:"center",marginTop:8,fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
-          {venue.emoji} {venue.label} · {style.emoji} {style.label} · <span style={{color:palette.primary,fontWeight:700}}>●</span> {palette.label}
+      {/* ── Step 1: Upload Photo ── */}
+      <div style={{...C, marginBottom:12}}>
+        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
+          1. Upload your space
         </div>
+        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:12,opacity:0.8}}>
+          Take a photo of your venue, backyard, hotel room — anywhere you're hosting
+        </div>
+
+        {/* Upload area */}
+        <input ref={fileRef} type="file" accept="image/*" onChange={handleFile} style={{display:"none"}}/>
+        {!photo ? (
+          <button
+            onClick={()=>fileRef.current.click()}
+            style={{
+              width:"100%", aspectRatio:"16/9",
+              border:`2px dashed ${HOT}`, borderRadius:16,
+              background:SOFT, cursor:"pointer",
+              display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",
+              gap:10,
+            }}
+          >
+            <div style={{fontSize:40}}>📸</div>
+            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:HOT}}>
+              Tap to upload a photo
+            </div>
+            <div style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
+              JPG, PNG or HEIC from your camera roll
+            </div>
+          </button>
+        ) : (
+          <div style={{position:"relative",borderRadius:16,overflow:"hidden",marginBottom:4}}>
+            <img src={photo} alt="Your space" style={{width:"100%",display:"block",borderRadius:16,maxHeight:220,objectFit:"cover"}}/>
+            <button
+              onClick={()=>{ setPhoto(null); fileRef.current.value=""; }}
+              style={{position:"absolute",top:10,right:10,background:"rgba(255,255,255,0.9)",border:"none",borderRadius:"50%",width:30,height:30,cursor:"pointer",fontSize:16,display:"flex",alignItems:"center",justifyContent:"center",color:PUNCH,fontWeight:700}}
+            >×</button>
+          </div>
+        )}
       </div>
 
-      {/* ── Step 1: Pick a Venue ── */}
-      <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
-          1. Pick your venue
+      {/* ── Live Preview (only after photo upload) ── */}
+      {photo && (
+        <div style={{marginBottom:12}}>
+          <SceneCanvas venue={photoVenue} palette={palette} style={style} />
+          <div style={{textAlign:"center",marginTop:6,fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
+            {style.emoji} {style.label} · <span style={{color:palette.primary,fontWeight:700}}>●</span> {palette.label}
+          </div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-          {VENUES.map(v=>(
-            <button key={v.id} onClick={()=>setVenue(v)} style={{
-              background:venue.id===v.id?SOFT:WHITE,
-              border:venue.id===v.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-              borderRadius:12, padding:"10px", cursor:"pointer", textAlign:"left", transition:"all 0.15s",
-            }}>
-              <div style={{fontSize:22,marginBottom:3}}>{v.emoji}</div>
-              <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:venue.id===v.id?HOT:DARK}}>{v.label}</div>
-              <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:2}}>{v.desc}</div>
-            </button>
-          ))}
-        </div>
-      </div>
+      )}
 
       {/* ── Step 2: Pick a Style ── */}
       <div style={{...C, marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
-          2. Pick your vibe
+          {photo ? "2." : "2."} Pick your vibe
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
           {STYLES.map(s=>(
@@ -373,6 +412,11 @@ export default function DecorTab({ groupSize }) {
             </button>
           ))}
         </div>
+        {!photo && (
+          <div style={{marginTop:12,padding:"10px 12px",borderRadius:10,background:SOFT,border:`1px solid ${MID}`,fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",textAlign:"center"}}>
+            📸 Upload your space above to see the preview
+          </div>
+        )}
       </div>
 
       {/* ── Shop This Look ── */}
@@ -411,7 +455,7 @@ export default function DecorTab({ groupSize }) {
         <div style={{fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:8}}>Love this vibe? Share it with your group</div>
         <button
           onClick={()=>{
-            const text = `Check out our bachelorette party vibe: ${style.label} at ${venue.label} in ${palette.label} 🎉`;
+            const text = `Check out our bachelorette party vibe: ${style.label} in ${palette.label} colors 🎉`;
             if (navigator.share) { navigator.share({ title:"Our Bach Party Vibe", text }); }
             else if (navigator.clipboard) { navigator.clipboard.writeText(text); alert("Copied to clipboard!"); }
           }}
