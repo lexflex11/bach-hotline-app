@@ -1,470 +1,435 @@
 import React, { useState, useRef } from 'react';
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
-import { C, BP } from '../../constants/styles.js';
+import { BP, BS } from '../../constants/styles.js';
 
-// ─── Venue Scenes ─────────────────────────────────────────────────────────────
-const VENUES = [
-  { id:"backyard",  label:"Backyard",    emoji:"🌿", desc:"Patio · Garden · Outdoor",
-    sky:"linear-gradient(180deg,#B8D8F0 0%,#E8C9A0 80%,#7DB87D 100%)",
-    floor:"#7DB87D", floorH:18 },
-  { id:"rooftop",   label:"Rooftop",     emoji:"🌆", desc:"Skyline · Sunset · Open air",
-    sky:"linear-gradient(180deg,#2D1535 0%,#7B3070 40%,#E66582 70%,#F5C5A0 100%)",
-    floor:"#4A3A5A", floorH:12 },
-  { id:"hotel",     label:"Hotel Suite", emoji:"🛎️", desc:"Ballroom · Chic interior",
-    sky:"linear-gradient(180deg,#F5EEE8 0%,#EDE0D4 100%)",
-    floor:"#C8A882", floorH:20 },
-  { id:"beach",     label:"Beach",       emoji:"🌊", desc:"Sand · Ocean · Sunset",
-    sky:"linear-gradient(180deg,#5BBFEA 0%,#F7D68A 70%,#E8C47A 100%)",
-    floor:"#F2D799", floorH:22 },
+// ─── Packages ────────────────────────────────────────────────────────────────
+const PACKAGES = [
+  {
+    id: "classic",
+    name: "Classic Bride",
+    tagline: "Timeless elegance",
+    emoji: "🤍",
+    price: "$149",
+    bg: "#f9f9f9",
+    border: "#C0C0C0",
+    headlineColor: "#777",
+    description: "White & silver balloon arrangements, BRIDE letter balloons, and soft floral accents.",
+    includes: ["BRIDE foil letter balloon set", "White balloon floor clusters (20 ct)", "Silver streamer curtain", "White floral centerpiece", "Ring dish & candle set"],
+    vibes: [
+      { id:"silver", label:"Silver & White", colors:["#D8D8D8","#f0f0f0","#C8C8C8","#fff"]    },
+      { id:"blush",  label:"Blush & Gold",   colors:["#F4A7B9","#FFD700","#fff","#FFB6C1"]     },
+      { id:"ivory",  label:"Ivory & Sage",   colors:["#F5F0E8","#8FAF8F","#D4C5A9","#EFE9DF"] },
+    ],
+  },
+  {
+    id: "pink",
+    name: "Pink & Wild",
+    tagline: "Party mode: activated",
+    emoji: "💕",
+    price: "$199",
+    bg: "#FFF0F6",
+    border: "#E91E8C",
+    headlineColor: "#E91E8C",
+    description: "Balloon garland arch, hot pink table settings, BACH banner, and disco flair.",
+    includes: ["Pink & fuchsia balloon garland arch", "BACH foil banner", "Pink table settings (8 ct)", "Sequin foil fringe curtain", "Disco ball + string lights"],
+    vibes: [
+      { id:"hotpink", label:"Hot Pink & Fuchsia", colors:["#E91E8C","#FF4081","#FF1493","#FFB6C1"] },
+      { id:"cowgirl", label:"Last Rodeo",         colors:["#8B4513","#D2691E","#FF69B4","#C4956A"] },
+      { id:"barbie",  label:"Barbie Dreamhouse",  colors:["#FF69B4","#FF1493","#FFB6C1","#FF4081"] },
+    ],
+  },
+  {
+    id: "boho",
+    name: "Boho Luxe",
+    tagline: "Elevated & effortless",
+    emoji: "✨",
+    price: "$279",
+    bg: "#FBF7F2",
+    border: "#C4956A",
+    headlineColor: "#C4956A",
+    description: "Pampas grass, gold balloon letters, champagne flutes, and lush floral arrangements.",
+    includes: ["Pampas grass arrangements ×2", "Gold BRIDE balloon letter set", "Champagne tower setup", "Linen table runner", "Terracotta & dried floral centerpiece"],
+    vibes: [
+      { id:"terra",    label:"Terracotta & Gold",  colors:["#C4956A","#D4956A","#FFD700","#E8C99A"] },
+      { id:"champagne",label:"Champagne & Cream",  colors:["#F5DEB3","#FAEBD7","#D4AF37","#EDE0C4"] },
+      { id:"sage",     label:"Sage & Eucalyptus",  colors:["#8FAF8F","#C8D8C8","#D4AF37","#B5CCB5"] },
+    ],
+  },
 ];
 
-// ─── Color Palettes ───────────────────────────────────────────────────────────
-const PALETTES = [
-  { id:"hotpink",   label:"Hot Pink",     primary:"#E91E8C", secondary:"#FFFFFF", accent:"#FF69B4", dark:"#9B1060" },
-  { id:"dustyrose", label:"Dusty Rose",   primary:"#C9A0A0", secondary:"#FAF0E6", accent:"#E8B4B8", dark:"#8B6060" },
-  { id:"sage",      label:"Sage & Gold",  primary:"#8B9E78", secondary:"#F5F0E8", accent:"#D4AF37", dark:"#4A5E38" },
-  { id:"lavender",  label:"Lavender",     primary:"#9B8EC4", secondary:"#F8F5FF", accent:"#C9B8E8", dark:"#6B4E9B" },
-  { id:"blackgold", label:"Black & Gold", primary:"#2D2D2D", secondary:"#F5F0DC", accent:"#D4AF37", dark:"#1A1A1A" },
-  { id:"teal",      label:"Teal & Blush", primary:"#4DADA8", secondary:"#FFF0F5", accent:"#E8A0B0", dark:"#2D7A75" },
-];
-
-// ─── Decoration Styles ────────────────────────────────────────────────────────
-const STYLES = [
-  { id:"balloonarch",  label:"Balloon Arch",   emoji:"🎈", desc:"Classic balloon arch + bouquets" },
-  { id:"boho",         label:"Boho Garden",    emoji:"🌸", desc:"Florals, pampas, macramé" },
-  { id:"glam",         label:"Glam Disco",     emoji:"✨", desc:"Disco balls, metallics, feathers" },
-  { id:"minimal",      label:"Minimalist",     emoji:"🤍", desc:"Clean, modern, elegant" },
-  { id:"tropical",     label:"Tropical",       emoji:"🌺", desc:"Palms, bright colors, leis" },
-  { id:"neon",         label:"Neon Party",     emoji:"💜", desc:"Neon signs, dark vibe, LED" },
-];
-
-// ─── Shop items per style ─────────────────────────────────────────────────────
-// Links to Bach Hotline's own shop products
-const BH = url => url; // Bach Hotline Etsy store
-const SHOP_ITEMS = {
-  balloonarch: [
-    { name:"Garden Foil Balloon 40\"",     where:"Bach Hotline", icon:"🎈", url:"https://www.etsy.com/listing/1861810967" },
-    { name:"Zebra Foil Balloon 40\"",      where:"Bach Hotline", icon:"🎈", url:"https://www.etsy.com/listing/1840533580" },
-    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"🎀", url:"https://www.etsy.com/listing/4464005263" },
-    { name:"In My Bride Era Bach Kit",     where:"Bach Hotline", icon:"💍", url:"https://www.etsy.com/listing/4463704232" },
-    { name:"Let's Go Girls Bach Kit",      where:"Bach Hotline", icon:"✨", url:"https://www.etsy.com/listing/4464002387" },
-  ],
-  boho: [
-    { name:"Custom Face Beach Towel",      where:"Bach Hotline", icon:"🌸", url:"https://www.etsy.com/listing/4479721592" },
-    { name:"Floral Groovy Beach Towel",    where:"Bach Hotline", icon:"🌺", url:"https://www.etsy.com/listing/4462571690" },
-    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"🎀", url:"https://www.etsy.com/listing/4464005263" },
-    { name:"Corpus Christi Itinerary PDF", where:"Bach Hotline", icon:"📋", url:"https://www.etsy.com/listing/1845781336" },
-    { name:"Custom Puzzle — Bach Favor",   where:"Bach Hotline", icon:"🧩", url:"https://www.etsy.com/listing/4480916715" },
-  ],
-  glam: [
-    { name:"Disco Ball Headband",          where:"Bach Hotline", icon:"🪩", url:"https://www.etsy.com/listing/1861486865" },
-    { name:"Custom Face Bikini",           where:"Bach Hotline", icon:"👙", url:"https://www.etsy.com/listing/4476018031" },
-    { name:"Cowgirl Espresso Cup",         where:"Bach Hotline", icon:"☕", url:"https://www.etsy.com/listing/4472132477" },
-    { name:"Custom Poker Playing Cards",   where:"Bach Hotline", icon:"🃏", url:"https://www.etsy.com/listing/4480941333" },
-    { name:"In My Bride Era Bach Kit",     where:"Bach Hotline", icon:"💅", url:"https://www.etsy.com/listing/4463704232" },
-  ],
-  minimal: [
-    { name:"Custom Puzzle — Bach Favor",   where:"Bach Hotline", icon:"🧩", url:"https://www.etsy.com/listing/4480916715" },
-    { name:"Custom Poker Playing Cards",   where:"Bach Hotline", icon:"🃏", url:"https://www.etsy.com/listing/4480941333" },
-    { name:"Corpus Christi Itinerary PDF", where:"Bach Hotline", icon:"📋", url:"https://www.etsy.com/listing/1845781336" },
-    { name:"Custom Face Beach Towel",      where:"Bach Hotline", icon:"🤍", url:"https://www.etsy.com/listing/4479721592" },
-    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"🎀", url:"https://www.etsy.com/listing/4464005263" },
-  ],
-  tropical: [
-    { name:"Cocktail Club Beach Towel",    where:"Bach Hotline", icon:"🌊", url:"https://www.etsy.com/listing/4463167702" },
-    { name:"Custom Face Beach Towel",      where:"Bach Hotline", icon:"🌴", url:"https://www.etsy.com/listing/4479721592" },
-    { name:"Sardinas Beach Towel",         where:"Bach Hotline", icon:"🐠", url:"https://www.etsy.com/listing/4463176097" },
-    { name:"Cowgirl Espresso Cup",         where:"Bach Hotline", icon:"🍹", url:"https://www.etsy.com/listing/4472132477" },
-    { name:"Let's Go Girls Bach Kit",      where:"Bach Hotline", icon:"🦩", url:"https://www.etsy.com/listing/4464002387" },
-  ],
-  neon: [
-    { name:"Disco Ball Headband",          where:"Bach Hotline", icon:"🪩", url:"https://www.etsy.com/listing/1861486865" },
-    { name:"In My Bride Era Bach Kit",     where:"Bach Hotline", icon:"💜", url:"https://www.etsy.com/listing/4463704232" },
-    { name:"Custom Poker Playing Cards",   where:"Bach Hotline", icon:"🃏", url:"https://www.etsy.com/listing/4480941333" },
-    { name:"Custom Face Bikini",           where:"Bach Hotline", icon:"💡", url:"https://www.etsy.com/listing/4476018031" },
-    { name:"Bach Weekend Survival Kit",    where:"Bach Hotline", icon:"✨", url:"https://www.etsy.com/listing/4464005263" },
-  ],
-};
-
-// ─── Scene Renderer ───────────────────────────────────────────────────────────
-function SceneCanvas({ venue, palette, style }) {
-  const pal = palette || PALETTES[0];
-  const P = pal.primary;
-  const A = pal.accent;
-  const S = pal.secondary;
-
-  const balloons = (count, x, bottom, size=28) =>
-    Array.from({length:count}).map((_,i)=>(
-      <div key={i} style={{
-        position:"absolute", bottom, left:`${x + i*(size+4)}px`,
-        width:size, height:size*1.2, borderRadius:"50% 50% 50% 50% / 55% 55% 45% 45%",
-        background:i%3===0?P:i%3===1?A:S, border:`1.5px solid rgba(0,0,0,0.08)`,
-        boxShadow:`inset -4px -4px 8px rgba(0,0,0,0.12)`,
-      }}/>
-    ));
-
+// ─── Decoration overlays ──────────────────────────────────────────────────────
+function ClassicOverlay({ vibe }) {
+  const [c1, c2, c3, c4] = vibe.colors;
+  const balloons = [
+    {l:"5%",b:"3%",s:56},{l:"14%",b:"7%",s:46},{l:"23%",b:"3%",s:62},
+    {l:"34%",b:"6%",s:48},{l:"44%",b:"2%",s:58},{l:"55%",b:"7%",s:50},
+    {l:"64%",b:"3%",s:54},{l:"74%",b:"6%",s:44},{l:"83%",b:"2%",s:60},{l:"91%",b:"5%",s:48},
+  ];
   return (
-    <div style={{
-      position:"relative", width:"100%", paddingTop:"58%",
-      borderRadius:18, overflow:"hidden",
-      background:venue?.sky || VENUES[0].sky,
-      border:`2px solid ${MID}`,
-      boxShadow:"0 8px 32px rgba(45,10,24,0.15)",
-      backgroundSize:"cover", backgroundPosition:"center",
-    }}>
-      <div style={{position:"absolute",inset:0}}>
-
-        {/* ── Floor ── */}
-        <div style={{
-          position:"absolute", bottom:0, left:0, right:0,
-          height:`${venue?.floorH||18}%`,
-          background:venue?.floor||"#7DB87D",
-          borderTop:"2px solid rgba(0,0,0,0.1)",
-        }}/>
-
-        {/* ── Style-specific decorations ── */}
-
-        {(!style || style.id==="balloonarch") && (
-          <>
-            {/* Left balloon cluster */}
-            {balloons(4, 8, "62%", 30)}
-            {balloons(3, 14, "72%", 26)}
-            {balloons(2, 22, "80%", 22)}
-            {/* Right balloon cluster */}
-            {balloons(4, null, "62%", 30) /* handled below via mirroring */}
-
-            {/* Arch top center */}
-            <div style={{position:"absolute",top:"8%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:6}}>
-              {[P,A,S,P,A,S,P].map((c,i)=>(
-                <div key={i} style={{
-                  width:22,height:26,borderRadius:"50% 50% 50% 50% / 55% 55% 45% 45%",
-                  background:c,boxShadow:`inset -3px -3px 6px rgba(0,0,0,0.12)`,
-                }}/>
-              ))}
-            </div>
-            {/* Right cluster */}
-            <div style={{position:"absolute",right:8,bottom:"62%",display:"flex",gap:4,flexDirection:"column"}}>
-              {[P,A,S,P].map((c,i)=>(
-                <div key={i} style={{width:28+i*3,height:34+i*3,borderRadius:"50% 50% 50% 50% / 55% 55% 45% 45%",background:c,boxShadow:`inset -3px -3px 6px rgba(0,0,0,0.12)`}}/>
-              ))}
-            </div>
-            {/* Left cluster */}
-            <div style={{position:"absolute",left:8,bottom:"62%",display:"flex",gap:4,flexDirection:"column"}}>
-              {[S,P,A,P].map((c,i)=>(
-                <div key={i} style={{width:28+i*3,height:34+i*3,borderRadius:"50% 50% 50% 50% / 55% 55% 45% 45%",background:c,boxShadow:`inset -3px -3px 6px rgba(0,0,0,0.12)`}}/>
-              ))}
-            </div>
-            {/* BRIDE banner */}
-            <div style={{position:"absolute",top:"32%",left:"50%",transform:"translateX(-50%)",background:S,border:`2px solid ${P}`,borderRadius:8,padding:"4px 16px",fontSize:14,fontWeight:900,fontFamily:"'Playfair Display',Georgia,serif",color:P,letterSpacing:3,whiteSpace:"nowrap",boxShadow:`0 4px 12px rgba(0,0,0,0.15)`}}>
-              ✨ BRIDE ✨
-            </div>
-          </>
-        )}
-
-        {style?.id==="boho" && (
-          <>
-            {/* Pampas arch */}
-            <div style={{position:"absolute",top:"5%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:8,alignItems:"flex-end"}}>
-              {["🌾","🌸","🌿","🌷","🌿","🌸","🌾"].map((e,i)=>(
-                <div key={i} style={{fontSize:i===3?28:22,transform:`rotate(${(i-3)*8}deg)`}}>{e}</div>
-              ))}
-            </div>
-            {/* Macramé backdrop suggestion */}
-            <div style={{position:"absolute",top:"18%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:3}}>
-              {Array.from({length:9}).map((_,i)=>(
-                <div key={i} style={{width:3,height:80+Math.sin(i)*20,background:A,borderRadius:2,opacity:0.7}}/>
-              ))}
-            </div>
-            {/* Floral table runner suggestion */}
-            <div style={{position:"absolute",bottom:`${(venue?.floorH||18)+2}%`,left:"20%",right:"20%",height:12,background:`linear-gradient(90deg,${P},${A},${P})`,borderRadius:6,opacity:0.6}}/>
-            {/* Bride sign */}
-            <div style={{position:"absolute",top:"40%",left:"50%",transform:"translateX(-50%)",background:S,border:`1.5px solid ${A}`,borderRadius:10,padding:"5px 18px",fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:pal.dark,letterSpacing:2}}>
-              🌸 she said yes 🌸
-            </div>
-          </>
-        )}
-
-        {style?.id==="glam" && (
-          <>
-            {/* Disco ball */}
-            <div style={{position:"absolute",top:"6%",left:"50%",transform:"translateX(-50%)",width:52,height:52,borderRadius:"50%",background:`radial-gradient(circle at 35% 35%, #fff 0%, ${A} 30%, ${P} 70%, ${pal.dark} 100%)`,boxShadow:`0 0 20px ${A}88, 0 0 40px ${P}44`,border:`2px solid ${A}`}}/>
-            {/* String from top */}
-            <div style={{position:"absolute",top:0,left:"50%",width:2,height:"10%",background:A,transform:"translateX(-50%)"}}/>
-            {/* Sparkle rays */}
-            {[30,60,120,150,200,230,280,310].map((deg,i)=>(
-              <div key={i} style={{position:"absolute",top:"8%",left:"50%",width:40+i*5,height:2,background:`linear-gradient(90deg,${A},transparent)`,transform:`translateX(-50%) rotate(${deg}deg)`,transformOrigin:"left center",opacity:0.6}}/>
-            ))}
-            {/* Feather boas left/right */}
-            <div style={{position:"absolute",left:0,top:"20%",bottom:`${venue?.floorH||18}%`,width:18,background:`repeating-linear-gradient(90deg,${P},${A} 6px,${P} 12px)`,borderRadius:"0 8px 8px 0",opacity:0.75}}/>
-            <div style={{position:"absolute",right:0,top:"20%",bottom:`${venue?.floorH||18}%`,width:18,background:`repeating-linear-gradient(90deg,${A},${P} 6px,${A} 12px)`,borderRadius:"8px 0 0 8px",opacity:0.75}}/>
-            {/* Neon sign */}
-            <div style={{position:"absolute",top:"42%",left:"50%",transform:"translateX(-50%)",background:"#1A1A2E",border:`2px solid ${P}`,borderRadius:10,padding:"5px 20px",fontSize:13,fontWeight:900,fontFamily:"'DM Sans',sans-serif",color:P,letterSpacing:2,textShadow:`0 0 10px ${P}, 0 0 20px ${A}`,whiteSpace:"nowrap"}}>
-              ✦ BRIDE ✦
-            </div>
-            {/* Champagne bubbles */}
-            {[15,28,42,56,70,80].map((x,i)=>(
-              <div key={i} style={{position:"absolute",bottom:`${(venue?.floorH||18)+2+i*4}%`,left:`${x}%`,width:6,height:6,borderRadius:"50%",background:A,opacity:0.5}}/>
-            ))}
-          </>
-        )}
-
-        {style?.id==="minimal" && (
-          <>
-            {/* Single elegant clear balloon cluster */}
-            <div style={{position:"absolute",top:"10%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:8,alignItems:"flex-end"}}>
-              {[36,44,40,48,36].map((h,i)=>(
-                <div key={i} style={{width:h*0.85,height:h,borderRadius:"50%",background:`rgba(255,255,255,0.35)`,border:`1.5px solid ${P}`,backdropFilter:"blur(2px)"}}/>
-              ))}
-            </div>
-            {/* Thin ribbon */}
-            <div style={{position:"absolute",top:"25%",left:"25%",right:"25%",height:1,background:A,opacity:0.6}}/>
-            {/* Elegant sign */}
-            <div style={{position:"absolute",top:"36%",left:"50%",transform:"translateX(-50%)",background:"rgba(255,255,255,0.85)",border:`1px solid ${P}`,borderRadius:6,padding:"6px 22px",fontSize:12,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:pal.dark,letterSpacing:4,whiteSpace:"nowrap"}}>
-              bride
-            </div>
-            {/* Thin table line */}
-            <div style={{position:"absolute",bottom:`${(venue?.floorH||18)+1}%`,left:"15%",right:"15%",height:6,background:S,border:`1px solid ${BORDER}`,borderRadius:3}}/>
-            {/* Small flower accents */}
-            <div style={{position:"absolute",bottom:`${(venue?.floorH||18)+5}%`,left:"22%",fontSize:20}}>🌷</div>
-            <div style={{position:"absolute",bottom:`${(venue?.floorH||18)+5}%`,right:"22%",fontSize:20}}>🌷</div>
-          </>
-        )}
-
-        {style?.id==="tropical" && (
-          <>
-            {/* Palm leaves left */}
-            <div style={{position:"absolute",left:-10,top:"10%",fontSize:60,transform:"rotate(-20deg)",opacity:0.9}}>🌴</div>
-            <div style={{position:"absolute",right:-10,top:"10%",fontSize:60,transform:"rotate(20deg) scaleX(-1)",opacity:0.9}}>🌴</div>
-            {/* Flower garland */}
-            <div style={{position:"absolute",top:"28%",left:"10%",right:"10%",display:"flex",justifyContent:"space-around"}}>
-              {["🌺","🌸","🌼","🌺","🌸","🌼","🌺"].map((e,i)=>(
-                <span key={i} style={{fontSize:18,transform:`rotate(${(i-3)*5}deg) translateY(${Math.abs(i-3)*4}px)`}}>{e}</span>
-              ))}
-            </div>
-            {/* Flamingos */}
-            <div style={{position:"absolute",bottom:`${(venue?.floorH||18)+2}%`,left:"15%",fontSize:36}}>🦩</div>
-            <div style={{position:"absolute",bottom:`${(venue?.floorH||18)+2}%`,right:"15%",fontSize:36,transform:"scaleX(-1)"}}>🦩</div>
-            {/* Sign */}
-            <div style={{position:"absolute",top:"44%",left:"50%",transform:"translateX(-50%)",background:"rgba(255,255,255,0.9)",border:`2px solid ${P}`,borderRadius:12,padding:"5px 16px",fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:pal.dark,letterSpacing:2,whiteSpace:"nowrap"}}>
-              🌺 BRIDE VIBES 🌺
-            </div>
-          </>
-        )}
-
-        {style?.id==="neon" && (
-          <>
-            {/* Dark overlay for neon effect */}
-            <div style={{position:"absolute",inset:0,background:"rgba(10,5,20,0.55)"}}/>
-            {/* Neon sign */}
-            <div style={{position:"absolute",top:"20%",left:"50%",transform:"translateX(-50%)",border:`2px solid ${P}`,borderRadius:10,padding:"8px 24px",fontSize:16,fontWeight:900,fontFamily:"'DM Sans',sans-serif",color:P,textShadow:`0 0 8px ${P}, 0 0 20px ${A}, 0 0 40px ${P}`,letterSpacing:3,whiteSpace:"nowrap",boxShadow:`0 0 15px ${P}44, inset 0 0 15px ${P}22`}}>
-              BACHELORETTE
-            </div>
-            <div style={{position:"absolute",top:"38%",left:"50%",transform:"translateX(-50%)",border:`1.5px solid ${A}`,borderRadius:8,padding:"5px 18px",fontSize:13,fontWeight:700,fontFamily:"'DM Sans',sans-serif",color:A,textShadow:`0 0 8px ${A}`,letterSpacing:4,whiteSpace:"nowrap"}}>
-              ✦ BRIDE ✦
-            </div>
-            {/* LED strips */}
-            <div style={{position:"absolute",bottom:`${(venue?.floorH||18)+1}%`,left:0,right:0,height:4,background:`linear-gradient(90deg,${P},${A},${P},${A},${P})`,boxShadow:`0 0 12px ${A}`}}/>
-            {/* Glow orbs */}
-            {[15,35,55,75,85].map((x,i)=>(
-              <div key={i} style={{position:"absolute",top:`${30+Math.sin(i)*15}%`,left:`${x}%`,width:10,height:10,borderRadius:"50%",background:i%2===0?P:A,boxShadow:`0 0 12px ${i%2===0?P:A}`,opacity:0.8}}/>
-            ))}
-          </>
-        )}
-
+    <>
+      {/* Streamers */}
+      {[0,1,2,3,4,5].map(i=>(
+        <div key={`sl${i}`} style={{position:"absolute",top:0,left:`${i*7}%`,width:3,height:`${50+i*3}%`,
+          background:`linear-gradient(180deg,${c1},transparent)`,opacity:0.5,borderRadius:2}}/>
+      ))}
+      {[0,1,2,3,4,5].map(i=>(
+        <div key={`sr${i}`} style={{position:"absolute",top:0,right:`${i*7}%`,width:3,height:`${50+i*3}%`,
+          background:`linear-gradient(180deg,${c1},transparent)`,opacity:0.5,borderRadius:2}}/>
+      ))}
+      {/* BRIDE letter balloons */}
+      <div style={{position:"absolute",top:"9%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:5,zIndex:10}}>
+        {"BRIDE".split("").map((l,i)=>(
+          <div key={i} style={{
+            width:38,height:46,borderRadius:"50% 50% 48% 52%/55% 55% 45% 45%",
+            background:`radial-gradient(circle at 32% 32%,${c4||"#fff"},${c1})`,
+            display:"flex",alignItems:"center",justifyContent:"center",
+            fontSize:15,fontWeight:900,color:"rgba(0,0,0,0.5)",
+            fontFamily:"'Playfair Display',Georgia,serif",
+            boxShadow:`2px 4px 12px rgba(0,0,0,0.28),inset -2px -2px 6px rgba(0,0,0,0.1)`,
+            border:`1.5px solid ${c3}`,
+          }}>{l}</div>
+        ))}
       </div>
-    </div>
+      {/* Ring accent */}
+      <div style={{position:"absolute",top:"7%",left:"50%",marginLeft:116,fontSize:26,
+        filter:"drop-shadow(2px 3px 6px rgba(0,0,0,0.3))"}}>💍</div>
+      {/* Floor balloons */}
+      {balloons.map((b,i)=>(
+        <div key={i} style={{
+          position:"absolute",left:b.l,bottom:b.b,width:b.s,height:b.s*1.18,
+          borderRadius:"50% 50% 48% 52%/55% 55% 45% 45%",
+          background:`radial-gradient(circle at 33% 33%,${c4||"#fff"},${c1})`,
+          boxShadow:`2px 4px 10px rgba(0,0,0,0.22),inset -2px -3px 8px rgba(0,0,0,0.1)`,
+          opacity:0.93,
+        }}/>
+      ))}
+    </>
   );
 }
 
-// ─── Main Component ────────────────────────────────────────────────────────────
-export default function DecorTab({ groupSize }) {
-  const [photo,   setPhoto]   = useState(null);   // uploaded space photo (data URL)
-  const [palette, setPalette] = useState(PALETTES[0]);
-  const [style,   setStyle]   = useState(STYLES[0]);
-  const fileRef = useRef();
+function PinkOverlay({ vibe }) {
+  const [c1, c2, c3, c4] = vibe.colors;
+  const arch = [
+    {l:"0%",t:"58%",s:44},{l:"7%",t:"40%",s:50},{l:"14%",t:"26%",s:54},
+    {l:"22%",t:"15%",s:58},{l:"31%",t:"8%",s:56},{l:"41%",t:"3%",s:60},
+    {l:"50%",t:"1%",s:62},{l:"59%",t:"3%",s:60},{l:"68%",t:"8%",s:56},
+    {l:"77%",t:"15%",s:54},{l:"85%",t:"26%",s:50},{l:"91%",t:"40%",s:46},{l:"96%",t:"58%",s:42},
+  ];
+  const archColors = [c1,c2,c3,c4,c1,c2,c3,c4,c1,c2,c3,c4,c1];
+  return (
+    <>
+      {/* Fringe curtain */}
+      {Array.from({length:16}).map((_,i)=>(
+        <div key={`f${i}`} style={{
+          position:"absolute",top:0,left:`${i*6.5}%`,width:5,
+          height:`${62+Math.sin(i)*12}%`,
+          background:`linear-gradient(180deg,${c1},${c2},${c3}88)`,
+          opacity:0.55,borderRadius:"0 0 4px 4px",
+        }}/>
+      ))}
+      {/* Balloon garland arch */}
+      {arch.map((p,i)=>(
+        <div key={i} style={{
+          position:"absolute",left:p.l,top:p.t,width:p.s,height:p.s*1.1,
+          borderRadius:"50% 50% 48% 52%/55% 55% 45% 45%",
+          background:`radial-gradient(circle at 33% 30%,rgba(255,255,255,0.55),${archColors[i]})`,
+          boxShadow:`2px 4px 10px rgba(0,0,0,0.25),inset -2px -3px 8px rgba(0,0,0,0.15)`,
+          transform:"translate(-50%,-50%)",zIndex:10,
+        }}/>
+      ))}
+      {/* BACH banner */}
+      <div style={{
+        position:"absolute",top:"22%",left:"50%",transform:"translateX(-50%)",
+        background:`linear-gradient(135deg,${c1},${c2})`,
+        color:WHITE,fontFamily:"'Playfair Display',Georgia,serif",
+        fontSize:22,fontWeight:900,padding:"8px 28px",borderRadius:6,
+        boxShadow:"0 4px 16px rgba(0,0,0,0.3)",letterSpacing:8,
+        border:"2px solid rgba(255,255,255,0.4)",zIndex:11,
+        textShadow:"1px 1px 4px rgba(0,0,0,0.3)",
+      }}>BACH</div>
+      {/* Table setup */}
+      <div style={{
+        position:"absolute",bottom:0,left:"5%",right:"5%",height:"20%",
+        background:"linear-gradient(0deg,rgba(0,0,0,0.22),transparent)",
+        display:"flex",alignItems:"flex-end",justifyContent:"center",gap:14,paddingBottom:8,
+      }}>
+        {["🥂","🎂","🌸","🥂","🌸","🎂","🥂"].map((e,i)=>(
+          <span key={i} style={{fontSize:20,filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.4))"}}>{e}</span>
+        ))}
+      </div>
+    </>
+  );
+}
 
-  const shopItems = SHOP_ITEMS[style.id] || [];
+function BohoOverlay({ vibe }) {
+  const [c1, c2, c3, c4] = vibe.colors;
+  return (
+    <>
+      {/* Warm color tint */}
+      <div style={{position:"absolute",inset:0,background:`linear-gradient(135deg,${c1}20,${c2}15,transparent)`,pointerEvents:"none"}}/>
+      {/* Pampas left */}
+      <div style={{position:"absolute",bottom:0,left:0,width:"16%",height:"65%",display:"flex",flexDirection:"column",justifyContent:"flex-end",paddingLeft:6,gap:2}}>
+        {Array.from({length:10}).map((_,i)=>(
+          <div key={i} style={{height:3,background:c4,borderRadius:4,opacity:0.65+i*0.03,
+            width:`${55+Math.sin(i*0.9)*28}%`,transform:`rotate(${-14+i*2.5}deg)`,
+            transformOrigin:"left center",marginBottom:i%3===0?5:1}}/>
+        ))}
+        <span style={{fontSize:26,marginBottom:-4,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>🌾</span>
+      </div>
+      {/* Pampas right */}
+      <div style={{position:"absolute",bottom:0,right:0,width:"16%",height:"65%",display:"flex",flexDirection:"column",justifyContent:"flex-end",alignItems:"flex-end",paddingRight:6,gap:2}}>
+        {Array.from({length:10}).map((_,i)=>(
+          <div key={i} style={{height:3,background:c4,borderRadius:4,opacity:0.65+i*0.03,
+            width:`${55+Math.sin(i*0.9)*28}%`,transform:`rotate(${14-i*2.5}deg)`,
+            transformOrigin:"right center",marginBottom:i%3===0?5:1}}/>
+        ))}
+        <span style={{fontSize:26,marginBottom:-4,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>🌾</span>
+      </div>
+      {/* Gold BRIDE balloons */}
+      <div style={{position:"absolute",top:"10%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:7,zIndex:10}}>
+        {"BRIDE".split("").map((l,i)=>(
+          <div key={i} style={{
+            width:34,height:42,borderRadius:"50% 50% 48% 52%/55% 55% 45% 45%",
+            background:`radial-gradient(circle at 30% 30%,#FFE88A,${c3})`,
+            display:"flex",alignItems:"center",justifyContent:"center",
+            fontSize:13,fontWeight:900,color:"rgba(0,0,0,0.55)",
+            fontFamily:"'Playfair Display',Georgia,serif",
+            boxShadow:`2px 4px 12px rgba(0,0,0,0.3),inset -2px -2px 6px rgba(0,0,0,0.15)`,
+          }}>{l}</div>
+        ))}
+      </div>
+      {/* Champagne + florals */}
+      <div style={{position:"absolute",bottom:"8%",left:"50%",transform:"translateX(-50%)",textAlign:"center"}}>
+        <div style={{display:"flex",gap:6,justifyContent:"center"}}>
+          {["🥂","🥂","🥂"].map((e,i)=><span key={i} style={{fontSize:22,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>{e}</span>)}
+        </div>
+        <div style={{display:"flex",gap:10,justifyContent:"center",marginTop:3}}>
+          {["🌸","✨","🌸"].map((e,i)=><span key={i} style={{fontSize:18}}>{e}</span>)}
+        </div>
+      </div>
+      <div style={{position:"absolute",bottom:"10%",left:"22%",fontSize:18}}>🕯️</div>
+      <div style={{position:"absolute",bottom:"10%",right:"22%",fontSize:18}}>🕯️</div>
+    </>
+  );
+}
+
+function DecorationOverlay({ pkg, vibe }) {
+  if (!pkg || !vibe) return null;
+  if (pkg.id === "classic") return <ClassicOverlay vibe={vibe}/>;
+  if (pkg.id === "pink")    return <PinkOverlay    vibe={vibe}/>;
+  if (pkg.id === "boho")    return <BohoOverlay    vibe={vibe}/>;
+  return null;
+}
+
+// ─── Package card ─────────────────────────────────────────────────────────────
+function PackageCard({ pkg, selected, onClick }) {
+  return (
+    <button onClick={onClick} style={{
+      background:selected?pkg.bg:WHITE,
+      border:selected?`2.5px solid ${pkg.border}`:`1.5px solid ${BORDER}`,
+      borderRadius:18,padding:"14px 12px",cursor:"pointer",textAlign:"left",
+      transition:"all 0.2s",flex:1,
+      boxShadow:selected?`0 4px 18px ${pkg.border}44`:"none",
+    }}>
+      <div style={{fontSize:24,marginBottom:5}}>{pkg.emoji}</div>
+      <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:selected?pkg.headlineColor:DARK,marginBottom:2}}>{pkg.name}</div>
+      <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:6}}>{pkg.tagline}</div>
+      <div style={{fontSize:15,fontWeight:900,color:selected?pkg.headlineColor:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{pkg.price}</div>
+    </button>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+export default function DecorTab({ groupSize }) {
+  const fileRef  = useRef();
+  const [photo,  setPhoto]  = useState(null);
+  const [pkgId,  setPkgId]  = useState(null);
+  const [vibeId, setVibeId] = useState(null);
+
+  const pkg  = PACKAGES.find(p => p.id === pkgId);
+  const vibe = pkg?.vibes.find(v => v.id === vibeId);
 
   const handleFile = e => {
-    const file = e.target.files[0];
-    if (!file) return;
+    const file = e.target.files[0]; if (!file) return;
     const reader = new FileReader();
     reader.onload = ev => setPhoto(ev.target.result);
     reader.readAsDataURL(file);
   };
 
-  // Use a fake venue shell so SceneCanvas still works but with photo as bg
-  const photoVenue = photo ? {
-    sky: `url("${photo}") center/cover no-repeat`,
-    floor: "transparent", floorH: 0,
-  } : null;
+  const selectPkg = id => {
+    setPkgId(id);
+    setVibeId(PACKAGES.find(p => p.id === id)?.vibes[0]?.id || null);
+  };
 
   return (
-    <div style={{paddingBottom:24}}>
+    <div style={{paddingBottom:32}}>
 
       {/* ── Hero ── */}
       <div style={{
-        borderRadius:22, padding:"20px 18px",
+        borderRadius:22,padding:"22px 18px",marginBottom:18,textAlign:"center",
         background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`,
-        border:`1.5px solid ${MID}`, marginBottom:16, textAlign:"center",
+        border:`1.5px solid ${MID}`,
       }}>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,letterSpacing:"1.5px",textTransform:"uppercase",marginBottom:6}}>
-          Bach Hotline
-        </div>
+        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,letterSpacing:"1.5px",textTransform:"uppercase",marginBottom:6}}>Bach Hotline</div>
         <h2 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:22,fontWeight:900,margin:"0 0 6px",color:DARK}}>
-          <em style={{color:HOT,fontStyle:"italic"}}>Decor Studio</em>
+          <em style={{color:HOT}}>Decor Studio</em>
         </h2>
-        <p style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",margin:0,opacity:0.85}}>
-          Upload your space — see your party decor come to life
+        <p style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",margin:0,opacity:0.85,lineHeight:1.6}}>
+          Upload your space · pick a package · see the vibe before you buy
         </p>
       </div>
 
-      {/* ── Step 1: Upload Photo ── */}
-      <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
-          1. Upload your space
-        </div>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:12,opacity:0.8}}>
-          Take a photo of your venue, backyard, hotel room — anywhere you're hosting
+      {/* ── Step 1: Upload ── */}
+      <div style={{marginBottom:18}}>
+        <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+          <div style={{width:26,height:26,borderRadius:"50%",background:photo?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:photo?WHITE:HOT,flexShrink:0}}>1</div>
+          <div>
+            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Upload Your Space</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Bedroom, living room, kitchen — any room works</div>
+          </div>
         </div>
 
-        {/* Upload area */}
-        <input ref={fileRef} type="file" accept="image/*" onChange={handleFile} style={{display:"none"}}/>
         {!photo ? (
-          <button
-            onClick={()=>fileRef.current.click()}
-            style={{
-              width:"100%", aspectRatio:"16/9",
-              border:`2px dashed ${HOT}`, borderRadius:16,
-              background:SOFT, cursor:"pointer",
-              display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",
-              gap:10,
-            }}
-          >
-            <div style={{fontSize:40}}>📸</div>
-            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:HOT}}>
-              Tap to upload a photo
-            </div>
-            <div style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
-              JPG, PNG or HEIC from your camera roll
-            </div>
-          </button>
+          <div onClick={()=>fileRef.current?.click()} style={{
+            border:`2px dashed ${BORDER}`,borderRadius:18,padding:"38px 20px",
+            textAlign:"center",background:"#fdf8fb",cursor:"pointer",
+          }}>
+            <div style={{fontSize:46,marginBottom:10}}>📷</div>
+            <div style={{fontSize:14,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>Tap to upload a photo</div>
+            <div style={{fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>Your room becomes the canvas</div>
+          </div>
         ) : (
-          <div style={{position:"relative",borderRadius:16,overflow:"hidden",marginBottom:4}}>
-            <img src={photo} alt="Your space" style={{width:"100%",display:"block",borderRadius:16,maxHeight:220,objectFit:"cover"}}/>
-            <button
-              onClick={()=>{ setPhoto(null); fileRef.current.value=""; }}
-              style={{position:"absolute",top:10,right:10,background:"rgba(255,255,255,0.9)",border:"none",borderRadius:"50%",width:30,height:30,cursor:"pointer",fontSize:16,display:"flex",alignItems:"center",justifyContent:"center",color:PUNCH,fontWeight:700}}
-            >×</button>
+          <div style={{position:"relative",borderRadius:18,overflow:"hidden",aspectRatio:"4/3"}}>
+            <img src={photo} alt="Your space" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/>
+            <button onClick={()=>{setPhoto(null);setPkgId(null);setVibeId(null);}} style={{
+              position:"absolute",top:10,right:10,background:"rgba(0,0,0,0.55)",border:"none",
+              borderRadius:"50%",width:32,height:32,cursor:"pointer",color:WHITE,fontSize:16,
+              display:"flex",alignItems:"center",justifyContent:"center",
+            }}>×</button>
+            <div style={{position:"absolute",bottom:10,left:10,background:"rgba(0,0,0,0.5)",borderRadius:8,padding:"4px 10px",fontSize:11,color:WHITE,fontFamily:"'DM Sans',sans-serif",fontWeight:600}}>
+              ✓ Photo uploaded — choose a package below
+            </div>
           </div>
         )}
+        <input ref={fileRef} type="file" accept="image/*" style={{display:"none"}} onChange={handleFile}/>
       </div>
 
-      {/* ── Live Preview (only after photo upload) ── */}
+      {/* ── Step 2: Package ── */}
       {photo && (
-        <div style={{marginBottom:12}}>
-          <SceneCanvas venue={photoVenue} palette={palette} style={style} />
-          <div style={{textAlign:"center",marginTop:6,fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
-            {style.emoji} {style.label} · <span style={{color:palette.primary,fontWeight:700}}>●</span> {palette.label}
+        <div style={{marginBottom:18}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+            <div style={{width:26,height:26,borderRadius:"50%",background:pkgId?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:pkgId?WHITE:HOT,flexShrink:0}}>2</div>
+            <div>
+              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Choose a Decor Package</div>
+              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Three complete setups — tap to compare</div>
+            </div>
+          </div>
+          <div style={{display:"flex",gap:8}}>
+            {PACKAGES.map(p=>(
+              <PackageCard key={p.id} pkg={p} selected={pkgId===p.id} onClick={()=>selectPkg(p.id)}/>
+            ))}
           </div>
         </div>
       )}
 
-      {/* ── Step 2: Pick a Style ── */}
-      <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
-          {photo ? "2." : "2."} Pick your vibe
-        </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-          {STYLES.map(s=>(
-            <button key={s.id} onClick={()=>setStyle(s)} style={{
-              background:style.id===s.id?SOFT:WHITE,
-              border:style.id===s.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-              borderRadius:12, padding:"10px", cursor:"pointer", textAlign:"left", transition:"all 0.15s",
-            }}>
-              <div style={{fontSize:22,marginBottom:3}}>{s.emoji}</div>
-              <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:style.id===s.id?HOT:DARK}}>{s.label}</div>
-              <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:2}}>{s.desc}</div>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Step 3: Pick a Palette ── */}
-      <div style={{...C, marginBottom:16}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
-          3. Choose your colors
-        </div>
-        <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
-          {PALETTES.map(p=>(
-            <button key={p.id} onClick={()=>setPalette(p)} style={{
-              display:"flex",alignItems:"center",gap:8,
-              padding:"8px 12px", borderRadius:50,
-              border:palette.id===p.id?`2px solid ${p.primary}`:`1.5px solid ${BORDER}`,
-              background:palette.id===p.id?p.secondary:WHITE,
-              cursor:"pointer", transition:"all 0.15s",
-            }}>
-              <div style={{display:"flex",gap:3}}>
-                <div style={{width:14,height:14,borderRadius:"50%",background:p.primary}}/>
-                <div style={{width:14,height:14,borderRadius:"50%",background:p.accent}}/>
-              </div>
-              <span style={{fontSize:11,fontWeight:700,fontFamily:"'DM Sans',sans-serif",color:palette.id===p.id?p.dark:DARK,whiteSpace:"nowrap"}}>{p.label}</span>
-            </button>
-          ))}
-        </div>
-        {!photo && (
-          <div style={{marginTop:12,padding:"10px 12px",borderRadius:10,background:SOFT,border:`1px solid ${MID}`,fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",textAlign:"center"}}>
-            📸 Upload your space above to see the preview
+      {/* ── Step 3: Vibe ── */}
+      {photo && pkg && (
+        <div style={{marginBottom:18}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+            <div style={{width:26,height:26,borderRadius:"50%",background:vibeId?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:vibeId?WHITE:HOT,flexShrink:0}}>3</div>
+            <div>
+              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Pick Your Color Vibe</div>
+              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>{pkg.name} palette options</div>
+            </div>
           </div>
-        )}
-      </div>
-
-      {/* ── Shop This Look ── */}
-      <div style={{...C, background:SOFT, border:`1.5px solid ${MID}`, marginBottom:12}}>
-        <div style={{fontSize:15,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
-          🛍 Shop This Look
-        </div>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:14,opacity:0.85}}>
-          Everything you need for {style.label.toLowerCase()} vibes
-        </div>
-        <div style={{display:"flex",flexDirection:"column",gap:8}}>
-          {shopItems.map((item,i)=>(
-            <a key={i} href={item.url} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-              <div style={{
-                display:"flex",alignItems:"center",justifyContent:"space-between",
-                padding:"10px 12px",background:WHITE,borderRadius:12,border:`1px solid ${BORDER}`,
+          <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+            {pkg.vibes.map(v=>(
+              <button key={v.id} onClick={()=>setVibeId(v.id)} style={{
+                padding:"9px 16px",borderRadius:50,cursor:"pointer",
+                border:vibeId===v.id?`2px solid ${pkg.border}`:`1.5px solid ${BORDER}`,
+                background:vibeId===v.id?pkg.bg:WHITE,
+                fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,
+                color:vibeId===v.id?pkg.headlineColor:DARK,
+                transition:"all 0.15s",display:"flex",alignItems:"center",gap:6,
               }}>
-                <div style={{display:"flex",alignItems:"center",gap:10}}>
-                  <span style={{fontSize:20}}>{item.icon}</span>
-                  <div>
-                    <div style={{fontSize:12,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>{item.name}</div>
-                    <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",marginTop:1,fontWeight:600}}>Bach Hotline Shop</div>
-                  </div>
-                </div>
-                <div style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,borderRadius:20,padding:"5px 12px",fontSize:11,fontWeight:700,fontFamily:"'DM Sans',sans-serif",flexShrink:0}}>
-                  Shop →
-                </div>
-              </div>
-            </a>
-          ))}
+                <span style={{display:"flex",gap:2}}>
+                  {v.colors.slice(0,3).map((c,i)=>(
+                    <span key={i} style={{width:10,height:10,borderRadius:"50%",background:c,border:"1px solid rgba(0,0,0,0.12)",display:"inline-block"}}/>
+                  ))}
+                </span>
+                {v.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* ── Share look ── */}
-      <div style={{textAlign:"center",padding:"12px",borderRadius:14,background:WHITE,border:`1.5px solid ${BORDER}`}}>
-        <div style={{fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:8}}>Love this vibe? Share it with your group</div>
-        <button
-          onClick={()=>{
-            const text = `Check out our bachelorette party vibe: ${style.label} in ${palette.label} colors 🎉`;
-            if (navigator.share) { navigator.share({ title:"Our Bach Party Vibe", text }); }
-            else if (navigator.clipboard) { navigator.clipboard.writeText(text); alert("Copied to clipboard!"); }
-          }}
-          style={{...BP, fontSize:12, padding:"10px 24px"}}
-        >
-          📲 Share This Vibe
-        </button>
-      </div>
+      {/* ── Step 4: Preview ── */}
+      {photo && pkg && vibe && (
+        <div style={{marginBottom:18}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+            <div style={{width:26,height:26,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:WHITE,flexShrink:0}}>4</div>
+            <div>
+              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Your Room, Transformed</div>
+              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>{pkg.name} · {vibe.label}</div>
+            </div>
+          </div>
 
+          {/* Canvas */}
+          <div style={{position:"relative",borderRadius:18,overflow:"hidden",aspectRatio:"4/3",boxShadow:"0 8px 32px rgba(0,0,0,0.18)",marginBottom:14}}>
+            <img src={photo} alt="Your space" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/>
+            <div style={{position:"absolute",inset:0}}>
+              <DecorationOverlay pkg={pkg} vibe={vibe}/>
+            </div>
+            <div style={{
+              position:"absolute",top:12,left:12,
+              background:`linear-gradient(135deg,${HOT},${PUNCH})`,
+              color:WHITE,fontSize:10,fontWeight:700,fontFamily:"'DM Sans',sans-serif",
+              padding:"4px 12px",borderRadius:20,boxShadow:"0 2px 8px rgba(0,0,0,0.25)",
+            }}>
+              {pkg.emoji} {pkg.name} · {vibe.label}
+            </div>
+          </div>
+
+          {/* What's included */}
+          <div style={{padding:"16px",borderRadius:16,background:pkg.bg,border:`1.5px solid ${pkg.border}33`,marginBottom:14}}>
+            <div style={{fontSize:11,fontWeight:700,color:pkg.headlineColor,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:10}}>
+              {pkg.emoji} What's Included
+            </div>
+            {pkg.includes.map((item,i)=>(
+              <div key={i} style={{display:"flex",gap:8,marginBottom:7,fontFamily:"'DM Sans',sans-serif",fontSize:12,color:DARK}}>
+                <span style={{color:pkg.headlineColor,fontWeight:700,flexShrink:0}}>✦</span>
+                <span>{item}</span>
+              </div>
+            ))}
+            <div style={{marginTop:14,padding:"10px 14px",borderRadius:12,background:"rgba(255,255,255,0.75)",border:`1px solid ${pkg.border}33`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+              <div>
+                <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:0.8}}>Package Price</div>
+                <div style={{fontSize:22,fontWeight:900,color:pkg.headlineColor,fontFamily:"'DM Sans',sans-serif"}}>{pkg.price}</div>
+              </div>
+              <div style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",textAlign:"right"}}>
+                Setup for<br/><span style={{fontWeight:700,color:DARK}}>{groupSize} ladies</span>
+              </div>
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div style={{display:"flex",flexDirection:"column",gap:10}}>
+            <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+              <button style={{...BP,width:"100%",padding:"14px",fontSize:14}}>
+                Shop This Package on Etsy →
+              </button>
+            </a>
+            <button style={{...BS,width:"100%",padding:"12px",fontSize:13}}>
+              💌 Request a Custom Setup Quote
+            </button>
+          </div>
+
+          <div style={{textAlign:"center",marginTop:12,fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
+            Tap a different package above to compare looks
+          </div>
+        </div>
+      )}
     </div>
   );
 }
