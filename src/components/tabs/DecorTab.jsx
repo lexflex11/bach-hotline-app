@@ -413,6 +413,262 @@ function GarlandPreview({ selectedColors, arrangement }) {
   );
 }
 
+// ─── Tableware data ───────────────────────────────────────────────────────────
+// 💡 TO ADD YOUR REAL ETSY PHOTOS: replace the `image: null` lines below with
+//    your Etsy listing image URL wrapped in the proxy, like:
+//    image: "https://images.weserv.nl/?url=i.etsystatic.com/YOUR_IMAGE_ID.jpg"
+const TABLEWARE = [
+  // ── Plates ──────────────────────────────────────────────────────────────────
+  {
+    id:"plate-blush",    type:"plate", name:"Blush Pink Plates",
+    desc:"12 ct · 9in",  price:"$12.99",
+    image: null,         bg:"#F4A7B9", accent:"#E91E8C",
+    tags:["blush","hotpink","mauve","lavender","confetti"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"plate-gold",     type:"plate", name:"Gold Foil Plates",
+    desc:"12 ct · 9in",  price:"$13.99",
+    image: null,         bg:"#FFD700", accent:"#B8860B",
+    tags:["gold","champagne","terracotta"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"plate-black",    type:"plate", name:"Matte Black Plates",
+    desc:"12 ct · 9in",  price:"$11.99",
+    image: null,         bg:"#1A1A1A", accent:"#444",
+    tags:["black","silver","purple"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"plate-white",    type:"plate", name:"Pearl White Plates",
+    desc:"12 ct · 9in",  price:"$10.99",
+    image: null,         bg:"#F8F8F8", accent:"#ddd",
+    tags:["white","silver","champagne","lavender"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"plate-cowprint", type:"plate", name:"Cow Print Plates",
+    desc:"12 ct · 9in",  price:"$14.99",
+    image: null,         bg:"#fff", accent:"#1a1a1a",
+    tags:["cow","dalmatian","white"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"plate-sage",     type:"plate", name:"Sage Green Plates",
+    desc:"12 ct · 9in",  price:"$11.99",
+    image: null,         bg:"#8FAF8F", accent:"#5a7a5a",
+    tags:["sage","mint","terracotta","champagne"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  // ── Cups ────────────────────────────────────────────────────────────────────
+  {
+    id:"cup-blush",      type:"cup",  name:"Blush Pink Cups",
+    desc:"25 ct · 16oz", price:"$9.99",
+    image: null,         bg:"#F4A7B9", accent:"#E91E8C",
+    tags:["blush","hotpink","mauve","lavender","confetti"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"cup-gold",       type:"cup",  name:"Gold Foil Cups",
+    desc:"25 ct · 16oz", price:"$10.99",
+    image: null,         bg:"#FFD700", accent:"#B8860B",
+    tags:["gold","champagne","terracotta"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"cup-black",      type:"cup",  name:"Matte Black Cups",
+    desc:"25 ct · 16oz", price:"$8.99",
+    image: null,         bg:"#1A1A1A", accent:"#444",
+    tags:["black","silver","purple","blue"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"cup-white",      type:"cup",  name:"Pearl White Cups",
+    desc:"25 ct · 16oz", price:"$7.99",
+    image: null,         bg:"#F8F8F8", accent:"#ddd",
+    tags:["white","silver","champagne","lavender","blush"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"cup-cowprint",   type:"cup",  name:"Cow Print Cups",
+    desc:"25 ct · 16oz", price:"$11.99",
+    image: null,         bg:"#fff", accent:"#1a1a1a",
+    tags:["cow","dalmatian","white"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+  {
+    id:"cup-holographic",type:"cup",  name:"Holographic Cups",
+    desc:"25 ct · 16oz", price:"$12.99",
+    image: null,         bg:"linear-gradient(135deg,#F4A7B9,#CE93D8,#81D4FA,#FFD700)", accent:"#E91E8C",
+    tags:["silver","lavender","blue","mint","confetti"],
+    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+  },
+];
+
+function matchTableware(selectedColorIds) {
+  if (!selectedColorIds.length) return [];
+  // Score each tableware item: +1 per matching tag
+  const scored = TABLEWARE.map(item => ({
+    ...item,
+    score: item.tags.filter(t => selectedColorIds.includes(t)).length,
+  }));
+  // Sort by score desc, take top 4 (2 plates + 2 cups preferred)
+  const plates = scored.filter(i=>i.type==="plate").sort((a,b)=>b.score-a.score).slice(0,2);
+  const cups   = scored.filter(i=>i.type==="cup"  ).sort((a,b)=>b.score-a.score).slice(0,2);
+  return [...plates, ...cups].filter(i=>i.score>0 || selectedColorIds.length>=1);
+}
+
+// CSS plate/cup visual (used when image is null)
+function TablewearVisual({ item }) {
+  if (item.image) {
+    return (
+      <img
+        src={item.image} alt={item.name}
+        style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}
+        onError={e=>{e.target.style.display="none";}}
+      />
+    );
+  }
+  if (item.type === "plate") {
+    const isCow = item.id.includes("cow");
+    return (
+      <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",background:"#fdf5f8"}}>
+        <div style={{
+          width:64,height:64,borderRadius:"50%",
+          background:item.bg,
+          border:`3px solid ${item.accent}44`,
+          boxShadow:`0 2px 12px rgba(0,0,0,0.12),inset 0 0 0 8px rgba(255,255,255,0.25)`,
+          position:"relative",overflow:"hidden",
+          display:"flex",alignItems:"center",justifyContent:"center",
+        }}>
+          {isCow && (
+            <>
+              <div style={{position:"absolute",top:"18%",left:"22%",width:10,height:13,borderRadius:"40%",background:"#1a1a1a",opacity:0.7}}/>
+              <div style={{position:"absolute",top:"50%",left:"55%",width:12,height:10,borderRadius:"40%",background:"#1a1a1a",opacity:0.7}}/>
+              <div style={{position:"absolute",top:"65%",left:"20%",width:8,height:11,borderRadius:"40%",background:"#1a1a1a",opacity:0.7}}/>
+            </>
+          )}
+          <div style={{width:48,height:48,borderRadius:"50%",border:`2px solid ${item.accent}33`,position:"absolute"}}/>
+        </div>
+      </div>
+    );
+  }
+  // Cup visual
+  return (
+    <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",background:"#fdf5f8"}}>
+      <div style={{position:"relative",width:44,height:58}}>
+        {/* Cup body */}
+        <div style={{
+          position:"absolute",bottom:0,left:0,right:0,height:52,
+          background:item.bg,
+          borderRadius:"4px 4px 10px 10px",
+          clipPath:"polygon(8% 0%,92% 0%,100% 100%,0% 100%)",
+          boxShadow:`0 2px 10px rgba(0,0,0,0.15)`,
+          border:`1.5px solid ${item.accent}55`,
+        }}/>
+        {/* Rim */}
+        <div style={{
+          position:"absolute",top:0,left:-2,right:-2,height:8,
+          background:item.accent,borderRadius:4,opacity:0.6,
+        }}/>
+        {/* Shine */}
+        <div style={{
+          position:"absolute",bottom:6,left:"18%",width:6,height:28,
+          background:"rgba(255,255,255,0.35)",borderRadius:4,
+          transform:"rotate(-5deg)",
+        }}/>
+      </div>
+    </div>
+  );
+}
+
+function TablewearRecommendations({ selectedColors }) {
+  const matches = matchTableware(selectedColors);
+  if (!matches.length || !selectedColors.length) return null;
+
+  const plates = matches.filter(i=>i.type==="plate");
+  const cups   = matches.filter(i=>i.type==="cup");
+
+  return (
+    <div style={{marginTop:20,paddingTop:18,borderTop:`1.5px solid ${SOFT}`}}>
+      <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:14}}>
+        <div style={{fontSize:16}}>🍽️</div>
+        <div>
+          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>
+            Matching Tableware
+          </div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.85}}>
+            Coordinated with your garland colors
+          </div>
+        </div>
+      </div>
+
+      {/* Plates */}
+      {plates.length > 0 && (
+        <div style={{marginBottom:14}}>
+          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Plates</div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+            {plates.map(item=>(
+              <a key={item.id} href={item.etsyUrl} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+                <div style={{
+                  background:WHITE,border:`1.5px solid ${BORDER}`,borderRadius:14,
+                  overflow:"hidden",cursor:"pointer",transition:"all 0.15s",
+                }}>
+                  <div style={{height:90,position:"relative"}}>
+                    <TablewearVisual item={item}/>
+                    <div style={{
+                      position:"absolute",top:6,right:6,background:`linear-gradient(135deg,${HOT},${PUNCH})`,
+                      color:WHITE,fontSize:8,fontWeight:700,fontFamily:"'DM Sans',sans-serif",
+                      padding:"2px 7px",borderRadius:10,
+                    }}>Shop →</div>
+                  </div>
+                  <div style={{padding:"8px 10px"}}>
+                    <div style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.3}}>{item.name}</div>
+                    <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{item.desc}</div>
+                    <div style={{fontSize:12,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginTop:3}}>{item.price}</div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Cups */}
+      {cups.length > 0 && (
+        <div style={{marginBottom:4}}>
+          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Cups</div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+            {cups.map(item=>(
+              <a key={item.id} href={item.etsyUrl} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+                <div style={{
+                  background:WHITE,border:`1.5px solid ${BORDER}`,borderRadius:14,
+                  overflow:"hidden",cursor:"pointer",transition:"all 0.15s",
+                }}>
+                  <div style={{height:90,position:"relative"}}>
+                    <TablewearVisual item={item}/>
+                    <div style={{
+                      position:"absolute",top:6,right:6,background:`linear-gradient(135deg,${HOT},${PUNCH})`,
+                      color:WHITE,fontSize:8,fontWeight:700,fontFamily:"'DM Sans',sans-serif",
+                      padding:"2px 7px",borderRadius:10,
+                    }}>Shop →</div>
+                  </div>
+                  <div style={{padding:"8px 10px"}}>
+                    <div style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.3}}>{item.name}</div>
+                    <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{item.desc}</div>
+                    <div style={{fontSize:12,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginTop:3}}>{item.price}</div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function GarlandBuilder() {
   const [mode,        setMode]        = useState("diy");      // diy | preinflated
   const [arrangement, setArrangement] = useState("mixed");    // mixed | colorblock
@@ -556,6 +812,9 @@ function GarlandBuilder() {
           Order Custom Garland on Etsy →
         </button>
       </a>
+
+      {/* Matching tableware — appears after colors are selected */}
+      <TablewearRecommendations selectedColors={selected}/>
     </div>
   );
 }
