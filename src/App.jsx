@@ -67,7 +67,7 @@ export default function App() {
         {tab==="dayof"   && <DayOfTab />}
         {tab==="split"   && <SplitTab groupSize={groupSize} user={user} onSignUp={()=>setUser(null)} />}
         {tab==="shop"    && <ShopTab cart={cart} setCart={setCart} />}
-        {tab==="alerts"  && <AlertsTab />}
+        {tab==="alerts"  && <AlertsTab user={user} onSignUp={()=>setUser(null)} />}
         {tab==="decor"   && <DecorTab groupSize={groupSize} />}
         {tab==="profile" && <ProfileTab user={user} onLogout={()=>setUser(null)} cart={cart} />}
         {tab==="polls"   && <PollsTab user={user} onSignUp={()=>setUser(null)} />}
