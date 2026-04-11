@@ -310,6 +310,256 @@ function DecorationOverlay({ pkg, vibe }) {
   return null;
 }
 
+// ─── Balloon Garland Builder ──────────────────────────────────────────────────
+const BALLOON_COLORS = [
+  { id:"blush",      label:"Blush",       color:"#F4A7B9", dot:"#F4A7B9" },
+  { id:"hotpink",    label:"Hot Pink",    color:"#E91E8C", dot:"#E91E8C" },
+  { id:"white",      label:"White",       color:"#F8F8F8", dot:"#F0F0F0" },
+  { id:"champagne",  label:"Champagne",   color:"#F5DEB3", dot:"#F5DEB3" },
+  { id:"gold",       label:"Gold",        color:"#FFD700", dot:"#FFD700" },
+  { id:"silver",     label:"Silver",      color:"#D0D0D0", dot:"#C0C0C0" },
+  { id:"black",      label:"Black",       color:"#1A1A1A", dot:"#111"    },
+  { id:"red",        label:"Red",         color:"#E53935", dot:"#E53935" },
+  { id:"purple",     label:"Purple",      color:"#9C27B0", dot:"#9C27B0" },
+  { id:"lavender",   label:"Lavender",    color:"#CE93D8", dot:"#CE93D8" },
+  { id:"blue",       label:"Blue",        color:"#1E88E5", dot:"#1E88E5" },
+  { id:"mint",       label:"Mint",        color:"#80CBC4", dot:"#80CBC4" },
+  { id:"sage",       label:"Sage",        color:"#8FAF8F", dot:"#8FAF8F" },
+  { id:"terracotta", label:"Terracotta",  color:"#C4956A", dot:"#C4956A" },
+  { id:"mauve",      label:"Mauve",       color:"#C48B9F", dot:"#C48B9F" },
+  { id:"cow",        label:"Cow Print",   color:"#fff",    dot:"#fff",   pattern:"cow"   },
+  { id:"dalmatian",  label:"Dalmatian",   color:"#fff",    dot:"#fff",   pattern:"dalmatian" },
+  { id:"confetti",   label:"Confetti",    color:"#FFB6C1", dot:"#FFB6C1",pattern:"confetti"  },
+];
+
+// Organic garland balloon positions (x%, y%, size px, colorIndex cycling)
+const GARLAND_BALLOONS = [
+  // large anchors
+  {x:13,y:68,s:82,ci:0},{x:33,y:42,s:92,ci:1},{x:54,y:18,s:86,ci:2},{x:76,y:34,s:82,ci:3},
+  // medium fills
+  {x:4, y:52,s:56,ci:1},{x:23,y:58,s:60,ci:2},{x:24,y:30,s:54,ci:0},{x:44,y:34,s:62,ci:3},
+  {x:44,y:58,s:56,ci:1},{x:61,y:48,s:60,ci:2},{x:66,y:9, s:54,ci:0},{x:81,y:54,s:56,ci:4},
+  {x:89,y:21,s:60,ci:1},
+  // small accents
+  {x:9, y:40,s:34,ci:3},{x:19,y:80,s:30,ci:2},{x:29,y:50,s:36,ci:4},{x:39,y:20,s:32,ci:1},
+  {x:51,y:54,s:36,ci:0},{x:63,y:33,s:32,ci:3},{x:73,y:14,s:34,ci:2},{x:86,y:42,s:36,ci:4},
+  {x:93,y:34,s:30,ci:0},
+  // tiny accents
+  {x:7, y:66,s:22,ci:4},{x:17,y:44,s:20,ci:3},{x:27,y:40,s:18,ci:2},{x:42,y:47,s:20,ci:1},
+  {x:59,y:27,s:22,ci:0},{x:79,y:47,s:20,ci:3},{x:96,y:27,s:18,ci:4},
+];
+
+function PatternDots({ pattern, size }) {
+  if (pattern === "cow") return (
+    <div style={{position:"absolute",inset:0,borderRadius:"50%",overflow:"hidden"}}>
+      {[{t:"20%",l:"25%",w:10,h:13},{t:"45%",l:"55%",w:13,h:10},{t:"60%",l:"20%",w:9,h:12},{t:"30%",l:"60%",w:8,h:11}].map((s,i)=>(
+        <div key={i} style={{position:"absolute",top:s.t,left:s.l,width:s.w,height:s.h,borderRadius:"40%",background:"#1a1a1a",opacity:0.75}}/>
+      ))}
+    </div>
+  );
+  if (pattern === "dalmatian") return (
+    <div style={{position:"absolute",inset:0,borderRadius:"50%",overflow:"hidden"}}>
+      {[{t:"15%",l:"30%",w:7,h:7},{t:"50%",l:"15%",w:6,h:6},{t:"60%",l:"55%",w:8,h:7},{t:"30%",l:"60%",w:6,h:8},{t:"70%",l:"35%",w:5,h:5}].map((s,i)=>(
+        <div key={i} style={{position:"absolute",top:s.t,left:s.l,width:s.w,height:s.h,borderRadius:"50%",background:"#333",opacity:0.7}}/>
+      ))}
+    </div>
+  );
+  if (pattern === "confetti") return (
+    <div style={{position:"absolute",inset:0,borderRadius:"50%",overflow:"hidden"}}>
+      {["#E91E8C","#FFD700","#1E88E5","#4CAF50","#9C27B0"].map((c,i)=>(
+        <div key={i} style={{position:"absolute",top:`${15+i*14}%`,left:`${10+i*15}%`,width:4,height:8,borderRadius:2,background:c,transform:`rotate(${i*35}deg)`,opacity:0.85}}/>
+      ))}
+    </div>
+  );
+  return null;
+}
+
+function GarlandPreview({ selectedColors, arrangement }) {
+  if (selectedColors.length === 0) {
+    return (
+      <div style={{height:180,display:"flex",alignItems:"center",justifyContent:"center",background:"#fdf5f8",borderRadius:14,border:`2px dashed ${BORDER}`}}>
+        <div style={{textAlign:"center"}}>
+          <div style={{fontSize:32,marginBottom:6}}>🎈</div>
+          <div style={{fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>Pick colors to preview your garland</div>
+        </div>
+      </div>
+    );
+  }
+  const palette = selectedColors.map(id => BALLOON_COLORS.find(c=>c.id===id)).filter(Boolean);
+  const getColor = (ci) => palette[ci % palette.length];
+
+  return (
+    <div style={{position:"relative",height:200,background:"linear-gradient(135deg,#fdf5f8 0%,#fff8fc 100%)",borderRadius:14,overflow:"hidden",border:`1.5px solid ${BORDER}`}}>
+      {GARLAND_BALLOONS.map((b,i)=>{
+        const col = getColor(b.ci);
+        return (
+          <div key={i} style={{
+            position:"absolute",
+            left:`${b.x}%`, top:`${b.y}%`,
+            width:b.s, height:b.s*1.12,
+            transform:"translate(-50%,-50%)",
+            borderRadius:"50% 50% 48% 52%/55% 55% 45% 45%",
+            background:`radial-gradient(circle at 33% 30%,rgba(255,255,255,0.55),${col.color})`,
+            boxShadow:`2px 3px 8px rgba(0,0,0,0.18),inset -2px -3px 6px rgba(0,0,0,0.1)`,
+            border:col.color==="#F8F8F8"?`1px solid #ddd`:"none",
+          }}>
+            {col.pattern && <PatternDots pattern={col.pattern} size={b.s}/>}
+          </div>
+        );
+      })}
+      {/* Shadow beneath garland */}
+      <div style={{position:"absolute",bottom:"4%",left:"8%",right:"8%",height:16,borderRadius:"50%",background:"rgba(0,0,0,0.08)",filter:"blur(6px)"}}/>
+    </div>
+  );
+}
+
+function GarlandBuilder() {
+  const [mode,        setMode]        = useState("diy");      // diy | preinflated
+  const [arrangement, setArrangement] = useState("mixed");    // mixed | colorblock
+  const [selected,    setSelected]    = useState([]);
+
+  const maxColors = arrangement === "mixed" ? 5 : 4;
+
+  const toggleColor = id => {
+    setSelected(prev => {
+      if (prev.includes(id)) return prev.filter(c=>c!==id);
+      if (prev.length >= maxColors) return [...prev.slice(1), id]; // rotate out oldest
+      return [...prev, id];
+    });
+  };
+
+  const price = mode === "diy" ? "$65" : "$95";
+
+  return (
+    <div style={{marginTop:8,paddingTop:24,borderTop:`2px solid ${MID}`}}>
+      {/* Section header */}
+      <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:16}}>
+        <div style={{flex:1,height:1.5,background:MID,borderRadius:2}}/>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",letterSpacing:"1.5px",textTransform:"uppercase",whiteSpace:"nowrap"}}>Custom Balloon Garland</div>
+        <div style={{flex:1,height:1.5,background:MID,borderRadius:2}}/>
+      </div>
+
+      {/* Live preview */}
+      <GarlandPreview selectedColors={selected} arrangement={arrangement}/>
+
+      {/* Selected color pills */}
+      <div style={{display:"flex",gap:6,flexWrap:"wrap",marginTop:10,marginBottom:14,minHeight:28}}>
+        {selected.length === 0
+          ? <div style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",paddingTop:4}}>No colors selected yet — pick up to {maxColors}</div>
+          : selected.map(id=>{
+              const col = BALLOON_COLORS.find(c=>c.id===id);
+              return (
+                <div key={id} onClick={()=>toggleColor(id)} style={{
+                  display:"flex",alignItems:"center",gap:5,padding:"4px 10px",borderRadius:20,
+                  background:SOFT,border:`1.5px solid ${col.color==="F8F8F8"?BORDER:col.color}`,
+                  cursor:"pointer",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:600,color:DARK,
+                }}>
+                  <span style={{width:12,height:12,borderRadius:"50%",background:col.color,display:"inline-block",border:"1px solid rgba(0,0,0,0.12)",flexShrink:0}}/>
+                  {col.label} ×
+                </div>
+              );
+            })
+        }
+      </div>
+
+      {/* DIY / Pre-Inflated */}
+      <div style={{marginBottom:14}}>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:8}}>
+          DIY or Pre-Inflated
+          <span style={{marginLeft:8,fontWeight:400,color:"#bbb",textTransform:"none",letterSpacing:0}}>{mode==="diy"?"DIY":"Pre-Inflated (Pickup Only)"}</span>
+        </div>
+        <div style={{display:"flex",gap:8}}>
+          {[{id:"diy",label:"DIY"},{id:"preinflated",label:"Pre-Inflated (Pickup Only)"}].map(o=>(
+            <button key={o.id} onClick={()=>setMode(o.id)} style={{
+              padding:"9px 16px",borderRadius:8,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",
+              fontSize:12,fontWeight:700,border:mode===o.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
+              background:mode===o.id?SOFT:WHITE,color:mode===o.id?HOT:DARK,transition:"all 0.15s",
+            }}>{o.label}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* Mixed / Color Block */}
+      <div style={{marginBottom:14}}>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:6}}>
+          Color Pattern
+          <span style={{marginLeft:8,fontWeight:400,color:"#bbb",textTransform:"none",letterSpacing:0}}>{arrangement==="mixed"?"Mixed":"Color Block"}</span>
+        </div>
+        <div style={{fontSize:11,color:"#999",fontFamily:"'DM Sans',sans-serif",marginBottom:8,lineHeight:1.5}}>
+          {arrangement==="mixed"
+            ? "Select Mixed for up to 5 colors including specialty patterned balloons."
+            : "Color Block uses up to 4 classic solid colors in clean sections."}
+        </div>
+        <div style={{display:"flex",gap:8}}>
+          {[{id:"mixed",label:"Mixed"},{id:"colorblock",label:"Color Block"}].map(o=>(
+            <button key={o.id} onClick={()=>{setArrangement(o.id);setSelected([]);}} style={{
+              padding:"9px 16px",borderRadius:8,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",
+              fontSize:12,fontWeight:700,border:arrangement===o.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
+              background:arrangement===o.id?SOFT:WHITE,color:arrangement===o.id?HOT:DARK,transition:"all 0.15s",
+            }}>{o.label}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* Color palette grid */}
+      <div style={{marginBottom:16}}>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:10}}>
+          {arrangement==="mixed"?"Pick Up to 5 Colors":"Pick Up to 4 Colors"}
+          <span style={{marginLeft:8,fontWeight:400,color:"#bbb",textTransform:"none",letterSpacing:0}}>{selected.length}/{maxColors} selected</span>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:8}}>
+          {BALLOON_COLORS.filter(c => arrangement==="colorblock" ? !c.pattern : true).map(c=>{
+            const isSel = selected.includes(c.id);
+            return (
+              <div key={c.id} onClick={()=>toggleColor(c.id)} style={{
+                display:"flex",flexDirection:"column",alignItems:"center",gap:4,cursor:"pointer",
+              }}>
+                <div style={{
+                  width:44,height:44,borderRadius:"50%",
+                  background:c.pattern?`radial-gradient(circle at 33% 30%,rgba(255,255,255,0.5),${c.color})`:`radial-gradient(circle at 33% 30%,rgba(255,255,255,0.45),${c.color})`,
+                  border:isSel?`3px solid ${HOT}`:`2px solid ${c.color==="F8F8F8"?"#ddd":c.color}88`,
+                  boxShadow:isSel?`0 0 0 2px white,0 0 0 4px ${HOT}`:
+                    `2px 3px 8px rgba(0,0,0,0.18),inset -1px -2px 4px rgba(0,0,0,0.1)`,
+                  position:"relative",overflow:"hidden",transition:"all 0.15s",
+                  transform:isSel?"scale(1.1)":"scale(1)",
+                }}>
+                  {c.pattern && <PatternDots pattern={c.pattern} size={44}/>}
+                  {isSel && (
+                    <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(233,30,140,0.18)"}}>
+                      <span style={{fontSize:14,color:HOT,fontWeight:900}}>✓</span>
+                    </div>
+                  )}
+                </div>
+                <div style={{fontSize:9,color:isSel?HOT:"#bbb",fontFamily:"'DM Sans',sans-serif",fontWeight:isSel?700:400,textAlign:"center",lineHeight:1.2}}>
+                  {c.label}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Price + CTA */}
+      <div style={{padding:"14px 16px",borderRadius:16,background:SOFT,border:`1.5px solid ${MID}`,display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12}}>
+        <div>
+          <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:0.8}}>Starting at</div>
+          <div style={{fontSize:26,fontWeight:900,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>{price}</div>
+          <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>{mode==="diy"?"Shipped to you":"Pickup only"}</div>
+        </div>
+        <div style={{textAlign:"right",fontSize:11,color:"#aaa",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>
+          {selected.length} color{selected.length!==1?"s":""} selected<br/>
+          {arrangement==="mixed"?"Mixed arrangement":"Color block"}
+        </div>
+      </div>
+      <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+        <button style={{...BP,width:"100%",padding:"14px",fontSize:14}}>
+          Order Custom Garland on Etsy →
+        </button>
+      </a>
+    </div>
+  );
+}
+
 // ─── Package card ─────────────────────────────────────────────────────────────
 function PackageCard({ pkg, selected, onClick }) {
   return (
@@ -519,6 +769,9 @@ export default function DecorTab({ groupSize }) {
           </div>
         </div>
       )}
+
+      {/* ── Custom Balloon Garland Builder ── */}
+      <GarlandBuilder />
     </div>
   );
 }
