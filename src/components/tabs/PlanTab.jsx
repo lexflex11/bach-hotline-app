@@ -48,10 +48,36 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
         })
       });
       const data = await res.json();
+      // Surface the real Anthropic error if the request failed
+      if (!res.ok) {
+        const errMsg = data?.error?.message || `HTTP ${res.status}`;
+        const errType = data?.error?.type || "api_error";
+        const isAuthErr = errType.includes("auth") || res.status === 401;
+        const isBilling = errType.includes("billing") || errMsg.includes("credit");
+        setResult({
+          title: isAuthErr ? "Invalid API Key 🔑" : isBilling ? "Billing Issue 💳" : "API Error ⚠️",
+          tagline: errMsg,
+          brideMessage: isAuthErr
+            ? "Your Anthropic API key is invalid or not set in Vercel. Go to Vercel → Settings → Environment Variables and confirm VITE_ANTHROPIC_KEY is correct."
+            : isBilling
+            ? "Your Anthropic account needs a billing method. Go to console.anthropic.com → Billing to add a card."
+            : `The API returned an error: ${errMsg}`,
+          days: [],
+          mustPack: [
+            "1. Go to console.anthropic.com → API Keys",
+            "2. Make sure your key starts with sk-ant-",
+            "3. In Vercel: Settings → Environment Variables → VITE_ANTHROPIC_KEY",
+            "4. Redeploy after saving the key",
+          ],
+          proTip: `Error type: ${errType}`,
+          estimatedBudget: "",
+        });
+        setLoading(false); return;
+      }
       setResult(JSON.parse(data.content.map(i=>i.text||"").join("").replace(/```json|```/g,"").trim()));
     } catch(err) {
       console.error("AI error:", err);
-      setResult({ title:"Oops 😅", tagline:"Something went wrong.", brideMessage:"Most likely the API key needs to be added or has expired.", days:[], mustPack:["✓ Check your API key at console.anthropic.com","✓ Make sure the key starts with sk-ant-","✓ Confirm billing is set up"], proTip:"Open browser developer tools (F12) → Console to see the exact error.", estimatedBudget:"" });
+      setResult({ title:"Connection Error 📡", tagline:"Could not reach the AI.", brideMessage:`Error: ${err.message}. This is usually a network issue or an invalid API key. Check Vercel → Settings → Environment Variables → VITE_ANTHROPIC_KEY.`, days:[], mustPack:["✓ Confirm VITE_ANTHROPIC_KEY is set in Vercel","✓ Key must start with sk-ant-","✓ Redeploy after adding/changing the key"], proTip:`Raw error: ${err.message}`, estimatedBudget:"" });
     }
     setLoading(false);
   };
