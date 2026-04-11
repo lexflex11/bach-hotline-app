@@ -9,8 +9,22 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
   const [days,    setDays]    = useState(3);
   const [bt,      setBt]      = useState(null);
   const [region,  setRegion]  = useState("us");   // "us" | "intl"
+  const [budget,  setBudget]  = useState(null);   // budget tier id
+  const [customBudget, setCustomBudget] = useState("");
   const [loading, setLoading] = useState(false);
   const [result,  setResult]  = useState(null);
+
+  const BUDGET_TIERS = [
+    { id:"budget",   label:"Budget",   range:"$300–600",   desc:"Smart savings, still iconic",  emoji:"💸", color:"#4CAF50" },
+    { id:"moderate", label:"Moderate", range:"$600–1,200", desc:"Best of both worlds",           emoji:"✨", color:HOT       },
+    { id:"luxury",   label:"Luxury",   range:"$1,200–2,500",desc:"All the yes, none of the stress",emoji:"👑",color:PUNCH   },
+    { id:"custom",   label:"Custom",   range:"You decide", desc:"Set your own per-person budget",emoji:"🎯", color:"#9C27B0" },
+  ];
+
+  const activeBudget = BUDGET_TIERS.find(b => b.id === budget);
+  const budgetLabel  = budget === "custom" && customBudget
+    ? `$${customBudget}/person`
+    : activeBudget?.range || "";
 
   const tEmoji = { morning:"🌅", afternoon:"☀️", evening:"🌆", nightlife:"🌙" };
 
@@ -23,7 +37,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
   const selectedDest  = DESTS.find(d => d.id === dest);
 
   const generate = async () => {
-    if (!dest || !bt) return;
+    if (!dest || !bt || !budget) return;
     setLoading(true); setResult(null);
     const d = selectedDest;
     const b = selectedBride;
@@ -43,7 +57,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
         body: JSON.stringify({
           model: "claude-sonnet-4-6", max_tokens: 1200,
           messages: [{ role:"user", content:
-            `Create a ${days}-day bachelorette itinerary for ${groupSize} ladies in ${d.name}.\n\nBRIDE TYPE: ${b.label} — ${b.desc}\nVIBE: ${b.vibe}\nACTIVITIES TO INCLUDE: ${b.activities}\nDESTINATION VIBE: ${d.vibe}\n\nTailor EVERYTHING to this exact bride personality. JSON only (no fences):\n{"title":"fun title matching personality","tagline":"one punchy vibe line","brideMessage":"personal hype message to the bride 1-2 sentences","days":[{"day":1,"theme":"day theme","morning":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book this"},"afternoon":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"},"evening":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"},"nightlife":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"}}],"mustPack":["3 items for this bride type"],"proTip":"amazing tip for this personality+destination","estimatedBudget":"$XXX–$XXX per person"}`
+            `Create a ${days}-day bachelorette itinerary for ${groupSize} ladies in ${d.name}.\n\nBRIDE TYPE: ${b.label} — ${b.desc}\nVIBE: ${b.vibe}\nACTIVITIES TO INCLUDE: ${b.activities}\nDESTINATION VIBE: ${d.vibe}\nBUDGET: ${budgetLabel} per person (${activeBudget?.label||"moderate"} tier — ${activeBudget?.desc||""})\n\nIMPORTANT: All activity costs MUST fit within the ${budgetLabel} per-person budget. Tailor EVERYTHING to this exact bride personality and budget. JSON only (no fences):\n{"title":"fun title matching personality","tagline":"one punchy vibe line","brideMessage":"personal hype message to the bride 1-2 sentences","days":[{"day":1,"theme":"day theme","morning":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book this"},"afternoon":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"},"evening":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"},"nightlife":{"activity":"name","tip":"tip","cost":"$XX/person","bookingTip":"how to book"}}],"mustPack":["3 items for this bride type"],"proTip":"amazing tip for this personality+destination","estimatedBudget":"$XXX–$XXX per person total"}`
           }]
         })
       });
@@ -98,7 +112,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
           <em style={{color:HOT,fontStyle:"italic"}}>Build Your Itinerary</em>
         </h2>
         <p style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",margin:0,opacity:0.85}}>
-          Answer 3 questions, get a custom itinerary in seconds
+          Answer 4 questions, get a custom itinerary in seconds
         </p>
       </div>
 
@@ -192,11 +206,75 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
         </div>
       )}
 
-      {/* ── STEP 3: Days — reveals after destination picked ── */}
+      {/* ── STEP 3: Budget — reveals after destination picked ── */}
       {bt && dest && (
+        <div style={{...C, marginBottom:12}}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+            <div style={{width:26,height:26,borderRadius:"50%",background:budget?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:budget?WHITE:HOT,flexShrink:0}}>3</div>
+            <div>
+              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What's your budget?</div>
+              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Per person — AI will tailor costs to fit</div>
+            </div>
+          </div>
+
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:10}}>
+            {BUDGET_TIERS.map(tier=>(
+              <button key={tier.id} onClick={()=>setBudget(tier.id)} style={{
+                background:budget===tier.id?`${tier.color}18`:WHITE,
+                border:budget===tier.id?`2px solid ${tier.color}`:`1.5px solid ${BORDER}`,
+                borderRadius:14,padding:"12px 10px",cursor:"pointer",textAlign:"left",
+                transition:"all 0.2s",
+                boxShadow:budget===tier.id?`0 3px 12px ${tier.color}33`:"none",
+              }}>
+                <div style={{fontSize:20,marginBottom:4}}>{tier.emoji}</div>
+                <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:budget===tier.id?tier.color:DARK}}>{tier.label}</div>
+                <div style={{fontSize:11,fontWeight:700,color:budget===tier.id?tier.color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{tier.range}</div>
+                <div style={{fontSize:10,color:"#888",fontFamily:"'DM Sans',sans-serif",marginTop:2,lineHeight:1.3}}>{tier.desc}</div>
+              </button>
+            ))}
+          </div>
+
+          {/* Custom budget input */}
+          {budget === "custom" && (
+            <div style={{display:"flex",alignItems:"center",gap:8,padding:"10px 14px",background:SOFT,borderRadius:12,border:`1.5px solid ${MID}`}}>
+              <span style={{fontSize:16}}>💵</span>
+              <span style={{fontSize:13,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>$</span>
+              <input
+                type="number"
+                placeholder="Enter amount"
+                value={customBudget}
+                onChange={e=>setCustomBudget(e.target.value)}
+                style={{flex:1,border:"none",background:"transparent",fontSize:14,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",outline:"none"}}
+              />
+              <span style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>per person</span>
+            </div>
+          )}
+
+          {/* Selected summary */}
+          {budget && (budget !== "custom" || customBudget) && (
+            <div style={{marginTop:10,padding:"8px 12px",borderRadius:10,background:SOFT,border:`1px solid ${MID}`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+              <div>
+                <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1}}>Budget: {activeBudget?.label}</div>
+                <div style={{fontSize:13,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{budgetLabel} · {groupSize} ladies</div>
+              </div>
+              {budget !== "custom" && (
+                <div style={{fontSize:11,color:"#888",fontFamily:"'DM Sans',sans-serif",textAlign:"right"}}>
+                  Total est.<br/>
+                  <span style={{fontWeight:700,color:DARK}}>
+                    ${(parseInt(activeBudget?.range?.replace(/[^0-9–-]/g,'').split(/[–-]/)[0]||0)*groupSize).toLocaleString()}+
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ── STEP 4: Days — reveals after budget picked ── */}
+      {bt && dest && budget && (budget !== "custom" || customBudget) && (
         <div style={{...C, marginBottom:14}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
-            <div style={{width:26,height:26,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:WHITE,flexShrink:0}}>3</div>
+            <div style={{width:26,height:26,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:WHITE,flexShrink:0}}>4</div>
             <div>
               <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>How many days?</div>
               <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Up to 5 days</div>
@@ -220,7 +298,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
       )}
 
       {/* ── GENERATE BUTTON ── */}
-      {bt && dest && (
+      {bt && dest && budget && (budget !== "custom" || customBudget) && (
         <button onClick={generate} disabled={loading} style={{
           ...BP, width:"100%", padding:"14px", fontSize:14, borderRadius:14, marginBottom:16,
         }}>
@@ -231,9 +309,12 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
       )}
 
       {/* Hint when steps incomplete */}
-      {(!bt || !dest) && (
+      {(!bt || !dest || !budget || (budget === "custom" && !customBudget)) && (
         <div style={{textAlign:"center",fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:16}}>
-          {!bt ? "👆 Start by picking the bride's personality" : "👆 Now choose your destination"}
+          {!bt ? "👆 Start by picking the bride's personality"
+            : !dest ? "👆 Now choose your destination"
+            : !budget || (budget === "custom" && !customBudget) ? "👆 Set your per-person budget"
+            : ""}
         </div>
       )}
 
