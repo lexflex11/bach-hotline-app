@@ -476,7 +476,6 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
         <div style={{display:"flex",flexDirection:"column",gap:10}}>
           {[
             { icon:"🧾", label:"Split the Bill",     sub:`Divide costs fairly — bride pays nothing · ${groupSize} people`,   tab:"split"  },
-            { icon:"💰", label:"Budget Calculator",   sub:`Estimate your full trip cost for ${groupSize} ladies`,             tab:"budget" },
             { icon:"🗳️", label:"Group Polls",         sub:"Vote on destinations, activities & more",                          tab:"polls"  },
           ].map(tool=>(
             <button key={tool.tab} onClick={()=>setTab&&setTab(tool.tab)} style={{
