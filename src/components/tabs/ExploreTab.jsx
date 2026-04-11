@@ -10,7 +10,9 @@ const CATS = [
   { id:"todo",    label:"Things to Do",  icon:"🎉" },
   { id:"dining",  label:"Restaurants",   icon:"🍽️" },
   { id:"bar",     label:"Bars",          icon:"🍸" },
-  { id:"stay",    label:"Accommodations",icon:"🏠" },
+  { id:"stay",    label:"Stays",         icon:"🏠" },
+  { id:"flight",  label:"Flights",       icon:"✈️" },
+  { id:"car",     label:"Cars",          icon:"🚗" },
 ];
 
 // Maps ExploreTab cat → which filter bucket it belongs to
@@ -23,6 +25,8 @@ const CAT_GROUP = {
   restaurant: "dining",
   bar:        "bar",
   stay:       "stay",
+  flight:     "flight",
+  car:        "car",
 };
 
 // ─── Gradient palettes per category (app colors) ──────────────────────────
@@ -31,6 +35,8 @@ const GRAD = {
   dining: ["#C42050","#8B1A2E"],
   bar:    ["#9B3070","#E66582"],
   stay:   ["#7B3F6E","#C42050"],
+  flight: ["#2D6FA8","#1A4A7A"],
+  car:    ["#3A8A6E","#1A5A48"],
 };
 
 // ─── Experiences data ──────────────────────────────────────────────────────
@@ -209,6 +215,48 @@ const EXP = [
   { id:131, city:"denver",      name:"The Crawford Hotel RiNo",      cat:"stay", emoji:"🚂", price:"$$$$",rating:4.8, vibe:"Boutique · Historic Union Station · Lively area",badge:"Hotel",     hot:false },
   { id:132, city:"houston",     name:"Midtown Houston Party House",  cat:"stay", emoji:"🤘", price:"$$$", rating:4.8, vibe:"4BR · Pool · Walk to Montrose bars",             badge:"Airbnb",    hot:true  },
   { id:133, city:"houston",     name:"Heights Victorian Home",       cat:"stay", emoji:"🏠", price:"$$",  rating:4.7, vibe:"3BR · Charming neighborhood · Classic HTX",      badge:"Airbnb",    hot:false },
+
+  // ── Flights ────────────────────────────────────────────────────────────────
+  { id:200, city:"miami",       name:"Flights to Miami",              cat:"flight", emoji:"✈️", price:"$$",   rating:4.9, vibe:"MIA · Direct flights from most major US cities",  badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:MIA" },
+  { id:201, city:"nashville",   name:"Flights to Nashville",          cat:"flight", emoji:"✈️", price:"$$",   rating:4.9, vibe:"BNA · Southwest & Delta hub · Easy connections", badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:BNA" },
+  { id:202, city:"vegas",       name:"Flights to Las Vegas",          cat:"flight", emoji:"✈️", price:"$",    rating:4.9, vibe:"LAS · Best flight deals in the US",              badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:LAS" },
+  { id:203, city:"nola",        name:"Flights to New Orleans",        cat:"flight", emoji:"✈️", price:"$$",   rating:4.8, vibe:"MSY · Direct from most Southeast hubs",          badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:MSY" },
+  { id:204, city:"scottsdale",  name:"Flights to Phoenix/Scottsdale", cat:"flight", emoji:"✈️", price:"$$",   rating:4.8, vibe:"PHX · Southwest stronghold · Great deals",       badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:PHX" },
+  { id:205, city:"austin",      name:"Flights to Austin",             cat:"flight", emoji:"✈️", price:"$$",   rating:4.8, vibe:"AUS · Growing hub · Southwest, United, Delta",   badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:AUS" },
+  { id:206, city:"charleston",  name:"Flights to Charleston",         cat:"flight", emoji:"✈️", price:"$$",   rating:4.7, vibe:"CHS · American, Delta, Southwest",                badge:"Flights", hot:false, bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:CHS" },
+  { id:207, city:"savannah",    name:"Flights to Savannah",           cat:"flight", emoji:"✈️", price:"$$",   rating:4.7, vibe:"SAV · Delta hub · Easy Southern connections",    badge:"Flights", hot:false, bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:SAV" },
+  { id:208, city:"nyc",         name:"Flights to New York City",      cat:"flight", emoji:"✈️", price:"$$$",  rating:4.8, vibe:"JFK/LGA/EWR · All major airlines",               badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:JFK" },
+  { id:209, city:"chicago",     name:"Flights to Chicago",            cat:"flight", emoji:"✈️", price:"$$",   rating:4.8, vibe:"ORD/MDW · United hub · Great midwest prices",    badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:ORD" },
+  { id:210, city:"sandiego",    name:"Flights to San Diego",          cat:"flight", emoji:"✈️", price:"$$",   rating:4.8, vibe:"SAN · Southwest & Alaska stronghold",             badge:"Flights", hot:false, bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:SAN" },
+  { id:211, city:"palmsprings", name:"Flights to Palm Springs",       cat:"flight", emoji:"✈️", price:"$$",   rating:4.7, vibe:"PSP · Small airport · Direct from LA, SF, SEA",  badge:"Flights", hot:false, bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:PSP" },
+  { id:212, city:"napa",        name:"Flights to Napa (SFO)",         cat:"flight", emoji:"✈️", price:"$$$",  rating:4.7, vibe:"Fly into SFO · 1 hr drive to Wine Country",       badge:"Flights", hot:false, bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:SFO" },
+  { id:213, city:"keywest",     name:"Flights to Key West",           cat:"flight", emoji:"✈️", price:"$$$",  rating:4.7, vibe:"EYW · Small paradise airport · Direct from MIA", badge:"Flights", hot:false, bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:EYW" },
+  { id:214, city:"sedona",      name:"Flights to Sedona (PHX)",       cat:"flight", emoji:"✈️", price:"$$",   rating:4.7, vibe:"Fly into PHX · 2 hr scenic drive to Sedona",      badge:"Flights", hot:false, bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:PHX" },
+  { id:215, city:"denver",      name:"Flights to Denver",             cat:"flight", emoji:"✈️", price:"$$",   rating:4.8, vibe:"DEN · United hub · Mountain gateway airport",     badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:DEN" },
+  { id:216, city:"houston",     name:"Flights to Houston",            cat:"flight", emoji:"✈️", price:"$$",   rating:4.8, vibe:"IAH/HOU · United hub · Great Southern deals",    badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:IAH" },
+  { id:217, city:"cabo",        name:"Flights to Cabo",               cat:"flight", emoji:"✈️", price:"$$$",  rating:4.9, vibe:"SJD · Direct from most US cities · 3-5 hrs",     badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:SJD" },
+  { id:218, city:"mykonos",     name:"Flights to Mykonos",            cat:"flight", emoji:"✈️", price:"$$$$", rating:4.9, vibe:"JMK · Via Athens or direct from NYC",             badge:"Flights", hot:true,  bookingUrl:"https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:USA,to:JMK" },
+
+  // ── Cars ───────────────────────────────────────────────────────────────────
+  { id:250, city:"miami",       name:"Rent a Car in Miami",           cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Cabrio · Jeep Wrangler · Party van",      badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Miami%2C+FL" },
+  { id:251, city:"nashville",   name:"Rent a Car in Nashville",       cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Party bus · Luxury SUV options",          badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Nashville%2C+TN" },
+  { id:252, city:"vegas",       name:"Rent a Car in Las Vegas",       cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Convertible · Party van · Strip cruiser",  badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Las+Vegas%2C+NV" },
+  { id:253, city:"nola",        name:"Rent a Car in New Orleans",     cat:"car", emoji:"🚗", price:"$",    rating:4.7, vibe:"Turo · Most things walkable · Car for day trips", badge:"Car Rental", hot:false, bookingUrl:"https://turo.com/search?location=New+Orleans%2C+LA" },
+  { id:254, city:"scottsdale",  name:"Rent a Car in Scottsdale",      cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Jeep · Convertible · Desert vibes",       badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Scottsdale%2C+AZ" },
+  { id:255, city:"austin",      name:"Rent a Car in Austin",          cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Pickup trucks · Vintage Bronco · SUVs",    badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Austin%2C+TX" },
+  { id:256, city:"charleston",  name:"Rent a Car in Charleston",      cat:"car", emoji:"🚗", price:"$",    rating:4.7, vibe:"Turo · Golf cart · Vintage convertible",          badge:"Car Rental", hot:false, bookingUrl:"https://turo.com/search?location=Charleston%2C+SC" },
+  { id:257, city:"savannah",    name:"Rent a Car in Savannah",        cat:"car", emoji:"🚗", price:"$",    rating:4.7, vibe:"Turo · Golf cart · Historic district cruiser",    badge:"Car Rental", hot:false, bookingUrl:"https://turo.com/search?location=Savannah%2C+GA" },
+  { id:258, city:"nyc",         name:"Rent a Car in New York City",   cat:"car", emoji:"🚗", price:"$$$",  rating:4.6, vibe:"Turo · Only for day trips · Subway is king",      badge:"Car Rental", hot:false, bookingUrl:"https://turo.com/search?location=New+York%2C+NY" },
+  { id:259, city:"chicago",     name:"Rent a Car in Chicago",         cat:"car", emoji:"🚗", price:"$$",   rating:4.7, vibe:"Turo · Luxury SUV · L train for the city",        badge:"Car Rental", hot:false, bookingUrl:"https://turo.com/search?location=Chicago%2C+IL" },
+  { id:260, city:"sandiego",    name:"Rent a Car in San Diego",       cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Convertible · Essential for beach hops",   badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=San+Diego%2C+CA" },
+  { id:261, city:"palmsprings", name:"Rent a Car in Palm Springs",    cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Convertible · Jeep · Desert essential",    badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Palm+Springs%2C+CA" },
+  { id:262, city:"napa",        name:"Rent a Car in Napa",            cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Wine country essential · Scenic drives",   badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Napa%2C+CA" },
+  { id:263, city:"keywest",     name:"Rent a Car in Key West",        cat:"car", emoji:"🚗", price:"$$",   rating:4.7, vibe:"Turo · Golf cart · Scooter · Jeep Wrangler",      badge:"Car Rental", hot:false, bookingUrl:"https://turo.com/search?location=Key+West%2C+FL" },
+  { id:264, city:"sedona",      name:"Rent a Car in Sedona",          cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · Jeep essential · Red rock trail access",   badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Sedona%2C+AZ" },
+  { id:265, city:"denver",      name:"Rent a Car in Denver",          cat:"car", emoji:"🚗", price:"$$",   rating:4.8, vibe:"Turo · SUV · 4WD for mountain trips",              badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Denver%2C+CO" },
+  { id:266, city:"houston",     name:"Rent a Car in Houston",         cat:"car", emoji:"🚗", price:"$",    rating:4.7, vibe:"Turo · Car essential · Great rates in HTX",        badge:"Car Rental", hot:false, bookingUrl:"https://turo.com/search?location=Houston%2C+TX" },
+  { id:267, city:"cabo",        name:"Rent a Car in Cabo",            cat:"car", emoji:"🚗", price:"$$",   rating:4.7, vibe:"Turo · Jeep for beach hops · ATV available",      badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Los+Cabos%2C+Mexico" },
+  { id:268, city:"mykonos",     name:"Rent a Car in Mykonos",         cat:"car", emoji:"🚗", price:"$$$",  rating:4.8, vibe:"Turo · ATV · Quad · Essential for the island",    badge:"Car Rental", hot:true,  bookingUrl:"https://turo.com/search?location=Mykonos%2C+Greece" },
 ];
 
 const CITIES = [
@@ -680,15 +728,20 @@ export default function ExploreTab({ groupSize }) {
                     </div>
                   </div>
                   <a
-                    href={CAT_GROUP[e.cat] === "dining"
-                      ? opentableUrl(e.name, CITIES.find(c=>c.id===e.city)?.name||"")
-                      : CAT_GROUP[e.cat] === "stay"
-                        ? `https://www.airbnb.com/s/${encodeURIComponent(CITIES.find(c=>c.id===e.city)?.name||"")}/homes?adults=${groupSize||4}`
-                        : viatorUrl(e.name, CITIES.find(c=>c.id===e.city)?.name||"")}
+                    href={
+                      e.bookingUrl ? e.bookingUrl
+                      : CAT_GROUP[e.cat] === "dining"
+                        ? opentableUrl(e.name, CITIES.find(c=>c.id===e.city)?.name||"")
+                        : CAT_GROUP[e.cat] === "stay"
+                          ? `https://www.airbnb.com/s/${encodeURIComponent(CITIES.find(c=>c.id===e.city)?.name||"")}/homes?adults=${groupSize||4}`
+                          : viatorUrl(e.name, CITIES.find(c=>c.id===e.city)?.name||"")
+                    }
                     target="_blank" rel="noreferrer" style={{ textDecoration:"none" }}
                   >
                     <button style={{ ...BP, width:"100%", fontSize:11, padding:"8px", borderRadius:10 }}>
-                      Book Now →
+                      {CAT_GROUP[e.cat]==="flight" ? "Search Flights →"
+                        : CAT_GROUP[e.cat]==="car" ? "Browse Cars →"
+                        : "Book Now →"}
                     </button>
                   </a>
                 </div>
