@@ -6,17 +6,17 @@ import { DESTS, BRIDE_TYPES } from '../../constants/data.js';
 
 // ─── Category filters ──────────────────────────────────────────────────────
 const CATS = [
-  { id:"all",     label:"Popular",          icon:"⭐" },
-  { id:"todo",    label:"Things to Do",     icon:"🎉" },
-  { id:"dining",  label:"Restaurants",      icon:"🍽️" },
-  { id:"bar",     label:"Bars",             icon:"🍸" },
-  { id:"relax",   label:"Relaxation",       icon:"💆" },
-  { id:"shows",   label:"Live Shows",       icon:"🎭" },
-  { id:"water",   label:"Water Activities", icon:"🌊" },
-  { id:"bonus",   label:"Bonus",            icon:"✨" },
-  { id:"stay",    label:"Stays",            icon:"🏠" },
-  { id:"flight",  label:"Flights",          icon:"✈️" },
-  { id:"car",     label:"Cars",             icon:"🚗" },
+  { id:"all",     label:"Popular",          photo:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=80&h=80&fit=crop&q=80" },
+  { id:"todo",    label:"Things to Do",     photo:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=80&h=80&fit=crop&q=80" },
+  { id:"dining",  label:"Restaurants",      photo:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=80&h=80&fit=crop&q=80" },
+  { id:"bar",     label:"Bars",             photo:"https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=80&h=80&fit=crop&q=80" },
+  { id:"relax",   label:"Relaxation",       photo:"https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=80&h=80&fit=crop&q=80" },
+  { id:"shows",   label:"Live Shows",       photo:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=80&h=80&fit=crop&q=80" },
+  { id:"water",   label:"Water Activities", photo:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=80&h=80&fit=crop&q=80" },
+  { id:"bonus",   label:"Bonus",            photo:"https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=80&h=80&fit=crop&q=80" },
+  { id:"stay",    label:"Stays",            photo:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=80&h=80&fit=crop&q=80" },
+  { id:"flight",  label:"Flights",          photo:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=80&h=80&fit=crop&q=80" },
+  { id:"car",     label:"Cars",             photo:"https://images.unsplash.com/photo-1449965408869-eaa3f722e8bb?w=80&h=80&fit=crop&q=80" },
 ];
 
 // Maps ExploreTab cat → which filter bucket it belongs to
@@ -773,13 +773,17 @@ export default function ExploreTab({ groupSize }) {
       <div style={{ display:"flex", gap:8, overflowX:"auto", paddingBottom:4, marginBottom:14, scrollbarWidth:"none" }}>
         {CATS.map(c => (
           <button key={c.id} onClick={() => setCat(c.id)} style={{
-            flexShrink:0, display:"flex", flexDirection:"column", alignItems:"center", gap:4,
-            padding:"10px 14px",
+            flexShrink:0, display:"flex", flexDirection:"column", alignItems:"center", gap:5,
+            padding:"8px 10px",
             background: cat===c.id ? SOFT : WHITE,
             border: cat===c.id ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
-            borderRadius:14, cursor:"pointer", transition:"all 0.15s", minWidth:72,
+            borderRadius:14, cursor:"pointer", transition:"all 0.15s", minWidth:68,
           }}>
-            <span style={{ fontSize:20 }}>{c.icon}</span>
+            <img src={c.photo} alt={c.label} style={{
+              width:38, height:38, borderRadius:"50%", objectFit:"cover",
+              border: cat===c.id ? `2px solid ${HOT}` : "2px solid transparent",
+              transition:"all 0.15s",
+            }}/>
             <span style={{
               fontSize:10, fontWeight:700, fontFamily:"'DM Sans',sans-serif",
               color: cat===c.id ? HOT : "#888", whiteSpace:"nowrap",
