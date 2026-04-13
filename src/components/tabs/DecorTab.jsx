@@ -3074,7 +3074,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
         const added   = inCart(item.id);
         return (
           <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:added?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
-            <div style={{position:"relative",width:"100%",aspectRatio:"3/4",overflow:"hidden",flexShrink:0}}>
+            <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
               <TablewearVisual item={item}/>
               {matched && !added && (
                 <div style={{position:"absolute",top:6,left:6,background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,fontSize:8,fontWeight:700,fontFamily:"'DM Sans',sans-serif",padding:"2px 6px",borderRadius:8}}>✨</div>
@@ -3155,7 +3155,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
             boxShadow:added?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",
             transition:"all 0.2s",display:"flex",flexDirection:"column",
           }}>
-            <div style={{position:"relative",width:"100%",aspectRatio:"3/4",overflow:"hidden",flexShrink:0}}>
+            <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
               <TablewearVisual item={item}/>
               {matched && !added && (
                 <div style={{position:"absolute",top:6,left:6,background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,fontSize:8,fontWeight:700,fontFamily:"'DM Sans',sans-serif",padding:"2px 6px",borderRadius:8}}>✨</div>
@@ -3254,7 +3254,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
               boxShadow:hasNums?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",
               transition:"all 0.2s",display:"flex",flexDirection:"column",
             }}>
-              <div style={{position:"relative",width:"100%",aspectRatio:"3/4",overflow:"hidden",flexShrink:0}}>
+              <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
                 <TablewearVisual item={item}/>
               </div>
               <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
@@ -3281,7 +3281,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
             boxShadow:added?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",
             transition:"all 0.2s",display:"flex",flexDirection:"column",
           }}>
-            <div style={{position:"relative",width:"100%",aspectRatio:"3/4",overflow:"hidden",flexShrink:0}}>
+            <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
               <TablewearVisual item={item}/>
               {matched && !added && (
                 <div style={{position:"absolute",top:6,left:6,background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,fontSize:8,fontWeight:700,fontFamily:"'DM Sans',sans-serif",padding:"2px 6px",borderRadius:8}}>✨</div>
