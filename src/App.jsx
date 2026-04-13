@@ -52,9 +52,6 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div style={{ background:SOFT, padding:"2px 16px 3px", fontFamily:"'DM Sans',sans-serif", fontSize:10, color:HOT, fontWeight:600, letterSpacing:"0.5px", borderTop:`1px solid ${BORDER}` }}>
-          Group of {groupSize} · {user.name.split(" ")[0]}
-        </div>
         {/* ── TOP NAV ── */}
         <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid ${SOFT}` }}>
           {[
@@ -79,6 +76,9 @@ export default function App() {
               </button>
             );
           })}
+        </div>
+        <div style={{ background:SOFT, padding:"2px 16px 3px", fontFamily:"'DM Sans',sans-serif", fontSize:10, color:HOT, fontWeight:600, letterSpacing:"0.5px", borderTop:`1px solid ${BORDER}` }}>
+          Group of {groupSize} · {user.name.split(" ")[0]}
         </div>
       </div>
       <div style={{ padding:"16px 14px 32px", background:PAGE, maxWidth:900, margin:"0 auto" }}>

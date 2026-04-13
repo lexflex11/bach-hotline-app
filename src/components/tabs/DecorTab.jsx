@@ -2996,6 +2996,46 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
   );
 }
 
+// ─── Reusable Carousel ────────────────────────────────────────────────────────
+function Carousel({ items, renderItem }) {
+  const [page, setPage] = useState(0);
+  const perPage = 3;
+  const total   = Math.ceil(items.length / perPage);
+  const slice   = items.slice(page * perPage, (page + 1) * perPage);
+  const ArrowBtn = ({ dir, disabled, onClick }) => (
+    <button onClick={onClick} disabled={disabled} style={{
+      width:30,height:30,borderRadius:"50%",flexShrink:0,
+      border:`1.5px solid ${disabled?BORDER:HOT}`,
+      background:disabled?WHITE:SOFT,
+      color:disabled?"#ccc":HOT,
+      fontSize:18,fontWeight:700,cursor:disabled?"default":"pointer",
+      display:"flex",alignItems:"center",justifyContent:"center",
+      transition:"all 0.15s",lineHeight:1,
+    }}>{dir}</button>
+  );
+  return (
+    <div>
+      <div style={{display:"flex",alignItems:"center",gap:6}}>
+        <ArrowBtn dir="‹" disabled={page===0} onClick={()=>setPage(p=>p-1)}/>
+        <div style={{flex:1,display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8}}>
+          {slice.map((item,i) => renderItem(item, page*perPage+i))}
+        </div>
+        <ArrowBtn dir="›" disabled={page===total-1} onClick={()=>setPage(p=>p+1)}/>
+      </div>
+      {total > 1 && (
+        <div style={{display:"flex",justifyContent:"center",gap:5,marginTop:10}}>
+          {Array.from({length:total}).map((_,i)=>(
+            <div key={i} onClick={()=>setPage(i)} style={{
+              width:i===page?16:6,height:6,borderRadius:3,cursor:"pointer",
+              background:i===page?HOT:BORDER,transition:"all 0.2s",
+            }}/>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Product Step ─────────────────────────────────────────────────────────────
 function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, cart, setCart }) {
   const items = TABLEWARE.filter(i => i.type === type);
@@ -3027,46 +3067,34 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
         </div>
       </div>
       {selectedColors.length > 0 && scored.some(i=>i.score>0) && (
-        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:10,opacity:0.85}}>
-          ✨ Best color matches shown first
-        </div>
+        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:10,opacity:0.85}}>✨ Best color matches shown first</div>
       )}
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
-        {scored.map(item => {
-          const matched = item.score > 0 && selectedColors.length > 0;
-          const added   = inCart(item.id);
-          return (
-            <div key={item.id} style={{
-              background:WHITE,
-              border:`1.5px solid ${added?HOT:matched?MID:BORDER}`,
-              borderRadius:14,overflow:"hidden",transition:"all 0.2s",
-            }}>
-              <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden"}}>
-                <TablewearVisual item={item}/>
-                {matched && !added && (
-                  <div style={{position:"absolute",top:6,left:6,background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,fontSize:9,fontWeight:700,fontFamily:"'DM Sans',sans-serif",padding:"2px 8px",borderRadius:10}}>✨</div>
-                )}
-              </div>
-              <div style={{padding:"8px 10px"}}>
-                <div style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.3}}>{item.name}</div>
-                <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{item.desc}</div>
-                <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:6}}>
-                  <div style={{fontSize:13,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
-                  <button onClick={()=>toggle(item)} style={{
-                    background:added?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
-                    color:added?HOT:WHITE,
-                    border:added?`1.5px solid ${HOT}`:"none",
-                    borderRadius:20,padding:"5px 12px",
-                    fontFamily:"'DM Sans',sans-serif",fontSize:10,fontWeight:700,cursor:"pointer",
-                  }}>
-                    {added?"✓ Added":"+ Add"}
-                  </button>
-                </div>
+      <Carousel items={scored} renderItem={item => {
+        const matched = item.score > 0 && selectedColors.length > 0;
+        const added   = inCart(item.id);
+        return (
+          <div key={item.id} style={{background:WHITE,border:`1.5px solid ${added?HOT:matched?MID:BORDER}`,borderRadius:14,overflow:"hidden",transition:"all 0.2s"}}>
+            <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden"}}>
+              <TablewearVisual item={item}/>
+              {matched && !added && (
+                <div style={{position:"absolute",top:4,left:4,background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,fontSize:8,fontWeight:700,fontFamily:"'DM Sans',sans-serif",padding:"2px 6px",borderRadius:8}}>✨</div>
+              )}
+            </div>
+            <div style={{padding:"6px 7px"}}>
+              <div style={{fontSize:10,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:4}}>
+                <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
+                <button onClick={()=>toggle(item)} style={{
+                  background:added?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
+                  color:added?HOT:WHITE,border:added?`1.5px solid ${HOT}`:"none",
+                  borderRadius:20,padding:"4px 8px",
+                  fontFamily:"'DM Sans',sans-serif",fontSize:9,fontWeight:700,cursor:"pointer",
+                }}>{added?"✓":"+ Add"}</button>
               </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        );
+      }}/>
     </div>
   );
 }
