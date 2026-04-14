@@ -59,8 +59,8 @@ export default function App() {
         <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid ${SOFT}` }}>
           {[
             { id:"home",    label:"Home" },
-            { id:"plan",    label:"Itinerary" },
             { id:"explore", label:"Explore" },
+            { id:"plan",    label:"Itinerary" },
             { id:"decor",   label:"Package" },
             { id:"more",    label:"More" },
           ].map(n => {
