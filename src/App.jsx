@@ -136,7 +136,6 @@ export default function App() {
               <div style={{ fontSize:10, color:"#bbb", fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"1px", marginBottom:10, fontWeight:600 }}>Extras</div>
               <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
                 {[
-                  { id:"decor",   label:"Build Your Decor Package", sub:"Design & shop your party setup"  },
                   ...(user.email ? [
                     { id:"alerts", label:"Alerts",      sub:"Members-only price drops"   },
                     { id:"media",  label:"Share Media", sub:"Upload trip pics & videos"  },
