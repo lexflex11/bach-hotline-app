@@ -2775,14 +2775,14 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
       <div style={{padding:"8px 10px"}}>
         <div style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.3}}>{item.name}</div>
         <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{item.desc}</div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:6}}>
-          <div style={{fontSize:13,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
+        <div style={{marginTop:6}}>
+          <div style={{fontSize:13,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginBottom:6}}>{item.price}</div>
           <button onClick={()=>addToCart(item)} style={{
             background:inCart(item.id)?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
             color:inCart(item.id)?HOT:WHITE,
             border:inCart(item.id)?`1.5px solid ${HOT}`:"none",
-            borderRadius:20,padding:"5px 12px",
-            fontFamily:"'DM Sans',sans-serif",fontSize:10,fontWeight:700,cursor:"pointer",
+            borderRadius:20,padding:"6px 0",width:"100%",
+            fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",
           }}>
             {inCart(item.id)?"✓ Added":"+ Add"}
           </button>
