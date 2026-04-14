@@ -3066,6 +3066,37 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
     }
   };
 
+  const renderProductItem = (item) => {
+    const added = inCart(item.id);
+    const shadow = added
+      ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`
+      : "0 4px 16px rgba(0,0,0,0.09)";
+    const btnBg = added ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+    const btnColor = added ? HOT : WHITE;
+    const btnBorder = added ? `1.5px solid ${HOT}` : "none";
+    return (
+      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
+        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
+          <TablewearVisual item={item}/>
+        </div>
+        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
+          <div>
+            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+            {item.desc && <div style={{fontSize:8,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.35}}>{item.desc}</div>}
+          </div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
+            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
+            <button onClick={()=>toggle(item)} style={{
+              background:btnBg, color:btnColor, border:btnBorder,
+              borderRadius:20, padding:"4px 8px",
+              fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+            }}>{added ? "✓" : "+ Add"}</button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div style={{marginBottom:28}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
@@ -3082,32 +3113,8 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
           <div style={{fontSize:11,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
         </div>
       ) : (
-      <Carousel items={scored.filter(i=>i.score>0)} renderItem={item => {
-        const matched = item.score > 0 && selectedColors.length > 0;
-        const added   = inCart(item.id);
-        return (
-          <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:added?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
-            <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
-              <TablewearVisual item={item}/>
-            </div>
-            <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-              <div>
-                <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
-                {item.desc && <div style={{fontSize:8,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.35,display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical",overflow:"hidden"}}>{item.desc}</div>}
-              </div>
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-                <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
-                <button onClick={()=>toggle(item)} style={{
-                  background:added?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
-                  color:added?HOT:WHITE,border:added?`1.5px solid ${HOT}`:"none",
-                  borderRadius:20,padding:"4px 8px",
-                  fontFamily:"'DM Sans',sans-serif",fontSize:9,fontWeight:700,cursor:"pointer",
-                }}>{added?"✓":"+ Add"}</button>
-              </div>
-            </div>
-          </div>
-        );
-      }}/>
+        <Carousel items={scored.filter(i => i.score >= 1)} renderItem={renderProductItem} />
+      )}
     </div>
   );
 }
@@ -3140,8 +3147,49 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
     }
   };
 
+  const renderConfettiItem = (item) => {
+    const size = getSize(item.id);
+    const added = inCart(item.id, size);
+    const sizePrice = size === "mini"
+      ? parseFloat(item.price.replace("$","")).toFixed(2)
+      : (parseFloat(item.price.replace("$","")) * 2).toFixed(2);
+    const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
+    const btnBg = added ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+    const btnColor = added ? HOT : WHITE;
+    const btnBorder = added ? `1.5px solid ${HOT}` : "none";
+    return (
+      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
+        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
+          <TablewearVisual item={item}/>
+        </div>
+        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
+          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:4}}>{item.name}</div>
+          <div style={{display:"flex",gap:3,marginBottom:5}}>
+            {[{id:"mini",label:"Mini"},{id:"tube",label:"Tube"}].map(opt => (
+              <button key={opt.id} onClick={() => setSizes(prev => ({...prev,[item.id]:opt.id}))} style={{
+                flex:1, padding:"2px 0", borderRadius:6, cursor:"pointer",
+                fontFamily:"'DM Sans',sans-serif", fontSize:8, fontWeight:700,
+                border: size===opt.id ? `1.5px solid ${HOT}` : `1px solid ${BORDER}`,
+                background: size===opt.id ? SOFT : WHITE,
+                color: size===opt.id ? HOT : "#aaa",
+              }}>{opt.label}</button>
+            ))}
+          </div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>${sizePrice}</div>
+            <button onClick={() => toggle(item, size)} style={{
+              background:btnBg, color:btnColor, border:btnBorder,
+              borderRadius:20, padding:"4px 8px",
+              fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+            }}>{added ? "✓" : "+ Add"}</button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div style={{marginBottom:28}}>
+      <div style={{marginBottom:28}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
@@ -3156,47 +3204,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
           <div style={{fontSize:11,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
         </div>
       ) : (
-      <Carousel items={scored.filter(i=>i.score>0)} renderItem={(item) => {
-        const size    = getSize(item.id);
-        const added   = inCart(item.id, size);
-        const sizePrice = size === "mini"
-          ? parseFloat(item.price.replace("$","")).toFixed(2)
-          : (parseFloat(item.price.replace("$","")) * 2).toFixed(2);
-        return (
-          <div key={item.id} style={{
-            background:WHITE,borderRadius:18,overflow:"hidden",
-            boxShadow:added?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",
-            transition:"all 0.2s",display:"flex",flexDirection:"column",
-          }}>
-            <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
-              <TablewearVisual item={item}/>
-            </div>
-            <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-              <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:4}}>{item.name}</div>
-              <div style={{display:"flex",gap:3,marginBottom:5}}>
-                {[{id:"mini",label:"Mini"},{id:"tube",label:"Tube"}].map(opt=>(
-                  <button key={opt.id} onClick={()=>setSizes(prev=>({...prev,[item.id]:opt.id}))} style={{
-                    flex:1,padding:"2px 0",borderRadius:6,cursor:"pointer",
-                    fontFamily:"'DM Sans',sans-serif",fontSize:8,fontWeight:700,
-                    border:size===opt.id?`1.5px solid ${HOT}`:`1px solid ${BORDER}`,
-                    background:size===opt.id?SOFT:WHITE,
-                    color:size===opt.id?HOT:"#aaa",
-                  }}>{opt.label}</button>
-                ))}
-              </div>
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-                <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>${sizePrice}</div>
-                <button onClick={()=>toggle(item,size)} style={{
-                  background:added?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
-                  color:added?HOT:WHITE,border:added?`1.5px solid ${HOT}`:"none",
-                  borderRadius:20,padding:"4px 8px",
-                  fontFamily:"'DM Sans',sans-serif",fontSize:9,fontWeight:700,cursor:"pointer",
-                }}>{added?"✓":"+ Add"}</button>
-              </div>
-            </div>
-          </div>
-        );
-      }}/>
+        <Carousel items={scored.filter(i => i.score >= 1)} renderItem={renderConfettiItem} />
       )}
     </div>
   );
@@ -3242,6 +3250,61 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
 
   const activeNumItem = scored.find(i => i.id === activeNumId);
 
+  const renderFoilItem = (item) => {
+    if (item.numberBalloon) {
+      const selectedNums = [0,1,2,3,4,5,6,7,8,9].filter(n => numInCart(item,n));
+      const hasNums = selectedNums.length > 0;
+      const shadow = hasNums ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
+      const btnBg = hasNums ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+      const btnColor = hasNums ? HOT : WHITE;
+      const btnBorder = hasNums ? `1.5px solid ${HOT}` : "none";
+      const btnLabel = hasNums ? `#${selectedNums.join(", ")} ✓` : "Pick Numbers";
+      return (
+        <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
+          <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
+            <TablewearVisual item={item}/>
+          </div>
+          <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
+            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+            <div style={{marginTop:5}}>
+              <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>{item.price} each</div>
+              <button onClick={() => setActiveNumId(activeNumId === item.id ? null : item.id)} style={{
+                width:"100%", background:btnBg, color:btnColor, border:btnBorder,
+                borderRadius:20, padding:"5px 0",
+                fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+              }}>{btnLabel}</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    const added = inCart(item.id);
+    const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
+    const btnBg = added ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+    const btnColor = added ? HOT : WHITE;
+    const btnBorder = added ? `1.5px solid ${HOT}` : "none";
+    return (
+      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
+        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
+          <TablewearVisual item={item}/>
+        </div>
+        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
+          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
+            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
+            <button onClick={() => toggle(item)} style={{
+              background:btnBg, color:btnColor, border:btnBorder,
+              borderRadius:20, padding:"4px 8px",
+              fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+            }}>{added ? "✓" : "+ Add"}</button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const digits = [0,1,2,3,4,5,6,7,8,9];
+
   return (
     <div style={{marginBottom:28}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
@@ -3258,84 +3321,32 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
           <div style={{fontSize:11,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
         </div>
       ) : (
-      <Carousel items={scored.filter(i=>i.score>0)} renderItem={(item) => {
-        if (item.numberBalloon) {
-          const selectedNums = [0,1,2,3,4,5,6,7,8,9].filter(n => numInCart(item,n));
-          const hasNums = selectedNums.length > 0;
-          return (
-            <div key={item.id} style={{
-              background:WHITE,borderRadius:18,overflow:"hidden",
-              boxShadow:hasNums?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",
-              transition:"all 0.2s",display:"flex",flexDirection:"column",
-            }}>
-              <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
-                <TablewearVisual item={item}/>
-              </div>
-              <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-                <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
-                <div style={{marginTop:5}}>
-                  <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>{item.price} each</div>
-                  <button onClick={()=>setActiveNumId(activeNumId===item.id?null:item.id)} style={{
-                    width:"100%",background:hasNums?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
-                    color:hasNums?HOT:WHITE,border:hasNums?`1.5px solid ${HOT}`:"none",
-                    borderRadius:20,padding:"5px 0",
-                    fontFamily:"'DM Sans',sans-serif",fontSize:9,fontWeight:700,cursor:"pointer",
-                  }}>
-                    {hasNums?`#${selectedNums.join(", ")} ✓`:"Pick Numbers"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        }
-        const added = inCart(item.id);
-        return (
-          <div key={item.id} style={{
-            background:WHITE,borderRadius:18,overflow:"hidden",
-            boxShadow:added?`0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`:"0 4px 16px rgba(0,0,0,0.09)",
-            transition:"all 0.2s",display:"flex",flexDirection:"column",
-          }}>
-            <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
-              <TablewearVisual item={item}/>
-            </div>
-            <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-              <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-                <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
-                <button onClick={()=>toggle(item)} style={{
-                  background:added?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
-                  color:added?HOT:WHITE, border:added?`1.5px solid ${HOT}`:"none",
-                  borderRadius:20,padding:"4px 8px",
-                  fontFamily:"'DM Sans',sans-serif",fontSize:9,fontWeight:700,cursor:"pointer",
-                }}>{added?"✓":"+ Add"}</button>
-              </div>
-            </div>
-          </div>
-        );
-      }}/>
-      {/* Number picker panel — appears when a number balloon card is tapped */}
+        <Carousel items={scored.filter(i => i.score >= 1)} renderItem={renderFoilItem} />
+      )}
       {activeNumItem && (
         <div style={{marginTop:12,background:WHITE,borderRadius:18,padding:"14px 14px 16px",boxShadow:"0 4px 20px rgba(233,30,140,0.15)"}}>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
             <div style={{fontSize:12,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>{activeNumItem.name} — Pick Your Numbers</div>
-            <button onClick={()=>setActiveNumId(null)} style={{background:"none",border:"none",fontSize:18,cursor:"pointer",color:"#aaa",lineHeight:1}}>×</button>
+            <button onClick={() => setActiveNumId(null)} style={{background:"none",border:"none",fontSize:18,cursor:"pointer",color:"#aaa",lineHeight:1}}>×</button>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:8}}>
-            {[0,1,2,3,4,5,6,7,8,9].map(n => {
+            {digits.map(n => {
               const sel = numInCart(activeNumItem, n);
+              const bg = sel ? SOFT : WHITE;
+              const col = sel ? HOT : DARK;
+              const bdr = sel ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`;
               return (
-                <button key={n} onClick={()=>toggleNum(activeNumItem,n)} style={{
-                  aspectRatio:"1/1",borderRadius:12,cursor:"pointer",
-                  fontFamily:"'DM Sans',sans-serif",fontSize:20,fontWeight:900,
-                  border:sel?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-                  background:sel?SOFT:WHITE,color:sel?HOT:DARK,
-                  transition:"all 0.15s",
+                <button key={n} onClick={() => toggleNum(activeNumItem, n)} style={{
+                  aspectRatio:"1/1", borderRadius:12, cursor:"pointer",
+                  fontFamily:"'DM Sans',sans-serif", fontSize:20, fontWeight:900,
+                  border:bdr, background:bg, color:col, transition:"all 0.15s",
                 }}>{n}</button>
               );
+            })}
           </div>
-          {[0,1,2,3,4,5,6,7,8,9].filter(n=>numInCart(activeNumItem,n)).length > 0 && (
+          {digits.filter(n => numInCart(activeNumItem,n)).length > 0 && (
             <div style={{marginTop:10,fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700}}>
-              Selected: {[0,1,2,3,4,5,6,7,8,9].filter(n=>numInCart(activeNumItem,n)).join(", ")} · ${([0,1,2,3,4,5,6,7,8,9].filter(n=>numInCart(activeNumItem,n)).length * parseFloat(activeNumItem.price.replace("$",""))).toFixed(2)} total
+              Selected: {digits.filter(n => numInCart(activeNumItem,n)).join(", ")} · ${(digits.filter(n => numInCart(activeNumItem,n)).length * parseFloat(activeNumItem.price.replace("$",""))).toFixed(2)} total
             </div>
           )}
         </div>
@@ -3487,7 +3498,7 @@ function PackageCard({ pkg, selected, onClick }) {
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
-export default function DecorTab({ groupSize, cart, setCart, setTab }) {
+export default function DecorTab({ groupSize, cart, setCart, setTab, openCart }) {
   const [selected, setSelected] = useState([]); // shared garland colors → drives sort order in all steps
 
   return (
@@ -3585,7 +3596,7 @@ export default function DecorTab({ groupSize, cart, setCart, setTab }) {
             <span style={{color:DARK}}>Total</span>
             <span style={{color:HOT}}>${cart.reduce((s,i)=>s+(typeof i.price==="number"?i.price:parseFloat(i.price)||0),0).toFixed(2)}</span>
           </div>
-          <button onClick={()=>setTab&&setTab("shop")} style={{...BP,width:"100%",padding:"14px",fontSize:14}}>
+          <button onClick={()=>openCart?openCart():setTab&&setTab("shop")} style={{...BP,width:"100%",padding:"14px",fontSize:14}}>
             Review & Checkout →
           </button>
           <div style={{textAlign:"center",marginTop:8,fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
