@@ -1130,7 +1130,7 @@ export default function ExploreTab({ groupSize }) {
                     </a>
                   ) : (
                     <button onClick={ev=>{ev.stopPropagation();setSelectedExp(e);}} style={{ ...BP, width:"100%", fontSize:11, padding:"8px", borderRadius:10 }}>
-                      View Details →
+                      Review
                     </button>
                   )}
                 </div>
