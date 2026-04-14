@@ -13,7 +13,6 @@ const CATS = [
   { id:"relax",   label:"Relaxation",       photo:"https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=80&h=80&fit=crop&q=80" },
   { id:"shows",   label:"Live Shows",       photo:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=80&h=80&fit=crop&q=80" },
   { id:"water",   label:"Water Activities", photo:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=80&h=80&fit=crop&q=80" },
-  { id:"bonus",   label:"Bonus",            photo:"https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=80&h=80&fit=crop&q=80" },
   { id:"stay",    label:"Stays",            photo:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=80&h=80&fit=crop&q=80" },
   { id:"flight",  label:"Flights",          photo:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=80&h=80&fit=crop&q=80" },
   { id:"car",     label:"Cars",             photo:"https://images.unsplash.com/photo-1449965408869-eaa3f722e8bb?w=80&h=80&fit=crop&q=80" },
