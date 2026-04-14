@@ -9,6 +9,7 @@ import HomeTab from './components/tabs/HomeTab.jsx';
 import FlightsTab from './components/tabs/FlightsTab.jsx';
 import StaysTab from './components/tabs/StaysTab.jsx';
 import EatsTab from './components/tabs/EatsTab.jsx';
+import ExperiencesTab from './components/tabs/ExperiencesTab.jsx';
 import PlanTab from './components/tabs/PlanTab.jsx';
 import BudgetTab from './components/tabs/BudgetTab.jsx';
 import MoodTab from './components/tabs/MoodTab.jsx';
@@ -87,7 +88,8 @@ export default function App() {
         {tab==="home"    && <HomeTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} user={user} />}
         {tab==="flights" && <FlightsTab groupSize={groupSize} />}
         {tab==="stays"   && <StaysTab groupSize={groupSize} />}
-        {tab==="eats"    && <EatsTab />}
+        {tab==="eats"        && <EatsTab groupSize={groupSize} />}
+        {tab==="experiences" && <ExperiencesTab groupSize={groupSize} />}
         {tab==="plan"    && <PlanTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} />}
         {tab==="budget"  && <BudgetTab groupSize={groupSize} />}
         {tab==="mood"    && <MoodTab setTab={setTab} />}
@@ -115,7 +117,8 @@ export default function App() {
                 {[
                   { id:"flights", label:"Flights",   sub:"Search & compare"        },
                   { id:"stays",   label:"Stays",     sub:"Airbnb, Vrbo & hotels"   },
-                  { id:"eats",    label:"Eats",      sub:"Restaurants & activities" },
+                  { id:"eats",         label:"Eats",        sub:"Restaurants & brunch"       },
+                  { id:"experiences", label:"Experiences", sub:"Activities & adventures"   },
                   { id:"budget",  label:"Budget",    sub:"Estimate trip cost"       },
                   ...(user.email ? [
                     { id:"split", label:"Split",     sub:"Divide expenses"          },
