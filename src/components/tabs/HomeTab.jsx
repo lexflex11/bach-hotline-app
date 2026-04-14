@@ -35,13 +35,11 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user }) {
       </div>
       <SH title="What do you need?" />
       {[
-        { icon:"✈️", label:"Group Flights",      sub:"Real booking links via Expedia & Kayak",   tab:"flights" },
-        { icon:"🏠", label:"Accommodations",        sub:"Entire homes — real booking links",        tab:"stays"   },
-        { icon:"🍾", label:"Eats & Experiences",  sub:"Curated bachelorette activities",          tab:"eats"    },
-        { icon:"🧾", label:"Split the Bill",       sub:"Who owes what — bride pays nothing",       tab:"split"   },
-        { icon:"🔔", label:"Deal Alerts",          sub:"Get pinged when prices drop",              tab:"alerts"  },
-        { icon:"🎀", label:"Party Supply Shop",    sub:"Your real Etsy products — 534 items",      tab:"shop"    },
-        { icon:"✨", label:"AI Décor Visualizer",  sub:"Upload space · Pick theme · See magic",    tab:"decor"   },
+        { icon:"✈️", label:"Group Flights",      sub:"Find best fares for your whole crew",      tab:"flights"      },
+        { icon:"🏠", label:"Accommodations",     sub:"Best stays for your group",                tab:"stays"        },
+        { icon:"🍽️", label:"Eats",               sub:"Restaurants & brunch spots",               tab:"eats"         },
+        { icon:"🎉", label:"Experiences",        sub:"Activities, shows & adventures",           tab:"experiences"  },
+        { icon:"🎀", label:"Party Supply Shop",  sub:"Your real Etsy products — 534 items",      tab:"shop"         },
       ].map(item => (
         <button key={item.tab} onClick={()=>setTab(item.tab)} style={{ ...C, display:"flex", alignItems:"center", gap:14, cursor:"pointer", textAlign:"left", width:"100%", marginBottom:8 }}>
           <span style={{ fontSize:24 }}>{item.icon}</span>
