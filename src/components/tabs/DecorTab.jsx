@@ -1591,7 +1591,7 @@ const TABLEWARE = [
   {
     id:"cup-pink-lemonade", type:"cup", name:"Pink Lemonade Cups",
     desc:"12 ct · 12 oz", price:"$9.99",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/69501be34a48c45392c2ab6e/1767901691890/Ebook+Thumbnail+with+Video-378.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d391d853-11ef-4738-bec4-7ec8c077ece7/Ebook+Thumbnail+with+Video-378.png",
     bg:"#FFB5C2", accent:"#FFE800",
     tags:["hotpink","blush","baby-pink","pink","yellow","lemonade","coral","taffy","white","sugar","champagne"],
   },
@@ -1605,7 +1605,7 @@ const TABLEWARE = [
   {
     id:"cup-test-tube", type:"cup", name:"Test Tube Shot Glasses",
     desc:"10 ct · 2 oz", price:"$18.68",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1768408091504/Ebook+Thumbnail+with+Video+-+2025-09-02T190400.620.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/b8d0c019-6fa9-4dd6-b2cc-d27e832c7170/Ebook+Thumbnail+with+Video+-+2025-09-02T190400.620.png",
     bg:"#F8F8F8", accent:"#E91E8C",
     tags:["white","crystal-clear","hotpink","blush","baby-pink","silver","confetti","rainbow","neon-pink","neon-green"],
   },
@@ -1640,14 +1640,14 @@ const TABLEWARE = [
   {
     id:"cup-heartbeat-gang", type:"cup", name:"Heartbeat Gang Cups",
     desc:"12 ct · 12 oz", price:"$11.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1768407395338/Ebook+Thumbnail+with+Video+-+2025-11-03T172558.659.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a1d64160-c511-4e4b-b0a6-6218be7049a1/Ebook+Thumbnail+with+Video+-+2025-11-03T172558.659.png",
     bg:"#E8112D", accent:"#E91E8C",
     tags:["red","scarlett","hotpink","blush","baby-pink","pink","white","sugar","crystal-clear","coral","taffy"],
   },
   {
     id:"cup-fiesta-striped", type:"cup", name:"Fiesta Striped Cups",
     desc:"12 ct · 12 oz", price:"$11.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1768407296354/Ebook+Thumbnail+with+Video+-+2025-01-27T162539.289.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/4b97b837-4d90-4c47-a721-fa3ab838c061/Ebook+Thumbnail+with+Video+-+2025-01-27T162539.289.png",
     bg:"#FF6B1A", accent:"#4CAF50",
     tags:["orange","burnt-orange","aloha","coral","lime-green","green","red","scarlett","yellow","lemonade","hotpink","turquoise","white"],
   },
@@ -1675,7 +1675,7 @@ const TABLEWARE = [
   {
     id:"cup-iridescent-stripe", type:"cup", name:"Iridescent Stripe Cups",
     desc:"12 ct · 12 oz", price:"$9.12",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767902114614/Ebook+Thumbnail+with+Video-371.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/61b2fba4-c556-4921-9f23-d98bad63d52d/Ebook+Thumbnail+with+Video-371.png",
     bg:"#F8F8F8", accent:"#CE93D8",
     tags:["silver","white","crystal-clear","confetti","lavender","baby-pink","blush","baby-blue","monet","champagne","metallic-silver","fog"],
   },
@@ -1703,7 +1703,7 @@ const TABLEWARE = [
   {
     id:"cup-bow", type:"cup", name:"Bow Cups",
     desc:"12 ct · 12 oz", price:"$11.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68abd10c10a90473ab289320/1767902211224/Ebook+Thumbnail+with+Video+-+2025-11-03T140749.604.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0baa6024-00a5-4ed8-a61b-31d6bdd331c4/Ebook+Thumbnail+with+Video+-+2025-11-03T140749.604.png",
     bg:"#FFB5C2", accent:"#E91E8C",
     tags:["hotpink","blush","baby-pink","pink","white","sugar","crystal-clear","champagne","lavender","gold","taffy","cameo","lace","stone","fog","cocoa","malted","muse","earth"],
   },
