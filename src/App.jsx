@@ -59,29 +59,39 @@ export default function App() {
 
   return (
     <div style={{ minHeight:"100vh", background:PAGE, color:DARK, fontFamily:"'Playfair Display',Georgia,serif" }}>
-      <div style={{ background:WHITE, borderBottom:`2px solid ${SOFT}`, position:"sticky", top:0, zIndex:100, boxShadow:`0 2px 12px rgba(230,101,130,0.08)` }}>
-        <div style={{ padding:"2px 16px 0px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-          <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:90, width:"auto", objectFit:"contain" }} />
-          <div style={{ display:"flex", gap:8, alignItems:"center" }}>
+      <div style={{ background:DARK, position:"sticky", top:0, zIndex:100, boxShadow:`0 2px 16px rgba(0,0,0,0.28)` }}>
+        {/* ── HEADER ROW ── */}
+        <div style={{ padding:"0 16px", display:"flex", alignItems:"center", justifyContent:"space-between", maxWidth:900, margin:"0 auto" }}>
+          <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:80, width:"auto", objectFit:"contain" }} />
+          <div style={{ display:"flex", gap:16, alignItems:"center" }}>
             {user.email && (
-              <div onClick={()=>setTab("alerts")} style={{ position:"relative", cursor:"pointer", fontSize:22 }}>
-                🔔
-                {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-4, width:16, height:16, borderRadius:"50%", background:PUNCH, display:"flex", alignItems:"center", justifyContent:"center", fontSize:9, fontWeight:800, fontFamily:"'DM Sans',sans-serif", color:WHITE, boxShadow:`0 2px 6px rgba(213,36,56,0.45)` }}>{alertCount}</div>}
+              <div onClick={()=>setTab("alerts")} style={{ position:"relative", cursor:"pointer", display:"flex", alignItems:"center" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+                {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-5, width:14, height:14, borderRadius:"50%", background:HOT, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'DM Sans',sans-serif", color:WHITE }}>{alertCount}</div>}
               </div>
             )}
-            <div onClick={()=>setCartOpen(true)} style={{ background:cart.length>0?`linear-gradient(135deg,#f472b0,${HOT})`:SOFT, border:`1.5px solid ${cart.length>0?HOT:BORDER}`, borderRadius:50, padding:"6px 13px", fontSize:12, fontFamily:"'DM Sans',sans-serif", fontWeight:700, color:cart.length>0?WHITE:HOT, cursor:"pointer" }}>
-              🛒 {cart.length}
+            {/* Cart icon */}
+            <div onClick={()=>setCartOpen(true)} style={{ position:"relative", cursor:"pointer", display:"flex", alignItems:"center" }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+              {cart.length>0&&<div style={{ position:"absolute", top:-5, right:-6, width:15, height:15, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'DM Sans',sans-serif", color:WHITE }}>{cart.length}</div>}
             </div>
-            <div onClick={()=>setTab("profile")} style={{ width:30, height:30, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer", border:`2px solid ${WHITE}`, boxShadow:`0 2px 8px rgba(213,36,56,0.22)` }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {/* Profile */}
+            <div onClick={()=>setTab("profile")} style={{ width:28, height:28, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="8" r="4"/>
                 <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
               </svg>
             </div>
           </div>
         </div>
-        {/* ── TOP NAV ── */}
-        <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid ${SOFT}` }}>
+        {/* ── TAB NAV ── */}
+        <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid rgba(255,255,255,0.10)` }}>
           {[
             { id:"home",    label:"Home" },
             { id:"explore", label:"Explore" },
@@ -93,18 +103,18 @@ export default function App() {
             return (
               <button key={n.id}
                 onClick={() => isMore ? setDrawerOpen(p => !p) : (navigateTo(n.id), setDrawerOpen(false))}
-                style={{ flex:1, padding:"10px 4px 9px", background:"none", border:"none", cursor:"pointer",
+                style={{ flex:1, padding:"10px 4px 10px", background:"none", border:"none", cursor:"pointer",
                   display:"flex", flexDirection:"column", alignItems:"center", gap:2,
                   borderBottom: isActive ? `2.5px solid ${HOT}` : "2.5px solid transparent",
-                  color: isActive ? HOT : "#aaa",
+                  color: isActive ? WHITE : "rgba(255,255,255,0.55)",
                   transition:"color 0.18s",
                 }}>
-                <span style={{ fontSize:10, fontFamily:"'DM Sans',sans-serif", fontWeight:700, letterSpacing:"0.5px", textTransform:"uppercase" }}>{n.label}</span>
+                <span style={{ fontSize:11, fontFamily:"'DM Sans',sans-serif", fontWeight:700, letterSpacing:"0.6px", textTransform:"uppercase" }}>{n.label}</span>
               </button>
             );
           })}
         </div>
-        <div style={{ background:SOFT, padding:"2px 16px 3px", fontFamily:"'DM Sans',sans-serif", fontSize:10, color:HOT, fontWeight:600, letterSpacing:"0.5px", borderTop:`1px solid ${BORDER}` }}>
+        <div style={{ background:"rgba(255,255,255,0.07)", padding:"2px 16px 3px", fontFamily:"'DM Sans',sans-serif", fontSize:10, color:"rgba(255,255,255,0.55)", fontWeight:600, letterSpacing:"0.5px" }}>
           Group of {groupSize} · {user.name.split(" ")[0]}
         </div>
       </div>
