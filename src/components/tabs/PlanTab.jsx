@@ -311,9 +311,9 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
       {/* Hint when steps incomplete */}
       {(!bt || !dest || !budget || (budget === "custom" && !customBudget)) && (
         <div style={{textAlign:"center",fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:16}}>
-          {!bt ? "👆 Start by picking the bride's personality"
-            : !dest ? "👆 Now choose your destination"
-            : !budget || (budget === "custom" && !customBudget) ? "👆 Set your per-person budget"
+          {!bt ? "Start by picking the bride's personality"
+            : !dest ? "Now choose your destination"
+            : !budget || (budget === "custom" && !customBudget) ? "Set your per-person budget"
             : ""}
         </div>
       )}

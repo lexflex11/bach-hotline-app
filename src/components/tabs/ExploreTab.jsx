@@ -931,7 +931,7 @@ export default function ExploreTab({ groupSize }) {
       )}
       {city === "all" && (
         <div style={{textAlign:"center",fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:16}}>
-          👆 Pick a city above to generate your itinerary
+          Pick a city above to generate your itinerary
         </div>
       )}
 
