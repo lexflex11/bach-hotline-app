@@ -212,7 +212,9 @@ export const DESTS = [
   { id:"keywest",     name:"Key West",        emoji:"🦜", vibe:"Sunset & Island Energy",  trend:"Tropical",          airportCode:"EYW", toFull:"Key West, FL"                         },
   { id:"sedona",      name:"Sedona",          emoji:"🔴", vibe:"Spa & Red Rock Retreats", trend:"Wellness ✨",       airportCode:"PHX", toFull:"Sedona, AZ"                           },
   { id:"denver",      name:"Denver / Aspen",  emoji:"⛰️", vibe:"Mountains & Brunch",     trend:"Year-Round",        airportCode:"DEN", toFull:"Denver, CO"                           },
-  { id:"houston",     name:"Houston",         emoji:"🤘", vibe:"BBQ, Nightlife & Culture",trend:"Local Fave",        airportCode:"IAH", toFull:"Houston, TX"                          },
+  { id:"houston",        name:"Houston",          emoji:"🤘", vibe:"BBQ, Nightlife & Culture",   trend:"Local Fave",    airportCode:"IAH", toFull:"Houston, TX"              },
+  { id:"corpuschristi", name:"Corpus Christi",   emoji:"🏖️", vibe:"Beach & Bay City Vibes",     trend:"Hidden Gem",    airportCode:"CRP", toFull:"Corpus Christi, TX"       },
+  { id:"boston",        name:"Boston",           emoji:"🦞", vibe:"History, Bars & Brunch",      trend:"East Coast Cool", airportCode:"BOS", toFull:"Boston, MA"             },
   // ── International ───────────────────────────────────────────────────────────
   { id:"cabo",        name:"Cabo San Lucas",  emoji:"🌊", vibe:"Yacht Parties & Resorts", trend:"#1 International",  airportCode:"SJD", toFull:"Cabo San Lucas, Mexico",  featured:true, international:true },
   { id:"mykonos",     name:"Mykonos",         emoji:"🪩", vibe:"Windmills & Beach Clubs", trend:"TikTok Viral",      airportCode:"JMK", toFull:"Mykonos, Greece",         featured:true, international:true },

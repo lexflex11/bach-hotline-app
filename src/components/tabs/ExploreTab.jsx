@@ -199,7 +199,21 @@ const EXP = [
   { id:108, city:"houston",    name:"Montrose Brunch Crawl",        cat:"food",      emoji:"🍳", price:"$$$",  rating:4.9, vibe:"3 hotspot brunches · Bottomless",  badge:"Brunch",     hot:true  },
   { id:109, city:"houston",    name:"Midtown Nightlife Tour",       cat:"nightlife", emoji:"🌃", price:"$$",   rating:4.7, vibe:"5 venues · VIP entry · DJ nights", badge:"Nightlife",  hot:false },
   { id:110, city:"houston",    name:"Pole & Burlesque Class",       cat:"activity",  emoji:"💃", price:"$$",   rating:4.8, vibe:"Private group · Empowering",       badge:"Activity",   hot:false },
-  { id:111, city:"houston",    name:"Space Center Group Tour",      cat:"activity",  emoji:"🚀", price:"$$",   rating:4.6, vibe:"NASA · Unique bach activity",      badge:"Unique",     hot:false },
+  { id:111, city:"houston",       name:"Space Center Group Tour",      cat:"activity",  emoji:"🚀", price:"$$",   rating:4.6, vibe:"NASA · Unique bach activity",        badge:"Unique",     hot:false },
+
+  // Corpus Christi
+  { id:112, city:"corpuschristi", name:"Bay Sunset Cruise",             cat:"water",    emoji:"⛵", price:"$$$",  rating:4.9, vibe:"Open bar · Dolphin watching · 2 hrs",  badge:"Experience", hot:true  },
+  { id:113, city:"corpuschristi", name:"North Beach Bar Crawl",         cat:"bar",      emoji:"🍸", price:"$$",   rating:4.7, vibe:"Waterfront bars · Live music",         badge:"Bar Crawl",  hot:true  },
+  { id:114, city:"corpuschristi", name:"Paddleboard & Mimosas",         cat:"water",    emoji:"🏄", price:"$$",   rating:4.8, vibe:"Group lesson · Brunch after",          badge:"Activity",   hot:false },
+  { id:115, city:"corpuschristi", name:"Texas Drag Brunch",             cat:"food",     emoji:"👑", price:"$$$",  rating:4.9, vibe:"Bottomless mimosas · Live performance", badge:"Brunch",     hot:false },
+  { id:116, city:"corpuschristi", name:"Mustang Island Beach Day",      cat:"activity", emoji:"🏖️",price:"$",    rating:4.8, vibe:"Private beach setup · Chairs & umbrella",badge:"Beach",     hot:false },
+
+  // Boston
+  { id:117, city:"boston",        name:"Freedom Trail Cocktail Tour",   cat:"bar",      emoji:"🍸", price:"$$",   rating:4.9, vibe:"Historic bars · Craft cocktails",       badge:"Bar Tour",   hot:true  },
+  { id:118, city:"boston",        name:"Drag Brunch Boston",            cat:"food",     emoji:"👑", price:"$$$",  rating:5.0, vibe:"Bottomless mimosas · Live show",         badge:"Brunch",     hot:true  },
+  { id:119, city:"boston",        name:"Harbor Cruise & Sunset",        cat:"water",    emoji:"⛵", price:"$$$",  rating:4.8, vibe:"Boston skyline · BYOB · 2 hrs",         badge:"Experience", hot:false },
+  { id:120, city:"boston",        name:"SoWa Rooftop Bar Night",        cat:"nightlife",emoji:"🌃", price:"$$",   rating:4.7, vibe:"Rooftop views · DJ · VIP entry",        badge:"Nightlife",  hot:false },
+  { id:121, city:"boston",        name:"Seaport Spa Day",               cat:"spa",      emoji:"💆", price:"$$$",  rating:4.9, vibe:"Waterfront spa · Group packages",       badge:"Spa",        hot:false },
 
   // ── Relaxation / Spa ────────────────────────────────────────────────────────
   { id:300, city:"miami",       name:"Mandarin Oriental Spa",          cat:"spa",   emoji:"💆", price:"$$$$", rating:5.0, vibe:"Oceanfront · Hot stone · Full day pass",         badge:"Spa",      hot:true  },
@@ -500,7 +514,7 @@ const BRIDE_PREFS = {
 };
 
 // Cities that have EXP data
-const EXPLORE_CITY_IDS = new Set(["miami","nashville","vegas","nola","scottsdale","austin","charleston","savannah","nyc","chicago","sandiego","palmsprings","napa","keywest","sedona","denver","houston","cabo","mykonos"]);
+const EXPLORE_CITY_IDS = new Set(["miami","nashville","vegas","nola","scottsdale","austin","charleston","savannah","nyc","chicago","sandiego","palmsprings","napa","keywest","sedona","denver","houston","corpuschristi","boston","cabo","mykonos"]);
 
 
 // ─── Helper: generate detail page content from experience data ───────────────
