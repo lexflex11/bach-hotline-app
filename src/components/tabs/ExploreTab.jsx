@@ -841,38 +841,6 @@ export default function ExploreTab({ groupSize }) {
   return (
     <div style={{ paddingBottom:8 }}>
 
-      {/* ── BROWSE SECTION (top) ─────────────────────────────────────────── */}
-      <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14 }}>
-        <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }} />
-        <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", letterSpacing:"1.5px", textTransform:"uppercase", whiteSpace:"nowrap" }}>
-          Browse Experiences
-        </div>
-        <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }} />
-      </div>
-
-      {/* Category chips */}
-      <div style={{ display:"flex", gap:8, overflowX:"auto", paddingBottom:4, marginBottom:16, scrollbarWidth:"none" }}>
-        {CATS.map(c => (
-          <button key={c.id} onClick={() => setCat(c.id)} style={{
-            flexShrink:0, display:"flex", flexDirection:"column", alignItems:"center", gap:5,
-            padding:"8px 10px", background: cat===c.id ? SOFT : WHITE,
-            border: cat===c.id ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
-            borderRadius:14, cursor:"pointer", transition:"all 0.15s", minWidth:64,
-          }}>
-            <div style={{
-              width:38, height:38, borderRadius:"50%",
-              background: cat===c.id ? `linear-gradient(135deg,${HOT},${PUNCH})` : SOFT,
-              display:"flex", alignItems:"center", justifyContent:"center",
-              fontSize:18, border: cat===c.id ? `2px solid ${HOT}` : "2px solid transparent",
-              transition:"all 0.15s",
-            }}>{c.emoji}</div>
-            <span style={{
-              fontSize:10, fontWeight:700, fontFamily:"'DM Sans',sans-serif",
-              color: cat===c.id ? HOT : "#888", whiteSpace:"nowrap",
-            }}>{c.label}</span>
-          </button>
-        ))}
-      </div>
 
       {/* ── CITY FILTER ───────────────────────────────────────────────────── */}
       <div style={{display:"flex",gap:8,marginBottom:12}}>
