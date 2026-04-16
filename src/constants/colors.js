@@ -1,6 +1,6 @@
 // ─── BRAND COLORS ─────────────────────────────────────────────────────────────
 export const WHITE  = "#ffffff";
-export const PAGE   = "#fdf5fa";
+export const PAGE   = "#ffffff";
 export const SOFT   = "#ffe7f9";
 export const MID    = "#ffcfec";
 export const HOT    = "#e66582";

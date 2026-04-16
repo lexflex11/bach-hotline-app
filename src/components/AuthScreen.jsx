@@ -15,7 +15,7 @@ export default function AuthScreen({ onLogin, LOGO_SRC }) {
     onLogin({ id:Date.now(), name:mode==="signup"?name:(email.split("@")[0]||"Babe"), email, role, avatar:av[role], joinedDate:new Date().toLocaleDateString("en-US",{month:"short",year:"numeric"}) });
   };
   return (
-    <div style={{ minHeight:"100vh", background:`linear-gradient(160deg,${SOFT} 0%,${WHITE} 60%)`, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"24px 20px" }}>
+    <div style={{ minHeight:"100vh", background:WHITE, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"24px 20px" }}>
       <div style={{ width:"100%", maxWidth:360 }}>
         <div style={{ textAlign:"center", marginBottom:28 }}>
           <img src={LOGO_SRC} alt="Bach Hotline" style={{ width:260, height:"auto", objectFit:"contain" }} />
