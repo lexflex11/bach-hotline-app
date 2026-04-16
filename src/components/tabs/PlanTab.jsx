@@ -202,7 +202,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
             <div style={{width:26,height:26,borderRadius:"50%",background:budget?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:budget?WHITE:HOT,flexShrink:0}}>3</div>
             <div>
               <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What's your budget?</div>
-              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Per person — AI will tailor costs to fit</div>
+              <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Per person — we will tailor costs to fit</div>
             </div>
           </div>
 
@@ -215,7 +215,6 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
                 transition:"all 0.2s",
                 boxShadow:budget===tier.id?`0 3px 12px ${tier.color}33`:"none",
               }}>
-                <div style={{fontSize:20,marginBottom:4}}>{tier.emoji}</div>
                 <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:budget===tier.id?tier.color:DARK}}>{tier.label}</div>
                 <div style={{fontSize:11,fontWeight:700,color:budget===tier.id?tier.color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{tier.range}</div>
                 <div style={{fontSize:10,color:"#888",fontFamily:"'DM Sans',sans-serif",marginTop:2,lineHeight:1.3}}>{tier.desc}</div>
@@ -297,15 +296,6 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
         </button>
       )}
 
-      {/* Hint when steps incomplete */}
-      {(!bt || !dest || !budget || (budget === "custom" && !customBudget)) && (
-        <div style={{textAlign:"center",fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:16}}>
-          {!bt ? "Start by picking the bride's personality"
-            : !dest ? "Now choose your destination"
-            : !budget || (budget === "custom" && !customBudget) ? "Set your per-person budget"
-            : ""}
-        </div>
-      )}
 
       {/* ── LOADING ── */}
       {loading && (
