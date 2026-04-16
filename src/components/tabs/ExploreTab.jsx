@@ -916,19 +916,6 @@ export default function ExploreTab({ groupSize }) {
         </div>
       )}
 
-      {/* ── GENERATE BUTTON ───────────────────────────────────────────────── */}
-      {city !== "all" && (
-        <button onClick={handleGenerate} disabled={generating} style={{
-          ...BP, width:"100%", padding:"13px", fontSize:14, borderRadius:14, marginBottom:16,
-        }}>
-          {generating ? `✨ Building your ${cityName} itinerary...` : `✨ Generate My ${numDays}-Day ${cityName} Itinerary`}
-        </button>
-      )}
-      {city === "all" && (
-        <div style={{textAlign:"center",fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:16}}>
-          Pick a city above to generate your itinerary
-        </div>
-      )}
 
       {/* ── GENERATED ITINERARY ──────────────────────────────────────────── */}
       {Array.isArray(itin) && (
