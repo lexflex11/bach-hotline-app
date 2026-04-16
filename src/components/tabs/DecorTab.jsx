@@ -560,11 +560,30 @@ function Balloon3D({ position, radius, color }) {
   );
 }
 
-function GarlandScene({ selectedColors }) {
+// x range of garland: approx -6 to +6. For color block, divide into equal zones.
+const GARLAND_X_MIN = -6.0;
+const GARLAND_X_MAX = 6.2;
+
+function GarlandScene({ selectedColors, arrangement }) {
   const palette = selectedColors.map(id => {
     const col = BALLOON_COLORS.find(c => c.id === id);
     return col ? col.color : '#ffb6c1';
   });
+
+  const getColor = (b) => {
+    if (!palette.length) return '#ffb6c1';
+    if (arrangement === 'colorblock' && palette.length > 1) {
+      // Divide garland x-range into palette.length equal zones
+      const zoneWidth = (GARLAND_X_MAX - GARLAND_X_MIN) / palette.length;
+      const zone = Math.min(
+        Math.floor((b[0] - GARLAND_X_MIN) / zoneWidth),
+        palette.length - 1
+      );
+      return palette[Math.max(0, zone)];
+    }
+    return palette[b[4] % palette.length];
+  };
+
   return (
     <>
       <ambientLight intensity={0.55} />
@@ -582,14 +601,14 @@ function GarlandScene({ selectedColors }) {
           key={i}
           position={[b[0]*0.95, b[1]*0.95, b[2]*0.95]}
           radius={b[3]}
-          color={palette[b[4] % palette.length]}
+          color={getColor(b)}
         />
       ))}
     </>
   );
 }
 
-function GarlandPreview({ selectedColors }) {
+function GarlandPreview({ selectedColors, arrangement }) {
   if (selectedColors.length === 0) {
     return (
       <div style={{height:300,display:"flex",alignItems:"center",justifyContent:"center",background:"#fdf5f8",borderRadius:14,border:`2px dashed ${BORDER}`}}>
@@ -604,7 +623,7 @@ function GarlandPreview({ selectedColors }) {
     <div style={{borderRadius:14,overflow:"hidden",border:`1.5px solid ${BORDER}`,background:"#fdf5f8"}}>
       <div style={{height:300}}>
         <Canvas camera={{ position:[0, 0.2, 10], fov:62 }}>
-          <GarlandScene selectedColors={selectedColors} />
+          <GarlandScene selectedColors={selectedColors} arrangement={arrangement} />
         </Canvas>
       </div>
       <div style={{textAlign:"center",fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif",padding:"5px 0 6px",background:"#fdf5f8",letterSpacing:"0.5px"}}>
@@ -2893,7 +2912,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
 function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
   const [arrangement, setArrangement] = useState("mixed");
 
-  const maxColors = arrangement === "mixed" ? 5 : 4;
+  const maxColors = 4;
 
   const toggleColor = id => {
     setSelected(prev => {
@@ -2946,8 +2965,8 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
         </div>
         <div style={{fontSize:11,color:"#999",fontFamily:"'DM Sans',sans-serif",marginBottom:8,lineHeight:1.5}}>
           {arrangement==="mixed"
-            ? "Select Mixed for up to 5 colors including specialty patterned balloons."
-            : "Color Block uses up to 4 classic solid colors in clean sections."}
+            ? "Colors are blended throughout the garland. Pick up to 4."
+            : "Each color fills its own section of the garland. Pick up to 4."}
         </div>
         <div style={{display:"flex",gap:8}}>
           {[{id:"mixed",label:"Mixed"},{id:"colorblock",label:"Color Block"}].map(o=>(
@@ -2963,7 +2982,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
       {/* Color palette grid */}
       <div style={{marginBottom:16}}>
         <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:10}}>
-          {arrangement==="mixed"?"Pick Up to 5 Colors":"Pick Up to 4 Colors"}
+          Pick Up to 4 Colors
           <span style={{marginLeft:8,fontWeight:400,color:"#bbb",textTransform:"none",letterSpacing:0}}>{selected.length}/{maxColors} selected</span>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:8}}>
