@@ -105,9 +105,6 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
         background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`,
         border:`1.5px solid ${MID}`, marginBottom:16, textAlign:"center",
       }}>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,letterSpacing:"1.5px",textTransform:"uppercase",marginBottom:8}}>
-          Bach Hotline
-        </div>
         <h2 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:22,fontWeight:900,margin:"0 0 6px",color:DARK}}>
           <em style={{color:HOT,fontStyle:"italic"}}>Build Your Itinerary</em>
         </h2>
