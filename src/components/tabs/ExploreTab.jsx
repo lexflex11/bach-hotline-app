@@ -6,16 +6,16 @@ import { DESTS, BRIDE_TYPES } from '../../constants/data.js';
 
 // ─── Category filters ──────────────────────────────────────────────────────
 const CATS = [
-  { id:"all",     label:"Popular",          photo:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=80&h=80&fit=crop&q=80" },
-  { id:"todo",    label:"Things to Do",     photo:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=80&h=80&fit=crop&q=80" },
-  { id:"dining",  label:"Restaurants",      photo:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=80&h=80&fit=crop&q=80" },
-  { id:"bar",     label:"Bars",             photo:"https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=80&h=80&fit=crop&q=80" },
-  { id:"relax",   label:"Relaxation",       photo:"https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=80&h=80&fit=crop&q=80" },
-  { id:"shows",   label:"Live Shows",       photo:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=80&h=80&fit=crop&q=80" },
-  { id:"water",   label:"Water Activities", photo:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=80&h=80&fit=crop&q=80" },
-  { id:"stay",    label:"Stays",            photo:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=80&h=80&fit=crop&q=80" },
-  { id:"flight",  label:"Flights",          photo:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=80&h=80&fit=crop&q=80" },
-  { id:"car",     label:"Cars",             photo:"https://images.unsplash.com/photo-1449965408869-eaa3f722e8bb?w=80&h=80&fit=crop&q=80" },
+  { id:"all",     label:"Popular",          emoji:"🔥" },
+  { id:"todo",    label:"Things to Do",     emoji:"🎉" },
+  { id:"dining",  label:"Restaurants",      emoji:"🍽️" },
+  { id:"bar",     label:"Bars",             emoji:"🍸" },
+  { id:"relax",   label:"Relaxation",       emoji:"💆" },
+  { id:"shows",   label:"Live Shows",       emoji:"🎭" },
+  { id:"water",   label:"Water",            emoji:"🌊" },
+  { id:"stay",    label:"Stays",            emoji:"🏠" },
+  { id:"flight",  label:"Flights",          emoji:"✈️" },
+  { id:"car",     label:"Cars",             emoji:"🚗" },
 ];
 
 // Maps ExploreTab cat → which filter bucket it belongs to
@@ -827,6 +827,39 @@ export default function ExploreTab({ groupSize }) {
   return (
     <div style={{ paddingBottom:8 }}>
 
+      {/* ── BROWSE SECTION (top) ─────────────────────────────────────────── */}
+      <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14 }}>
+        <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }} />
+        <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", letterSpacing:"1.5px", textTransform:"uppercase", whiteSpace:"nowrap" }}>
+          Browse Experiences
+        </div>
+        <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }} />
+      </div>
+
+      {/* Category chips */}
+      <div style={{ display:"flex", gap:8, overflowX:"auto", paddingBottom:4, marginBottom:16, scrollbarWidth:"none" }}>
+        {CATS.map(c => (
+          <button key={c.id} onClick={() => setCat(c.id)} style={{
+            flexShrink:0, display:"flex", flexDirection:"column", alignItems:"center", gap:5,
+            padding:"8px 10px", background: cat===c.id ? SOFT : WHITE,
+            border: cat===c.id ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
+            borderRadius:14, cursor:"pointer", transition:"all 0.15s", minWidth:64,
+          }}>
+            <div style={{
+              width:38, height:38, borderRadius:"50%",
+              background: cat===c.id ? `linear-gradient(135deg,${HOT},${PUNCH})` : SOFT,
+              display:"flex", alignItems:"center", justifyContent:"center",
+              fontSize:18, border: cat===c.id ? `2px solid ${HOT}` : "2px solid transparent",
+              transition:"all 0.15s",
+            }}>{c.emoji}</div>
+            <span style={{
+              fontSize:10, fontWeight:700, fontFamily:"'DM Sans',sans-serif",
+              color: cat===c.id ? HOT : "#888", whiteSpace:"nowrap",
+            }}>{c.label}</span>
+          </button>
+        ))}
+      </div>
+
       {/* ── CITY FILTER ───────────────────────────────────────────────────── */}
       <div style={{display:"flex",gap:8,marginBottom:12}}>
         <div style={{position:"relative",flex:"0 0 auto"}}>
@@ -897,26 +930,6 @@ export default function ExploreTab({ groupSize }) {
                 </button>
               );
             })}
-          </div>
-        </div>
-      )}
-
-      {/* ── STEP 4: How many days? ────────────────────────────────────────── */}
-      {city !== "all" && (
-        <div style={{...C, marginBottom:14, display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>How many days?</div>
-          <div style={{display:"flex",gap:6}}>
-            {[1,2,3,4,5,6,7].map(d=>(
-              <button key={d} onClick={()=>setNumDays(d)} style={{
-                width:36, height:36, borderRadius:8,
-                border:numDays===d?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-                background:numDays===d?HOT:WHITE,
-                color:numDays===d?WHITE:DARK,
-                fontWeight:700,fontSize:13,
-                fontFamily:"'DM Sans',sans-serif",
-                cursor:"pointer",transition:"all 0.15s",
-              }}>{d}</button>
-            ))}
           </div>
         </div>
       )}
@@ -1012,41 +1025,6 @@ export default function ExploreTab({ groupSize }) {
         </div>
       )}
 
-      {/* ── BROWSE SECTION ───────────────────────────────────────────────── */}
-      <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:16, marginTop:8 }}>
-        <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }} />
-        <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", letterSpacing:"1.5px", textTransform:"uppercase", whiteSpace:"nowrap" }}>
-          Browse Experiences
-        </div>
-        <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }} />
-      </div>
-      <div style={{ fontSize:13, color:HOT, fontFamily:"'DM Sans',sans-serif", marginBottom:14, opacity:0.8 }}>
-        {city !== "all" ? `Explore what ${cityName} has to offer` : "Top picks across all destinations"}
-      </div>
-
-      {/* Category chips */}
-      <div style={{ display:"flex", gap:8, overflowX:"auto", paddingBottom:4, marginBottom:14, scrollbarWidth:"none" }}>
-        {CATS.map(c => (
-          <button key={c.id} onClick={() => setCat(c.id)} style={{
-            flexShrink:0, display:"flex", flexDirection:"column", alignItems:"center", gap:5,
-            padding:"8px 10px",
-            background: cat===c.id ? SOFT : WHITE,
-            border: cat===c.id ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
-            borderRadius:14, cursor:"pointer", transition:"all 0.15s", minWidth:68,
-          }}>
-            <img src={c.photo} alt={c.label} style={{
-              width:38, height:38, borderRadius:"50%", objectFit:"cover",
-              border: cat===c.id ? `2px solid ${HOT}` : "2px solid transparent",
-              transition:"all 0.15s",
-            }}/>
-            <span style={{
-              fontSize:10, fontWeight:700, fontFamily:"'DM Sans',sans-serif",
-              color: cat===c.id ? HOT : "#888", whiteSpace:"nowrap",
-              borderBottom: cat===c.id ? `2px solid ${HOT}` : "2px solid transparent", paddingBottom:1,
-            }}>{c.label}</span>
-          </button>
-        ))}
-      </div>
 
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:14 }}>
         <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>
