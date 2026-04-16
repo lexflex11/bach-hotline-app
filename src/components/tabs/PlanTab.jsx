@@ -188,7 +188,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab }) {
           >
             <option value="">Choose a city…</option>
             {DESTS.filter(d => region==="us" ? !d.international : d.international).map(d=>(
-              <option key={d.id} value={d.id}>{d.emoji} {d.name} — {d.vibe}</option>
+              <option key={d.id} value={d.id}>{d.name} — {d.vibe}</option>
             ))}
           </select>
 
