@@ -85,7 +85,6 @@ export default function App() {
           {[
             { id:"home",    label:"Home" },
             { id:"explore", label:"Explore" },
-            { id:"plan",    label:"Itinerary" },
             { id:"decor",   label:"Package" },
             { id:"more",    label:"More" },
           ].map(n => {
@@ -144,6 +143,7 @@ export default function App() {
                   { id:"stays",   label:"Stays",     sub:"Airbnb, Vrbo & hotels"   },
                   { id:"eats",         label:"Eats",        sub:"Restaurants & brunch"       },
                   { id:"experiences", label:"Experiences", sub:"Activities & adventures"   },
+                  { id:"plan",    label:"Itinerary",  sub:"AI trip builder"          },
                   { id:"budget",  label:"Budget",    sub:"Estimate trip cost"       },
                   ...(user.email ? [
                     { id:"split", label:"Split",     sub:"Divide expenses"          },
