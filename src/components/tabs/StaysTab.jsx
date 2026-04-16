@@ -118,7 +118,7 @@ export default function StaysTab({ groupSize }) {
             </div>
             <button onClick={findStays} style={{
               width: "100%",
-              background: `linear-gradient(135deg,${HOT},${PUNCH})`,
+              background: `linear-gradient(135deg,#f472b0,${HOT})`,
               color: WHITE, border: "none", borderRadius: 14,
               padding: "15px", cursor: "pointer",
               fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontWeight: 800,

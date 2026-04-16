@@ -21,7 +21,7 @@ const TEMPLATES = [
 ];
 
 const card = { background:WHITE, borderRadius:18, padding:"18px 16px", marginBottom:14, boxShadow:"0 2px 12px rgba(230,101,130,0.08)", border:`1.5px solid ${BORDER}` };
-const btn1 = { background:`linear-gradient(135deg,${HOT},${PUNCH})`, color:WHITE, border:"none", borderRadius:50, padding:"13px 0", fontFamily:"'DM Sans',sans-serif", fontWeight:700, fontSize:14, cursor:"pointer", width:"100%", letterSpacing:"0.5px" };
+const btn1 = { background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none", borderRadius:50, padding:"13px 0", fontFamily:"'DM Sans',sans-serif", fontWeight:700, fontSize:14, cursor:"pointer", width:"100%", letterSpacing:"0.5px" };
 const btnG = { background:"none", border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"11px 0", fontFamily:"'DM Sans',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", width:"100%", color:HOT };
 const inp  = { width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'DM Sans',sans-serif", fontSize:14, background:PAGE, color:DARK, outline:"none", boxSizing:"border-box" };
 const lbl  = { fontSize:12, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:6, display:"block" };
@@ -40,7 +40,7 @@ function SetupPrompt() {
         <div style={{ background:SOFT, borderRadius:14, padding:"16px", marginBottom:16, textAlign:"left" }}>
           {["Go to console.firebase.google.com",'Click "Add project" → name it Bach Hotline','Click the </> icon → register a web app',"Copy the firebaseConfig values into src/firebase.js","Enable Firestore Database → Start in test mode","In Terminal: npm install  (in the src folder)"].map((step,i)=>(
             <div key={i} style={{ display:"flex", gap:10, marginBottom:8, alignItems:"flex-start" }}>
-              <div style={{ minWidth:22, height:22, borderRadius:"50%", background:`linear-gradient(135deg,${HOT},${PUNCH})`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:11, color:WHITE, fontWeight:700 }}>{i+1}</div>
+              <div style={{ minWidth:22, height:22, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:11, color:WHITE, fontWeight:700 }}>{i+1}</div>
               <div style={{ fontSize:12, color:DARK, fontFamily:"'DM Sans',sans-serif", lineHeight:1.5, paddingTop:2 }}>{step}</div>
             </div>
           ))}
@@ -80,7 +80,7 @@ function PollList({ user, onSelect, onCreateNew }) {
                 </div>
                 <div style={{ marginLeft:10 }}>
                   {hasVoted ? <span style={{ fontSize:11, background:SOFT, color:HOT, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'DM Sans',sans-serif" }}>Voted ✓</span>
-                    : <span style={{ fontSize:11, background:`linear-gradient(135deg,${HOT},${PUNCH})`, color:WHITE, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'DM Sans',sans-serif" }}>Vote</span>}
+                    : <span style={{ fontSize:11, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'DM Sans',sans-serif" }}>Vote</span>}
                 </div>
               </div>
             </button>
@@ -202,7 +202,7 @@ function VoteScreen({ pollId, onBack }) {
                   <div style={{ display:"flex", alignItems:"center", gap:8 }}>
                     {isMe&&<span>✓</span>}
                     <span style={{ fontSize:14, fontFamily:"'DM Sans',sans-serif", fontWeight:isMe?700:500, color:DARK }}>{opt.text}</span>
-                    {isTop&&<span style={{ fontSize:11, background:`linear-gradient(135deg,${HOT},${PUNCH})`, color:WHITE, padding:"2px 8px", borderRadius:50, fontWeight:700, fontFamily:"'DM Sans',sans-serif" }}>Leading</span>}
+                    {isTop&&<span style={{ fontSize:11, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"2px 8px", borderRadius:50, fontWeight:700, fontFamily:"'DM Sans',sans-serif" }}>Leading</span>}
                   </div>
                   {voted&&<span style={{ fontSize:13, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:isMe?HOT:"#aaa" }}>{pct}%</span>}
                 </div>
@@ -226,7 +226,7 @@ function AccountGate({ onSignUp }) {
       <p style={{fontSize:13,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.6,marginBottom:28}}>
         Group Polls is for the bride tribe only.<br/>Create a free account to create and vote on polls.
       </p>
-      <button onClick={onSignUp} style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,border:"none",borderRadius:50,padding:"13px 32px",fontFamily:"'DM Sans',sans-serif",fontSize:14,fontWeight:700,cursor:"pointer",width:"100%",maxWidth:280}}>
+      <button onClick={onSignUp} style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:50,padding:"13px 32px",fontFamily:"'DM Sans',sans-serif",fontSize:14,fontWeight:700,cursor:"pointer",width:"100%",maxWidth:280}}>
         Create Free Account
       </button>
       <p style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:14}}>Already have an account? Sign in from the home screen.</p>

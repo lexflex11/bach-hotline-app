@@ -149,7 +149,7 @@ export default function ExperiencesTab({ groupSize }) {
               {groupSize} guests{vibe ? ` · ${VIBES.find(v=>v.id===vibe)?.label}` : ""}{date ? ` · ${date}` : " · flexible date"}
             </div>
             <button onClick={findExperiences} style={{
-              width: "100%", background: `linear-gradient(135deg,${HOT},${PUNCH})`,
+              width: "100%", background: `linear-gradient(135deg,#f472b0,${HOT})`,
               color: WHITE, border: "none", borderRadius: 14, padding: "15px", cursor: "pointer",
               fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontWeight: 800, letterSpacing: "0.3px",
             }}>

@@ -108,7 +108,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           Create a free account to unlock AI-powered itinerary planning tailored to your group.
         </p>
         <button onClick={onSignUp} style={{
-          background:`linear-gradient(135deg,${HOT},${PUNCH})`, color:WHITE, border:"none",
+          background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none",
           borderRadius:50, padding:"13px 32px", fontFamily:"'DM Sans',sans-serif",
           fontSize:14, fontWeight:700, cursor:"pointer", width:"100%", maxWidth:300, display:"block", margin:"0 auto",
         }}>
@@ -153,7 +153,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
       {/* ── STEP 1: Bride personality ── */}
       <div style={{...C, marginBottom:12}}>
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
-          <div style={{width:26,height:26,borderRadius:"50%",background:bt?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:bt?WHITE:HOT,flexShrink:0}}>1</div>
+          <div style={{width:26,height:26,borderRadius:"50%",background:bt?`linear-gradient(135deg,#f472b0,${HOT})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:bt?WHITE:HOT,flexShrink:0}}>1</div>
           <div>
             <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What kind of bride is she?</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Every personality gets a completely different itinerary ✨</div>
@@ -188,7 +188,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
       {bt && (
         <div style={{...C, marginBottom:12}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
-            <div style={{width:26,height:26,borderRadius:"50%",background:dest?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:dest?WHITE:HOT,flexShrink:0}}>2</div>
+            <div style={{width:26,height:26,borderRadius:"50%",background:dest?`linear-gradient(135deg,#f472b0,${HOT})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:dest?WHITE:HOT,flexShrink:0}}>2</div>
             <div>
               <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Where are you going?</div>
               <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Select your destination</div>
@@ -224,7 +224,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
       {bt && dest && (
         <div style={{...C, marginBottom:12}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
-            <div style={{width:26,height:26,borderRadius:"50%",background:budget?`linear-gradient(135deg,${HOT},${PUNCH})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:budget?WHITE:HOT,flexShrink:0}}>3</div>
+            <div style={{width:26,height:26,borderRadius:"50%",background:budget?`linear-gradient(135deg,#f472b0,${HOT})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:budget?WHITE:HOT,flexShrink:0}}>3</div>
             <div>
               <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What's your budget?</div>
               <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Per person — we will tailor costs to fit</div>
@@ -287,7 +287,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
       {bt && dest && budget && (budget !== "custom" || customBudget) && (
         <div style={{...C, marginBottom:14}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
-            <div style={{width:26,height:26,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:WHITE,flexShrink:0}}>4</div>
+            <div style={{width:26,height:26,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:WHITE,flexShrink:0}}>4</div>
             <div>
               <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>How many days?</div>
               <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Up to 5 days</div>
@@ -356,7 +356,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           {result.days.map((day,di)=>(
             <div key={di} style={{...C,marginBottom:12}}>
               <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
-                <div style={{width:30,height:30,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,fontFamily:"'DM Sans',sans-serif",color:WHITE,flexShrink:0}}>D{day.day}</div>
+                <div style={{width:30,height:30,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,fontFamily:"'DM Sans',sans-serif",color:WHITE,flexShrink:0}}>D{day.day}</div>
                 <div style={{fontSize:15,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{day.theme}</div>
               </div>
               {["morning","afternoon","evening","nightlife"].map(slot=>{
@@ -374,7 +374,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
                         {item.bookingTip && <div style={{fontSize:10,color:"#888",fontFamily:"'DM Sans',sans-serif",marginTop:5,background:"#fdf5fa",border:`1px solid ${BORDER}`,borderRadius:8,padding:"4px 9px",display:"inline-block"}}>🔗 {item.bookingTip}</div>}
                         <div style={{marginTop:8}}>
                           <a href={slotBookingUrl(slot, item.activity, selectedDest?.name||"")} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-                            <button style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,border:"none",borderRadius:20,padding:"5px 14px",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer"}}>
+                            <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:20,padding:"5px 14px",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer"}}>
                               {slot==="evening"?"🍽 Reserve →":"🎯 Book →"}
                             </button>
                           </a>
@@ -429,7 +429,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
                         </div>
                       </div>
                       <a href={slotBookingUrl(slot, item.activity, selectedDest?.name||"")} target="_blank" rel="noreferrer" style={{textDecoration:"none",flexShrink:0}}>
-                        <button style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,border:"none",borderRadius:20,padding:"6px 14px",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",whiteSpace:"nowrap"}}>
+                        <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:20,padding:"6px 14px",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",whiteSpace:"nowrap"}}>
                           {slot==="evening"?"🍽 Reserve":"🎯 Book"}
                         </button>
                       </a>

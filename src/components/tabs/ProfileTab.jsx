@@ -10,7 +10,7 @@ export default function ProfileTab({ user, onLogout, cart }) {
   return (
     <div>
       <div style={{ borderRadius:22, padding:"26px 18px", background:`linear-gradient(135deg,${SOFT},${MID})`, border:`1.5px solid ${MID}`, marginBottom:16, textAlign:"center" }}>
-        <div style={{ width:68, height:68, borderRadius:"50%", background:`linear-gradient(135deg,${HOT},${PUNCH})`, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 14px", boxShadow:`0 6px 22px rgba(213,36,56,0.25)`, border:`3px solid ${WHITE}` }}>
+        <div style={{ width:68, height:68, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 14px", boxShadow:`0 6px 22px rgba(213,36,56,0.25)`, border:`3px solid ${WHITE}` }}>
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="8" r="4"/>
             <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>

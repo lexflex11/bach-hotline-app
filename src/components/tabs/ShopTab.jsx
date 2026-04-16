@@ -242,7 +242,7 @@ export default function ShopTab({ cart, setCart }) {
         </div>
         {/* Cart button */}
         <button onClick={()=>setCartOpen(true)} style={{
-          position:"relative",background:cart.length>0?`linear-gradient(135deg,${HOT},${PUNCH})`:SOFT,
+          position:"relative",background:cart.length>0?`linear-gradient(135deg,#f472b0,${HOT})`:SOFT,
           border:`1.5px solid ${cart.length>0?HOT:BORDER}`,borderRadius:50,
           padding:"8px 16px",cursor:"pointer",
           fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,

@@ -39,7 +39,7 @@ function AccountGate({ onSignUp }) {
       </div>
 
       <button onClick={onSignUp} style={{
-        background:`linear-gradient(135deg,${HOT},${PUNCH})`, color:WHITE, border:"none",
+        background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none",
         borderRadius:50, padding:"13px 32px", fontFamily:"'DM Sans',sans-serif",
         fontSize:14, fontWeight:700, cursor:"pointer", width:"100%", maxWidth:300,
       }}>

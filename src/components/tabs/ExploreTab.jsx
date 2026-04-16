@@ -629,7 +629,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
       {/* Book Now CTA */}
       <a href={bookingUrl} target="_blank" rel="noreferrer" style={{ textDecoration:"none", display:"block", marginBottom:20 }}>
         <button style={{
-          width:"100%", background:`linear-gradient(135deg,${HOT},${PUNCH})`,
+          width:"100%", background:`linear-gradient(135deg,#f472b0,${HOT})`,
           color:WHITE, border:"none", borderRadius:14, padding:"15px",
           fontFamily:"'DM Sans',sans-serif", fontSize:15, fontWeight:800,
           cursor:"pointer", letterSpacing:"0.3px",
@@ -672,7 +672,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
         </div>
         <a href={bookingUrl} target="_blank" rel="noreferrer" style={{ textDecoration:"none", display:"block" }}>
           <button style={{
-            width:"100%", background:`linear-gradient(135deg,${HOT},${PUNCH})`,
+            width:"100%", background:`linear-gradient(135deg,#f472b0,${HOT})`,
             color:WHITE, border:"none", borderRadius:12, padding:"13px",
             fontFamily:"'DM Sans',sans-serif", fontSize:13, fontWeight:800, cursor:"pointer",
           }}>
@@ -711,7 +711,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
         ].map((r, i) => (
           <div key={i} style={{ borderTop:`1px solid ${SOFT}`, paddingTop:10, marginTop:10 }}>
             <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:6 }}>
-              <div style={{ width:32, height:32, borderRadius:"50%", background:`linear-gradient(135deg,${HOT},${PUNCH})`, display:"flex", alignItems:"center", justifyContent:"center", color:WHITE, fontSize:13, fontWeight:700, fontFamily:"'DM Sans',sans-serif", flexShrink:0 }}>
+              <div style={{ width:32, height:32, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", color:WHITE, fontSize:13, fontWeight:700, fontFamily:"'DM Sans',sans-serif", flexShrink:0 }}>
                 {r.name[0]}
               </div>
               <div>

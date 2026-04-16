@@ -23,7 +23,7 @@ export default function AuthScreen({ onLogin, LOGO_SRC }) {
         </div>
         <div style={{ display:"flex", background:SOFT, borderRadius:50, padding:4, marginBottom:20, border:`1.5px solid ${BORDER}` }}>
           {["login","signup"].map(m => (
-            <button key={m} onClick={()=>setMode(m)} style={{ flex:1, padding:"10px", border:"none", borderRadius:50, fontFamily:"'DM Sans',sans-serif", fontSize:13, fontWeight:700, cursor:"pointer", background:mode===m?`linear-gradient(135deg,${HOT},${PUNCH})`:WHITE, color:mode===m?WHITE:HOT, transition:"all 0.2s" }}>
+            <button key={m} onClick={()=>setMode(m)} style={{ flex:1, padding:"10px", border:"none", borderRadius:50, fontFamily:"'DM Sans',sans-serif", fontSize:13, fontWeight:700, cursor:"pointer", background:mode===m?`linear-gradient(135deg,#f472b0,${HOT})`:WHITE, color:mode===m?WHITE:HOT, transition:"all 0.2s" }}>
               {m==="login"?"Sign In":"Create Account"}
             </button>
           ))}

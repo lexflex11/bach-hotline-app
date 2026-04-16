@@ -69,10 +69,10 @@ export default function App() {
                 {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-4, width:16, height:16, borderRadius:"50%", background:PUNCH, display:"flex", alignItems:"center", justifyContent:"center", fontSize:9, fontWeight:800, fontFamily:"'DM Sans',sans-serif", color:WHITE, boxShadow:`0 2px 6px rgba(213,36,56,0.45)` }}>{alertCount}</div>}
               </div>
             )}
-            <div onClick={()=>setCartOpen(true)} style={{ background:cart.length>0?`linear-gradient(135deg,${HOT},${PUNCH})`:SOFT, border:`1.5px solid ${cart.length>0?HOT:BORDER}`, borderRadius:50, padding:"6px 13px", fontSize:12, fontFamily:"'DM Sans',sans-serif", fontWeight:700, color:cart.length>0?WHITE:HOT, cursor:"pointer" }}>
+            <div onClick={()=>setCartOpen(true)} style={{ background:cart.length>0?`linear-gradient(135deg,#f472b0,${HOT})`:SOFT, border:`1.5px solid ${cart.length>0?HOT:BORDER}`, borderRadius:50, padding:"6px 13px", fontSize:12, fontFamily:"'DM Sans',sans-serif", fontWeight:700, color:cart.length>0?WHITE:HOT, cursor:"pointer" }}>
               🛒 {cart.length}
             </div>
-            <div onClick={()=>setTab("profile")} style={{ width:30, height:30, borderRadius:"50%", background:`linear-gradient(135deg,${HOT},${PUNCH})`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer", border:`2px solid ${WHITE}`, boxShadow:`0 2px 8px rgba(213,36,56,0.22)` }}>
+            <div onClick={()=>setTab("profile")} style={{ width:30, height:30, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer", border:`2px solid ${WHITE}`, boxShadow:`0 2px 8px rgba(213,36,56,0.22)` }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="8" r="4"/>
                 <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
@@ -214,7 +214,7 @@ export default function App() {
                     <span>Total</span>
                     <span>${cart.reduce((s,i)=>s+(i.price||0),0).toFixed(2)}</span>
                   </div>
-                  <button style={{background:`linear-gradient(135deg,${HOT},${PUNCH})`,color:WHITE,border:"none",borderRadius:50,padding:"14px",fontSize:14,fontWeight:700,fontFamily:"'DM Sans',sans-serif",cursor:"pointer",width:"100%"}}>
+                  <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:50,padding:"14px",fontSize:14,fontWeight:700,fontFamily:"'DM Sans',sans-serif",cursor:"pointer",width:"100%"}}>
                     Checkout — ${cart.reduce((s,i)=>s+(i.price||0),0).toFixed(2)}
                   </button>
                 </>

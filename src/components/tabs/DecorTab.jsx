@@ -2847,7 +2847,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
         <div style={{marginTop:6}}>
           <div style={{fontSize:13,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginBottom:6}}>{item.price}</div>
           <button onClick={()=>addToCart(item)} style={{
-            background:inCart(item.id)?SOFT:`linear-gradient(135deg,${HOT},${PUNCH})`,
+            background:inCart(item.id)?SOFT:`linear-gradient(135deg,#f472b0,${HOT})`,
             color:inCart(item.id)?HOT:WHITE,
             border:inCart(item.id)?`1.5px solid ${HOT}`:"none",
             borderRadius:20,padding:"6px 0",width:"100%",
@@ -3149,7 +3149,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
     const shadow = added
       ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`
       : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+    const btnBg = added ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
     const btnColor = added ? HOT : WHITE;
     const btnBorder = added ? `1.5px solid ${HOT}` : "none";
     return (
@@ -3178,7 +3178,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
   return (
     <div style={{marginBottom:28}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
-        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
+        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{emoji} {title}</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>{subtitle}</div>
@@ -3552,7 +3552,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
   const renderItem = (item) => {
     const added = inCart(item.id);
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+    const btnBg = added ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
     const btnColor = added ? HOT : WHITE;
     const btnBorder = added ? `1.5px solid ${HOT}` : "none";
     return (
@@ -3578,7 +3578,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
   return (
     <div style={{marginBottom:28}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
-        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
+        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎉 Party Accessories</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Fun extras to complete your party vibe</div>
@@ -3631,7 +3631,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
       ? parseFloat(item.price.replace("$","")).toFixed(2)
       : (parseFloat(item.price.replace("$","")) * 2).toFixed(2);
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+    const btnBg = added ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
     const btnColor = added ? HOT : WHITE;
     const btnBorder = added ? `1.5px solid ${HOT}` : "none";
     return (
@@ -3668,7 +3668,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
   return (
       <div style={{marginBottom:28}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
-        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
+        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎊 Add Some Confetti</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>The perfect finishing touch — choose your size</div>
@@ -3737,7 +3737,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
       const selectedNums = [0,1,2,3,4,5,6,7,8,9].filter(n => numInCart(item,n));
       const hasNums = selectedNums.length > 0;
       const shadow = hasNums ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
-      const btnBg = hasNums ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+      const btnBg = hasNums ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
       const btnColor = hasNums ? HOT : WHITE;
       const btnBorder = hasNums ? `1.5px solid ${HOT}` : "none";
       const btnLabel = hasNums ? `#${selectedNums.join(", ")} ✓` : "Pick Numbers";
@@ -3762,7 +3762,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
     }
     const added = inCart(item.id);
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `linear-gradient(135deg,${HOT},${PUNCH})`;
+    const btnBg = added ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
     const btnColor = added ? HOT : WHITE;
     const btnBorder = added ? `1.5px solid ${HOT}` : "none";
     return (
@@ -3790,7 +3790,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
   return (
     <div style={{marginBottom:28}}>
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
-        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,${HOT},${PUNCH})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
+        <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎈 Add Foil Balloons</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Number balloons, letters, shapes & more</div>
