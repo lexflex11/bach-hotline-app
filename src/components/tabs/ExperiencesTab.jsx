@@ -4,6 +4,64 @@ import { C, BP } from '../../constants/styles.js';
 import { DESTS } from '../../constants/data.js';
 import SH from '../ui/SH.jsx';
 
+// ─── Popular picks data — swap image URLs and links as you get real ones ───────
+const PICKS = [
+  {
+    id:"drag-brunch",
+    name:"Drag Brunch",
+    category:"Brunch",
+    price:"$$$",
+    rating:4.9,
+    image:"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80",
+    url:"https://www.viator.com/searchResults/all?text=drag+brunch+bachelorette",
+  },
+  {
+    id:"yacht-charter",
+    name:"Yacht Charter",
+    category:"Experience",
+    price:"$$$$",
+    rating:5.0,
+    image:"https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=400&q=80",
+    url:"https://www.viator.com/searchResults/all?text=yacht+charter+bachelorette",
+  },
+  {
+    id:"spa-day",
+    name:"Spa Day",
+    category:"Spa",
+    price:"$$$",
+    rating:4.8,
+    image:"https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80",
+    url:"https://www.viator.com/searchResults/all?text=spa+day+bachelorette",
+  },
+  {
+    id:"rooftop-party",
+    name:"Rooftop Party",
+    category:"Nightlife",
+    price:"$$$",
+    rating:4.7,
+    image:"https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=400&q=80",
+    url:"https://www.viator.com/searchResults/all?text=rooftop+nightlife+bachelorette",
+  },
+  {
+    id:"bar-crawl",
+    name:"Bar Crawl",
+    category:"Nightlife",
+    price:"$$",
+    rating:4.9,
+    image:"https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&q=80",
+    url:"https://www.viator.com/searchResults/all?text=bar+crawl+bachelorette",
+  },
+  {
+    id:"cooking-class",
+    name:"Cooking Class",
+    category:"Classes",
+    price:"$$",
+    rating:4.8,
+    image:"https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80",
+    url:"https://www.viator.com/searchResults/all?text=cooking+class+bachelorette",
+  },
+];
+
 export default function ExperiencesTab({ groupSize }) {
   const [city,  setCity]  = useState("");
   const [date,  setDate]  = useState("");
@@ -25,8 +83,7 @@ export default function ExperiencesTab({ groupSize }) {
 
   function findExperiences() {
     if (!city) return;
-    const dest = selectedDest?.name || city;
-    const query = [vibe ? VIBES.find(v => v.id === vibe)?.label.replace(/[^a-zA-Z ]/g,"").trim() : "bachelorette", "experience", dest].join(" ");
+    const query = [vibe ? VIBES.find(v => v.id === vibe)?.label.replace(/[^a-zA-Z ]/g,"").trim() : "bachelorette", "experience", selectedDest?.name || city].join(" ");
     const url = `https://www.viator.com/searchResults/all?text=${encodeURIComponent(query)}&startDate=${date || ""}&paxMix=A_${groupSize || 4}`;
     window.open(url, "_blank");
   }
@@ -51,11 +108,7 @@ export default function ExperiencesTab({ groupSize }) {
       {/* Destination */}
       <div style={{ ...C, marginBottom: 12 }}>
         <div style={labelStyle}>Destination</div>
-        <select
-          value={city}
-          onChange={e => setCity(e.target.value)}
-          style={{ ...inputStyle, appearance: "none" }}
-        >
+        <select value={city} onChange={e => setCity(e.target.value)} style={{ ...inputStyle, appearance: "none" }}>
           <option value="">Choose a city…</option>
           {DESTS.filter(d => d.id !== "all").map(d => (
             <option key={d.id} value={d.id}>{d.emoji} {d.name}</option>
@@ -66,25 +119,15 @@ export default function ExperiencesTab({ groupSize }) {
       {/* Vibe */}
       <div style={{ ...C, marginBottom: 12 }}>
         <div style={labelStyle}>What kind of experience?</div>
-        <select
-          value={vibe}
-          onChange={e => setVibe(e.target.value)}
-          style={{ ...inputStyle, appearance: "none" }}
-        >
-          {VIBES.map(v => (
-            <option key={v.id} value={v.id}>{v.label}</option>
-          ))}
+        <select value={vibe} onChange={e => setVibe(e.target.value)} style={{ ...inputStyle, appearance: "none" }}>
+          {VIBES.map(v => <option key={v.id} value={v.id}>{v.label}</option>)}
         </select>
       </div>
 
       {/* Date */}
       <div style={{ ...C, marginBottom: 12 }}>
         <div style={labelStyle}>Date</div>
-        <input
-          type="date" value={date}
-          onChange={e => setDate(e.target.value)}
-          style={inputStyle}
-        />
+        <input type="date" value={date} onChange={e => setDate(e.target.value)} style={inputStyle} />
       </div>
 
       {/* Group size */}
@@ -96,24 +139,19 @@ export default function ExperiencesTab({ groupSize }) {
       </div>
 
       {/* CTA */}
-      <div style={{ ...C, background: SOFT, border: `1.5px solid ${MID}`, marginBottom: 14 }}>
+      <div style={{ ...C, background: SOFT, border: `1.5px solid ${MID}`, marginBottom: 20 }}>
         {city ? (
           <>
             <div style={{ fontSize: 14, fontWeight: 700, fontFamily: "'Playfair Display',Georgia,serif", color: DARK, marginBottom: 4 }}>
               {selectedDest?.emoji} {selectedDest?.name}
             </div>
             <div style={{ fontSize: 11, color: HOT, fontFamily: "'DM Sans',sans-serif", marginBottom: 14, opacity: 0.85 }}>
-              {groupSize} guests
-              {vibe ? ` · ${VIBES.find(v=>v.id===vibe)?.label}` : ""}
-              {date ? ` · ${date}` : " · flexible date"}
+              {groupSize} guests{vibe ? ` · ${VIBES.find(v=>v.id===vibe)?.label}` : ""}{date ? ` · ${date}` : " · flexible date"}
             </div>
             <button onClick={findExperiences} style={{
-              width: "100%",
-              background: `linear-gradient(135deg,${HOT},${PUNCH})`,
-              color: WHITE, border: "none", borderRadius: 14,
-              padding: "15px", cursor: "pointer",
-              fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontWeight: 800,
-              letterSpacing: "0.3px",
+              width: "100%", background: `linear-gradient(135deg,${HOT},${PUNCH})`,
+              color: WHITE, border: "none", borderRadius: 14, padding: "15px", cursor: "pointer",
+              fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontWeight: 800, letterSpacing: "0.3px",
             }}>
               🎉 Find Best Experiences
             </button>
@@ -130,6 +168,47 @@ export default function ExperiencesTab({ groupSize }) {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Popular Picks */}
+      <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:12 }}>
+        <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>Popular Picks</div>
+        <div style={{ fontSize:11, color:"#aaa", fontFamily:"'DM Sans',sans-serif" }}>{PICKS.length} found</div>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8, marginBottom:24 }}>
+        {PICKS.map(item => (
+          <div
+            key={item.id}
+            onClick={() => window.open(item.url, "_blank")}
+            style={{ borderRadius:12, overflow:"hidden", cursor:"pointer", background:WHITE, boxShadow:"0 2px 10px rgba(0,0,0,0.08)", transition:"transform 0.15s" }}
+          >
+            {/* Photo */}
+            <div style={{ position:"relative", width:"100%", aspectRatio:"1/1", overflow:"hidden" }}>
+              <img
+                src={item.image}
+                alt={item.name}
+                style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }}
+              />
+              {/* Category tag */}
+              <div style={{
+                position:"absolute", top:5, left:5,
+                background:"rgba(0,0,0,0.55)", color:WHITE,
+                fontSize:8, fontWeight:700, fontFamily:"'DM Sans',sans-serif",
+                padding:"2px 6px", borderRadius:20,
+              }}>
+                {item.category}
+              </div>
+            </div>
+            {/* Info */}
+            <div style={{ padding:"6px 7px 8px" }}>
+              <div style={{ fontSize:10, fontWeight:700, color:DARK, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1.25, marginBottom:3 }}>{item.name}</div>
+              <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                <div style={{ fontSize:9, color:HOT, fontFamily:"'DM Sans',sans-serif", fontWeight:600 }}>⭐ {item.rating}</div>
+                <div style={{ fontSize:9, color:PUNCH, fontFamily:"'DM Sans',sans-serif", fontWeight:700 }}>{item.price}</div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
