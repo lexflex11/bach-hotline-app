@@ -74,12 +74,12 @@ export default function App() {
               </div>
             )}
             {/* Cart icon */}
-            <div onClick={()=>setCartOpen(true)} style={{ position:"relative", cursor:"pointer", display:"flex", alignItems:"center" }}>
+            <div onClick={()=>setCartOpen(true)} style={{ cursor:"pointer", display:"flex", alignItems:"center", gap:5 }}>
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
               </svg>
-              {cart.length>0&&<div style={{ position:"absolute", top:-5, right:-6, width:15, height:15, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'DM Sans',sans-serif", color:WHITE }}>{cart.length}</div>}
+              <span style={{ fontSize:13, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:WHITE }}>{cart.length}</span>
             </div>
             {/* Profile */}
             <div onClick={()=>setTab("profile")} style={{ width:28, height:28, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
