@@ -361,6 +361,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://elcaminotexmex.com",
     },
+    {
+      id:"cc-3",
+      name:"Bellino Ristorante Italiano",
+      cuisine:"Authentic Italian & Sicilian",
+      priceRange:"$$$",
+      rating:4.8,
+      reviewCount:527,
+      vibe:"Romantic · Upscale Italian · Wine Bar",
+      tags:["Italian","Wine","Gluten-Free","Date Night","Group Friendly"],
+      address:"3815 S. Alameda St., Corpus Christi, TX 78411",
+      hours:"Mon 4pm–9pm · Tue–Thu 11am–9pm · Fri 11am–10pm · Sat 12pm–10pm · Closed Sunday",
+      groupMax:30,
+      desc:"Corpus Christi's only Italian restaurant with a strong Sicilian influence, owned by Palermo native Chef Francesco Inguaggiato. Every pasta, bread, sauce, and dessert is made fresh in-house daily. Winner of Best Italian Restaurant in Corpus Christi six years running (2019–2025).",
+      photo:"https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80",
+        "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80",
+        "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800&q=80",
+      ],
+      menuHighlights:["House-Made Pasta","Roman-Style Pinsa","Fresh Sicilian Fish","Imported Italian Wines","House-Made Tiramisu"],
+      whyWeLoveIt:[
+        "6-time winner of Best Italian in Corpus Christi — a guaranteed wow dinner for the bride",
+        "First restaurant in Texas to serve Pinsa, the Roman-style pizza — a unique group experience",
+        "All pasta, bread, and desserts made fresh daily by a Sicilian chef",
+      ],
+      reserveUrl:"https://www.bellinostexas.com/reservations",
+    },
   ],
 };
 
