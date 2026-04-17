@@ -229,6 +229,14 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
             ) : (
               <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:52}}>🎀</div>
             )}
+            {/* Bach Hotline badge — top left of main image */}
+            <div style={{
+              position:"absolute",top:10,left:10,
+              background:"#1a1a1a",color:WHITE,
+              fontSize:9,fontWeight:700,fontFamily:"'Nunito',sans-serif",
+              padding:"3px 8px",borderRadius:3,letterSpacing:"0.4px",zIndex:1,
+              pointerEvents:"none",
+            }}>Bach Hotline</div>
             <Brackets size={20} thick={3} color={HOT} gap={8}/>
 
             {/* Prev / Next arrows */}
