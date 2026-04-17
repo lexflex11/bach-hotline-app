@@ -59,14 +59,14 @@ export default function App() {
 
   return (
     <div style={{ minHeight:"100vh", background:PAGE, color:DARK, fontFamily:"'Playfair Display',Georgia,serif" }}>
-      <div style={{ background:"#1a1a1a", position:"sticky", top:0, zIndex:100, boxShadow:`0 2px 16px rgba(0,0,0,0.28)` }}>
+      <div style={{ background:WHITE, position:"sticky", top:0, zIndex:100, boxShadow:`0 2px 8px rgba(0,0,0,0.08)` }}>
         {/* ── HEADER ROW ── */}
         <div style={{ padding:"0 16px", display:"flex", alignItems:"center", justifyContent:"space-between", maxWidth:900, margin:"0 auto" }}>
-          <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:80, width:"auto", objectFit:"contain" }} />
+          <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:110, width:"auto", objectFit:"contain" }} />
           <div style={{ display:"flex", gap:16, alignItems:"center" }}>
             {user.email && (
               <div onClick={()=>setTab("alerts")} style={{ position:"relative", cursor:"pointer", display:"flex", alignItems:"center" }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={DARK} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
                   <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
@@ -75,11 +75,11 @@ export default function App() {
             )}
             {/* Cart icon */}
             <div onClick={()=>setCartOpen(true)} style={{ cursor:"pointer", display:"flex", alignItems:"center", gap:5 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={DARK} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
               </svg>
-              <span style={{ fontSize:13, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:WHITE }}>{cart.length}</span>
+              <span style={{ fontSize:13, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:DARK }}>{cart.length}</span>
             </div>
             {/* Profile */}
             <div onClick={()=>setTab("profile")} style={{ width:28, height:28, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
@@ -91,7 +91,7 @@ export default function App() {
           </div>
         </div>
         {/* ── TAB NAV ── */}
-        <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid rgba(255,255,255,0.10)` }}>
+        <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid ${BORDER}` }}>
           {[
             { id:"home",    label:"Home" },
             { id:"explore", label:"Explore" },
@@ -106,7 +106,7 @@ export default function App() {
                 style={{ flex:1, padding:"10px 4px 10px", background:"none", border:"none", cursor:"pointer",
                   display:"flex", flexDirection:"column", alignItems:"center", gap:2,
                   borderBottom: isActive ? `2.5px solid ${HOT}` : "2.5px solid transparent",
-                  color: isActive ? WHITE : "rgba(255,255,255,0.55)",
+                  color: isActive ? HOT : "#999",
                   transition:"color 0.18s",
                 }}>
                 <span style={{ fontSize:11, fontFamily:"'DM Sans',sans-serif", fontWeight:700, letterSpacing:"0.6px", textTransform:"uppercase" }}>{n.label}</span>
@@ -114,7 +114,7 @@ export default function App() {
             );
           })}
         </div>
-        <div style={{ background:"rgba(255,255,255,0.07)", padding:"2px 16px 3px", fontFamily:"'DM Sans',sans-serif", fontSize:10, color:"rgba(255,255,255,0.55)", fontWeight:600, letterSpacing:"0.5px" }}>
+        <div style={{ background:SOFT, padding:"2px 16px 3px", fontFamily:"'DM Sans',sans-serif", fontSize:10, color:HOT, fontWeight:600, letterSpacing:"0.5px", borderTop:`1px solid ${BORDER}` }}>
           Group of {groupSize} · {user.name.split(" ")[0]}
         </div>
       </div>
