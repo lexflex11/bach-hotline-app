@@ -44,13 +44,13 @@ const DECOR_PRODUCTS = [...TABLEWARE, ...PARTY_ACCESSORIES].map(p => {
   id:        p.id,
   name:      p.name,
   fullName:  p.name,
-  price:     parseFloat((p.price || "$0").replace(/[^0-9.]/g, "")) || 0,
+  price:     typeof p.price === "number" ? p.price : (parseFloat(String(p.price || "0").replace(/[^0-9.]/g, "")) || 0),
   category:  TYPE_TO_CAT[p.type] || "Party Accessories",
   image:     imgs[0] || "",
   images:    imgs,
   url:       p.etsyUrl || "",
   desc:      p.desc || "",
-  bullets:   [],
+  bullets:   p.bullets || [],
   isDigital: false,
   bestseller:false,
   };
@@ -105,7 +105,7 @@ function ProductTile({ p, onView }) {
         {p.name}
       </div>
       <div style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>
-        ${p.price.toFixed(2)}
+        ${(+p.price || 0).toFixed(2)}
       </div>
     </div>
   );
@@ -157,7 +157,7 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
 
           {/* Price */}
           <div style={{fontSize:18,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:22}}>
-            ${p.price.toFixed(2)}
+            ${(+p.price || 0).toFixed(2)}
           </div>
 
           {/* Qty stepper + Add to Cart */}
