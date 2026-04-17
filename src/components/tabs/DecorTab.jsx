@@ -640,7 +640,7 @@ function GarlandPreview({ selectedColors, arrangement }) {
 //               image: "https://images.squarespace-cdn.com/content/.../your-photo.jpg"
 //    Option B – Any direct image link works (Google Drive public link, Dropbox, etc.)
 //    If image is null, a color-matched placeholder shape is shown instead.
-const TABLEWARE = [
+export const TABLEWARE = [
   // ── Plates (real products from bachhotlinesupplies.etsy.com) ────────────────
   {
     id:"plate-xo",       type:"plate", name:"XO Paper Plates",
@@ -3199,7 +3199,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
 
 // ─── Confetti Step (with size selector) ──────────────────────────────────────
 // ─── Party Accessories Step ───────────────────────────────────────────────────
-const PARTY_ACCESSORIES = [
+export const PARTY_ACCESSORIES = [
   {
     id:"acc-kick-the-dick",
     type:"accessory",

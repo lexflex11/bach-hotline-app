@@ -457,13 +457,13 @@ export const DECOR_THEMES = [
 export const SHOP_CATS = [
   { id:"all",                 label:"All"                 },
   { id:"Plates",              label:"Plates"              },
-  { id:"Cutlery",             label:"Cutlery"             },
   { id:"Napkins",             label:"Napkins"             },
   { id:"Cups",                label:"Cups"                },
   { id:"Confetti",            label:"Confetti"            },
   { id:"Banners & Backdrops", label:"Banners & Backdrops" },
   { id:"Treat Bags & Boxes",  label:"Treat Bags & Boxes"  },
   { id:"Balloons",            label:"Balloons"            },
+  { id:"Party Accessories",   label:"Accessories"         },
 ];
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────

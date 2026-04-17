@@ -2,6 +2,35 @@ import React, { useState } from 'react';
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
 import { BP, BS, IN } from '../../constants/styles.js';
 import { PRODUCTS, SHOP_CATS } from '../../constants/data.js';
+import { TABLEWARE, PARTY_ACCESSORIES } from '../tabs/DecorTab.jsx';
+
+// ─── Map DecorTab types → ShopTab category IDs ───────────────────────────────
+const TYPE_TO_CAT = {
+  plate:     "Plates",
+  napkin:    "Napkins",
+  cup:       "Cups",
+  foil:      "Balloons",
+  confetti:  "Confetti",
+  banner:    "Banners & Backdrops",
+  treatbag:  "Treat Bags & Boxes",
+  cutlery:   "Cutlery",
+  accessory: "Party Accessories",
+};
+
+// Combine and normalise: TABLEWARE + PARTY_ACCESSORIES → same shape as PRODUCTS
+const DECOR_PRODUCTS = [...TABLEWARE, ...PARTY_ACCESSORIES].map(p => ({
+  id:       p.id,
+  name:     p.name,
+  fullName: p.name,
+  price:    parseFloat((p.price || "$0").replace(/[^0-9.]/g, "")) || 0,
+  category: TYPE_TO_CAT[p.type] || "Party Accessories",
+  image:    p.image || "",
+  url:      p.etsyUrl || "",
+  desc:     p.desc || "",
+  bullets:  [],
+  isDigital:false,
+  bestseller: false,
+}));
 
 // ─── Pink corner brackets — signature Squarespace look ───────────────────────
 function Brackets({ size = 14, thick = 3, color = "#E91E8C", gap = 7 }) {
@@ -239,7 +268,7 @@ export default function ShopTab({ cart, setCart }) {
   const add    = p  => { if (!inCart(p.id)) setCart(prev=>[...prev,p]); };
   const remove = id => setCart(prev=>prev.filter(c=>c.id!==id));
 
-  const filtered = PRODUCTS.filter(p => {
+  const filtered = DECOR_PRODUCTS.filter(p => {
     const mc = cat === "all" || p.category === cat;
     const ms = !search || p.name.toLowerCase().includes(search.toLowerCase());
     return mc && ms;
