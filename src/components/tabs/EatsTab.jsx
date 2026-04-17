@@ -20,9 +20,9 @@ const RESTAURANTS = {
       ],
       hours:"Mon–Sun 6pm–2am",
       address:"801 Brickell Ave, Miami, FL 33131",
-      desc:"Komodo is a wildly popular Brickell hot spot that's perfect for bachelorette dinners — three floors of Asian-fusion glamour, live entertainment, and unmatched cocktails. Expect to be seen.",
+      desc:"Komodo is a wildly popular Brickell hot spot that's perfect for bachelorette dinners: three floors of Asian-fusion glamour, live entertainment, and unmatched cocktails. Expect to be seen.",
       menuHighlights:["Wagyu Beef Skewers","Crispy Rice with Tuna","Komodo Dragon Roll","Miso Black Cod","Lychee Martini"],
-      whyWeLoveIt:["Three-floor venue with rooftop — iconic for group photos","DJ nights make it a dinner + party in one","Massive portions perfect for sharing"],
+      whyWeLoveIt:["Three-floor venue with rooftop, iconic for group photos","DJ nights make it a dinner + party in one","Massive portions perfect for sharing"],
       reserveUrl:"https://www.opentable.com/komodo-miami",
     },
     {
@@ -58,7 +58,7 @@ const RESTAURANTS = {
       address:"1 Hotel South Beach, 2341 Collins Ave, Miami Beach, FL",
       desc:"Situated at the 1 Hotel South Beach, Beachcraft is your go-to for a stunning bachelorette brunch. Bottomless rosé, fresh farm-to-table plates, and an ocean breeze? Yes, please.",
       menuHighlights:["Avocado Toast w/ Burrata","Lobster Benedict","Truffle Fries","Açaí Bowl","Bottomless Rosé"],
-      whyWeLoveIt:["Steps from the beach — perfect for a brunch-to-beach day","Large group-friendly with dedicated party seating","Bottomless brunch packages available"],
+      whyWeLoveIt:["Steps from the beach: perfect for a brunch-to-beach day","Large group-friendly with dedicated party seating","Bottomless brunch packages available"],
       reserveUrl:"https://www.opentable.com/beachcraft-at-1-hotel-south-beach",
     },
     {
@@ -76,7 +76,7 @@ const RESTAURANTS = {
       address:"90 NW 25th St, Miami, FL 33127",
       desc:"Pharrell Williams' Design District gem is the definition of bougie brunch energy. Swan draws Miami's most stylish crowd with its Hollywood-inspired menu and electric atmosphere.",
       menuHighlights:["Swan Burger","Truffle Pasta","Tuna Tartare","Smash Cake","Swan Punch"],
-      whyWeLoveIt:["Celebrity-approved — snap-worthy at every angle","Design District location for post-dinner boutique crawl","DJ entertainment on weekends"],
+      whyWeLoveIt:["Celebrity-approved: snap-worthy at every angle","Design District location for post-dinner boutique crawl","DJ entertainment on weekends"],
       reserveUrl:"https://www.opentable.com/swan-miami",
     },
   ],
@@ -96,7 +96,7 @@ const RESTAURANTS = {
       address:"2623 Gallatin Ave, Nashville, TN 37206",
       desc:"Nashville's ultimate bachelorette brunch spot. The Mockingbird sits in East Nashville with live music, rooftop vibes, and the most iconic Southern comfort food. The hot chicken biscuits alone are worth the trip.",
       menuHighlights:["Hot Chicken Biscuit","Shrimp & Grits","Biscuits & Gravy","Tennessee Mule","Rosé All Day"],
-      whyWeLoveIt:["Live music every night — no cover","Rooftop is perfect for group photos in the golden hour","Party-friendly staff who are used to bach groups"],
+      whyWeLoveIt:["Live music every night: no cover","Rooftop is perfect for group photos in the golden hour","Party-friendly staff who are used to bach groups"],
       reserveUrl:"https://www.opentable.com/the-mockingbird-nashville",
     },
     {
@@ -112,9 +112,9 @@ const RESTAURANTS = {
       ],
       hours:"Mon–Fri 4pm–2am · Sat–Sun 11am–2am",
       address:"1120 McGavock St, Nashville, TN 37203",
-      desc:"Rooftop tequila bar overlooking the Nashville skyline — this is your bachelorette happy hour spot. Craft margaritas, shareable Mexican plates, and the best views of Broadway. Start here before hitting the honky tonks.",
+      desc:"Rooftop tequila bar overlooking the Nashville skyline: this is your bachelorette happy hour spot. Craft margaritas, shareable Mexican plates, and the best views of Broadway. Start here before hitting the honky tonks.",
       menuHighlights:["Street Tacos (3 ways)","Guacamole Tableside","Margarita Flight (4 flavors)","Birria Quesadilla","Paloma Pitcher"],
-      whyWeLoveIt:["Rooftop bar with Nashville skyline views — unreal for photos","Margarita flights perfect for the whole group","Prime location steps from Broadway"],
+      whyWeLoveIt:["Rooftop bar with Nashville skyline views: unreal for photos","Margarita flights perfect for the whole group","Prime location steps from Broadway"],
       reserveUrl:"https://www.opentable.com/saint-anejo-nashville",
     },
     {
@@ -152,7 +152,7 @@ const RESTAURANTS = {
       address:"Caesar's Palace, 3570 Las Vegas Blvd S, Las Vegas, NV 89109",
       desc:"Nobu Matsuhisa's legendary Japanese-Peruvian restaurant at Caesars Palace is the gold standard for a Vegas bachelorette dinner. Impeccable sushi, black cod miso, and a sake list that will blow your mind.",
       menuHighlights:["Black Cod Miso","Yellowtail Jalapeño","Wagyu Tacos","Rock Shrimp Tempura","Yuzu Sake"],
-      whyWeLoveIt:["The most iconic pre-party dinner in Vegas — everyone knows Nobu","Celebrity sightings are common — eyes peeled!","Private dining room available for large groups"],
+      whyWeLoveIt:["The most iconic pre-party dinner in Vegas: everyone knows Nobu","Celebrity sightings are common: eyes peeled!","Private dining room available for large groups"],
       reserveUrl:"https://www.opentable.com/nobu-las-vegas",
     },
     {
@@ -170,7 +170,7 @@ const RESTAURANTS = {
       address:"Caesars Palace Forum Shops, 3500 Las Vegas Blvd S, Las Vegas, NV",
       desc:"Lisa Vanderpump's show-stopping cocktail garden inside Caesars Palace is THE bach destination in Vegas. Pink everything, signature cocktails, and an atmosphere that screams girls' trip. Non-negotiable.",
       menuHighlights:["Pink Lady Cocktail","Vanderpump Punch Bowl","Truffle Fries","Charcuterie Board","Rosé Spritz Tower"],
-      whyWeLoveIt:["The most Instagram-worthy spot in Vegas — pure pink paradise","Cocktail towers for the whole squad","Celebrity owner — expect to see Lisa Vanderpump"],
+      whyWeLoveIt:["The most Instagram-worthy spot in Vegas: pure pink paradise","Cocktail towers for the whole squad","Celebrity owner: expect to see Lisa Vanderpump"],
       reserveUrl:"https://www.opentable.com/vanderpump-cocktail-garden-las-vegas",
     },
     {
@@ -188,7 +188,7 @@ const RESTAURANTS = {
       address:"ARIA Resort & Casino, 3730 Las Vegas Blvd S, Las Vegas, NV",
       desc:"Catch Vegas transitions from a stunning seafood restaurant to a full-on rooftop party as the night goes on. DJ music, bottle service, and panoramic Strip views make this the perfect dinner-into-nightlife experience.",
       menuHighlights:["Crispy Rice with Tuna","Snow Crab Legs","Lobster Pasta","Rock Shrimp","Passion Fruit Martini"],
-      whyWeLoveIt:["Dinner transitions to club — one venue for the whole night","Rooftop Strip views are unbeatable after dark","Party packages available for bachelorette groups"],
+      whyWeLoveIt:["Dinner transitions to club: one venue for the whole night","Rooftop Strip views are unbeatable after dark","Party packages available for bachelorette groups"],
       reserveUrl:"https://www.opentable.com/catch-las-vegas",
     },
   ],
@@ -208,7 +208,7 @@ const RESTAURANTS = {
       address:"7135 E Camelback Rd, Scottsdale, AZ 85251",
       desc:"One of the most acclaimed restaurants in the country, Maple & Ash is the ultimate celebratory dinner. Wood-fire cooking, the most decadent steaks, and a wine program that will make you feel like an absolute queen.",
       menuHighlights:["Bone-In Ribeye","Wagyu Carpaccio","Truffle Mac & Cheese","Lobster Tail","Fig & Smoke Cocktail"],
-      whyWeLoveIt:["Scottsdale's #1 special occasion restaurant — you'll feel like royalty","Sommelier can curate a wine experience for your group","Desserts are presentation goals"],
+      whyWeLoveIt:["Scottsdale's #1 special occasion restaurant: you'll feel like royalty","Sommelier can curate a wine experience for your group","Desserts are presentation goals"],
       reserveUrl:"https://www.opentable.com/maple-and-ash-scottsdale",
     },
     {
@@ -244,9 +244,9 @@ const RESTAURANTS = {
       ],
       hours:"Mon–Fri 11:30am–1:30pm · Daily 6:30pm–9:30pm · Sat–Sun Brunch 10:30am–1:30pm",
       address:"1403 Washington Ave, New Orleans, LA 70130",
-      desc:"The jewel of the Garden District. Commander's Palace has been defining New Orleans dining for over a century — white tablecloths, flaming bananas Foster, and 25-cent martinis at brunch (yes, really). A bucket-list meal.",
+      desc:"The jewel of the Garden District. Commander's Palace has been defining New Orleans dining for over a century: white tablecloths, flaming bananas Foster, and 25-cent martinis at brunch (yes, really). A bucket-list meal.",
       menuHighlights:["Turtle Soup","Shrimp & Tasso Henican","Bread Pudding Soufflé","Bananas Foster Tableside","25¢ Martinis (brunch)"],
-      whyWeLoveIt:["25-cent martinis at Saturday jazz brunch — the greatest deal in America","Flaming Bananas Foster tableside is a showstopper","Historic Garden District location for a carriage ride after"],
+      whyWeLoveIt:["25-cent martinis at Saturday jazz brunch: the greatest deal in America","Flaming Bananas Foster tableside is a showstopper","Historic Garden District location for a carriage ride after"],
       reserveUrl:"https://www.opentable.com/commanders-palace",
     },
     {
@@ -264,7 +264,7 @@ const RESTAURANTS = {
       address:"535 Tchoupitoulas St, New Orleans, LA 70130",
       desc:"Chef Nina Compton's James Beard Award-winning restaurant is the modern crown jewel of New Orleans dining. Caribbean-Creole fusion, insanely good cocktails, and an energy that feels like a private party.",
       menuHighlights:["Conch Croquettes","Goat Roti","Sweet Potato Gnocchi","Rum Old Fashioned","Chocolate Budino"],
-      whyWeLoveIt:["James Beard Award winning chef — serious bragging rights","Private dining available in the old 'No. 77' room","Cocktail program is among the best in the city"],
+      whyWeLoveIt:["James Beard Award winning chef: serious bragging rights","Private dining available in the old 'No. 77' room","Cocktail program is among the best in the city"],
       reserveUrl:"https://www.opentable.com/compere-lapin",
     },
   ],
@@ -282,9 +282,9 @@ const RESTAURANTS = {
       ],
       hours:"Mon–Sat 5pm–10pm · Sun 5pm–9pm",
       address:"434 King St, Charleston, SC 29403",
-      desc:"Voted Charleston's best restaurant year after year for good reason. Hall's Chophouse is a loud, lively, joyful celebration in itself — the owners will shake your hand and the prime steaks will change your life.",
+      desc:"Voted Charleston's best restaurant year after year for good reason. Hall's Chophouse is a loud, lively, joyful celebration in itself: the owners will shake your hand and the prime steaks will change your life.",
       menuHighlights:["12oz Prime Filet Mignon","Hall's Wedge Salad","Lobster Mac & Cheese","Crème Brûlée","Classic Sidecar"],
-      whyWeLoveIt:["Owner Billy Hall personally greets every table — you'll feel like family","Live music Thursday–Saturday makes it feel like a party","Prime location on King Street for bar-hopping after"],
+      whyWeLoveIt:["Owner Billy Hall personally greets every table: you'll feel like family","Live music Thursday–Saturday makes it feel like a party","Prime location on King Street for bar-hopping after"],
       reserveUrl:"https://www.opentable.com/halls-chophouse",
     },
     {
@@ -300,9 +300,9 @@ const RESTAURANTS = {
       ],
       hours:"Tue–Thu 4pm–10pm · Fri–Sat 11:30am–11pm · Sun 11:30am–9pm",
       address:"544 King St, Charleston, SC 29403",
-      desc:"Set inside a stunning 1927 bank building, The Ordinary is one of America's great oyster bars. Raw bar towers, craft cocktails, and the most beautiful space in Charleston — it's a bachelorette brunch dream.",
+      desc:"Set inside a stunning 1927 bank building, The Ordinary is one of America's great oyster bars. Raw bar towers, craft cocktails, and the most beautiful space in Charleston: it's a bachelorette brunch dream.",
       menuHighlights:["Grand Seafood Tower","Charleston Gold Oysters","Shrimp & Grits","Clam Chowder","The Ordinary Sour"],
-      whyWeLoveIt:["Stunning 1927 bank hall converted into an oyster bar — jaw-dropping space","Seafood tower for the group is the most 'gram-worthy thing you'll do","Weekend brunch is the ultimate bach move"],
+      whyWeLoveIt:["Stunning 1927 bank hall converted into an oyster bar: jaw-dropping space","Seafood tower for the group is the most 'gram-worthy thing you'll do","Weekend brunch is the ultimate bach move"],
       reserveUrl:"https://www.opentable.com/the-ordinary-charleston",
     },
   ],
@@ -325,7 +325,7 @@ const DEFAULT_RESTAURANTS = [
     address:"Downtown Location",
     desc:"The city's most sought-after rooftop experience. Stunning views, expertly crafted cocktails, and a menu designed for sharing make this the perfect bachelorette dinner spot.",
     menuHighlights:["Truffle Fries","Charcuterie Tower","Signature Cocktails","Rooftop Spritz","Dessert Board"],
-    whyWeLoveIt:["Panoramic city views — perfect for golden hour photos","Group-friendly with large shared plate options","Late night cocktail service"],
+    whyWeLoveIt:["Panoramic city views: perfect for golden hour photos","Group-friendly with large shared plate options","Late night cocktail service"],
     reserveUrl:"https://www.opentable.com",
   },
   {
@@ -343,7 +343,7 @@ const DEFAULT_RESTAURANTS = [
     address:"Waterfront District",
     desc:"The ultimate bachelorette brunch destination. Bottomless mimosas, fresh seafood, and outdoor seating that feels like a vacation every day of the week.",
     menuHighlights:["Lobster Benedict","Bottomless Mimosas","Avocado Toast Tower","Shrimp Cocktail","Frozen Rosé"],
-    whyWeLoveIt:["Bottomless brunch packages for the whole group","Waterfront tables available — book early!","Large group seating with private semi-private areas"],
+    whyWeLoveIt:["Bottomless brunch packages for the whole group","Waterfront tables available: book early!","Large group seating with private semi-private areas"],
     reserveUrl:"https://www.opentable.com",
   },
   {
@@ -361,7 +361,7 @@ const DEFAULT_RESTAURANTS = [
     address:"City Center",
     desc:"An intimate supper club experience designed for celebration. Private dining rooms, sommelier-curated wine pairings, and a tasting menu that tells a story. Perfect for the bachelorette who wants it all.",
     menuHighlights:["5-Course Tasting Menu","Wagyu Tartare","Truffle Risotto","Cheese Course","Champagne Toast"],
-    whyWeLoveIt:["Private dining room available — your own space all night","Sommelier wine pairing is an experience in itself","Chef will add custom bachelorette touches on request"],
+    whyWeLoveIt:["Private dining room available: your own space all night","Sommelier wine pairing is an experience in itself","Chef will add custom bachelorette touches on request"],
     reserveUrl:"https://www.opentable.com",
   },
 ];
@@ -591,7 +591,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
             Book Your Table
           </div>
           <div style={{ fontSize:12, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:16 }}>
-            {groupSize} guests{date ? ` · ${date}` : ""} — secure your spot before it fills up
+            {groupSize} guests{date ? ` · ${date}` : ""}: secure your spot before it fills up
           </div>
           <div style={{ background:"#2a2a2a", borderRadius:14, padding:"14px", marginBottom:14 }}>
             <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:WHITE, marginBottom:4 }}>
