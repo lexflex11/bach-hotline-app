@@ -21,14 +21,14 @@ export default function EatsTab({ groupSize }) {
 
   const inputStyle = {
     width: "100%", padding: "10px 12px", borderRadius: 10,
-    border: `1.5px solid ${BORDER}`, fontFamily: "'DM Sans',sans-serif",
+    border: `1.5px solid ${BORDER}`, fontFamily: "'Nunito',sans-serif",
     fontSize: 13, color: DARK, background: WHITE, boxSizing: "border-box",
     outline: "none",
   };
 
   const labelStyle = {
     fontSize: 10, fontWeight: 700, color: HOT,
-    fontFamily: "'DM Sans',sans-serif",
+    fontFamily: "'Nunito',sans-serif",
     textTransform: "uppercase", letterSpacing: 1, marginBottom: 6,
   };
 
@@ -86,7 +86,7 @@ export default function EatsTab({ groupSize }) {
             <div style={{ fontSize: 14, fontWeight: 700, fontFamily: "'Playfair Display',Georgia,serif", color: DARK, marginBottom: 4 }}>
               {selectedDest?.emoji} {selectedDest?.name}
             </div>
-            <div style={{ fontSize: 11, color: HOT, fontFamily: "'DM Sans',sans-serif", marginBottom: 14, opacity: 0.85 }}>
+            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Nunito',sans-serif", marginBottom: 14, opacity: 0.85 }}>
               {groupSize} guests
               {date ? ` · ${date}` : " · flexible date"}
               {time ? ` at ${time}` : ""}
@@ -96,12 +96,12 @@ export default function EatsTab({ groupSize }) {
               background: `linear-gradient(135deg,#f472b0,${HOT})`,
               color: WHITE, border: "none", borderRadius: 14,
               padding: "15px", cursor: "pointer",
-              fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontWeight: 800,
+              fontFamily: "'Nunito',sans-serif", fontSize: 14, fontWeight: 800,
               letterSpacing: "0.3px",
             }}>
               🍽️ Find Best Tables
             </button>
-            <div style={{ fontSize: 10, color: "#bbb", fontFamily: "'DM Sans',sans-serif", marginTop: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: "#bbb", fontFamily: "'Nunito',sans-serif", marginTop: 8, textAlign: "center" }}>
               We'll find the best restaurants & brunch spots for your group
             </div>
           </>
@@ -109,7 +109,7 @@ export default function EatsTab({ groupSize }) {
           <div style={{ textAlign: "center", padding: "8px 0" }}>
             <div style={{ fontSize: 22, marginBottom: 6 }}>🍽️</div>
             <div style={{ fontSize: 13, fontWeight: 700, fontFamily: "'Playfair Display',Georgia,serif", color: DARK }}>Pick a destination above</div>
-            <div style={{ fontSize: 11, color: HOT, fontFamily: "'DM Sans',sans-serif", marginTop: 4, opacity: 0.75 }}>
+            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Nunito',sans-serif", marginTop: 4, opacity: 0.75 }}>
               Then we'll find the best tables for {groupSize} people
             </div>
           </div>

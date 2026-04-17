@@ -52,7 +52,7 @@ export default function BudgetTab({ groupSize }) {
       <div style={{...C, marginBottom:12}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
           <div>
-            <div style={{fontSize:12,fontWeight:700,fontFamily:"'DM Sans',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1}}>Nights</div>
+            <div style={{fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1}}>Nights</div>
             <div style={{display:"flex",alignItems:"center",gap:10,marginTop:6}}>
               <button onClick={()=>setNights(Math.max(1,nights-1))} style={SM}>−</button>
               <span style={{fontWeight:900,color:PUNCH,fontSize:18,fontFamily:"'Playfair Display',Georgia,serif"}}>{nights}</span>
@@ -60,14 +60,14 @@ export default function BudgetTab({ groupSize }) {
             </div>
           </div>
           <div style={{textAlign:"right"}}>
-            <div style={{fontSize:12,fontWeight:700,fontFamily:"'DM Sans',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1}}>Group of</div>
+            <div style={{fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1}}>Group of</div>
             <div style={{fontSize:20,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif",marginTop:4}}>{groupSize} 👯</div>
           </div>
         </div>
-        <div style={{fontSize:12,fontWeight:700,fontFamily:"'DM Sans',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Budget Style</div>
+        <div style={{fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Budget Style</div>
         <div style={{display:"flex",gap:6}}>
           {Object.entries(tierLabels).map(([k,v])=>(
-            <button key={k} onClick={()=>setTier(k)} style={{flex:1,padding:"10px 6px",borderRadius:12,border:tier===k?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,background:tier===k?SOFT:WHITE,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,color:tier===k?HOT:DARK,transition:"all 0.2s"}}>
+            <button key={k} onClick={()=>setTier(k)} style={{flex:1,padding:"10px 6px",borderRadius:12,border:tier===k?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,background:tier===k?SOFT:WHITE,cursor:"pointer",fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:700,color:tier===k?HOT:DARK,transition:"all 0.2s"}}>
               {v}
             </button>
           ))}
@@ -79,12 +79,12 @@ export default function BudgetTab({ groupSize }) {
         <div>
           {/* Total hero */}
           <div style={{borderRadius:18,padding:"22px 18px",background:`linear-gradient(135deg,${SOFT},${MID})`,border:`1.5px solid ${MID}`,marginBottom:14,textAlign:"center"}}>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Estimated Per Person</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Estimated Per Person</div>
             <div style={{fontSize:42,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif"}}>${perPerson}</div>
-            <div style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",marginTop:6,opacity:0.8}}>
+            <div style={{fontSize:12,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:6,opacity:0.8}}>
               {nights} nights · Group of {groupSize} · Bride's share covered 👰
             </div>
-            <div style={{fontSize:13,color:DARK,fontFamily:"'DM Sans',sans-serif",marginTop:8,fontWeight:600}}>
+            <div style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif",marginTop:8,fontWeight:600}}>
               Group total: ${groupTotal.toLocaleString()}
             </div>
           </div>
@@ -101,16 +101,16 @@ export default function BudgetTab({ groupSize }) {
               <span style={{fontSize:22}}>{icon}</span>
               <div style={{flex:1}}>
                 <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{label}</div>
-                <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.75}}>{sub}</div>
+                <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.75}}>{sub}</div>
               </div>
               <div style={{textAlign:"right"}}>
                 <div style={{fontSize:17,fontWeight:900,color:HOT,fontFamily:"'Playfair Display',Georgia,serif"}}>${cost}</div>
-                <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>per person</div>
+                <div style={{fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif"}}>per person</div>
               </div>
             </div>
           ))}
 
-          <div style={{background:SOFT,border:`1.5px solid ${MID}`,borderRadius:12,padding:"11px 14px",marginTop:6,fontFamily:"'DM Sans',sans-serif",fontSize:12,color:DARK}}>
+          <div style={{background:SOFT,border:`1.5px solid ${MID}`,borderRadius:12,padding:"11px 14px",marginTop:6,fontFamily:"'Nunito',sans-serif",fontSize:12,color:DARK}}>
             <div style={{fontSize:10,fontWeight:700,color:HOT,textTransform:"uppercase",letterSpacing:1,marginBottom:4}}>💡 Tip</div>
             These are estimates based on real bachelorette trip data. Actual costs vary by season, destination, and group size.
           </div>

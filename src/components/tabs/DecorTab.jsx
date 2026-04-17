@@ -614,7 +614,7 @@ function GarlandPreview({ selectedColors, arrangement }) {
       <div style={{height:300,display:"flex",alignItems:"center",justifyContent:"center",background:"#fdf5f8",borderRadius:14,border:`2px dashed ${BORDER}`}}>
         <div style={{textAlign:"center"}}>
           <div style={{fontSize:32,marginBottom:6}}>🎈</div>
-          <div style={{fontSize:12,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>Pick colors below to preview your 3D garland</div>
+          <div style={{fontSize:12,color:"#bbb",fontFamily:"'Nunito',sans-serif"}}>Pick colors below to preview your 3D garland</div>
         </div>
       </div>
     );
@@ -626,7 +626,7 @@ function GarlandPreview({ selectedColors, arrangement }) {
           <GarlandScene selectedColors={selectedColors} arrangement={arrangement} />
         </Canvas>
       </div>
-      <div style={{textAlign:"center",fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif",padding:"5px 0 6px",background:"#fdf5f8",letterSpacing:"0.5px"}}>
+      <div style={{textAlign:"center",fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif",padding:"5px 0 6px",background:"#fdf5f8",letterSpacing:"0.5px"}}>
         ✦ Drag to rotate 360° ✦
       </div>
     </div>
@@ -2842,16 +2842,16 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
         <TablewearVisual item={item}/>
       </div>
       <div style={{padding:"8px 10px"}}>
-        <div style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.3}}>{item.name}</div>
-        <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{item.desc}</div>
+        <div style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3}}>{item.name}</div>
+        <div style={{fontSize:10,color:"#aaa",fontFamily:"'Nunito',sans-serif",marginTop:1}}>{item.desc}</div>
         <div style={{marginTop:6}}>
-          <div style={{fontSize:13,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginBottom:6}}>{item.price}</div>
+          <div style={{fontSize:13,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif",marginBottom:6}}>{item.price}</div>
           <button onClick={()=>addToCart(item)} style={{
             background:inCart(item.id)?SOFT:`linear-gradient(135deg,#f472b0,${HOT})`,
             color:inCart(item.id)?HOT:WHITE,
             border:inCart(item.id)?`1.5px solid ${HOT}`:"none",
             borderRadius:20,padding:"6px 0",width:"100%",
-            fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",
+            fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",
           }}>
             {inCart(item.id)?"✓ Added":"+ Add"}
           </button>
@@ -2866,13 +2866,13 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
         <div style={{fontSize:16}}>🍽️</div>
         <div>
           <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Matching Tableware</div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.85}}>Coordinated with your garland — add to your package</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.85}}>Coordinated with your garland — add to your package</div>
         </div>
       </div>
 
       {plates.length > 0 && (
         <div style={{marginBottom:14}}>
-          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Plates</div>
+          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Plates</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
             {plates.map(item=><ItemCard key={item.id} item={item}/>)}
           </div>
@@ -2881,7 +2881,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
 
       {cups.length > 0 && (
         <div style={{marginBottom:14}}>
-          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Cups</div>
+          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Cups</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
             {cups.map(item=><ItemCard key={item.id} item={item}/>)}
           </div>
@@ -2890,7 +2890,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
 
       {napkins.length > 0 && (
         <div style={{marginBottom:14}}>
-          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Napkins</div>
+          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Napkins</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
             {napkins.map(item=><ItemCard key={item.id} item={item}/>)}
           </div>
@@ -2899,7 +2899,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
 
       {confetti.length > 0 && (
         <div style={{marginBottom:4}}>
-          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Confetti</div>
+          <div style={{fontSize:10,fontWeight:700,color:"#aaa",fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Confetti</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
             {confetti.map(item=><ItemCard key={item.id} item={item}/>)}
           </div>
@@ -2929,7 +2929,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
       {/* Section header */}
       <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:16}}>
         <div style={{flex:1,height:1.5,background:MID,borderRadius:2}}/>
-        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",letterSpacing:"1.5px",textTransform:"uppercase",whiteSpace:"nowrap"}}>Custom Balloon Garland</div>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",letterSpacing:"1.5px",textTransform:"uppercase",whiteSpace:"nowrap"}}>Custom Balloon Garland</div>
         <div style={{flex:1,height:1.5,background:MID,borderRadius:2}}/>
       </div>
 
@@ -2939,14 +2939,14 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
       {/* Selected color pills */}
       <div style={{display:"flex",gap:6,flexWrap:"wrap",marginTop:10,marginBottom:14,minHeight:28}}>
         {selected.length === 0
-          ? <div style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",paddingTop:4}}>No colors selected yet — pick up to {maxColors}</div>
+          ? <div style={{fontSize:11,color:"#bbb",fontFamily:"'Nunito',sans-serif",paddingTop:4}}>No colors selected yet — pick up to {maxColors}</div>
           : selected.map(id=>{
               const col = BALLOON_COLORS.find(c=>c.id===id);
               return (
                 <div key={id} onClick={()=>toggleColor(id)} style={{
                   display:"flex",alignItems:"center",gap:5,padding:"4px 10px",borderRadius:20,
                   background:SOFT,border:`1.5px solid ${col.color==="F8F8F8"?BORDER:col.color}`,
-                  cursor:"pointer",fontFamily:"'DM Sans',sans-serif",fontSize:11,fontWeight:600,color:DARK,
+                  cursor:"pointer",fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:600,color:DARK,
                 }}>
                   <span style={{width:12,height:12,borderRadius:"50%",background:col.color,display:"inline-block",border:"1px solid rgba(0,0,0,0.12)",flexShrink:0}}/>
                   {col.label} ×
@@ -2959,11 +2959,11 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
 
       {/* Mixed / Color Block */}
       <div style={{marginBottom:14}}>
-        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:6}}>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:6}}>
           Color Pattern
           <span style={{marginLeft:8,fontWeight:400,color:"#bbb",textTransform:"none",letterSpacing:0}}>{arrangement==="mixed"?"Mixed":"Color Block"}</span>
         </div>
-        <div style={{fontSize:11,color:"#999",fontFamily:"'DM Sans',sans-serif",marginBottom:8,lineHeight:1.5}}>
+        <div style={{fontSize:11,color:"#999",fontFamily:"'Nunito',sans-serif",marginBottom:8,lineHeight:1.5}}>
           {arrangement==="mixed"
             ? "Colors are blended throughout the garland. Pick up to 4."
             : "Each color fills its own section of the garland. Pick up to 4."}
@@ -2971,7 +2971,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
         <div style={{display:"flex",gap:8}}>
           {[{id:"mixed",label:"Mixed"},{id:"colorblock",label:"Color Block"}].map(o=>(
             <button key={o.id} onClick={()=>{setArrangement(o.id);setSelected([]);}} style={{
-              padding:"9px 16px",borderRadius:8,cursor:"pointer",fontFamily:"'DM Sans',sans-serif",
+              padding:"9px 16px",borderRadius:8,cursor:"pointer",fontFamily:"'Nunito',sans-serif",
               fontSize:12,fontWeight:700,border:arrangement===o.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
               background:arrangement===o.id?SOFT:WHITE,color:arrangement===o.id?HOT:DARK,transition:"all 0.15s",
             }}>{o.label}</button>
@@ -2981,7 +2981,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
 
       {/* Color palette grid */}
       <div style={{marginBottom:16}}>
-        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:10}}>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:10}}>
           Pick Up to 4 Colors
           <span style={{marginLeft:8,fontWeight:400,color:"#bbb",textTransform:"none",letterSpacing:0}}>{selected.length}/{maxColors} selected</span>
         </div>
@@ -3008,7 +3008,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
                     </div>
                   )}
                 </div>
-                <div style={{fontSize:9,color:isSel?HOT:"#bbb",fontFamily:"'DM Sans',sans-serif",fontWeight:isSel?700:400,textAlign:"center",lineHeight:1.2}}>
+                <div style={{fontSize:9,color:isSel?HOT:"#bbb",fontFamily:"'Nunito',sans-serif",fontWeight:isSel?700:400,textAlign:"center",lineHeight:1.2}}>
                   {c.label}
                 </div>
               </div>
@@ -3019,7 +3019,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
 
       {/* Kit contents */}
       <div style={{marginBottom:14,padding:"14px 16px",borderRadius:14,background:"#fff",border:`1.5px solid ${BORDER}`}}>
-        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:10}}>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:10}}>
           What's Included — 130 Balloons
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
@@ -3030,13 +3030,13 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
             { size:'5"',  count:40, label:"Fillers",     note:"Gap-filling clusters" },
           ].map(b => (
             <div key={b.size} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",borderRadius:10,background:SOFT,border:`1px solid ${MID}`}}>
-              <div style={{width:36,height:36,borderRadius:"50%",background:`radial-gradient(circle at 35% 30%,rgba(255,255,255,0.45),${HOT})`,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:900,color:WHITE,fontFamily:"'DM Sans',sans-serif"}}>
+              <div style={{width:36,height:36,borderRadius:"50%",background:`radial-gradient(circle at 35% 30%,rgba(255,255,255,0.45),${HOT})`,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:900,color:WHITE,fontFamily:"'Nunito',sans-serif"}}>
                 {b.size}
               </div>
               <div>
-                <div style={{fontSize:13,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1}}>{b.count} balloons</div>
-                <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:600,marginTop:2}}>{b.label}</div>
-                <div style={{fontSize:9,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>{b.note}</div>
+                <div style={{fontSize:13,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1}}>{b.count} balloons</div>
+                <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600,marginTop:2}}>{b.label}</div>
+                <div style={{fontSize:9,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginTop:1}}>{b.note}</div>
               </div>
             </div>
           ))}
@@ -3046,11 +3046,11 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
       {/* Price + CTA */}
       <div style={{padding:"14px 16px",borderRadius:16,background:SOFT,border:`1.5px solid ${MID}`,display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12}}>
         <div>
-          <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:0.8}}>Starting at</div>
-          <div style={{fontSize:26,fontWeight:900,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>{price}</div>
-          <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>Shipped to you</div>
+          <div style={{fontSize:10,color:"#aaa",fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:0.8}}>Starting at</div>
+          <div style={{fontSize:26,fontWeight:900,color:HOT,fontFamily:"'Nunito',sans-serif"}}>{price}</div>
+          <div style={{fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif"}}>Shipped to you</div>
         </div>
-        <div style={{textAlign:"right",fontSize:11,color:"#aaa",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>
+        <div style={{textAlign:"right",fontSize:11,color:"#aaa",fontFamily:"'Nunito',sans-serif",lineHeight:1.5}}>
           {selected.length} color{selected.length!==1?"s":""} selected<br/>
           {arrangement==="mixed"?"Mixed arrangement":"Color block"}
         </div>
@@ -3159,15 +3159,15 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
           <div>
-            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
-            {item.desc && <div style={{fontSize:8,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.35}}>{item.desc}</div>}
+            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+            {item.desc && <div style={{fontSize:8,color:"#888",fontFamily:"'Nunito',sans-serif",lineHeight:1.35}}>{item.desc}</div>}
           </div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
+            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{item.price}</div>
             <button onClick={()=>toggle(item)} style={{
               background:btnBg, color:btnColor, border:btnBorder,
               borderRadius:20, padding:"4px 8px",
-              fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
             }}>{added ? "✓" : "+ Add"}</button>
           </div>
         </div>
@@ -3181,14 +3181,14 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{emoji} {title}</div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>{subtitle}</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>{subtitle}</div>
         </div>
       </div>
       {selectedColors.length === 0 ? (
         <div style={{textAlign:"center",padding:"24px 16px",background:SOFT,borderRadius:16}}>
           <div style={{fontSize:22,marginBottom:8}}>🎈</div>
-          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>Customize your garland first</div>
-          <div style={{fontSize:11,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
+          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>Customize your garland first</div>
+          <div style={{fontSize:11,color:"#888",fontFamily:"'Nunito',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
         </div>
       ) : (
         <Carousel items={scored.filter(i => i.score >= 1)} renderItem={renderProductItem} />
@@ -3561,13 +3561,13 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
+            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{item.price}</div>
             <button onClick={()=>toggle(item)} style={{
               background:btnBg, color:btnColor, border:btnBorder,
               borderRadius:20, padding:"4px 8px",
-              fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
             }}>{added ? "✓" : "+ Add"}</button>
           </div>
         </div>
@@ -3581,14 +3581,14 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎉 Party Accessories</div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Fun extras to complete your party vibe</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Fun extras to complete your party vibe</div>
         </div>
       </div>
       {PARTY_ACCESSORIES.length === 0 ? (
         <div style={{textAlign:"center",padding:"28px 20px",background:SOFT,borderRadius:16}}>
           <div style={{fontSize:28,marginBottom:8}}>🎀</div>
-          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>Coming Soon</div>
-          <div style={{fontSize:11,color:"#aaa",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>Party accessories are being added. Check back soon!</div>
+          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>Coming Soon</div>
+          <div style={{fontSize:11,color:"#aaa",fontFamily:"'Nunito',sans-serif",lineHeight:1.5}}>Party accessories are being added. Check back soon!</div>
         </div>
       ) : (
         <Carousel items={PARTY_ACCESSORIES} renderItem={renderItem} />
@@ -3640,12 +3640,12 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:4}}>{item.name}</div>
+          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:4}}>{item.name}</div>
           <div style={{display:"flex",gap:3,marginBottom:5}}>
             {[{id:"mini",label:"Mini"},{id:"tube",label:"Tube"}].map(opt => (
               <button key={opt.id} onClick={() => setSizes(prev => ({...prev,[item.id]:opt.id}))} style={{
                 flex:1, padding:"2px 0", borderRadius:6, cursor:"pointer",
-                fontFamily:"'DM Sans',sans-serif", fontSize:8, fontWeight:700,
+                fontFamily:"'Nunito',sans-serif", fontSize:8, fontWeight:700,
                 border: size===opt.id ? `1.5px solid ${HOT}` : `1px solid ${BORDER}`,
                 background: size===opt.id ? SOFT : WHITE,
                 color: size===opt.id ? HOT : "#aaa",
@@ -3653,11 +3653,11 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
             ))}
           </div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>${sizePrice}</div>
+            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>${sizePrice}</div>
             <button onClick={() => toggle(item, size)} style={{
               background:btnBg, color:btnColor, border:btnBorder,
               borderRadius:20, padding:"4px 8px",
-              fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
             }}>{added ? "✓" : "+ Add"}</button>
           </div>
         </div>
@@ -3671,14 +3671,14 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎊 Add Some Confetti</div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>The perfect finishing touch — choose your size</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>The perfect finishing touch — choose your size</div>
         </div>
       </div>
       {selectedColors.length === 0 ? (
         <div style={{textAlign:"center",padding:"24px 16px",background:SOFT,borderRadius:16}}>
           <div style={{fontSize:22,marginBottom:8}}>🎈</div>
-          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>Customize your garland first</div>
-          <div style={{fontSize:11,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
+          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>Customize your garland first</div>
+          <div style={{fontSize:11,color:"#888",fontFamily:"'Nunito',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
         </div>
       ) : (
         <Carousel items={scored.filter(i => i.score >= 1)} renderItem={renderConfettiItem} />
@@ -3747,13 +3747,13 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
             <TablewearVisual item={item}/>
           </div>
           <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
             <div style={{marginTop:5}}>
-              <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>{item.price} each</div>
+              <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>{item.price} each</div>
               <button onClick={() => setActiveNumId(activeNumId === item.id ? null : item.id)} style={{
                 width:"100%", background:btnBg, color:btnColor, border:btnBorder,
                 borderRadius:20, padding:"5px 0",
-                fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+                fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
               }}>{btnLabel}</button>
             </div>
           </div>
@@ -3771,13 +3771,13 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{item.price}</div>
+            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{item.price}</div>
             <button onClick={() => toggle(item)} style={{
               background:btnBg, color:btnColor, border:btnBorder,
               borderRadius:20, padding:"4px 8px",
-              fontFamily:"'DM Sans',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
             }}>{added ? "✓" : "+ Add"}</button>
           </div>
         </div>
@@ -3793,14 +3793,14 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎈 Add Foil Balloons</div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",opacity:0.8}}>Number balloons, letters, shapes & more</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Number balloons, letters, shapes & more</div>
         </div>
       </div>
       {selectedColors.length === 0 ? (
         <div style={{textAlign:"center",padding:"24px 16px",background:SOFT,borderRadius:16}}>
           <div style={{fontSize:22,marginBottom:8}}>🎈</div>
-          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:4}}>Customize your garland first</div>
-          <div style={{fontSize:11,color:"#888",fontFamily:"'DM Sans',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
+          <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>Customize your garland first</div>
+          <div style={{fontSize:11,color:"#888",fontFamily:"'Nunito',sans-serif",lineHeight:1.5}}>Pick your balloon colors in Step 1 and we'll show you only the products that match.</div>
         </div>
       ) : (
         <Carousel items={scored.filter(i => i.score >= 1)} renderItem={renderFoilItem} />
@@ -3808,7 +3808,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
       {activeNumItem && (
         <div style={{marginTop:12,background:WHITE,borderRadius:18,padding:"14px 14px 16px",boxShadow:"0 4px 20px rgba(233,30,140,0.15)"}}>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
-            <div style={{fontSize:12,fontWeight:800,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>{activeNumItem.name} — Pick Your Numbers</div>
+            <div style={{fontSize:12,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif"}}>{activeNumItem.name} — Pick Your Numbers</div>
             <button onClick={() => setActiveNumId(null)} style={{background:"none",border:"none",fontSize:18,cursor:"pointer",color:"#aaa",lineHeight:1}}>×</button>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:8}}>
@@ -3820,14 +3820,14 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
               return (
                 <button key={n} onClick={() => toggleNum(activeNumItem, n)} style={{
                   aspectRatio:"1/1", borderRadius:12, cursor:"pointer",
-                  fontFamily:"'DM Sans',sans-serif", fontSize:20, fontWeight:900,
+                  fontFamily:"'Nunito',sans-serif", fontSize:20, fontWeight:900,
                   border:bdr, background:bg, color:col, transition:"all 0.15s",
                 }}>{n}</button>
               );
             })}
           </div>
           {digits.filter(n => numInCart(activeNumItem,n)).length > 0 && (
-            <div style={{marginTop:10,fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700}}>
+            <div style={{marginTop:10,fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700}}>
               Selected: {digits.filter(n => numInCart(activeNumItem,n)).join(", ")} · ${(digits.filter(n => numInCart(activeNumItem,n)).length * parseFloat(activeNumItem.price.replace("$",""))).toFixed(2)} total
             </div>
           )}
@@ -3924,9 +3924,9 @@ function CuratedThemes({ cart, setCart }) {
   return (
     <div style={{marginTop:28,paddingTop:20,borderTop:`2px solid ${MID}`}}>
       <div style={{textAlign:"center",marginBottom:18}}>
-        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",letterSpacing:"1.5px",textTransform:"uppercase",marginBottom:4}}>Not sure where to start?</div>
+        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",letterSpacing:"1.5px",textTransform:"uppercase",marginBottom:4}}>Not sure where to start?</div>
         <div style={{fontSize:18,fontWeight:900,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>Shop Curated Themes</div>
-        <div style={{fontSize:12,color:"#aaa",fontFamily:"'DM Sans',sans-serif"}}>Pre-styled sets — add everything with one tap</div>
+        <div style={{fontSize:12,color:"#aaa",fontFamily:"'Nunito',sans-serif"}}>Pre-styled sets — add everything with one tap</div>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:14}}>
         {CURATED_THEMES.map(theme => {
@@ -3937,7 +3937,7 @@ function CuratedThemes({ cart, setCart }) {
                 <div>
                   <div style={{fontSize:18,marginBottom:4}}>{theme.emoji}</div>
                   <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{theme.name}</div>
-                  <div style={{fontSize:11,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:2}}>{theme.desc}</div>
+                  <div style={{fontSize:11,color:"#aaa",fontFamily:"'Nunito',sans-serif",marginTop:2}}>{theme.desc}</div>
                 </div>
                 <div style={{display:"flex",gap:4,flexShrink:0,marginLeft:10,marginTop:4}}>
                   {theme.colors.map((c,i)=>(
@@ -3951,7 +3951,7 @@ function CuratedThemes({ cart, setCart }) {
                   if (!item) return null;
                   const added = cart.some(c => c.id === id);
                   return (
-                    <div key={id} style={{display:"flex",justifyContent:"space-between",fontFamily:"'DM Sans',sans-serif",fontSize:11,marginBottom:4,color:added?HOT:DARK}}>
+                    <div key={id} style={{display:"flex",justifyContent:"space-between",fontFamily:"'Nunito',sans-serif",fontSize:11,marginBottom:4,color:added?HOT:DARK}}>
                       <span>{added?"✓ ":""}{item.name}</span>
                       <span style={{fontWeight:700,color:added?HOT:PUNCH,flexShrink:0,marginLeft:8}}>{item.price}</span>
                     </div>
@@ -3986,8 +3986,8 @@ function PackageCard({ pkg, selected, onClick }) {
     }}>
       <div style={{fontSize:24,marginBottom:5}}>{pkg.emoji}</div>
       <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:selected?pkg.headlineColor:DARK,marginBottom:2}}>{pkg.name}</div>
-      <div style={{fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginBottom:6}}>{pkg.tagline}</div>
-      <div style={{fontSize:15,fontWeight:900,color:selected?pkg.headlineColor:PUNCH,fontFamily:"'DM Sans',sans-serif"}}>{pkg.price}</div>
+      <div style={{fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginBottom:6}}>{pkg.tagline}</div>
+      <div style={{fontSize:15,fontWeight:900,color:selected?pkg.headlineColor:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{pkg.price}</div>
     </button>
   );
 }
@@ -4008,7 +4008,7 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
         <h2 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:22,fontWeight:900,margin:"0 0 6px",color:DARK}}>
           <em style={{color:HOT}}>Build Your Decor Package</em>
         </h2>
-        <p style={{fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",margin:0,opacity:0.85,lineHeight:1.6}}>
+        <p style={{fontSize:12,color:HOT,fontFamily:"'Nunito',sans-serif",margin:0,opacity:0.85,lineHeight:1.6}}>
           Pick your garland colors · shop matching tableware · check out in one go
         </p>
       </div>
@@ -4084,15 +4084,15 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
       {(cart||[]).length > 0 && (
         <div style={{marginTop:28,padding:"16px",borderRadius:18,background:`linear-gradient(135deg,${SOFT},${MID})`,border:`1.5px solid ${MID}`}}>
           <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🎉 Your Party Package</div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:12,opacity:0.85}}>Everything you've added — one checkout</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:12,opacity:0.85}}>Everything you've added — one checkout</div>
           {cart.map(item=>(
-            <div key={item.id} style={{display:"flex",justifyContent:"space-between",marginBottom:6,fontFamily:"'DM Sans',sans-serif",fontSize:12}}>
+            <div key={item.id} style={{display:"flex",justifyContent:"space-between",marginBottom:6,fontFamily:"'Nunito',sans-serif",fontSize:12}}>
               <span style={{color:DARK,flex:1,marginRight:8,lineHeight:1.4}}>{item.name}</span>
               <span style={{fontWeight:700,color:PUNCH,flexShrink:0}}>${typeof item.price==="number"?item.price.toFixed(2):item.price}</span>
             </div>
           ))}
           <div style={{height:1,background:MID,margin:"10px 0"}}/>
-          <div style={{display:"flex",justifyContent:"space-between",fontFamily:"'DM Sans',sans-serif",fontWeight:900,fontSize:15,marginBottom:14}}>
+          <div style={{display:"flex",justifyContent:"space-between",fontFamily:"'Nunito',sans-serif",fontWeight:900,fontSize:15,marginBottom:14}}>
             <span style={{color:DARK}}>Total</span>
             <span style={{color:HOT}}>${cart.reduce((s,i)=>s+(typeof i.price==="number"?i.price:parseFloat(i.price)||0),0).toFixed(2)}</span>
           </div>

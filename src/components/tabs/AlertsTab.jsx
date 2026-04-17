@@ -18,7 +18,7 @@ function AccountGate({ onSignUp }) {
       <h2 style={{fontFamily:"'Playfair Display',Georgia,serif", fontSize:22, fontWeight:700, color:HOT, margin:"0 0 10px"}}>
         Members-Only Deals
       </h2>
-      <p style={{fontSize:13, color:"#888", fontFamily:"'DM Sans',sans-serif", lineHeight:1.7, marginBottom:10}}>
+      <p style={{fontSize:13, color:"#888", fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:10}}>
         Create a free account to unlock exclusive deal alerts for your bachelorette trip.
       </p>
 
@@ -32,20 +32,20 @@ function AccountGate({ onSignUp }) {
         ].map(d => (
           <div key={d.icon} style={{background:SOFT, border:`1px solid ${MID}`, borderRadius:14, padding:"12px 12px"}}>
             <div style={{fontSize:22, marginBottom:6}}>{d.icon}</div>
-            <div style={{fontSize:12, fontWeight:700, color:DARK, fontFamily:"'DM Sans',sans-serif"}}>{d.label}</div>
-            <div style={{fontSize:10, color:"#aaa", fontFamily:"'DM Sans',sans-serif", marginTop:3, lineHeight:1.4}}>{d.desc}</div>
+            <div style={{fontSize:12, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif"}}>{d.label}</div>
+            <div style={{fontSize:10, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginTop:3, lineHeight:1.4}}>{d.desc}</div>
           </div>
         ))}
       </div>
 
       <button onClick={onSignUp} style={{
         background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none",
-        borderRadius:50, padding:"13px 32px", fontFamily:"'DM Sans',sans-serif",
+        borderRadius:50, padding:"13px 32px", fontFamily:"'Nunito',sans-serif",
         fontSize:14, fontWeight:700, cursor:"pointer", width:"100%", maxWidth:300,
       }}>
         Create Free Account
       </button>
-      <p style={{fontSize:11, color:"#bbb", fontFamily:"'DM Sans',sans-serif", marginTop:14}}>
+      <p style={{fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:14}}>
         Already have an account? Sign in from the home screen.
       </p>
     </div>
@@ -89,13 +89,13 @@ export default function AlertsTab({ user, onSignUp }) {
       {/* Enable notifications banner */}
       {!notif && (
         <div style={{...C, marginBottom:14, background:SOFT, border:`1.5px solid ${MID}`}}>
-          <div style={{fontSize:11, color:HOT, fontFamily:"'DM Sans',sans-serif", fontWeight:700, textTransform:"uppercase", letterSpacing:1, marginBottom:6}}>🔔 Enable Push Notifications</div>
-          <div style={{fontSize:12, color:DARK, fontFamily:"'DM Sans',sans-serif", opacity:0.75, marginBottom:12}}>Turn on alerts so we ping you the moment a deal drops!</div>
+          <div style={{fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, textTransform:"uppercase", letterSpacing:1, marginBottom:6}}>🔔 Enable Push Notifications</div>
+          <div style={{fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", opacity:0.75, marginBottom:12}}>Turn on alerts so we ping you the moment a deal drops!</div>
           <button onClick={()=>setNotif(true)} style={{...BP, width:"100%", padding:"11px", fontSize:13}}>Enable Deal Alerts</button>
         </div>
       )}
       {notif && (
-        <div style={{padding:"10px 14px", borderRadius:12, background:"rgba(46,125,50,0.08)", border:"1px solid rgba(46,125,50,0.25)", marginBottom:14, fontFamily:"'DM Sans',sans-serif", fontSize:13, color:GREEN}}>
+        <div style={{padding:"10px 14px", borderRadius:12, background:"rgba(46,125,50,0.08)", border:"1px solid rgba(46,125,50,0.25)", marginBottom:14, fontFamily:"'Nunito',sans-serif", fontSize:13, color:GREEN}}>
           ✅ Push notifications enabled!
         </div>
       )}
@@ -103,7 +103,7 @@ export default function AlertsTab({ user, onSignUp }) {
       {/* Triggered deals */}
       {triggered.length > 0 && (
         <div style={{marginBottom:16}}>
-          <div style={{fontSize:11, fontWeight:700, color:PUNCH, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}>🚨 DEALS FOUND — Act Fast!</div>
+          <div style={{fontSize:11, fontWeight:700, color:PUNCH, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}>🚨 DEALS FOUND — Act Fast!</div>
           {triggered.map(a => (
             <div key={a.id} style={{...C, marginBottom:10, background:"rgba(46,125,50,0.05)", border:"2px solid rgba(46,125,50,0.3)", position:"relative"}}>
               <div style={{position:"absolute", top:14, right:14, width:9, height:9, borderRadius:"50%", background:GREEN}}/>
@@ -111,7 +111,7 @@ export default function AlertsTab({ user, onSignUp }) {
                 <div style={{fontSize:28}}>{a.icon}</div>
                 <div style={{flex:1}}>
                   <div style={{fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK}}>{a.label}</div>
-                  <div style={{display:"flex", gap:12, marginTop:5, fontFamily:"'DM Sans',sans-serif", fontSize:11}}>
+                  <div style={{display:"flex", gap:12, marginTop:5, fontFamily:"'Nunito',sans-serif", fontSize:11}}>
                     <span style={{color:HOT}}>Target: ${a.threshold}</span>
                     <span style={{color:GREEN, fontWeight:700}}>Now: ${a.current} · Saving ${a.threshold - a.current}!</span>
                   </div>
@@ -128,14 +128,14 @@ export default function AlertsTab({ user, onSignUp }) {
       {/* Watching */}
       {watching.length > 0 && (
         <div style={{marginBottom:16}}>
-          <div style={{fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}>👀 Watching</div>
+          <div style={{fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}>👀 Watching</div>
           {watching.map(a => (
             <div key={a.id} style={{...C, marginBottom:8}}>
               <div style={{display:"flex", alignItems:"center", gap:12}}>
                 <div style={{fontSize:26}}>{a.icon}</div>
                 <div style={{flex:1}}>
                   <div style={{fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK}}>{a.label}</div>
-                  <div style={{fontSize:11, color:HOT, fontFamily:"'DM Sans',sans-serif", marginTop:3, opacity:0.75}}>
+                  <div style={{fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:3, opacity:0.75}}>
                     Now: <span style={{color:PUNCH}}>${a.current}</span> · Target: ${a.threshold}
                   </div>
                   <div style={{marginTop:6, height:4, background:SOFT, borderRadius:2}}>
@@ -160,7 +160,7 @@ export default function AlertsTab({ user, onSignUp }) {
               <button key={t.id} onClick={()=>setNewA(p=>({...p, type:t.id}))} style={{
                 padding:"10px 6px", border:newA.type===t.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
                 borderRadius:12, background:newA.type===t.id?SOFT:WHITE, cursor:"pointer",
-                color:DARK, fontFamily:"'DM Sans',sans-serif", fontSize:11, fontWeight:600,
+                color:DARK, fontFamily:"'Nunito',sans-serif", fontSize:11, fontWeight:600,
               }}>
                 {t.icon} {t.label}
               </button>

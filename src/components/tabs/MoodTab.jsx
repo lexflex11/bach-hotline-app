@@ -64,7 +64,7 @@ export default function MoodTab({ setTab }) {
   if (!selected && !customMode) return (
     <div>
       <SH title="Vibes & Décor" sub="Pick your aesthetic — outfits, décor, AI space visualizer" />
-      <div style={{fontSize:13,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:14,opacity:0.8}}>
+      <div style={{fontSize:13,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.8}}>
         Choose a theme and we'll give you the full guide — outfits, décor ideas, photo inspo, hashtags, and AI visualization of your actual space. ✨
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
@@ -75,7 +75,7 @@ export default function MoodTab({ setTab }) {
             onMouseLeave={e=>{e.currentTarget.style.boxShadow=`0 2px 10px rgba(230,101,130,0.07)`;e.currentTarget.style.transform="translateY(0)"}}>
             <div style={{fontSize:28,marginBottom:8}}>{a.emoji}</div>
             <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>{a.name}</div>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.4,opacity:0.8}}>{a.vibe}</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.4,opacity:0.8}}>{a.vibe}</div>
             <div style={{display:"flex",gap:4,marginTop:10}}>
               {a.colors.map((c,i) => <div key={i} style={{width:16,height:16,borderRadius:"50%",background:c,border:"1.5px solid rgba(255,255,255,0.8)",boxShadow:"0 1px 3px rgba(0,0,0,0.15)"}} />)}
             </div>
@@ -89,7 +89,7 @@ export default function MoodTab({ setTab }) {
           onMouseLeave={e=>{e.currentTarget.style.boxShadow=`0 2px 10px rgba(230,101,130,0.07)`;e.currentTarget.style.transform="translateY(0)"}}>
           <div style={{fontSize:28,marginBottom:8}}>🎨</div>
           <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:HOT,marginBottom:4}}>Build Your Own</div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",lineHeight:1.4,opacity:0.8}}>Name your vibe, pick your colors, get a custom AI décor plan</div>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.4,opacity:0.8}}>Name your vibe, pick your colors, get a custom AI décor plan</div>
         </button>
       </div>
     </div>
@@ -107,7 +107,7 @@ export default function MoodTab({ setTab }) {
           value={customName}
           onChange={e => setCustomName(e.target.value)}
           placeholder="e.g. Pink Safari, Vegas Glam, Coastal Queen..."
-          style={{width:"100%",padding:"12px",borderRadius:10,border:`1.5px solid ${customName?HOT:BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:13,color:DARK,background:WHITE,boxSizing:"border-box"}}
+          style={{width:"100%",padding:"12px",borderRadius:10,border:`1.5px solid ${customName?HOT:BORDER}`,fontFamily:"'Nunito',sans-serif",fontSize:13,color:DARK,background:WHITE,boxSizing:"border-box"}}
         />
       </div>
 
@@ -118,7 +118,7 @@ export default function MoodTab({ setTab }) {
           onChange={e => setCustomVibe(e.target.value)}
           placeholder="e.g. Luxury resort meets wild west. Think gold, turquoise, and cowboy hats by the pool..."
           rows={3}
-          style={{width:"100%",padding:"12px",borderRadius:10,border:`1.5px solid ${customVibe?HOT:BORDER}`,fontFamily:"'DM Sans',sans-serif",fontSize:13,color:DARK,background:WHITE,boxSizing:"border-box",resize:"none"}}
+          style={{width:"100%",padding:"12px",borderRadius:10,border:`1.5px solid ${customVibe?HOT:BORDER}`,fontFamily:"'Nunito',sans-serif",fontSize:13,color:DARK,background:WHITE,boxSizing:"border-box",resize:"none"}}
         />
       </div>
 
@@ -132,8 +132,8 @@ export default function MoodTab({ setTab }) {
             style={{width:52,height:52,borderRadius:12,border:`1.5px solid ${BORDER}`,cursor:"pointer",padding:2}}
           />
           <div>
-            <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:DARK,fontWeight:700}}>{customColors.toUpperCase()}</div>
-            <div style={{fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:2}}>AI will build your full palette from this</div>
+            <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:DARK,fontWeight:700}}>{customColors.toUpperCase()}</div>
+            <div style={{fontSize:11,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginTop:2}}>AI will build your full palette from this</div>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ export default function MoodTab({ setTab }) {
         ✨ Build My Custom Theme
       </button>
       {(!customName || !customVibe) && (
-        <div style={{textAlign:"center",fontSize:11,color:"#bbb",fontFamily:"'DM Sans',sans-serif",marginTop:8}}>
+        <div style={{textAlign:"center",fontSize:11,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginTop:8}}>
           Add a name and vibe description to continue
         </div>
       )}
@@ -161,12 +161,12 @@ export default function MoodTab({ setTab }) {
       <div style={{borderRadius:18,padding:"20px 16px",background:SOFT,border:`1.5px solid ${MID}`,marginBottom:14,textAlign:"center"}}>
         <div style={{fontSize:36,marginBottom:8}}>{aesthetic.emoji}</div>
         <div style={{fontSize:20,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{aesthetic.name}</div>
-        <div style={{fontSize:13,color:HOT,fontFamily:"'DM Sans',sans-serif",marginTop:6,lineHeight:1.5,fontStyle:"italic"}}>"{aesthetic.vibe}"</div>
+        <div style={{fontSize:13,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:6,lineHeight:1.5,fontStyle:"italic"}}>"{aesthetic.vibe}"</div>
         <div style={{display:"flex",justifyContent:"center",gap:8,marginTop:14,flexWrap:"wrap"}}>
           {aesthetic.colors.map((c,i) => (
             <div key={i} style={{textAlign:"center"}}>
               <div style={{width:36,height:36,borderRadius:"50%",background:c,margin:"0 auto 4px",border:"2px solid white",boxShadow:"0 2px 8px rgba(0,0,0,0.15)"}} />
-              <div style={{fontSize:9,color:DARK,fontFamily:"'DM Sans',sans-serif",opacity:0.7}}>{aesthetic.palette[i]}</div>
+              <div style={{fontSize:9,color:DARK,fontFamily:"'Nunito',sans-serif",opacity:0.7}}>{aesthetic.palette[i]}</div>
             </div>
           ))}
         </div>
@@ -178,7 +178,7 @@ export default function MoodTab({ setTab }) {
         {aesthetic.outfits.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
             <div style={{width:8,height:8,borderRadius:"50%",background:aesthetic.colors[0],flexShrink:0}} />
-            <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:DARK}}>{item}</div>
+            <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:DARK}}>{item}</div>
           </div>
         ))}
       </div>}
@@ -189,7 +189,7 @@ export default function MoodTab({ setTab }) {
         {aesthetic.decor.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
             <span style={{color:HOT,fontSize:12}}>✦</span>
-            <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:DARK}}>{item}</div>
+            <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:DARK}}>{item}</div>
           </div>
         ))}
       </div>}
@@ -200,7 +200,7 @@ export default function MoodTab({ setTab }) {
         {aesthetic.shots.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
             <span style={{fontSize:14}}>📷</span>
-            <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:DARK}}>{item}</div>
+            <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:DARK}}>{item}</div>
           </div>
         ))}
       </div>}
@@ -210,7 +210,7 @@ export default function MoodTab({ setTab }) {
         <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Hashtag Pack</div>
         <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
           {aesthetic.hashtags.map((tag,i) => (
-            <span key={i} style={{fontSize:11,padding:"4px 11px",borderRadius:50,background:SOFT,border:`1.5px solid ${MID}`,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:600}}>{tag}</span>
+            <span key={i} style={{fontSize:11,padding:"4px 11px",borderRadius:50,background:SOFT,border:`1.5px solid ${MID}`,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600}}>{tag}</span>
           ))}
         </div>
       </div>}
@@ -220,7 +220,7 @@ export default function MoodTab({ setTab }) {
         <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
           ✨ AI Décor Visualizer
         </div>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginBottom:14,opacity:0.85}}>
+        <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>
           Upload a photo of your party space and AI will show you exactly how to style it in the <strong>{aesthetic.name}</strong> theme.
         </div>
 
@@ -233,7 +233,7 @@ export default function MoodTab({ setTab }) {
         ) : (
           <div>
             <img src={photo} alt="Your space" style={{width:"100%",borderRadius:12,maxHeight:180,objectFit:"cover",border:`1.5px solid ${MID}`,marginBottom:8}} />
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",fontFamily:"'DM Sans',sans-serif",fontSize:13,marginBottom:12}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",fontFamily:"'Nunito',sans-serif",fontSize:13,marginBottom:12}}>
               <span style={{color:GREEN,fontWeight:700}}>✅ Photo ready!</span>
               <button onClick={() => { setPhoto(null); setResult(null); }} style={{...BG,fontSize:12,padding:"4px 12px"}}>Change</button>
             </div>
@@ -244,7 +244,7 @@ export default function MoodTab({ setTab }) {
         )}
 
         {loading && (
-          <div style={{textAlign:"center",padding:"24px 0",color:HOT,fontFamily:"'DM Sans',sans-serif",fontSize:13}}>
+          <div style={{textAlign:"center",padding:"24px 0",color:HOT,fontFamily:"'Nunito',sans-serif",fontSize:13}}>
             ✨ Analyzing your space and applying the {aesthetic.name} theme...
           </div>
         )}
@@ -252,13 +252,13 @@ export default function MoodTab({ setTab }) {
         {result && (
           <div style={{marginTop:14}}>
             <div style={{fontSize:17,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>{result.headline}</div>
-            <p style={{fontSize:13,lineHeight:1.6,color:DARK,fontFamily:"'DM Sans',sans-serif",marginBottom:12,opacity:0.85}}>{result.vision}</p>
+            <p style={{fontSize:13,lineHeight:1.6,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:12,opacity:0.85}}>{result.vision}</p>
 
             {result.keyPieces?.length > 0 && (
               <div style={{marginBottom:12}}>
-                <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Key Décor Pieces</div>
+                <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Key Décor Pieces</div>
                 {result.keyPieces.map((p,i) => (
-                  <div key={i} style={{display:"flex",gap:8,marginBottom:6,fontFamily:"'DM Sans',sans-serif",fontSize:12}}>
+                  <div key={i} style={{display:"flex",gap:8,marginBottom:6,fontFamily:"'Nunito',sans-serif",fontSize:12}}>
                     <span style={{color:HOT}}>✦</span>
                     <span style={{color:DARK,opacity:0.85}}>{p}</span>
                   </div>
@@ -268,23 +268,23 @@ export default function MoodTab({ setTab }) {
 
             {result.lighting && (
               <div style={{padding:"10px 12px",borderRadius:10,background:WHITE,border:`1px solid ${BORDER}`,marginBottom:10}}>
-                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>💡 Lighting: </span>
-                <span style={{fontSize:12,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>{result.lighting}</span>
+                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif"}}>💡 Lighting: </span>
+                <span style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>{result.lighting}</span>
               </div>
             )}
 
             {result.photoMoment && (
               <div style={{padding:"10px 12px",borderRadius:10,background:WHITE,border:`1px solid ${BORDER}`,marginBottom:12}}>
-                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'DM Sans',sans-serif"}}>📸 Photo Moment: </span>
-                <span style={{fontSize:12,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>{result.photoMoment}</span>
+                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif"}}>📸 Photo Moment: </span>
+                <span style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>{result.photoMoment}</span>
               </div>
             )}
 
             {result.shoppingList?.length > 0 && (
               <div style={{background:WHITE,border:`1.5px solid ${BORDER}`,borderRadius:12,padding:"11px 13px",marginBottom:12}}>
-                <div style={{fontSize:10,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>🛍️ Shopping List</div>
+                <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>🛍️ Shopping List</div>
                 {result.shoppingList.map((item,i) => (
-                  <div key={i} style={{fontSize:12,fontFamily:"'DM Sans',sans-serif",color:DARK,opacity:0.8,marginBottom:4}}>• {item}</div>
+                  <div key={i} style={{fontSize:12,fontFamily:"'Nunito',sans-serif",color:DARK,opacity:0.8,marginBottom:4}}>• {item}</div>
                 ))}
               </div>
             )}
@@ -308,8 +308,8 @@ export default function MoodTab({ setTab }) {
                 <div style={{background:WHITE,border:`1.5px solid ${BORDER}`,borderRadius:12,overflow:"hidden",textAlign:"center"}}>
                   <img src={p.image} alt={p.name} style={{width:"100%",aspectRatio:"1/1",objectFit:"cover",display:"block"}} />
                   <div style={{padding:"6px 8px"}}>
-                    <div style={{fontSize:10,fontFamily:"'DM Sans',sans-serif",color:DARK,fontWeight:600,lineHeight:1.3}}>{p.name}</div>
-                    <div style={{fontSize:11,color:PUNCH,fontFamily:"'DM Sans',sans-serif",fontWeight:700,marginTop:2}}>${p.price.toFixed(2)}</div>
+                    <div style={{fontSize:10,fontFamily:"'Nunito',sans-serif",color:DARK,fontWeight:600,lineHeight:1.3}}>{p.name}</div>
+                    <div style={{fontSize:11,color:PUNCH,fontFamily:"'Nunito',sans-serif",fontWeight:700,marginTop:2}}>${p.price.toFixed(2)}</div>
                   </div>
                 </div>
               </a>

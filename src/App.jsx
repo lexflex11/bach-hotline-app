@@ -70,7 +70,7 @@ export default function App() {
                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
                   <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
-                {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-5, width:14, height:14, borderRadius:"50%", background:HOT, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'DM Sans',sans-serif", color:WHITE }}>{alertCount}</div>}
+                {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-5, width:14, height:14, borderRadius:"50%", background:HOT, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'Nunito',sans-serif", color:WHITE }}>{alertCount}</div>}
               </div>
             )}
             {/* Cart icon */}
@@ -79,7 +79,7 @@ export default function App() {
                 <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
               </svg>
-              <span style={{ fontSize:13, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:DARK }}>{cart.length}</span>
+              <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{cart.length}</span>
             </div>
             {/* Profile */}
             <div onClick={()=>setTab("profile")} style={{ width:28, height:28, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
@@ -109,12 +109,12 @@ export default function App() {
                   color: isActive ? HOT : "#999",
                   transition:"color 0.18s",
                 }}>
-                <span style={{ fontSize:11, fontFamily:"'DM Sans',sans-serif", fontWeight:700, letterSpacing:"0.6px", textTransform:"uppercase" }}>{n.label}</span>
+                <span style={{ fontSize:11, fontFamily:"'Nunito',sans-serif", fontWeight:700, letterSpacing:"0.6px", textTransform:"uppercase" }}>{n.label}</span>
               </button>
             );
           })}
         </div>
-        <div style={{ background:SOFT, padding:"2px 16px 3px", fontFamily:"'DM Sans',sans-serif", fontSize:10, color:HOT, fontWeight:600, letterSpacing:"0.5px", borderTop:`1px solid ${BORDER}` }}>
+        <div style={{ background:SOFT, padding:"2px 16px 3px", fontFamily:"'Nunito',sans-serif", fontSize:10, color:HOT, fontWeight:600, letterSpacing:"0.5px", borderTop:`1px solid ${BORDER}` }}>
           Group of {groupSize} · {user.name.split(" ")[0]}
         </div>
       </div>
@@ -145,8 +145,8 @@ export default function App() {
           <div style={{ position:"fixed", top:0, left:"50%", transform:"translateX(-50%)", width:"min(100%, 600px)", background:WHITE, borderRadius:"0 0 20px 20px", zIndex:195, boxShadow:`0 4px 32px rgba(230,101,130,0.18)`, maxHeight:"80vh", overflowY:"auto" }}>
             <div style={{ width:36, height:4, borderRadius:2, background:MID, margin:"0 auto 14px", paddingTop:14 }} />
             <div style={{ padding:"16px 20px 32px" }}>
-              <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"1.5px", marginBottom:18 }}>All Features</div>
-              <div style={{ fontSize:10, color:"#bbb", fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"1px", marginBottom:10, fontWeight:600 }}>Trip Planning</div>
+              <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"1.5px", marginBottom:18 }}>All Features</div>
+              <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"1px", marginBottom:10, fontWeight:600 }}>Trip Planning</div>
               <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:20 }}>
                 {[
                   { id:"flights", label:"Flights",   sub:"Search & compare"        },
@@ -164,11 +164,11 @@ export default function App() {
                   <button key={item.id} onClick={() => { navigateTo(item.id); setDrawerOpen(false); }}
                     style={{ background: tab===item.id ? SOFT : PAGE, border:`1.5px solid ${tab===item.id ? HOT : BORDER}`, borderRadius:14, padding:"12px 13px", cursor:"pointer", textAlign:"left", transition:"all 0.15s" }}>
                     <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color: tab===item.id ? HOT : DARK }}>{item.label}</div>
-                    <div style={{ fontSize:11, color:"#aaa", fontFamily:"'DM Sans',sans-serif", marginTop:2, lineHeight:1.3 }}>{item.sub}</div>
+                    <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginTop:2, lineHeight:1.3 }}>{item.sub}</div>
                   </button>
                 ))}
               </div>
-              <div style={{ fontSize:10, color:"#bbb", fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"1px", marginBottom:10, fontWeight:600 }}>Extras</div>
+              <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"1px", marginBottom:10, fontWeight:600 }}>Extras</div>
               <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
                 {[
                   ...(user.email ? [
@@ -180,7 +180,7 @@ export default function App() {
                   <button key={item.id} onClick={() => { navigateTo(item.id); setDrawerOpen(false); }}
                     style={{ background: tab===item.id ? SOFT : PAGE, border:`1.5px solid ${tab===item.id ? HOT : BORDER}`, borderRadius:14, padding:"12px 13px", cursor:"pointer", textAlign:"left", transition:"all 0.15s" }}>
                     <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color: tab===item.id ? HOT : DARK }}>{item.label}</div>
-                    <div style={{ fontSize:11, color:"#aaa", fontFamily:"'DM Sans',sans-serif", marginTop:2, lineHeight:1.3 }}>{item.sub}</div>
+                    <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginTop:2, lineHeight:1.3 }}>{item.sub}</div>
                   </button>
                 ))}
               </div>
@@ -203,7 +203,7 @@ export default function App() {
                 <button onClick={()=>setCartOpen(false)} style={{background:"none",border:"none",fontSize:20,cursor:"pointer",color:"#aaa"}}>×</button>
               </div>
               {cart.length === 0 ? (
-                <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'DM Sans',sans-serif",fontSize:13}}>
+                <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'Nunito',sans-serif",fontSize:13}}>
                   Your cart is empty 💔
                 </div>
               ) : (
@@ -214,17 +214,17 @@ export default function App() {
                         {item.image ? <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"cover"}}/> : "🎀"}
                       </div>
                       <div style={{flex:1,minWidth:0}}>
-                        <div style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'DM Sans',sans-serif",marginBottom:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
-                        <div style={{fontSize:14,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>${(item.price||0).toFixed(2)}</div>
+                        <div style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
+                        <div style={{fontSize:14,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${(item.price||0).toFixed(2)}</div>
                       </div>
                       <button onClick={()=>setCart(p=>p.filter(c=>c.id!==item.id))} style={{background:SOFT,border:`1px solid ${BORDER}`,borderRadius:"50%",width:28,height:28,cursor:"pointer",color:PUNCH,fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}}>×</button>
                     </div>
                   ))}
-                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'DM Sans',sans-serif",fontWeight:700,fontSize:15}}>
+                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Nunito',sans-serif",fontWeight:700,fontSize:15}}>
                     <span>Total</span>
                     <span>${cart.reduce((s,i)=>s+(i.price||0),0).toFixed(2)}</span>
                   </div>
-                  <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:50,padding:"14px",fontSize:14,fontWeight:700,fontFamily:"'DM Sans',sans-serif",cursor:"pointer",width:"100%"}}>
+                  <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:50,padding:"14px",fontSize:14,fontWeight:700,fontFamily:"'Nunito',sans-serif",cursor:"pointer",width:"100%"}}>
                     Checkout — ${cart.reduce((s,i)=>s+(i.price||0),0).toFixed(2)}
                   </button>
                 </>

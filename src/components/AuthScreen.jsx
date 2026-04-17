@@ -19,11 +19,11 @@ export default function AuthScreen({ onLogin, LOGO_SRC }) {
       <div style={{ width:"100%", maxWidth:360 }}>
         <div style={{ textAlign:"center", marginBottom:16 }}>
           <img src={LOGO_SRC} alt="Bach Hotline" style={{ width:240, height:"auto", objectFit:"contain", display:"block", margin:"0 auto" }} />
-          <p style={{ fontSize:13, color:HOT, fontFamily:"'DM Sans',sans-serif", margin:"6px 0 0" }}>Say goodbye to weeks of stressful bachelorette planning</p>
+          <p style={{ fontSize:13, color:HOT, fontFamily:"'Nunito',sans-serif", margin:"6px 0 0" }}>Say goodbye to weeks of stressful bachelorette planning</p>
         </div>
         <div style={{ display:"flex", background:SOFT, borderRadius:50, padding:4, marginBottom:20, border:`1.5px solid ${BORDER}` }}>
           {["login","signup"].map(m => (
-            <button key={m} onClick={()=>setMode(m)} style={{ flex:1, padding:"10px", border:"none", borderRadius:50, fontFamily:"'DM Sans',sans-serif", fontSize:13, fontWeight:700, cursor:"pointer", background:mode===m?`linear-gradient(135deg,#f472b0,${HOT})`:WHITE, color:mode===m?WHITE:HOT, transition:"all 0.2s" }}>
+            <button key={m} onClick={()=>setMode(m)} style={{ flex:1, padding:"10px", border:"none", borderRadius:50, fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700, cursor:"pointer", background:mode===m?`linear-gradient(135deg,#f472b0,${HOT})`:WHITE, color:mode===m?WHITE:HOT, transition:"all 0.2s" }}>
               {m==="login"?"Sign In":"Create Account"}
             </button>
           ))}
@@ -33,7 +33,7 @@ export default function AuthScreen({ onLogin, LOGO_SRC }) {
             {ROLES.map(r => (
               <button key={r.id} onClick={()=>setRole(r.id)} style={{ flex:1, padding:"10px 6px", border:role===r.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`, borderRadius:14, background:role===r.id?SOFT:WHITE, cursor:"pointer", color:DARK }}>
                 <div style={{ fontSize:22, marginBottom:3 }}>{r.icon}</div>
-                <div style={{ fontSize:10, fontWeight:700, fontFamily:"'DM Sans',sans-serif", color:HOT }}>{r.label}</div>
+                <div style={{ fontSize:10, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:HOT }}>{r.label}</div>
               </button>
             ))}
           </div>

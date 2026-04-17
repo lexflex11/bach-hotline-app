@@ -90,14 +90,14 @@ export default function ExperiencesTab({ groupSize }) {
 
   const inputStyle = {
     width: "100%", padding: "10px 12px", borderRadius: 10,
-    border: `1.5px solid ${BORDER}`, fontFamily: "'DM Sans',sans-serif",
+    border: `1.5px solid ${BORDER}`, fontFamily: "'Nunito',sans-serif",
     fontSize: 13, color: DARK, background: WHITE, boxSizing: "border-box",
     outline: "none",
   };
 
   const labelStyle = {
     fontSize: 10, fontWeight: 700, color: HOT,
-    fontFamily: "'DM Sans',sans-serif",
+    fontFamily: "'Nunito',sans-serif",
     textTransform: "uppercase", letterSpacing: 1, marginBottom: 6,
   };
 
@@ -145,17 +145,17 @@ export default function ExperiencesTab({ groupSize }) {
             <div style={{ fontSize: 14, fontWeight: 700, fontFamily: "'Playfair Display',Georgia,serif", color: DARK, marginBottom: 4 }}>
               {selectedDest?.emoji} {selectedDest?.name}
             </div>
-            <div style={{ fontSize: 11, color: HOT, fontFamily: "'DM Sans',sans-serif", marginBottom: 14, opacity: 0.85 }}>
+            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Nunito',sans-serif", marginBottom: 14, opacity: 0.85 }}>
               {groupSize} guests{vibe ? ` · ${VIBES.find(v=>v.id===vibe)?.label}` : ""}{date ? ` · ${date}` : " · flexible date"}
             </div>
             <button onClick={findExperiences} style={{
               width: "100%", background: `linear-gradient(135deg,#f472b0,${HOT})`,
               color: WHITE, border: "none", borderRadius: 14, padding: "15px", cursor: "pointer",
-              fontFamily: "'DM Sans',sans-serif", fontSize: 14, fontWeight: 800, letterSpacing: "0.3px",
+              fontFamily: "'Nunito',sans-serif", fontSize: 14, fontWeight: 800, letterSpacing: "0.3px",
             }}>
               🎉 Find Best Experiences
             </button>
-            <div style={{ fontSize: 10, color: "#bbb", fontFamily: "'DM Sans',sans-serif", marginTop: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: "#bbb", fontFamily: "'Nunito',sans-serif", marginTop: 8, textAlign: "center" }}>
               We'll surface the best activities & experiences for your group
             </div>
           </>
@@ -163,7 +163,7 @@ export default function ExperiencesTab({ groupSize }) {
           <div style={{ textAlign: "center", padding: "8px 0" }}>
             <div style={{ fontSize: 22, marginBottom: 6 }}>🎉</div>
             <div style={{ fontSize: 13, fontWeight: 700, fontFamily: "'Playfair Display',Georgia,serif", color: DARK }}>Pick a destination above</div>
-            <div style={{ fontSize: 11, color: HOT, fontFamily: "'DM Sans',sans-serif", marginTop: 4, opacity: 0.75 }}>
+            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Nunito',sans-serif", marginTop: 4, opacity: 0.75 }}>
               Then we'll find the best experiences for {groupSize} people
             </div>
           </div>
@@ -173,7 +173,7 @@ export default function ExperiencesTab({ groupSize }) {
       {/* Popular Picks */}
       <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:12 }}>
         <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>Popular Picks</div>
-        <div style={{ fontSize:11, color:"#aaa", fontFamily:"'DM Sans',sans-serif" }}>{PICKS.length} found</div>
+        <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>{PICKS.length} found</div>
       </div>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8, marginBottom:24 }}>
         {PICKS.map(item => (
@@ -193,7 +193,7 @@ export default function ExperiencesTab({ groupSize }) {
               <div style={{
                 position:"absolute", top:5, left:5,
                 background:"rgba(0,0,0,0.55)", color:WHITE,
-                fontSize:8, fontWeight:700, fontFamily:"'DM Sans',sans-serif",
+                fontSize:8, fontWeight:700, fontFamily:"'Nunito',sans-serif",
                 padding:"2px 6px", borderRadius:20,
               }}>
                 {item.category}
@@ -203,8 +203,8 @@ export default function ExperiencesTab({ groupSize }) {
             <div style={{ padding:"6px 7px 8px" }}>
               <div style={{ fontSize:10, fontWeight:700, color:DARK, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1.25, marginBottom:3 }}>{item.name}</div>
               <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-                <div style={{ fontSize:9, color:HOT, fontFamily:"'DM Sans',sans-serif", fontWeight:600 }}>⭐ {item.rating}</div>
-                <div style={{ fontSize:9, color:PUNCH, fontFamily:"'DM Sans',sans-serif", fontWeight:700 }}>{item.price}</div>
+                <div style={{ fontSize:9, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:600 }}>⭐ {item.rating}</div>
+                <div style={{ fontSize:9, color:PUNCH, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>{item.price}</div>
               </div>
             </div>
           </div>

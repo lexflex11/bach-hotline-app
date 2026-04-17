@@ -52,7 +52,7 @@ function ProductTile({ p, onView }) {
       <div style={{fontSize:13,fontWeight:500,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.4,marginBottom:4}}>
         {p.name}
       </div>
-      <div style={{fontSize:13,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>
+      <div style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif"}}>
         ${p.price.toFixed(2)}
       </div>
     </div>
@@ -95,12 +95,12 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
           />
           <Brackets size={20} thick={3} color={HOT} gap={8}/>
           {/* Page counter */}
-          <div style={{position:"absolute",top:12,right:14,fontSize:11,color:"#aaa",fontFamily:"'DM Sans',sans-serif"}}>1 / 1</div>
+          <div style={{position:"absolute",top:12,right:14,fontSize:11,color:"#aaa",fontFamily:"'Nunito',sans-serif"}}>1 / 1</div>
         </div>
 
         <div style={{padding:"20px 20px 0"}}>
           {/* Breadcrumb */}
-          <div style={{fontSize:10,color:"#aaa",fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:"1px",marginBottom:8}}>
+          <div style={{fontSize:10,color:"#aaa",fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:"1px",marginBottom:8}}>
             Bach Hotline › {p.category}
           </div>
 
@@ -110,7 +110,7 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
           </h2>
 
           {/* Price */}
-          <div style={{fontSize:20,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif",marginBottom:18}}>
+          <div style={{fontSize:20,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:18}}>
             ${p.price.toFixed(2)}
           </div>
 
@@ -119,12 +119,12 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
             {/* Stepper */}
             <div style={{display:"flex",alignItems:"center",gap:12,borderBottom:`1.5px solid ${DARK}`,paddingBottom:2}}>
               <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{background:"none",border:"none",cursor:"pointer",fontSize:20,color:DARK,fontWeight:300,lineHeight:1,padding:"0 2px"}}>−</button>
-              <span style={{fontSize:15,fontWeight:600,fontFamily:"'DM Sans',sans-serif",color:DARK,minWidth:20,textAlign:"center"}}>{qty}</span>
+              <span style={{fontSize:15,fontWeight:600,fontFamily:"'Nunito',sans-serif",color:DARK,minWidth:20,textAlign:"center"}}>{qty}</span>
               <button onClick={()=>setQty(q=>q+1)} style={{background:"none",border:"none",cursor:"pointer",fontSize:20,color:DARK,fontWeight:300,lineHeight:1,padding:"0 2px"}}>+</button>
             </div>
             {/* Add to Cart */}
             <button onClick={()=>onAdd(p)} style={{
-              flex:1, padding:"13px", fontSize:14, fontFamily:"'DM Sans',sans-serif",
+              flex:1, padding:"13px", fontSize:14, fontFamily:"'Nunito',sans-serif",
               fontWeight:700, border:"none", borderRadius:50, cursor:"pointer",
               background: inCart ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`,
               color: inCart ? HOT : WHITE,
@@ -137,7 +137,7 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
 
           {/* Description */}
           {p.desc && (
-            <p style={{fontSize:13,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.7,margin:"0 0 14px"}}>
+            <p style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.7,margin:"0 0 14px"}}>
               {p.desc}
             </p>
           )}
@@ -146,7 +146,7 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
           {p.bullets?.length > 0 && (
             <ul style={{listStyle:"none",padding:0,margin:0}}>
               {p.bullets.map((b,i)=>(
-                <li key={i} style={{fontSize:13,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.6,marginBottom:4,display:"flex",gap:8,alignItems:"flex-start"}}>
+                <li key={i} style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:4,display:"flex",gap:8,alignItems:"flex-start"}}>
                   <span style={{color:HOT,flexShrink:0,marginTop:2}}>·</span>
                   {b}
                 </li>
@@ -155,7 +155,7 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
           )}
 
           {p.isDigital && (
-            <div style={{marginTop:16,padding:"10px 14px",background:SOFT,borderRadius:10,fontSize:12,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:600}}>
+            <div style={{marginTop:16,padding:"10px 14px",background:SOFT,borderRadius:10,fontSize:12,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600}}>
               📥 Instant Download — delivered to your email after purchase
             </div>
           )}
@@ -187,7 +187,7 @@ function CartDrawer({ cart, onRemove, onClose }) {
           </div>
 
           {cart.length === 0 ? (
-            <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'DM Sans',sans-serif",fontSize:13}}>
+            <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'Nunito',sans-serif",fontSize:13}}>
               Your cart is empty 💔
             </div>
           ) : (
@@ -199,13 +199,13 @@ function CartDrawer({ cart, onRemove, onClose }) {
                     <Brackets size={8} thick={2} gap={4}/>
                   </div>
                   <div style={{flex:1,minWidth:0}}>
-                    <div style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'DM Sans',sans-serif",marginBottom:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
-                    <div style={{fontSize:14,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>${item.price.toFixed(2)}</div>
+                    <div style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
+                    <div style={{fontSize:14,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${item.price.toFixed(2)}</div>
                   </div>
                   <button onClick={()=>onRemove(item.id)} style={{background:SOFT,border:`1px solid ${BORDER}`,borderRadius:"50%",width:28,height:28,cursor:"pointer",color:PUNCH,fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}}>×</button>
                 </div>
               ))}
-              <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'DM Sans',sans-serif",fontWeight:700,fontSize:15}}>
+              <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Nunito',sans-serif",fontWeight:700,fontSize:15}}>
                 <span>Total</span>
                 <span>${total.toFixed(2)}</span>
               </div>

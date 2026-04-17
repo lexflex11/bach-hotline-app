@@ -22,17 +22,17 @@ function AccountGate({ onSignUp }) {
       <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:24, fontWeight:700, color:HOT, margin:"0 0 10px", lineHeight:1.2 }}>
         Pics or It Didn't Happen
       </h2>
-      <p style={{ fontSize:13, color:"#888", fontFamily:"'DM Sans',sans-serif", lineHeight:1.7, marginBottom:28 }}>
+      <p style={{ fontSize:13, color:"#888", fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:28 }}>
         Share your bachelorette memories with the Bach Hotline community. Create a free account to upload photos and videos from your trip.
       </p>
       <button onClick={onSignUp} style={{
         background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none",
-        borderRadius:50, padding:"13px 32px", fontFamily:"'DM Sans',sans-serif",
+        borderRadius:50, padding:"13px 32px", fontFamily:"'Nunito',sans-serif",
         fontSize:14, fontWeight:700, cursor:"pointer", width:"100%", maxWidth:300,
       }}>
         Create Free Account
       </button>
-      <p style={{ fontSize:11, color:"#bbb", fontFamily:"'DM Sans',sans-serif", marginTop:14 }}>
+      <p style={{ fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:14 }}>
         Already have an account? Sign in from the home screen.
       </p>
     </div>
@@ -120,20 +120,20 @@ export default function MediaTab({ user, onSignUp }) {
         background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`,
         border:`1.5px solid ${MID}`,
       }}>
-        <div style={{ fontSize:11, color:HOT, fontFamily:"'DM Sans',sans-serif", fontWeight:700, letterSpacing:"1.5px", textTransform:"uppercase", marginBottom:8 }}>
+        <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, letterSpacing:"1.5px", textTransform:"uppercase", marginBottom:8 }}>
           Bach Hotline Community
         </div>
         <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:22, fontWeight:900, margin:"0 0 6px", color:DARK }}>
           Pics or It Didn't Happen <span style={{ fontStyle:"normal" }}>📸</span>
         </h2>
-        <p style={{ fontSize:12, color:HOT, fontFamily:"'DM Sans',sans-serif", margin:0, opacity:0.85, lineHeight:1.6 }}>
+        <p style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", margin:0, opacity:0.85, lineHeight:1.6 }}>
           You lived it. You filmed it. Drop your pics & vids — your memories help other bach crews plan smarter and party harder.
         </p>
       </div>
 
       {/* ── Success banner ── */}
       {success && (
-        <div style={{ padding:"12px 16px", borderRadius:14, background:"rgba(46,125,50,0.1)", border:"1.5px solid rgba(46,125,50,0.35)", marginBottom:16, textAlign:"center", fontFamily:"'DM Sans',sans-serif" }}>
+        <div style={{ padding:"12px 16px", borderRadius:14, background:"rgba(46,125,50,0.1)", border:"1.5px solid rgba(46,125,50,0.35)", marginBottom:16, textAlign:"center", fontFamily:"'Nunito',sans-serif" }}>
           <div style={{ fontSize:20, marginBottom:4 }}>🎉</div>
           <div style={{ fontSize:13, fontWeight:700, color:"#2e7d32" }}>Submitted! Thanks for sharing.</div>
           <div style={{ fontSize:11, color:"#888", marginTop:2 }}>Your content could be featured in the Bach Hotline community.</div>
@@ -145,7 +145,7 @@ export default function MediaTab({ user, onSignUp }) {
 
         {/* Select trip */}
         <div style={{ marginBottom:14 }}>
-          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
+          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
             Select Your Trip *
           </label>
           <select
@@ -160,7 +160,7 @@ export default function MediaTab({ user, onSignUp }) {
 
         {/* Select moment */}
         <div style={{ marginBottom:14 }}>
-          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
+          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
             The Moment *
           </label>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:6 }}>
@@ -168,7 +168,7 @@ export default function MediaTab({ user, onSignUp }) {
               <button key={m.id} onClick={() => setMoment(m.id)} style={{
                 padding:"9px 10px", border:moment===m.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
                 borderRadius:12, background:moment===m.id?SOFT:WHITE, cursor:"pointer",
-                fontFamily:"'DM Sans',sans-serif", fontSize:12, fontWeight:600,
+                fontFamily:"'Nunito',sans-serif", fontSize:12, fontWeight:600,
                 color:moment===m.id?HOT:DARK, textAlign:"left", transition:"all 0.15s",
               }}>
                 {m.label}
@@ -179,7 +179,7 @@ export default function MediaTab({ user, onSignUp }) {
 
         {/* Upload area */}
         <div style={{ marginBottom:14 }}>
-          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
+          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
             Media *
           </label>
           <div
@@ -195,11 +195,11 @@ export default function MediaTab({ user, onSignUp }) {
             }}
           >
             <div style={{ fontSize:36, marginBottom:8 }}>📷</div>
-            <div style={{ fontSize:14, fontWeight:700, color:DARK, fontFamily:"'DM Sans',sans-serif", marginBottom:4 }}>Upload Photos & Videos</div>
-            <div style={{ fontSize:12, color:"#aaa", fontFamily:"'DM Sans',sans-serif", marginBottom:14 }}>Drag and drop here or</div>
+            <div style={{ fontSize:14, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:4 }}>Upload Photos & Videos</div>
+            <div style={{ fontSize:12, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:14 }}>Drag and drop here or</div>
             <div style={{
               display:"inline-block", padding:"9px 22px", borderRadius:50,
-              border:`1.5px solid ${DARK}`, fontFamily:"'DM Sans',sans-serif",
+              border:`1.5px solid ${DARK}`, fontFamily:"'Nunito',sans-serif",
               fontSize:13, fontWeight:700, color:DARK, background:WHITE,
             }}>
               Select from your device
@@ -224,7 +224,7 @@ export default function MediaTab({ user, onSignUp }) {
 
         {/* Caption */}
         <div style={{ marginBottom:16 }}>
-          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
+          <label style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", display:"block", marginBottom:6 }}>
             Caption (optional)
           </label>
           <textarea
@@ -236,7 +236,7 @@ export default function MediaTab({ user, onSignUp }) {
           />
         </div>
 
-        <p style={{ fontSize:11, color:"#bbb", fontFamily:"'DM Sans',sans-serif", marginBottom:14, lineHeight:1.5 }}>
+        <p style={{ fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginBottom:14, lineHeight:1.5 }}>
           If it makes the cut, your content could be featured in the Bach Hotline community to help other groups plan their trip.
         </p>
 
@@ -253,7 +253,7 @@ export default function MediaTab({ user, onSignUp }) {
         <div>
           <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14 }}>
             <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }}/>
-            <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'DM Sans',sans-serif", letterSpacing:"1.5px", textTransform:"uppercase", whiteSpace:"nowrap" }}>Your Submissions</div>
+            <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", letterSpacing:"1.5px", textTransform:"uppercase", whiteSpace:"nowrap" }}>Your Submissions</div>
             <div style={{ flex:1, height:1.5, background:MID, borderRadius:2 }}/>
           </div>
 
@@ -262,8 +262,8 @@ export default function MediaTab({ user, onSignUp }) {
               <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:10 }}>
                 <div style={{ fontSize:24 }}>{s.avatar}</div>
                 <div>
-                  <div style={{ fontSize:13, fontWeight:700, color:DARK, fontFamily:"'DM Sans',sans-serif" }}>{s.user}</div>
-                  <div style={{ fontSize:11, color:"#aaa", fontFamily:"'DM Sans',sans-serif" }}>{s.destEmoji} {s.dest} · {s.moment} · {s.date}</div>
+                  <div style={{ fontSize:13, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif" }}>{s.user}</div>
+                  <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>{s.destEmoji} {s.dest} · {s.moment} · {s.date}</div>
                 </div>
               </div>
               {s.files.length > 0 && (
@@ -276,9 +276,9 @@ export default function MediaTab({ user, onSignUp }) {
                 </div>
               )}
               {s.caption && (
-                <div style={{ fontSize:13, color:DARK, fontFamily:"'DM Sans',sans-serif", fontStyle:"italic", opacity:0.85 }}>"{s.caption}"</div>
+                <div style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", fontStyle:"italic", opacity:0.85 }}>"{s.caption}"</div>
               )}
-              <div style={{ marginTop:8, padding:"6px 10px", borderRadius:8, background:SOFT, display:"inline-block", fontSize:10, color:HOT, fontFamily:"'DM Sans',sans-serif", fontWeight:700 }}>
+              <div style={{ marginTop:8, padding:"6px 10px", borderRadius:8, background:SOFT, display:"inline-block", fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>
                 ✓ Submitted for review
               </div>
             </div>

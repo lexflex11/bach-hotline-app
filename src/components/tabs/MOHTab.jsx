@@ -50,7 +50,7 @@ Powered by Bach Hotline 🪩`;
         <input type="date" value={tripDate} onChange={e=>setTripDate(e.target.value)} style={{...IN,marginBottom:daysUntil!==null?10:0}} />
         {daysUntil !== null && (
           <div style={{textAlign:"center",padding:"12px",background:SOFT,borderRadius:12,border:`1.5px solid ${MID}`}}>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1}}>Days Until the Bach 🪩</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1}}>Days Until the Bach 🪩</div>
             <div style={{fontSize:44,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif",marginTop:4}}>{daysUntil}</div>
           </div>
         )}
@@ -65,7 +65,7 @@ Powered by Bach Hotline 🪩`;
         <div style={{height:8,background:SOFT,borderRadius:50,overflow:"hidden"}}>
           <div style={{height:"100%",width:`${pct}%`,background:`linear-gradient(90deg,${HOT},${PUNCH})`,borderRadius:50,transition:"width 0.5s"}} />
         </div>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'DM Sans',sans-serif",marginTop:6,opacity:0.75}}>{done} of {checklist.length} tasks complete</div>
+        <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:6,opacity:0.75}}>{done} of {checklist.length} tasks complete</div>
       </div>
 
       {/* Invite Generator */}
@@ -88,13 +88,13 @@ Powered by Bach Hotline 🪩`;
       <SH title="The Complete Checklist" sub="Check off as you go — shared with the whole group" />
       {categories.map(cat=>(
         <div key={cat} style={{marginBottom:16}}>
-          <div style={{fontSize:10,fontWeight:700,color:PUNCH,fontFamily:"'DM Sans',sans-serif",textTransform:"uppercase",letterSpacing:1.5,marginBottom:8,paddingLeft:2}}>{cat}</div>
+          <div style={{fontSize:10,fontWeight:700,color:PUNCH,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1.5,marginBottom:8,paddingLeft:2}}>{cat}</div>
           {checklist.filter(i=>i.category===cat).map(item=>(
             <button key={item.id} onClick={()=>toggle(item.id)} style={{...C,display:"flex",alignItems:"center",gap:12,cursor:"pointer",width:"100%",marginBottom:6,padding:"11px 13px",textAlign:"left",background:item.done?"rgba(46,125,50,0.06)":WHITE,border:item.done?"1.5px solid rgba(46,125,50,0.3)":`1.5px solid ${BORDER}`}}>
               <div style={{width:22,height:22,borderRadius:"50%",border:`2px solid ${item.done?GREEN:BORDER}`,background:item.done?GREEN:WHITE,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,fontSize:12,color:WHITE,transition:"all 0.2s"}}>
                 {item.done?"✓":""}
               </div>
-              <div style={{fontSize:13,fontFamily:"'DM Sans',sans-serif",color:item.done?"#888":DARK,fontWeight:item.done?400:500,textDecoration:item.done?"line-through":"none"}}>{item.item}</div>
+              <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:item.done?"#888":DARK,fontWeight:item.done?400:500,textDecoration:item.done?"line-through":"none"}}>{item.item}</div>
             </button>
           ))}
         </div>
