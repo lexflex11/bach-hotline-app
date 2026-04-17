@@ -262,7 +262,7 @@ const PRODUCT_DETAILS = {
 };
 
 const ALL_DETAILS = { ...PRODUCT_DETAILS, ...PRODUCT_DETAILS_NEW };
-export const PRODUCTS = RAW_PRODUCTS.map(p => ({ ...p, image: p.etsy ? px(p.etsy) : "", ...(ALL_DETAILS[p.id] || {}) }));
+export const PRODUCTS = RAW_PRODUCTS.map(p => ({ ...p, image: p.etsy || "", ...(ALL_DETAILS[p.id] || {}) }));
 
 // ─── DESTINATIONS ─────────────────────────────────────────────────────────────
 // featured:true = shown on Home page (top 8 only)
