@@ -306,6 +306,35 @@ const RESTAURANTS = {
       reserveUrl:"https://www.opentable.com/the-ordinary-charleston",
     },
   ],
+  corpuschristi: [
+    {
+      id:"cc-1",
+      name:"Prime Steakhouse Whiskey Bar",
+      cuisine:"Steakhouse & Seafood",
+      priceRange:"$$$$",
+      rating:4.9,
+      reviewCount:186,
+      vibe:"Upscale · Whiskey Bar · Texan Fine Dining",
+      tags:["Group Friendly","Steakhouse","Whiskey Bar","Special Occasion"],
+      address:"6326 Yorktown Blvd Suite 2, Corpus Christi, TX",
+      hours:"Mon–Thu 4pm–10pm · Fri–Sat 4pm–11pm · Closed Sunday",
+      groupMax:30,
+      desc:"Corpus Christi's premier fine dining destination. USDA Prime steaks wet-aged 45 days and grilled over mesquite wood, fresh Gulf seafood, and an impressive whiskey bar — all wrapped in an upscale yet rustic Texan atmosphere. Winner of Best New Restaurant 2023.",
+      photo:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+      ],
+      menuHighlights:["14 oz Ribeye","Crab Stuffed Flounder","Colorado Lamb Chops","Ahi Tuna Ceviche","Stuffed Lobster Tail"],
+      whyWeLoveIt:[
+        "Best New Restaurant 2023 — the most impressive dinner spot in Corpus Christi",
+        "USDA Prime steaks mesquite-grilled to perfection, perfect for a celebration dinner",
+        "20% gratuity included for groups of 7+ so no math stress for the MOH",
+      ],
+      reserveUrl:"https://tables.toasttab.com/restaurants/92e39c06-acb9-492a-8c4f-cd39566033cd/findTime",
+    },
+  ],
 };
 
 // Fallback restaurants for destinations without specific data
