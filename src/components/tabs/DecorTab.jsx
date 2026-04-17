@@ -1179,10 +1179,16 @@ export const TABLEWARE = [
   },
   {
     id:"plate-disco-cherry", type:"plate", name:"Disco Cherry Drink Plates",
-    desc:"8 ct · 9\" x 9\"", price:"$12.50",
+    desc:"Let's get groovy! These premium paper plates with a disco cherry drink design add sparkle and sass to any celebration.",
+    price:"$12.50",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684aeb982427cd1f49ac1344/1767473564389/Ebook+Thumbnail+with+Video+-+2025-05-18T120827.502.png?format=1500w",
+    images:[
+      "https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684aeb982427cd1f49ac1344/1767473564389/Ebook+Thumbnail+with+Video+-+2025-05-18T120827.502.png?format=1500w",
+    ],
+    bullets:["Set of 8","Dimensions: 9\"w x 9\"l","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#E91E8C", accent:"#9C27B0",
     tags:["hotpink","red","scarlett","crystal-red","purple","plum","crystal-purple","sangria","metallic-fuchsia"],
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/disco-cherry-drink-plates",
   },
   {
     id:"plate-cactus", type:"plate", name:"Cactus Plates",
