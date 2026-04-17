@@ -110,7 +110,7 @@ export default function AlertsTab({ user, onSignUp }) {
               <div style={{display:"flex", alignItems:"center", gap:12}}>
                 <div style={{fontSize:28}}>{a.icon}</div>
                 <div style={{flex:1}}>
-                  <div style={{fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK}}>{a.label}</div>
+                  <div style={{fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK}}>{a.label}</div>
                   <div style={{display:"flex", gap:12, marginTop:5, fontFamily:"'Nunito',sans-serif", fontSize:11}}>
                     <span style={{color:HOT}}>Target: ${a.threshold}</span>
                     <span style={{color:GREEN, fontWeight:700}}>Now: ${a.current} · Saving ${a.threshold - a.current}!</span>
@@ -134,7 +134,7 @@ export default function AlertsTab({ user, onSignUp }) {
               <div style={{display:"flex", alignItems:"center", gap:12}}>
                 <div style={{fontSize:26}}>{a.icon}</div>
                 <div style={{flex:1}}>
-                  <div style={{fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK}}>{a.label}</div>
+                  <div style={{fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK}}>{a.label}</div>
                   <div style={{fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:3, opacity:0.75}}>
                     Now: <span style={{color:PUNCH}}>${a.current}</span> · Target: ${a.threshold}
                   </div>
@@ -152,7 +152,7 @@ export default function AlertsTab({ user, onSignUp }) {
       {/* New alert form */}
       {showNew ? (
         <div style={{...C, border:`1.5px solid ${HOT}`}}>
-          <div style={{fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12}}>🔔 New Alert</div>
+          <div style={{fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12}}>🔔 New Alert</div>
 
           {/* Type selector */}
           <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:6, marginBottom:12}}>

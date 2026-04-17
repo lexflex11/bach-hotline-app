@@ -888,7 +888,7 @@ export default function ExploreTab({ groupSize }) {
       {/* ── STEP 3: What do you want to do? ──────────────────────────────── */}
       {city !== "all" && (
         <div style={{...C, marginBottom:12}}>
-          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
             What do you want to do?
           </div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:12,opacity:0.8}}>
@@ -933,7 +933,7 @@ export default function ExploreTab({ groupSize }) {
             <div key={di} style={{ marginBottom:16 }}>
               <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:10 }}>
                 <div style={{ flex:1, height:1, background:BORDER }} />
-                <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, whiteSpace:"nowrap" }}>
+                <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, whiteSpace:"nowrap" }}>
                   Day {di + 1}
                 </div>
                 <div style={{ flex:1, height:1, background:BORDER }} />
@@ -955,7 +955,7 @@ export default function ExploreTab({ groupSize }) {
                       <div style={{ fontSize:9, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.5px", marginTop:2 }}>{sl.label}</div>
                     </div>
                     <div style={{ flex:1 }}>
-                      <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:2 }}>
+                      <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:2 }}>
                         {item.name}
                       </div>
                       <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8, marginBottom:4 }}>{item.vibe}</div>
@@ -996,7 +996,7 @@ export default function ExploreTab({ groupSize }) {
 
 
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:14 }}>
-        <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>
+        <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>
           {cat === "all" ? `Popular Picks` : CATS.find(c=>c.id===cat)?.label}
           {city !== "all" && ` · ${cityName}`}
         </div>
@@ -1006,7 +1006,7 @@ export default function ExploreTab({ groupSize }) {
       {filtered.length === 0 ? (
         <div style={{ textAlign:"center", padding:"40px 20px" }}>
           <div style={{ fontSize:32, marginBottom:10 }}>🔍</div>
-          <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>No results</div>
+          <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>No results</div>
           <div style={{ fontSize:12, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:6 }}>Try a different city or category</div>
         </div>
       ) : (
@@ -1058,7 +1058,7 @@ export default function ExploreTab({ groupSize }) {
                 </div>
                 <div style={{ padding:"10px 12px 12px", flex:1, display:"flex", flexDirection:"column", justifyContent:"space-between" }}>
                   <div>
-                    <div style={{ fontSize:12, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:3, lineHeight:1.3 }}>{e.name}</div>
+                    <div style={{ fontSize:12, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:3, lineHeight:1.3 }}>{e.name}</div>
                     <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8, marginBottom:6 }}>{e.vibe}</div>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:8 }}>
                       <span style={{ fontSize:10, color:"#888", fontFamily:"'Nunito',sans-serif" }}>⭐ {e.rating}</span>

@@ -79,7 +79,7 @@ export default function FlightsTab({ groupSize }) {
 
       {/* ── STEP 1 — Departure city ── */}
       <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
           ✈️ Step 1 — Where are you flying from?
         </div>
         <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8,marginBottom:10}}>
@@ -98,7 +98,7 @@ export default function FlightsTab({ groupSize }) {
 
       {/* ── STEP 2 — Destination ── */}
       <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
           🗺️ Step 2 — Where are you going?
         </div>
 
@@ -126,7 +126,7 @@ export default function FlightsTab({ groupSize }) {
 
       {/* ── STEP 3 — Dates & Times ── */}
       <div style={{...C, marginBottom:14}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>
           📅 Step 3 — Dates & preferred times
         </div>
 
@@ -189,7 +189,7 @@ export default function FlightsTab({ groupSize }) {
       <div style={{...C, background:SOFT, border:`1.5px solid ${MID}`, marginBottom:14}}>
         {selectedDest ? (
           <>
-            <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
+            <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
               {selectedDest.emoji} {fromCode} → {selectedDest.name}
             </div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>
@@ -213,7 +213,7 @@ export default function FlightsTab({ groupSize }) {
         ) : (
           <div style={{textAlign:"center",padding:"8px 0"}}>
             <div style={{fontSize:22,marginBottom:6}}>🗺️</div>
-            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Pick a destination above</div>
+            <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Pick a destination above</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:4,opacity:0.75}}>Then we'll pull up real flights for {groupSize} people</div>
           </div>
         )}

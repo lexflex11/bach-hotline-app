@@ -75,7 +75,7 @@ function PollList({ user, onSelect, onCreateNew }) {
               <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start" }}>
                 <div style={{ flex:1 }}>
                   {poll.tripName&&<div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:3 }}>{poll.tripName}</div>}
-                  <div style={{ fontSize:15, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>{poll.question}</div>
+                  <div style={{ fontSize:15, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>{poll.question}</div>
                   <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>{total} vote{total!==1?"s":""}</div>
                 </div>
                 <div style={{ marginLeft:10 }}>

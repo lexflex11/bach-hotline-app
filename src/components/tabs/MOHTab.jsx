@@ -46,7 +46,7 @@ Powered by Bach Hotline 🪩`;
 
       {/* Countdown */}
       <div style={{...C,marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>📅 Trip Date</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>📅 Trip Date</div>
         <input type="date" value={tripDate} onChange={e=>setTripDate(e.target.value)} style={{...IN,marginBottom:daysUntil!==null?10:0}} />
         {daysUntil !== null && (
           <div style={{textAlign:"center",padding:"12px",background:SOFT,borderRadius:12,border:`1.5px solid ${MID}`}}>
@@ -59,7 +59,7 @@ Powered by Bach Hotline 🪩`;
       {/* Progress */}
       <div style={{...C,marginBottom:12}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
-          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>✅ Planning Progress</div>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>✅ Planning Progress</div>
           <div style={{fontSize:14,fontWeight:900,color:pct>=80?GREEN:pct>=50?GOLD:PUNCH,fontFamily:"'Playfair Display',Georgia,serif"}}>{pct}%</div>
         </div>
         <div style={{height:8,background:SOFT,borderRadius:50,overflow:"hidden"}}>
@@ -70,7 +70,7 @@ Powered by Bach Hotline 🪩`;
 
       {/* Invite Generator */}
       <div style={{...C,marginBottom:12,background:SOFT,border:`1.5px solid ${MID}`}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>💌 Digital Invite Generator</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>💌 Digital Invite Generator</div>
         <select value={tripDest} onChange={e=>setTripDest(e.target.value)} style={{...IN,marginBottom:10}}>
           <option value="">Pick destination...</option>
           {DESTS.map(d=><option key={d.id} value={d.id}>{d.emoji} {d.name}</option>)}

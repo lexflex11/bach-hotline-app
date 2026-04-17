@@ -387,7 +387,7 @@ export default function ShopTab({ cart, setCart }) {
           ) : (
             <div style={{textAlign:"center",padding:"48px 20px"}}>
               <div style={{fontSize:36,marginBottom:12}}>🔍</div>
-              <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>No products found</div>
+              <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>No products found</div>
               <button onClick={()=>setCat("all")} style={{...BS,fontSize:12}}>Clear filters</button>
             </div>
           )}

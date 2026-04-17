@@ -1103,10 +1103,17 @@ export const TABLEWARE = [
   },
   {
     id:"plate-swan", type:"plate", name:"Swan Plates",
-    desc:"8 ct · 11.5\" x 7.5\"", price:"$12.50",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/7cc8be90-d00e-47de-a9a5-8c7b6d71f49b/Ebook+Thumbnail+with+Video+-+2025-05-11T155407.049.png",
+    desc:"Create a graceful and refined party setting with our swan paper plates, featuring shimmering gold foil details and a beautiful silhouette.",
+    price:"$12.50",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684b17192427cd1f49ac3e1c/1767898667035/Ebook+Thumbnail+with+Video+-+2025-05-11T155407.049.png?format=1500w",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684b17192427cd1f49ac3e1c/1767898667035/Ebook+Thumbnail+with+Video+-+2025-05-11T155407.049.png?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0526d9e2-c467-4fee-9c29-43219d45b557/Copy+of+Untitled+Design+-+2025-02-09T145327.990.png?format=1500w",
+    ],
+    bullets:["Set of 8","Dimensions: 11.5\"l x 7.5\"w","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#F8F8F8", accent:"#FFD700",
     tags:["white","sugar","champagne","gold","metallic-gold","silver","lace","blush","baby-pink","monet"],
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/swan-plates",
   },
   {
     id:"plate-denim-star", type:"plate", name:"Denim Star Stripes Plates",
@@ -2988,7 +2995,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:14}}>
         <div style={{fontSize:16}}>🍽️</div>
         <div>
-          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Matching Tableware</div>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Matching Tableware</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.85}}>Coordinated with your garland — add to your package</div>
         </div>
       </div>
@@ -3303,7 +3310,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
-          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{emoji} {title}</div>
+          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{emoji} {title}</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>{subtitle}</div>
         </div>
       </div>
@@ -3703,7 +3710,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
-          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎉 Party Accessories</div>
+          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎉 Party Accessories</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Fun extras to complete your party vibe</div>
         </div>
       </div>
@@ -3793,7 +3800,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
-          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎊 Add Some Confetti</div>
+          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎊 Add Some Confetti</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>The perfect finishing touch — choose your size</div>
         </div>
       </div>
@@ -3915,7 +3922,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingTop:20,borderTop:`2px solid ${MID}`}}>
         <div style={{width:28,height:28,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:WHITE,flexShrink:0}}>{stepNum}</div>
         <div>
-          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎈 Add Foil Balloons</div>
+          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>🎈 Add Foil Balloons</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Number balloons, letters, shapes & more</div>
         </div>
       </div>
@@ -4059,7 +4066,7 @@ function CuratedThemes({ cart, setCart }) {
               <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:10}}>
                 <div>
                   <div style={{fontSize:18,marginBottom:4}}>{theme.emoji}</div>
-                  <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{theme.name}</div>
+                  <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{theme.name}</div>
                   <div style={{fontSize:11,color:"#aaa",fontFamily:"'Nunito',sans-serif",marginTop:2}}>{theme.desc}</div>
                 </div>
                 <div style={{display:"flex",gap:4,flexShrink:0,marginLeft:10,marginTop:4}}>
@@ -4108,7 +4115,7 @@ function PackageCard({ pkg, selected, onClick }) {
       boxShadow:selected?`0 4px 18px ${pkg.border}44`:"none",
     }}>
       <div style={{fontSize:24,marginBottom:5}}>{pkg.emoji}</div>
-      <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:selected?pkg.headlineColor:DARK,marginBottom:2}}>{pkg.name}</div>
+      <div style={{fontSize:12,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:selected?pkg.headlineColor:DARK,marginBottom:2}}>{pkg.name}</div>
       <div style={{fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginBottom:6}}>{pkg.tagline}</div>
       <div style={{fontSize:15,fontWeight:900,color:selected?pkg.headlineColor:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{pkg.price}</div>
     </button>
@@ -4206,7 +4213,7 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
       {/* ── Cart Summary ── */}
       {(cart||[]).length > 0 && (
         <div style={{marginTop:28,padding:"16px",borderRadius:18,background:`linear-gradient(135deg,${SOFT},${MID})`,border:`1.5px solid ${MID}`}}>
-          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🎉 Your Party Package</div>
+          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🎉 Your Party Package</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:12,opacity:0.85}}>Everything you've added — one checkout</div>
           {cart.map(item=>(
             <div key={item.id} style={{display:"flex",justifyContent:"space-between",marginBottom:6,fontFamily:"'Nunito',sans-serif",fontSize:12}}>

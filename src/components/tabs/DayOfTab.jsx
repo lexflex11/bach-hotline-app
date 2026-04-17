@@ -84,7 +84,7 @@ export default function DayOfTab() {
         <button key={i} onClick={()=>setCurrentStop(i)} style={{...C,display:"flex",alignItems:"center",gap:12,cursor:"pointer",width:"100%",marginBottom:8,textAlign:"left",background:currentStop===i?SOFT:WHITE,border:currentStop===i?`2px solid ${HOT}`:`1.5px solid ${BORDER}`}}>
           <div style={{width:36,height:36,borderRadius:"50%",background:currentStop===i?HOT:SOFT,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,flexShrink:0}}>{stop.icon}</div>
           <div style={{flex:1}}>
-            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{stop.name}</div>
+            <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{stop.name}</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:2,opacity:0.75}}>{stop.time} · {stop.address}</div>
           </div>
           {currentStop===i && <span style={{color:HOT,fontSize:14}}>📍</span>}

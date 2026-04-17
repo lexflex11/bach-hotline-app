@@ -68,7 +68,7 @@ export default function SplitTab({ groupSize, user, onSignUp }) {
               {isBride?"👰":m.name.includes("MOH")?"💍":"👯"}
             </div>
             <div style={{ flex:1 }}>
-              <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{m.name}</div>
+              <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{m.name}</div>
               {isBride && <div style={{ fontSize:11, color:GOLD, fontFamily:"'Nunito',sans-serif" }}>🎉 Pays nothing!</div>}
             </div>
             <div style={{ textAlign:"right" }}>
@@ -84,7 +84,7 @@ export default function SplitTab({ groupSize, user, onSignUp }) {
         <div key={e.id} style={{ ...C, marginBottom:9, display:"flex", alignItems:"center", gap:12 }}>
           <div style={{ fontSize:26 }}>{e.cat}</div>
           <div style={{ flex:1 }}>
-            <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{e.name}</div>
+            <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{e.name}</div>
             <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.75 }}>${(e.amount/(members.length-1)).toFixed(0)}/person</div>
           </div>
           <div style={{ fontSize:17, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif" }}>${e.amount}</div>
@@ -96,7 +96,7 @@ export default function SplitTab({ groupSize, user, onSignUp }) {
             <div key={m.id} style={{ ...C, marginBottom:8, display:"flex", alignItems:"center", gap:12 }}>
               <div style={{ fontSize:24 }}>{m.name.includes("Bride")?"👰":m.name.includes("MOH")?"💍":"👯"}</div>
               <div style={{ flex:1 }}>
-                <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{m.name}</div>
+                <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{m.name}</div>
                 <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.75 }}>{m.name.includes("Bride")?"Queen — pays nothing 👑":`Owes: $${perPerson.toFixed(0)}`}</div>
               </div>
               <button onClick={()=>toggle(m.id)} style={{ fontSize:11, padding:"5px 12px", borderRadius:20, border:`1.5px solid ${m.paid?"rgba(46,125,50,0.3)":MID}`, cursor:"pointer", fontFamily:"'Nunito',sans-serif", fontWeight:700, background:m.paid?`rgba(46,125,50,0.08)`:SOFT, color:m.paid?GREEN:HOT }}>

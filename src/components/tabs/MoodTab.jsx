@@ -74,7 +74,7 @@ export default function MoodTab({ setTab }) {
             onMouseEnter={e=>{e.currentTarget.style.boxShadow=`0 6px 20px rgba(230,101,130,0.18)`;e.currentTarget.style.transform="translateY(-2px)"}}
             onMouseLeave={e=>{e.currentTarget.style.boxShadow=`0 2px 10px rgba(230,101,130,0.07)`;e.currentTarget.style.transform="translateY(0)"}}>
             <div style={{fontSize:28,marginBottom:8}}>{a.emoji}</div>
-            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>{a.name}</div>
+            <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>{a.name}</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.4,opacity:0.8}}>{a.vibe}</div>
             <div style={{display:"flex",gap:4,marginTop:10}}>
               {a.colors.map((c,i) => <div key={i} style={{width:16,height:16,borderRadius:"50%",background:c,border:"1.5px solid rgba(255,255,255,0.8)",boxShadow:"0 1px 3px rgba(0,0,0,0.15)"}} />)}
@@ -88,7 +88,7 @@ export default function MoodTab({ setTab }) {
           onMouseEnter={e=>{e.currentTarget.style.boxShadow=`0 6px 20px rgba(230,101,130,0.18)`;e.currentTarget.style.transform="translateY(-2px)"}}
           onMouseLeave={e=>{e.currentTarget.style.boxShadow=`0 2px 10px rgba(230,101,130,0.07)`;e.currentTarget.style.transform="translateY(0)"}}>
           <div style={{fontSize:28,marginBottom:8}}>🎨</div>
-          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:HOT,marginBottom:4}}>Build Your Own</div>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:HOT,marginBottom:4}}>Build Your Own</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.4,opacity:0.8}}>Name your vibe, pick your colors, get a custom AI décor plan</div>
         </button>
       </div>
@@ -102,7 +102,7 @@ export default function MoodTab({ setTab }) {
       <SH title="Build Your Own Theme" sub="Name your vibe and let AI do the rest" />
 
       <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>What's your theme called?</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>What's your theme called?</div>
         <input
           value={customName}
           onChange={e => setCustomName(e.target.value)}
@@ -112,7 +112,7 @@ export default function MoodTab({ setTab }) {
       </div>
 
       <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>Describe the vibe</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>Describe the vibe</div>
         <textarea
           value={customVibe}
           onChange={e => setCustomVibe(e.target.value)}
@@ -123,7 +123,7 @@ export default function MoodTab({ setTab }) {
       </div>
 
       <div style={{...C, marginBottom:16}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>Pick your main color</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>Pick your main color</div>
         <div style={{display:"flex",alignItems:"center",gap:14}}>
           <input
             type="color"
@@ -160,7 +160,7 @@ export default function MoodTab({ setTab }) {
       {/* Hero */}
       <div style={{borderRadius:18,padding:"20px 16px",background:SOFT,border:`1.5px solid ${MID}`,marginBottom:14,textAlign:"center"}}>
         <div style={{fontSize:36,marginBottom:8}}>{aesthetic.emoji}</div>
-        <div style={{fontSize:20,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{aesthetic.name}</div>
+        <div style={{fontSize:20,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{aesthetic.name}</div>
         <div style={{fontSize:13,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:6,lineHeight:1.5,fontStyle:"italic"}}>"{aesthetic.vibe}"</div>
         <div style={{display:"flex",justifyContent:"center",gap:8,marginTop:14,flexWrap:"wrap"}}>
           {aesthetic.colors.map((c,i) => (
@@ -174,7 +174,7 @@ export default function MoodTab({ setTab }) {
 
       {/* Outfits */}
       {aesthetic.outfits?.length > 0 && <div style={{...C,marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>What to Wear</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>What to Wear</div>
         {aesthetic.outfits.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
             <div style={{width:8,height:8,borderRadius:"50%",background:aesthetic.colors[0],flexShrink:0}} />
@@ -185,7 +185,7 @@ export default function MoodTab({ setTab }) {
 
       {/* Décor */}
       {aesthetic.decor?.length > 0 && <div style={{...C,marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Décor Ideas</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Décor Ideas</div>
         {aesthetic.decor.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
             <span style={{color:HOT,fontSize:12}}>✦</span>
@@ -196,7 +196,7 @@ export default function MoodTab({ setTab }) {
 
       {/* Photo shots */}
       {aesthetic.shots?.length > 0 && <div style={{...C,marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Photo Moments</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Photo Moments</div>
         {aesthetic.shots.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
             <span style={{fontSize:14}}>📷</span>
@@ -207,7 +207,7 @@ export default function MoodTab({ setTab }) {
 
       {/* Hashtags */}
       {aesthetic.hashtags?.length > 0 && <div style={{...C,marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Hashtag Pack</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Hashtag Pack</div>
         <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
           {aesthetic.hashtags.map((tag,i) => (
             <span key={i} style={{fontSize:11,padding:"4px 11px",borderRadius:50,background:SOFT,border:`1.5px solid ${MID}`,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600}}>{tag}</span>
@@ -217,7 +217,7 @@ export default function MoodTab({ setTab }) {
 
       {/* ── AI DÉCOR VISUALIZER ───────────────────────────────────────────── */}
       <div style={{...C, marginBottom:12, border:`2px solid ${HOT}`, background:SOFT}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
           ✨ AI Décor Visualizer
         </div>
         <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>
@@ -251,7 +251,7 @@ export default function MoodTab({ setTab }) {
 
         {result && (
           <div style={{marginTop:14}}>
-            <div style={{fontSize:17,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>{result.headline}</div>
+            <div style={{fontSize:17,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>{result.headline}</div>
             <p style={{fontSize:13,lineHeight:1.6,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:12,opacity:0.85}}>{result.vision}</p>
 
             {result.keyPieces?.length > 0 && (
@@ -298,7 +298,7 @@ export default function MoodTab({ setTab }) {
 
       {/* Shop this look */}
       <div style={{...C,background:SOFT,border:`1.5px solid ${MID}`}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>Shop This Look</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>Shop This Look</div>
         <div style={{display:"flex",gap:8}}>
           {aesthetic.shopItems.slice(0,3).map(id => {
             const p = PRODUCTS.find(pr => pr.id === id);

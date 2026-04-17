@@ -141,7 +141,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
       {/* ── GROUP SIZE ── */}
       <div style={{...C, marginBottom:12, display:"flex", alignItems:"center", justifyContent:"space-between"}}>
         <div>
-          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Your Bride Tribe</div>
+          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Your Bride Tribe</div>
         </div>
         <div style={{display:"flex",alignItems:"center",gap:10}}>
           <button onClick={()=>setGroupSize&&setGroupSize(Math.max(2,groupSize-1))} style={SM}>−</button>
@@ -155,7 +155,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
           <div style={{width:26,height:26,borderRadius:"50%",background:bt?`linear-gradient(135deg,#f472b0,${HOT})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:bt?WHITE:HOT,flexShrink:0}}>1</div>
           <div>
-            <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What kind of bride is she?</div>
+            <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What kind of bride is she?</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Every personality gets a completely different itinerary ✨</div>
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
               boxShadow:bt===b.id?`0 3px 12px ${b.color}33`:"none",
             }}>
               <div style={{fontSize:24,marginBottom:5}}>{b.emoji}</div>
-              <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:bt===b.id?b.color:DARK}}>{b.label}</div>
+              <div style={{fontSize:12,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:bt===b.id?b.color:DARK}}>{b.label}</div>
               <div style={{fontSize:10,color:"#888",fontFamily:"'Nunito',sans-serif",marginTop:3,lineHeight:1.3}}>{b.desc}</div>
             </button>
           ))}
@@ -190,7 +190,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
             <div style={{width:26,height:26,borderRadius:"50%",background:dest?`linear-gradient(135deg,#f472b0,${HOT})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:dest?WHITE:HOT,flexShrink:0}}>2</div>
             <div>
-              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Where are you going?</div>
+              <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Where are you going?</div>
               <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Select your destination</div>
             </div>
           </div>
@@ -226,7 +226,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
             <div style={{width:26,height:26,borderRadius:"50%",background:budget?`linear-gradient(135deg,#f472b0,${HOT})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:budget?WHITE:HOT,flexShrink:0}}>3</div>
             <div>
-              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What's your budget?</div>
+              <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What's your budget?</div>
               <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Per person — we will tailor costs to fit</div>
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
                 transition:"all 0.2s",
                 boxShadow:budget===tier.id?`0 3px 12px ${tier.color}33`:"none",
               }}>
-                <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:budget===tier.id?tier.color:DARK}}>{tier.label}</div>
+                <div style={{fontSize:12,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:budget===tier.id?tier.color:DARK}}>{tier.label}</div>
                 <div style={{fontSize:11,fontWeight:700,color:budget===tier.id?tier.color:PUNCH,fontFamily:"'Nunito',sans-serif",marginTop:1}}>{tier.range}</div>
                 <div style={{fontSize:10,color:"#888",fontFamily:"'Nunito',sans-serif",marginTop:2,lineHeight:1.3}}>{tier.desc}</div>
               </button>
@@ -289,7 +289,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
             <div style={{width:26,height:26,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:WHITE,flexShrink:0}}>4</div>
             <div>
-              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>How many days?</div>
+              <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>How many days?</div>
               <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Up to 5 days</div>
             </div>
           </div>
@@ -357,7 +357,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
             <div key={di} style={{...C,marginBottom:12}}>
               <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
                 <div style={{width:30,height:30,borderRadius:"50%",background:`linear-gradient(135deg,#f472b0,${HOT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:WHITE,flexShrink:0}}>D{day.day}</div>
-                <div style={{fontSize:15,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{day.theme}</div>
+                <div style={{fontSize:15,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{day.theme}</div>
               </div>
               {["morning","afternoon","evening","nightlife"].map(slot=>{
                 const item = day[slot]; if (!item) return null;
@@ -367,7 +367,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
                       <div style={{fontSize:16,flexShrink:0,marginTop:2}}>{tEmoji[slot]}</div>
                       <div style={{flex:1}}>
                         <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
-                          <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{item.activity}</div>
+                          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{item.activity}</div>
                           <div style={{fontSize:12,color:PUNCH,fontFamily:"'Nunito',sans-serif",fontWeight:700,flexShrink:0,marginLeft:8}}>{item.cost}</div>
                         </div>
                         <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:3,fontStyle:"italic",opacity:0.8}}>💡 {item.tip}</div>
@@ -390,7 +390,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           {/* Must pack */}
           {result.mustPack?.length > 0 && (
             <div style={{...C,marginBottom:12}}>
-              <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Must-Pack for the {selectedBride?.label}</div>
+              <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Must-Pack for the {selectedBride?.label}</div>
               {result.mustPack.map((item,i)=>(
                 <div key={i} style={{display:"flex",gap:8,marginBottom:6,fontFamily:"'Nunito',sans-serif",fontSize:12}}>
                   <span style={{color:selectedBride?.color||HOT}}>✦</span>
@@ -410,7 +410,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
 
           {/* Book Your Full Trip */}
           <div style={{...C,background:SOFT,border:`1.5px solid ${MID}`,marginBottom:14}}>
-            <div style={{fontSize:15,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🗓 Book Your Full Trip</div>
+            <div style={{fontSize:15,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🗓 Book Your Full Trip</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>Tap any activity to book — she just has to show up 💅</div>
 
             {/* Activity-by-activity checklist */}
@@ -459,7 +459,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
       {/* Result with no days (error/missing key) */}
       {result && result.days?.length === 0 && (
         <div style={{...C,marginBottom:12}}>
-          <div style={{fontSize:15,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>{result.title}</div>
+          <div style={{fontSize:15,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:6}}>{result.title}</div>
           <div style={{fontSize:12,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:12}}>{result.tagline}</div>
           <div style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.55,marginBottom:12}}>{result.brideMessage}</div>
           {result.mustPack?.map((item,i)=>(

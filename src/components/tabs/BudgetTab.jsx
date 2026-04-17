@@ -37,12 +37,12 @@ export default function BudgetTab({ groupSize }) {
 
       {/* Destination */}
       <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>📍 Pick a destination</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>📍 Pick a destination</div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
           {DESTS.map(d=>(
             <button key={d.id} onClick={()=>setDest(d.id)} style={{background:dest===d.id?SOFT:WHITE,border:dest===d.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,borderRadius:12,padding:"10px",cursor:"pointer",textAlign:"left",transition:"all 0.2s"}}>
               <div style={{fontSize:18,marginBottom:3}}>{d.emoji}</div>
-              <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{d.name}</div>
+              <div style={{fontSize:12,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{d.name}</div>
             </button>
           ))}
         </div>
@@ -100,7 +100,7 @@ export default function BudgetTab({ groupSize }) {
             <div key={label} style={{...C,marginBottom:8,display:"flex",alignItems:"center",gap:12}}>
               <span style={{fontSize:22}}>{icon}</span>
               <div style={{flex:1}}>
-                <div style={{fontSize:13,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{label}</div>
+                <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{label}</div>
                 <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.75}}>{sub}</div>
               </div>
               <div style={{textAlign:"right"}}>

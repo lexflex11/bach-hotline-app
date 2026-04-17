@@ -33,7 +33,7 @@ export default function ProfileTab({ user, onLogout, cart }) {
       {[{ dest:"Nashville",emoji:"🎸",dates:"Jun 14–17",members:8,status:"Planning" },{ dest:"Miami",emoji:"🌴",dates:"Aug 2–5",members:10,status:"Saved" }].map((t,i)=>(
         <div key={i} style={{ ...C, marginBottom:10, display:"flex", alignItems:"center", gap:14 }}>
           <div style={{ fontSize:30 }}>{t.emoji}</div>
-          <div style={{ flex:1 }}><div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{t.dest} Bachelorette</div><div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:2, opacity:0.75 }}>{t.dates} · {t.members} ladies</div></div>
+          <div style={{ flex:1 }}><div style={{ fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{t.dest} Bachelorette</div><div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:2, opacity:0.75 }}>{t.dates} · {t.members} ladies</div></div>
           <div style={{ fontSize:11, fontWeight:700, padding:"4px 10px", borderRadius:20, background:t.status==="Planning"?`rgba(46,125,50,0.1)`:SOFT, color:t.status==="Planning"?GREEN:HOT, border:`1px solid ${t.status==="Planning"?"rgba(46,125,50,0.25)":MID}`, fontFamily:"'Nunito',sans-serif" }}>{t.status}</div>
         </div>
       ))}
