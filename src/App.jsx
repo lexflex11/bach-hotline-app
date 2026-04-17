@@ -96,7 +96,7 @@ export default function App() {
             { id:"home",  label:"Home"    },
             { id:"shop",  label:"Shop"    },
             { id:"decor", label:"Package" },
-            { id:"more",  label:"More"    },
+            { id:"more",  label:"Planning" },
           ].map(n => {
             const isMore   = n.id === "more";
             const isActive = isMore ? drawerOpen : (tab === n.id && !drawerOpen);
