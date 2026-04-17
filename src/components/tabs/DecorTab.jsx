@@ -1186,10 +1186,16 @@ export const TABLEWARE = [
   },
   {
     id:"plate-cactus", type:"plate", name:"Cactus Plates",
-    desc:"8 ct · 8.5\" x 9\"", price:"$13.50",
+    desc:"Bring the party vibes to life with these cactus paper plates designed to add a touch of festive flair to your celebration. Ideal for serving snacks, appetizers, or desserts.",
+    price:"$13.50",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6791a5e79ae1111daaf6920f/1767898212097/Ebook+Thumbnail+with+Video+-+2025-01-22T201457.935.png?format=1500w",
+    images:[
+      "https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6791a5e79ae1111daaf6920f/1767898212097/Ebook+Thumbnail+with+Video+-+2025-01-22T201457.935.png?format=1500w",
+    ],
+    bullets:["Set of 8","Dimensions: 8.5\"w x 9\"l","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#4CAF50", accent:"#C4956A",
     tags:["green","lime-green","evergreen","meadow","sage","empower-mint","terracotta","orange","mustard"],
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/cactus-plates",
   },
   {
     id:"plate-pink-pony-club", type:"plate", name:"Pink Pony Club Plates",
