@@ -93,10 +93,10 @@ export default function App() {
         {/* ── TAB NAV ── */}
         <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid ${BORDER}` }}>
           {[
-            { id:"home",    label:"Home" },
-            { id:"explore", label:"Explore" },
-            { id:"decor",   label:"Package" },
-            { id:"more",    label:"More" },
+            { id:"home",  label:"Home"    },
+            { id:"shop",  label:"Shop"    },
+            { id:"decor", label:"Package" },
+            { id:"more",  label:"More"    },
           ].map(n => {
             const isMore   = n.id === "more";
             const isActive = isMore ? drawerOpen : (tab === n.id && !drawerOpen);
