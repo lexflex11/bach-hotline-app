@@ -119,11 +119,6 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
             }}>
               {inCart ? "✓ In Cart" : "Add To Cart"}
             </button>
-            <a href={p.url} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-              <button style={{...BS,padding:"13px 16px",fontSize:13,whiteSpace:"nowrap"}}>
-                View on Etsy
-              </button>
-            </a>
           </div>
 
           {/* Tags */}
@@ -259,19 +254,6 @@ export default function ShopTab({ cart, setCart }) {
             </div>
           )}
 
-          {/* ── View all on Etsy ── */}
-          {filtered.length > 0 && (
-            <div style={{textAlign:"center",marginTop:28,paddingTop:20,borderTop:`1px solid ${BORDER}`}}>
-              <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-                <button style={{...BP,fontSize:13,padding:"12px 28px"}}>
-                  View All Products on Etsy →
-                </button>
-              </a>
-              <div style={{marginTop:8,fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
-                bachhotlinesupplies.etsy.com · ⭐ 4.9 · Houston, TX
-              </div>
-            </div>
-          )}
         </div>{/* end right column */}
       </div>{/* end two-column row */}
 
