@@ -515,16 +515,6 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 
         {/* ── About this restaurant ── */}
         <div style={{ ...C, marginBottom:14 }}>
-          <div style={{ display:"flex", alignItems:"flex-start", gap:12, padding:"12px 14px", background:SOFT, borderRadius:12, marginBottom:14, border:`1px solid ${BORDER}` }}>
-            <div style={{ fontSize:28 }}>🎀</div>
-            <div style={{ flex:1 }}>
-              <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:HOT, marginBottom:2 }}>Bach Hotline Pick</div>
-              <div style={{ fontSize:11, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.5, opacity:0.85 }}>
-                Verified group-friendly. Perfect for bachelorette dinners and brunch celebrations.
-              </div>
-            </div>
-          </div>
-
           <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:10 }}>
             About this Restaurant
           </div>
@@ -554,7 +544,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 
           {/* Address */}
           <div style={{ display:"flex", gap:8, alignItems:"flex-start", padding:"10px 12px", background:SOFT, borderRadius:12 }}>
-            <span style={{ fontSize:16 }}>📍</span>
+            <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, whiteSpace:"nowrap", marginTop:1 }}>Address:</div>
             <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.5 }}>{r.address}</div>
           </div>
         </div>
