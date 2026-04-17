@@ -99,17 +99,6 @@ function ProductTile({ p, onView }) {
             🎀
           </div>
         )}
-        {/* Bach Hotline label — top left */}
-        <div style={{
-          position:"absolute", top:6, left:6,
-          background:"#1a1a1a", color:WHITE,
-          fontSize:8, fontWeight:700, fontFamily:"'Nunito',sans-serif",
-          padding:"2px 6px", borderRadius:3, letterSpacing:"0.3px",
-          pointerEvents:"none",
-        }}>
-          Bach Hotline
-        </div>
-        <Brackets size={14} thick={2.5} color={HOT} gap={5}/>
       </div>
       {/* Name + Price */}
       <div style={{fontSize:12,fontWeight:500,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.3,marginBottom:3}}>
@@ -229,15 +218,6 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
             ) : (
               <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:52}}>🎀</div>
             )}
-            {/* Bach Hotline badge — top left of main image */}
-            <div style={{
-              position:"absolute",top:10,left:10,
-              background:"#1a1a1a",color:WHITE,
-              fontSize:9,fontWeight:700,fontFamily:"'Nunito',sans-serif",
-              padding:"3px 8px",borderRadius:3,letterSpacing:"0.4px",zIndex:1,
-              pointerEvents:"none",
-            }}>Bach Hotline</div>
-            <Brackets size={20} thick={3} color={HOT} gap={8}/>
 
             {/* Prev / Next arrows */}
             {total > 1 && (
@@ -270,7 +250,6 @@ function ProductModal({ p, onClose, onAdd, inCart }) {
                   background:"#FDF5F8",cursor:"pointer",position:"relative",
                 }}>
                   <img src={url} alt="" style={{width:"100%",height:"100%",objectFit:"contain",padding:3,boxSizing:"border-box"}}/>
-                  <Brackets size={8} thick={1.5} color={HOT} gap={3}/>
                 </div>
               ))}
             </div>
@@ -313,7 +292,6 @@ function CartDrawer({ cart, onRemove, onClose }) {
                 <div key={item.id} style={{display:"flex",alignItems:"center",gap:12,marginBottom:14,paddingBottom:14,borderBottom:`1px solid ${BORDER}`}}>
                   <div style={{position:"relative",width:58,height:58,borderRadius:6,overflow:"hidden",background:"#FDF5F8",flexShrink:0}}>
                     <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
-                    <Brackets size={8} thick={2} gap={4}/>
                   </div>
                   <div style={{flex:1,minWidth:0}}>
                     <div style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
