@@ -1200,10 +1200,17 @@ export const TABLEWARE = [
   },
   {
     id:"plate-foil-star", type:"plate", name:"Foil Star Plates",
-    desc:"8 ct · 11\" x 11\"", price:"$12.50",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/3032563d-005e-4659-834e-55f2fe71ad05/Ebook+Thumbnail+with+Video+-+2025-01-22T204555.167.png",
+    desc:"Shine bright, bride tribe! These silver star plates add glam to your bachelorette bash, perfect for snacks, sweets, and star studded vibes.",
+    price:"$12.50",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767897977380/Ebook+Thumbnail+with+Video+-+2025-01-22T204555.167.png?format=1500w",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767897977380/Ebook+Thumbnail+with+Video+-+2025-01-22T204555.167.png?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/969e7254-6f58-4fcb-a0f0-52dd150f6d1e/Ebook+Thumbnail+with+Video+-+2025-05-18T120703.581.png?format=500w",
+    ],
+    bullets:["Set of 8","Dimensions: 11\"w x 11\"l","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#D0D0D0", accent:"#9E9E9E",
     tags:["silver","white","gold","champagne","crystal-clear","fog","gray-smoke","metallic-gold"],
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/foil-star-plates",
   },
   {
     id:"plate-blue-floral", type:"plate", name:"Blue Floral Plates",
