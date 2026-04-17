@@ -23,36 +23,46 @@ function ProductTile({ p, onView }) {
   const [err,    setErr]    = useState(false);
   return (
     <div onClick={onView} style={{ cursor:"pointer", textAlign:"center" }}>
-      {/* Image box with brackets */}
+      {/* Image box — blush background, no border, pink brackets + Bach Hotline badge */}
       <div style={{
         position:"relative", width:"100%", aspectRatio:"1/1",
-        background:"#FDF5F8", overflow:"hidden",
-        marginBottom:10,
+        background:"#FDF5F8",
+        marginBottom:8,
       }}>
-        {!err ? (
+        {!err && p.image ? (
           <img
             src={p.image} alt={p.name}
             onLoad={()=>setLoaded(true)}
             onError={()=>setErr(true)}
             style={{
               width:"100%", height:"100%", objectFit:"contain",
-              padding:8, boxSizing:"border-box",
+              padding:10, boxSizing:"border-box",
               opacity:loaded?1:0, transition:"opacity 0.35s",
               display:"block",
             }}
           />
         ) : (
-          <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:36}}>
+          <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:32,color:"#f4a0c0"}}>
             🎀
           </div>
         )}
-        <Brackets size={16} thick={3} color={HOT} gap={6}/>
+        {/* Bach Hotline label — top left */}
+        <div style={{
+          position:"absolute", top:6, left:6,
+          background:"#1a1a1a", color:WHITE,
+          fontSize:8, fontWeight:700, fontFamily:"'Nunito',sans-serif",
+          padding:"2px 6px", borderRadius:3, letterSpacing:"0.3px",
+          pointerEvents:"none",
+        }}>
+          Bach Hotline
+        </div>
+        <Brackets size={14} thick={2.5} color={HOT} gap={5}/>
       </div>
-      {/* Name + Price — centered, below card */}
-      <div style={{fontSize:13,fontWeight:500,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.4,marginBottom:4}}>
+      {/* Name + Price */}
+      <div style={{fontSize:12,fontWeight:500,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.3,marginBottom:3}}>
         {p.name}
       </div>
-      <div style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif"}}>
+      <div style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>
         ${p.price.toFixed(2)}
       </div>
     </div>
