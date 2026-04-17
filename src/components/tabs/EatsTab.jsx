@@ -682,7 +682,7 @@ export default function EatsTab({ groupSize }) {
 
   return (
     <div>
-      <SH title="Find Restaurants & Brunch" sub="The best tables for your group" />
+      <SH title="Find Restaurants" sub="The best tables for your group" />
 
       {/* Search form */}
       <div style={{ ...C, marginBottom:12 }}>
@@ -731,7 +731,7 @@ export default function EatsTab({ groupSize }) {
               fontFamily:"'Nunito',sans-serif", fontSize:14, fontWeight:800,
               letterSpacing:"0.3px",
             }}>
-              🍽️ Find Best Tables
+                      Find Best Tables
             </button>
             <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:8, textAlign:"center" }}>
               Curated spots perfect for bachelorette groups
