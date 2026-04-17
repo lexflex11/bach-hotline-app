@@ -1173,10 +1173,16 @@ export const TABLEWARE = [
   },
   {
     id:"plate-daisy", type:"plate", name:"Daisy Plates",
-    desc:"12 ct · 9\" x 9\"", price:"$12.50",
+    desc:"A touch of spring to your next picnic with these paper plates decorated with bright daisies. Bringing a whimsical and playful touch to any gathering.",
+    price:"$12.50",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684894bb1ef4b52dec058349/1767555917671/Ebook+Thumbnail+with+Video+-+2025-06-07T171246.235.png?format=1500w",
+    images:[
+      "https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684894bb1ef4b52dec058349/1767555917671/Ebook+Thumbnail+with+Video+-+2025-06-07T171246.235.png?format=1500w",
+    ],
+    bullets:["Set of 12","Dimensions: 9\"w x 9\"l","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#FFEE00", accent:"#4CAF50",
     tags:["yellow","lemonade","goldenrod","white","green","lime-green","meadow","empower-mint","sugar"],
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/daisy-plates",
   },
   {
     id:"plate-pastel-stripe", type:"plate", name:"Pastel Stripe Plates",
