@@ -17,19 +17,36 @@ const TYPE_TO_CAT = {
   accessory: "Party Accessories",
 };
 
+// Clean image URL: strip weserv proxy → direct URL; add size hint to Squarespace CDN
+function cleanImg(url) {
+  if (!url) return "";
+  // Strip weserv proxy and use source URL directly
+  if (url.includes("images.weserv.nl")) {
+    const m = url.match(/[?&]url=([^&]+)/);
+    if (m) url = decodeURIComponent(m[1]);
+    // Restore full https:// if protocol was stripped
+    if (!url.startsWith("http")) url = "https://" + url;
+  }
+  // Add Squarespace size param for sharp rendering if not already specified
+  if ((url.includes("squarespace-cdn.com") || url.includes("squarespace.com")) && !url.includes("format=")) {
+    url = url + (url.includes("?") ? "&" : "?") + "format=500w";
+  }
+  return url;
+}
+
 // Combine and normalise: TABLEWARE + PARTY_ACCESSORIES → same shape as PRODUCTS
 const DECOR_PRODUCTS = [...TABLEWARE, ...PARTY_ACCESSORIES].map(p => ({
-  id:       p.id,
-  name:     p.name,
-  fullName: p.name,
-  price:    parseFloat((p.price || "$0").replace(/[^0-9.]/g, "")) || 0,
-  category: TYPE_TO_CAT[p.type] || "Party Accessories",
-  image:    p.image || "",
-  url:      p.etsyUrl || "",
-  desc:     p.desc || "",
-  bullets:  [],
-  isDigital:false,
-  bestseller: false,
+  id:        p.id,
+  name:      p.name,
+  fullName:  p.name,
+  price:     parseFloat((p.price || "$0").replace(/[^0-9.]/g, "")) || 0,
+  category:  TYPE_TO_CAT[p.type] || "Party Accessories",
+  image:     cleanImg(p.image),
+  url:       p.etsyUrl || "",
+  desc:      p.desc || "",
+  bullets:   [],
+  isDigital: false,
+  bestseller:false,
 }));
 
 // ─── Pink corner brackets — signature Squarespace look ───────────────────────
@@ -65,9 +82,9 @@ function ProductTile({ p, onView }) {
             onError={()=>setErr(true)}
             style={{
               width:"100%", height:"100%", objectFit:"contain",
-              padding:10, boxSizing:"border-box",
-              opacity:loaded?1:0, transition:"opacity 0.35s",
-              display:"block",
+              padding:8, boxSizing:"border-box",
+              opacity:loaded?1:0, transition:"opacity 0.3s",
+              display:"block", imageRendering:"auto",
             }}
           />
         ) : (
