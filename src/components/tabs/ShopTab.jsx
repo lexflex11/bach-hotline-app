@@ -22,12 +22,12 @@ function ProductTile({ p, onView }) {
   const [loaded, setLoaded] = useState(false);
   const [err,    setErr]    = useState(false);
   return (
-    <div onClick={onView} style={{ cursor:"pointer" }}>
+    <div onClick={onView} style={{ cursor:"pointer", textAlign:"center" }}>
       {/* Image box with brackets */}
       <div style={{
         position:"relative", width:"100%", aspectRatio:"1/1",
-        background:"#FDF5F8", borderRadius:4, overflow:"hidden",
-        marginBottom:8,
+        background:"#FDF5F8", overflow:"hidden",
+        marginBottom:10,
       }}>
         {!err ? (
           <img
@@ -35,7 +35,8 @@ function ProductTile({ p, onView }) {
             onLoad={()=>setLoaded(true)}
             onError={()=>setErr(true)}
             style={{
-              width:"100%", height:"100%", objectFit:"cover",
+              width:"100%", height:"100%", objectFit:"contain",
+              padding:8, boxSizing:"border-box",
               opacity:loaded?1:0, transition:"opacity 0.35s",
               display:"block",
             }}
@@ -45,22 +46,13 @@ function ProductTile({ p, onView }) {
             🎀
           </div>
         )}
-        {/* Pink corner brackets */}
-        <Brackets />
-        {p.bestseller && (
-          <div style={{
-            position:"absolute",bottom:8,left:8,
-            background:PUNCH,color:WHITE,fontSize:8,fontWeight:900,
-            fontFamily:"'DM Sans',sans-serif",padding:"3px 7px",borderRadius:4,
-            textTransform:"uppercase",letterSpacing:0.5,
-          }}>Best Seller</div>
-        )}
+        <Brackets size={16} thick={3} color={HOT} gap={6}/>
       </div>
-      {/* Name + Price */}
-      <div style={{fontSize:12,fontWeight:600,color:DARK,fontFamily:"'DM Sans',sans-serif",lineHeight:1.35,marginBottom:3}}>
+      {/* Name + Price — centered, below card */}
+      <div style={{fontSize:13,fontWeight:500,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.4,marginBottom:4}}>
         {p.name}
       </div>
-      <div style={{fontSize:13,fontWeight:700,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>
+      <div style={{fontSize:13,color:DARK,fontFamily:"'DM Sans',sans-serif"}}>
         ${p.price.toFixed(2)}
       </div>
     </div>
@@ -230,90 +222,58 @@ export default function ShopTab({ cart, setCart }) {
   return (
     <div style={{paddingBottom:24}}>
 
-      {/* ── Header ── */}
-      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:14}}>
-        <div>
-          <div style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:20,fontWeight:700,color:HOT}}>
-            Bach Hotline
-          </div>
-          <div style={{fontSize:11,color:"#aaa",fontFamily:"'DM Sans',sans-serif",marginTop:1}}>
-            Party Supplies · {filtered.length} products
-          </div>
-        </div>
-        {/* Cart button */}
-        <button onClick={()=>setCartOpen(true)} style={{
-          position:"relative",background:cart.length>0?`linear-gradient(135deg,#f472b0,${HOT})`:SOFT,
-          border:`1.5px solid ${cart.length>0?HOT:BORDER}`,borderRadius:50,
-          padding:"8px 16px",cursor:"pointer",
-          fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:700,
-          color:cart.length>0?WHITE:HOT,display:"flex",alignItems:"center",gap:6,
-        }}>
-          🛒 Cart
-          {cart.length>0&&(
-            <span style={{background:WHITE,color:HOT,borderRadius:"50%",width:18,height:18,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,fontWeight:900}}>
-              {cart.length}
-            </span>
-          )}
-        </button>
-      </div>
+      {/* ── Two-column layout: sidebar + grid ── */}
+      <div style={{display:"flex",gap:0,alignItems:"flex-start"}}>
 
-      {/* ── Search ── */}
-      <div style={{position:"relative",marginBottom:14}}>
-        <span style={{position:"absolute",left:14,top:"50%",transform:"translateY(-50%)",fontSize:14,opacity:0.35,pointerEvents:"none"}}>🔍</span>
-        <input
-          value={search} onChange={e=>setSearch(e.target.value)}
-          placeholder="Search products..."
-          style={{...IN,paddingLeft:38,borderRadius:50,border:`1.5px solid ${BORDER}`}}
-        />
-        {search && (
-          <button onClick={()=>setSearch("")} style={{position:"absolute",right:14,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",cursor:"pointer",color:HOT,fontSize:16}}>×</button>
-        )}
-      </div>
-
-      {/* ── Category list — matches Squarespace sidebar style ── */}
-      <div style={{display:"flex",gap:6,overflowX:"auto",paddingBottom:6,marginBottom:16,scrollbarWidth:"none"}}>
-        {SHOP_CATS.map(c=>(
-          <button key={c.id} onClick={()=>setCat(c.id)} style={{
-            flexShrink:0,padding:"7px 16px",borderRadius:50,
-            background:cat===c.id?DARK:WHITE,
-            color:cat===c.id?WHITE:DARK,
-            border:cat===c.id?`1.5px solid ${DARK}`:`1.5px solid ${BORDER}`,
-            fontFamily:"'DM Sans',sans-serif",fontSize:12,fontWeight:600,
-            cursor:"pointer",transition:"all 0.15s",whiteSpace:"nowrap",
-          }}>
-            {c.label}
-          </button>
-        ))}
-      </div>
-
-      {/* ── Product Grid — Squarespace style ── */}
-      {filtered.length > 0 ? (
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"20px 14px"}}>
-          {filtered.map(p=>(
-            <ProductTile key={p.id} p={p} onView={()=>setSelected(p)}/>
+        {/* ── Left sidebar: plain text category list ── */}
+        <div style={{width:130,flexShrink:0,paddingRight:16,paddingTop:4}}>
+          {SHOP_CATS.map(c=>(
+            <div key={c.id} onClick={()=>setCat(c.id)} style={{
+              fontFamily:"'Playfair Display',Georgia,serif",
+              fontSize:15,
+              fontWeight: cat===c.id ? 700 : 400,
+              color: cat===c.id ? HOT : DARK,
+              cursor:"pointer",
+              marginBottom:18,
+              lineHeight:1.2,
+              transition:"color 0.15s",
+            }}>
+              {c.label}
+            </div>
           ))}
         </div>
-      ) : (
-        <div style={{textAlign:"center",padding:"48px 20px"}}>
-          <div style={{fontSize:36,marginBottom:12}}>🔍</div>
-          <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>No products found</div>
-          <button onClick={()=>{setSearch("");setCat("all");}} style={{...BS,fontSize:12}}>Clear filters</button>
-        </div>
-      )}
 
-      {/* ── View all on Etsy ── */}
-      {filtered.length > 0 && (
-        <div style={{textAlign:"center",marginTop:28,paddingTop:20,borderTop:`1px solid ${BORDER}`}}>
-          <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-            <button style={{...BP,fontSize:13,padding:"12px 28px"}}>
-              View All Products on Etsy →
-            </button>
-          </a>
-          <div style={{marginTop:8,fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
-            bachhotlinesupplies.etsy.com · ⭐ 4.9 · Houston, TX
-          </div>
-        </div>
-      )}
+        {/* ── Right: 4-column product grid ── */}
+        <div style={{flex:1,minWidth:0}}>
+          {filtered.length > 0 ? (
+            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"24px 12px"}}>
+              {filtered.map(p=>(
+                <ProductTile key={p.id} p={p} onView={()=>setSelected(p)}/>
+              ))}
+            </div>
+          ) : (
+            <div style={{textAlign:"center",padding:"48px 20px"}}>
+              <div style={{fontSize:36,marginBottom:12}}>🔍</div>
+              <div style={{fontSize:14,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>No products found</div>
+              <button onClick={()=>setCat("all")} style={{...BS,fontSize:12}}>Clear filters</button>
+            </div>
+          )}
+
+          {/* ── View all on Etsy ── */}
+          {filtered.length > 0 && (
+            <div style={{textAlign:"center",marginTop:28,paddingTop:20,borderTop:`1px solid ${BORDER}`}}>
+              <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
+                <button style={{...BP,fontSize:13,padding:"12px 28px"}}>
+                  View All Products on Etsy →
+                </button>
+              </a>
+              <div style={{marginTop:8,fontSize:10,color:"#bbb",fontFamily:"'DM Sans',sans-serif"}}>
+                bachhotlinesupplies.etsy.com · ⭐ 4.9 · Houston, TX
+              </div>
+            </div>
+          )}
+        </div>{/* end right column */}
+      </div>{/* end two-column row */}
 
       {/* ── Modals ── */}
       <ProductModal
