@@ -1199,10 +1199,17 @@ export const TABLEWARE = [
   },
   {
     id:"plate-pink-pony-club", type:"plate", name:"Pink Pony Club Plates",
-    desc:"24 ct · 9\" x 9\"", price:"$17.22",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/969e7254-6f58-4fcb-a0f0-52dd150f6d1e/Ebook+Thumbnail+with+Video+-+2025-05-18T120703.581.png",
+    desc:"Saddle up, party queens! These pink pony club paper plates are the perfect mix of girly and western for your next bachelorette bash, cowgirl birthday, or rodeo-themed celebration.",
+    price:"$17.22",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/208a4d42-7cec-40fa-bbe0-b5d3c72fc61a/Ebook+Thumbnail+with+Video+-+2025-05-18T191748.541.png?format=500w",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/208a4d42-7cec-40fa-bbe0-b5d3c72fc61a/Ebook+Thumbnail+with+Video+-+2025-05-18T191748.541.png?format=500w",
+      "https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6848a1a41ef4b52dec059186/1767557348516/Ebook+Thumbnail+with+Video+-+2025-05-18T120703.581.png?format=1500w",
+    ],
+    bullets:["Set of 24","2 designs: 12 of each","Dimensions: 9\"l x 9\"w","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#F4A7B9", accent:"#C4956A",
     tags:["hotpink","blush","pink","baby-pink","cameo","mauve","canyon-rose","terracotta","champagne"],
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/pink-pony-club-plates",
   },
   {
     id:"plate-foil-star", type:"plate", name:"Foil Star Plates",
