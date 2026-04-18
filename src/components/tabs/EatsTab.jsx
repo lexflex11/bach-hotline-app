@@ -577,6 +577,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://thepostlamarpark.com",
     },
+    {
+      id:"cc-11",
+      name:"Tannins Wine Bar & Grill",
+      cuisine:"Wine Bar & American Grill",
+      priceRange:"$$$",
+      rating:4.4,
+      reviewCount:114,
+      vibe:"Wine Bar · Craft Cocktails · Late Night",
+      tags:["Wine Bar","Craft Cocktails","Late Night","Date Night","Group Friendly"],
+      address:"7629 S Staples St Suite A111, Corpus Christi, TX 78413",
+      hours:"Mon–Tue 11am–10pm · Wed–Thu 11am–midnight · Fri 11am–1am · Sat 10am–1am · Sun 10am–10pm",
+      groupMax:30,
+      desc:"Corpus Christi's go-to wine bar and grill, blending traditional dishes with innovative creations and an exceptional cocktail program. Known for house-made syrups, hand-dehydrated fruit garnishes, and a warm atmosphere — the kind of place where a 2-hour dinner turns into a 4-hour night.",
+      photo:"https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+        "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&q=80",
+      ],
+      menuHighlights:["Ahi Tuna Tower","Baked Brie","Salmon Crostini","Meatball Sliders","Craft Cocktails with House-Made Syrups"],
+      whyWeLoveIt:[
+        "Open until 1am Friday and Saturday — the perfect dinner-to-drinks spot for the group",
+        "Craft cocktails made with house-made syrups and hand-dehydrated garnishes — seriously impressive",
+        "Full wine list plus cold Texas craft beers means everyone in the group is happy",
+      ],
+      reserveUrl:"https://tanninsgrill.com",
+    },
   ],
 };
 
