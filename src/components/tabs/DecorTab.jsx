@@ -1239,9 +1239,9 @@ export const TABLEWARE = [
     id:"plate-jaguar", type:"plate", name:"Jaguar Plates",
     desc:"Spotted: the coolest party plates in the jungle! These jaguar paper plates are perfect for wild birthdays and untamed fun.",
     price:"$13.56",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767898290723/Ebook+Thumbnail+with+Video+-+2025-06-07T234024.878.png?format=500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/68488a0f36c31823d93e78a2/Ebook+Thumbnail+with+Video+-+2025-06-07T234024.878.png?format=500w",
     images:[
-      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767898290723/Ebook+Thumbnail+with+Video+-+2025-06-07T234024.878.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/68488a0f36c31823d93e78a2/Ebook+Thumbnail+with+Video+-+2025-06-07T234024.878.png?format=500w",
     ],
     bullets:["Set of 8","Dimensions: 8.75\"l x 7.5\"w","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#C8A882", accent:"#1A1A1A",
