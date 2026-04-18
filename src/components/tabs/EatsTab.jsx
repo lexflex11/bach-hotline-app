@@ -739,6 +739,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://birdieswingsandbartx.com",
     },
+    {
+      id:"cc-17",
+      name:"Gallery 41 Water's Edge Grill",
+      cuisine:"American Seafood & Grill",
+      priceRange:"$$$",
+      rating:4.5,
+      reviewCount:312,
+      vibe:"Waterfront · Historic Venue · Sunday Brunch",
+      tags:["Waterfront","Seafood","Brunch","Live Music","Historic"],
+      address:"100 N Shoreline Blvd, Corpus Christi, TX 78401",
+      hours:"Tue–Thu 11am–9pm · Fri–Sat 11am–11pm · Sun Brunch 11am–3:30pm · Closed Monday",
+      groupMax:50,
+      desc:"Set inside a historic 1941 former USO building on the Corpus Christi bayfront, Gallery 41 offers waterfront dining with locally sourced Gulf seafood, prime steaks, and an unforgettable Sunday champagne brunch buffet with live music — all inside an art gallery space.",
+      photo:"https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+      ],
+      menuHighlights:["Blackened Red Snapper","Filet Mignon","Oyster Corpus","Crab Cake Salad","Chocolate Churro Cake"],
+      whyWeLoveIt:[
+        "Sunday champagne brunch buffet for $60/person with bottomless mimosas and live piano — the ultimate bach brunch",
+        "Historic 1941 bayfront building with stunning water views and art on every wall",
+        "Happy hour every Tuesday 3–6pm with half-price drinks",
+      ],
+      reserveUrl:"https://www.gallery41cc.com",
+    },
   ],
 };
 
