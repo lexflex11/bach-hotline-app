@@ -496,6 +496,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://elizabeths-at-artmuseum.com",
     },
+    {
+      id:"cc-8",
+      name:"Hester's Cafe & Coffee Bar",
+      cuisine:"American Café & Bakery",
+      priceRange:"$$",
+      rating:4.6,
+      reviewCount:507,
+      vibe:"Cozy · Brunch · Local Favorite",
+      tags:["Brunch","Breakfast","Bakery","Coffee","Local Favorite"],
+      address:"1714 S. Alameda St., Corpus Christi, TX 78404",
+      hours:"Mon–Sat 7am–3pm · Closed Sunday",
+      groupMax:20,
+      desc:"The #1 Quick Bites spot in Corpus Christi since 2006. Hester's is a beloved scratch-kitchen café serving breakfast and lunch all day — from fresh omelets and French toast to house-made cheesecakes and specialty coffee drinks. A true local institution with a warm, community feel.",
+      photo:"https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
+        "https://images.unsplash.com/photo-1493770348161-369560ae357d?w=800&q=80",
+        "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80",
+      ],
+      menuHighlights:["Lemon-Blueberry Cheesecake","French Toast","Cheesy B.E.A.T. Sandwich","Fresh-Squeezed Juice","Specialty Lattes"],
+      whyWeLoveIt:[
+        "Rated #1 Quick Bites in Corpus Christi on TripAdvisor with 500+ reviews",
+        "Everything made from scratch daily — real ingredients, real flavors",
+        "Perfect laid-back bach brunch spot before a big night out",
+      ],
+      reserveUrl:"https://www.toasttab.com/hesters-cafe-six-points-1714-alameda/v3",
+    },
   ],
 };
 
