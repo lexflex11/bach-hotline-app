@@ -523,6 +523,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://www.toasttab.com/hesters-cafe-six-points-1714-alameda/v3",
     },
+    {
+      id:"cc-9",
+      name:"Republic of Texas Bar & Grill",
+      cuisine:"Steakhouse & Wild Game",
+      priceRange:"$$$$",
+      rating:4.7,
+      reviewCount:557,
+      vibe:"Rooftop · Fine Dining · Panoramic Bay Views",
+      tags:["Steakhouse","Rooftop","Fine Dining","Special Occasion","Wild Game"],
+      address:"900 N. Shoreline Blvd., 20th Floor, Corpus Christi, TX 78401",
+      hours:"Mon–Sat 5:30pm–10:30pm · Sun 5:30pm–9pm · Happy Hour Mon–Fri 5–7pm",
+      groupMax:40,
+      desc:"Perched on the 20th floor of the Omni Corpus Christi Hotel, Republic of Texas offers breathtaking panoramic views of Corpus Christi Bay alongside USDA prime steaks, wild game, and fresh Gulf seafood. A Wine Spectator Award winner and one of the most romantic restaurants in America.",
+      photo:"https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80",
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+        "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=800&q=80",
+      ],
+      menuHighlights:["USDA Prime Filet Mignon","Nilgai & Venison","Lobster Bisque","Chilean Sea Bass","Pecan Pie"],
+      whyWeLoveIt:[
+        "20th floor panoramic bay views — the most dramatic dinner setting in Corpus Christi",
+        "Wine Spectator Award winner 4 years running — the wine list is exceptional",
+        "Wild game menu (nilgai, venison, quail) is a one-of-a-kind Texas experience",
+      ],
+      reserveUrl:"https://www.opentable.com/republic-of-texas-bar-and-grill",
+    },
   ],
 };
 
