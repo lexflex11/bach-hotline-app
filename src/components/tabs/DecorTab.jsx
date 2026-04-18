@@ -717,11 +717,18 @@ export const TABLEWARE = [
     etsyUrl:"https://bachhotline.squarespace.com/decorations/p/sugar-skull-plates",
   },
   {
-    id:"plate-shootingstar", type:"plate", name:"Shooting Star Paper Plates",
-    desc:"Bachelorette Party",     price:"$12.50",
-    image: null,         bg:"#D0D0D0", accent:"#9E9E9E",
+    id:"plate-shootingstar", type:"plate", name:"Shooting Star Plates",
+    desc:"Serve snacks with star power! These shiny silver shooting star plates add a touch of magic to any party table.",
+    price:"$12.50",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/bbab1182-74e8-4885-bcbd-4e0447de025c/Ebook+Thumbnail+with+Video+-+2025-07-20T111448.980.png?format=500w",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/bbab1182-74e8-4885-bcbd-4e0447de025c/Ebook+Thumbnail+with+Video+-+2025-07-20T111448.980.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/57d6e234-ee40-4307-a6d1-a364c161f516/Ebook+Thumbnail+with+Video+-+2025-07-20T111459.848.png?format=500w",
+    ],
+    bullets:["Set of 4","Dimensions: 19.25\"w x 9\"l","Durable, lightweight, and disposable for easy cleanup"],
+    bg:"#D0D0D0", accent:"#9E9E9E",
     tags:["silver","white","gold","champagne"],
-    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/shooting-star-plates",
   },
   {
     id:"plate-aries", type:"plate", name:"Aries Plates",
