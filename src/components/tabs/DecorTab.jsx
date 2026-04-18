@@ -1346,9 +1346,8 @@ export const TABLEWARE = [
     id:"plate-roller-skate", type:"plate", name:"Roller Skate Plates",
     desc:"Let the good times roll! These fabulous roller skate shaped plates, with green raffia laces for a fantastic effect, will look amazing on the party table.",
     price:"$13.90",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767898444935/Ebook+Thumbnail+with+Video+-+2025-05-12T190919.641.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d07abd32-5f07-40a5-8dea-a0c80d1b0fc5/Ebook+Thumbnail+with+Video+-+2025-08-04T203531.863.png?format=500w",
     images:[
-      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767898444935/Ebook+Thumbnail+with+Video+-+2025-05-12T190919.641.png?format=1500w",
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d07abd32-5f07-40a5-8dea-a0c80d1b0fc5/Ebook+Thumbnail+with+Video+-+2025-08-04T203531.863.png?format=500w",
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/9f4437a6-cad7-435b-9df9-4fde717e2b41/Ebook+Thumbnail+with+Video+-+2025-08-04T203426.723.png?format=500w",
     ],
