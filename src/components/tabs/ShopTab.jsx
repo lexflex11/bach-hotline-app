@@ -116,103 +116,114 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
       <button onClick={onBack} style={{
         display:"flex", alignItems:"center", gap:6,
         background:"none", border:`1.5px solid ${BORDER}`,
-        borderRadius:50, padding:"8px 16px", marginBottom:20,
+        borderRadius:50, padding:"8px 16px", marginBottom:24,
         fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
         color:DARK, cursor:"pointer",
       }}>
         ← Back
       </button>
 
-      {/* Main image */}
-      <div style={{ width:"100%", aspectRatio:"1/1", background:WHITE, borderRadius:16, overflow:"hidden", marginBottom:16, position:"relative" }}>
-        {src ? (
-          <img src={src} alt={p.name || ""}
-            style={{ width:"100%", height:"100%", objectFit:"contain", padding:16, boxSizing:"border-box", display:"block" }}
-          />
-        ) : (
-          <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:52 }}>🎀</div>
-        )}
-        {total > 1 && (
-          <>
-            <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{
-              position:"absolute", left:10, top:"50%", transform:"translateY(-50%)",
-              background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
-              width:36, height:36, cursor:"pointer", fontSize:20, color:DARK,
-              display:"flex", alignItems:"center", justifyContent:"center",
-              boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
-            }}>‹</button>
-            <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{
-              position:"absolute", right:10, top:"50%", transform:"translateY(-50%)",
-              background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
-              width:36, height:36, cursor:"pointer", fontSize:20, color:DARK,
-              display:"flex", alignItems:"center", justifyContent:"center",
-              boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
-            }}>›</button>
-          </>
-        )}
-      </div>
+      {/* Side-by-side layout */}
+      <div style={{ display:"flex", gap:24, alignItems:"flex-start" }}>
 
-      {/* Thumbnail strip */}
-      {total > 1 && (
-        <div style={{ display:"flex", gap:8, marginBottom:20, overflowX:"auto" }}>
-          {imgs.map((url,i) => (
-            <div key={i} onClick={()=>setImgIdx(i)} style={{
-              flexShrink:0, width:60, height:60, borderRadius:8, overflow:"hidden",
-              border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
-              background:"#FDF5F8", cursor:"pointer",
-            }}>
-              <img src={url} alt="" style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }} />
+        {/* ── LEFT: info ── */}
+        <div style={{ flex:1, minWidth:0 }}>
+
+          {/* Name */}
+          <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:22, fontWeight:700, fontStyle:"italic", color:HOT, margin:"0 0 8px", lineHeight:1.2 }}>
+            {p.fullName || p.name || ""}
+          </h2>
+
+          {/* Price */}
+          <div style={{ fontSize:18, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20 }}>
+            ${price.toFixed(2)}
+          </div>
+
+          {/* Qty + Add to Cart */}
+          <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:24 }}>
+            <div style={{ display:"flex", alignItems:"center", gap:10, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"6px 12px" }}>
+              <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>−</button>
+              <span style={{ fontSize:14, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:16, textAlign:"center" }}>{qty}</span>
+              <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>+</button>
             </div>
-          ))}
+            <button onClick={()=>onAdd(p)} style={{
+              flex:1, padding:"11px", fontSize:13, fontFamily:"'Nunito',sans-serif",
+              fontWeight:700, borderRadius:50, cursor:"pointer",
+              background: inCart ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`,
+              color: inCart ? HOT : WHITE,
+              border: inCart ? `1.5px solid ${HOT}` : "none",
+            }}>
+              {inCart ? "✓ In Cart" : "Add To Cart"}
+            </button>
+          </div>
+
+          {/* Description */}
+          {p.desc ? (
+            <p style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, margin:"0 0 14px" }}>
+              {p.desc}
+            </p>
+          ) : null}
+
+          {/* Bullets */}
+          {(p.bullets?.length > 0) ? (
+            <ul style={{ listStyle:"none", padding:0, margin:0 }}>
+              {p.bullets.map((b,i) => (
+                <li key={i} style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:6, display:"flex", gap:8 }}>
+                  <span style={{ color:HOT, flexShrink:0 }}>·</span>{b}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
-      )}
 
-      {/* Name */}
-      <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:24, fontWeight:700, fontStyle:"italic", color:HOT, margin:"0 0 8px", lineHeight:1.2 }}>
-        {p.fullName || p.name || ""}
-      </h2>
+        {/* ── RIGHT: image + thumbnails ── */}
+        <div style={{ display:"flex", gap:8, flexShrink:0, width:"45%" }}>
 
-      {/* Price */}
-      <div style={{ fontSize:20, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20 }}>
-        ${price.toFixed(2)}
-      </div>
+          {/* Main image */}
+          <div style={{ flex:1, position:"relative", aspectRatio:"1/1", background:SOFT, borderRadius:12, overflow:"hidden" }}>
+            {src ? (
+              <img src={src} alt={p.name || ""}
+                style={{ width:"100%", height:"100%", objectFit:"contain", padding:12, boxSizing:"border-box", display:"block" }}
+              />
+            ) : (
+              <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}>🎀</div>
+            )}
+            {total > 1 && (
+              <>
+                <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{
+                  position:"absolute", left:6, top:"50%", transform:"translateY(-50%)",
+                  background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
+                  width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
+                  display:"flex", alignItems:"center", justifyContent:"center",
+                  boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
+                }}>‹</button>
+                <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{
+                  position:"absolute", right:6, top:"50%", transform:"translateY(-50%)",
+                  background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
+                  width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
+                  display:"flex", alignItems:"center", justifyContent:"center",
+                  boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
+                }}>›</button>
+              </>
+            )}
+          </div>
 
-      {/* Qty + Add to Cart */}
-      <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:24, paddingBottom:24, borderBottom:`1px solid ${BORDER}` }}>
-        <div style={{ display:"flex", alignItems:"center", gap:12, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"6px 14px" }}>
-          <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:20, color:DARK, lineHeight:1, padding:0 }}>−</button>
-          <span style={{ fontSize:15, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{qty}</span>
-          <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:20, color:DARK, lineHeight:1, padding:0 }}>+</button>
+          {/* Thumbnail strip (vertical, right of image) */}
+          {total > 1 && (
+            <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+              {imgs.map((url,i) => (
+                <div key={i} onClick={()=>setImgIdx(i)} style={{
+                  width:52, height:52, borderRadius:8, overflow:"hidden",
+                  border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
+                  background:SOFT, cursor:"pointer", flexShrink:0,
+                }}>
+                  <img src={url} alt="" style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-        <button onClick={()=>onAdd(p)} style={{
-          flex:1, padding:"13px", fontSize:14, fontFamily:"'Nunito',sans-serif",
-          fontWeight:700, borderRadius:50, cursor:"pointer",
-          background: inCart ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`,
-          color: inCart ? HOT : WHITE,
-          border: inCart ? `1.5px solid ${HOT}` : "none",
-        }}>
-          {inCart ? "✓ In Cart" : "Add To Cart"}
-        </button>
       </div>
-
-      {/* Description */}
-      {p.desc ? (
-        <p style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>
-          {p.desc}
-        </p>
-      ) : null}
-
-      {/* Bullets */}
-      {(p.bullets?.length > 0) ? (
-        <ul style={{ listStyle:"none", padding:0, margin:"0 0 16px" }}>
-          {p.bullets.map((b,i) => (
-            <li key={i} style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:6, display:"flex", gap:8 }}>
-              <span style={{ color:HOT, flexShrink:0 }}>·</span>{b}
-            </li>
-          ))}
-        </ul>
-      ) : null}
-
     </div>
   );
 }
