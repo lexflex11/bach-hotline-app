@@ -659,10 +659,17 @@ export const TABLEWARE = [
   },
   {
     id:"plate-strawberry", type:"plate", name:"Strawberry Paper Plates",
-    desc:"Summer Fruit Party",     price:"$13.00",
-    image: null,          bg:"#E53935", accent:"#B71C1C",
+    desc:"Add a sweet and fun touch to your bachelorette celebration with these strawberry paper plates! Perfect for serving snacks, desserts, or appetizers.",
+    price:"$13.00",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/6bbd351b-a87b-4518-9f72-85f829fa8c2a/Ebook+Thumbnail+with+Video+-+2025-01-22T193036.107.png?format=500w",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/6bbd351b-a87b-4518-9f72-85f829fa8c2a/Ebook+Thumbnail+with+Video+-+2025-01-22T193036.107.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/80b03024-a550-4a0c-b827-89296d0b5c28/Ebook+Thumbnail+with+Video+-+2025-01-22T193723.437.png?format=500w",
+    ],
+    bullets:["Set of 8","Dimensions: 7\"w x 10\"l","Durable, lightweight, and disposable for easy cleanup"],
+    bg:"#E53935", accent:"#B71C1C",
     tags:["red","hotpink","blush"],
-    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/strawberry-plates",
   },
   {
     id:"plate-star",     type:"plate", name:"Foil Star Paper Plates",
