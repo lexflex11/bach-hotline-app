@@ -1374,9 +1374,10 @@ export const TABLEWARE = [
     id:"plate-fire-checker", type:"plate", name:"Fire Flames Checker Plates",
     desc:"Fuel the party with fast flames checker plates; eye catching flame checkers, a vibrant blue rim, and full throttle style.",
     price:"$10.12",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/69604843095f8b783bc99ee0/1767921199759/Ebook+Thumbnail+with+Video-411.png?format=1500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/cd8ac1a1-9a8b-4129-86d1-d93a0fa17d8e/Ebook+Thumbnail+with+Video-411.png?format=500w",
     images:[
-      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/69604843095f8b783bc99ee0/1767921199759/Ebook+Thumbnail+with+Video-411.png?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/cd8ac1a1-9a8b-4129-86d1-d93a0fa17d8e/Ebook+Thumbnail+with+Video-411.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/109b3c7d-2761-494d-9446-08fecc58ef1a/Ebook+Thumbnail+with+Video-412.png?format=500w",
     ],
     bullets:["Set of 8","Dimensions: 10.75\"l x 10.75\"w","Durable, lightweight, and disposable for easy cleanup"],
     bg:"#1A3A6B", accent:"#FF6B1A",
