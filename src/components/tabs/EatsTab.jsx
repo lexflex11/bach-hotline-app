@@ -658,6 +658,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://texashouseofrock.com",
     },
+    {
+      id:"cc-14",
+      name:"Fika Coffee & Bakery",
+      cuisine:"Swedish-Inspired Café & Bakery",
+      priceRange:"$",
+      rating:4.8,
+      reviewCount:189,
+      vibe:"Cozy · Artisan Coffee · Swedish Bakery",
+      tags:["Coffee","Bakery","Breakfast","Brunch","Artisan"],
+      address:"4411 S Alameda St, Corpus Christi, TX 78412",
+      hours:"Tue–Sat 7am–3pm · Closed Sunday & Monday",
+      groupMax:15,
+      desc:"A Swedish-inspired scratch bakery celebrating fika — the ritual of slowing down with great coffee and a sweet treat. Founded by Executive Pastry Chef Jeannette Del Angel, Fika serves locally roasted espresso drinks, seasonal scones, croissants, kouign amann, and artisan breads, all made fresh from scratch.",
+      photo:"https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80",
+        "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80",
+        "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=800&q=80",
+      ],
+      menuHighlights:["Kouign Amann","Seasonal Croissants","Mango Matcha","Honey Vanilla Shaken Espresso","Cardamom Apple Pie"],
+      whyWeLoveIt:[
+        "The most charming morning stop in Corpus Christi — perfect for a slow bach breakfast",
+        "Executive Pastry Chef founder means every pastry is next-level quality",
+        "Seasonal specials and house-made syrups make every visit feel unique",
+      ],
+      reserveUrl:"https://www.fikacc.com",
+    },
   ],
 };
 
