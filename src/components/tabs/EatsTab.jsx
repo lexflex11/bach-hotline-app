@@ -712,6 +712,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://www.bkkthaikitchenbar.com",
     },
+    {
+      id:"cc-16",
+      name:"Birdie's Wings and Bar",
+      cuisine:"Wings & American Bar",
+      priceRange:"$$",
+      rating:4.6,
+      reviewCount:278,
+      vibe:"Casual · Wings · Cold Beer · Good Times",
+      tags:["Wings","Bar","Casual","Draft Beer","Cocktails"],
+      address:"7514 S Padre Island Dr #206, Corpus Christi, TX 78412",
+      hours:"Mon–Thu 11am–10pm · Fri–Sat 11am–11pm · Sun 11am–9pm",
+      groupMax:30,
+      desc:"The go-to spot in Corpus Christi for crispy wings, hand-breaded tenders, and homemade beef burgers — paired with the freshest draft beer in town and creative cocktails. Birdie's is a laid-back, fun bar perfect for a casual group night without the fuss.",
+      photo:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800&q=80",
+        "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&q=80",
+        "https://images.unsplash.com/photo-1514190051997-0f6f39ca5cde?w=800&q=80",
+      ],
+      menuHighlights:["Buffalo Wings","Hand-Breaded Tenders","Homemade Beef Burgers","Margarita Flight","Draft Beer on Tap"],
+      whyWeLoveIt:[
+        "Margarita flights plus draft beer on tap — easy crowd pleaser for any size group",
+        "Casual and fun with no pretension — the perfect low-key bach lunch or dinner",
+        "Open until 11pm on weekends with a full bar to keep the party going",
+      ],
+      reserveUrl:"https://birdieswingsandbartx.com",
+    },
   ],
 };
 
