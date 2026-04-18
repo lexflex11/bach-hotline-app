@@ -793,6 +793,33 @@ const RESTAURANTS = {
       ],
       reserveUrl:"https://harrisonslanding.net",
     },
+    {
+      id:"cc-20",
+      name:"Landry's Seafood House",
+      cuisine:"Gulf Coast Seafood",
+      priceRange:"$$$",
+      rating:4.5,
+      reviewCount:892,
+      vibe:"Waterfront · Bayfront Views · Happy Hour",
+      tags:["Seafood","Waterfront","Happy Hour","Group Friendly","Bayfront"],
+      address:"600 N Shoreline Blvd, Corpus Christi, TX 78401",
+      hours:"Mon–Thu 11am–9pm · Fri–Sat 11am–10pm · Sun 11:30am–9pm · Happy Hour Mon–Fri 3:30–6:30pm",
+      groupMax:50,
+      desc:"A Corpus Christi waterfront staple serving Gulf-inspired seafood with panoramic bay views. Landry's is known for fresh Gulf flavors, a laid-back atmosphere, and one of the best happy hours in town — winner of Diners' Choice 'Most Booked Restaurant' honors.",
+      photo:"https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=800&q=80",
+      images:[
+        "https://images.unsplash.com/photo-1534787238916-9ba6764efd4f?w=800&q=80",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+        "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+      ],
+      menuHighlights:["Oysters on the Half Shell","Blackened Swordfish with Lobster Cream","Crawfish Etouffee","Shrimp Cocktail","Fresh Gulf Fish"],
+      whyWeLoveIt:[
+        "Panoramic Corpus Christi Bay views from every seat — unbeatable waterfront setting",
+        "Happy Hour Mon–Fri 3:30–6:30pm with $4–$7 cocktails — perfect pre-dinner stop",
+        "Private events and catering available for the full bachelorette group experience",
+      ],
+      reserveUrl:"https://www.landrysseafoodhouse.com/location/landrys-seafood-corpus-christi/",
+    },
   ],
 };
 

@@ -65,7 +65,7 @@ function ProductTile({ p, onView }) {
       {/* Image box */}
       <div style={{
         position:"relative", width:"100%", aspectRatio:"1/1",
-        background:"#FDF5F8",
+        background:WHITE,
         marginBottom:8,
       }}>
         {!err && p.image ? (
@@ -124,7 +124,7 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
       </button>
 
       {/* Main image */}
-      <div style={{ width:"100%", aspectRatio:"1/1", background:"#FDF5F8", borderRadius:16, overflow:"hidden", marginBottom:16, position:"relative" }}>
+      <div style={{ width:"100%", aspectRatio:"1/1", background:WHITE, borderRadius:16, overflow:"hidden", marginBottom:16, position:"relative" }}>
         {src ? (
           <img src={src} alt={p.name || ""}
             style={{ width:"100%", height:"100%", objectFit:"contain", padding:16, boxSizing:"border-box", display:"block" }}
@@ -335,7 +335,7 @@ export default function ShopTab({ cart, setCart }) {
         {/* ── Right: 4-column product grid ── */}
         <div style={{flex:1,minWidth:0}}>
           {filtered.length > 0 ? (
-            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"24px 12px"}}>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"24px 14px"}}>
               {filtered.map(p=>(
                 <ProductTile key={p.id} p={p} onView={()=>setSelected(p)}/>
               ))}
