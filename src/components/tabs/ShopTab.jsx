@@ -1,4 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+function useIsMobile() {
+  const [mobile, setMobile] = useState(window.innerWidth < 500);
+  useEffect(() => {
+    const handler = () => setMobile(window.innerWidth < 500);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return mobile;
+}
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
 import { BP, BS, IN } from '../../constants/styles.js';
 import { PRODUCTS, SHOP_CATS } from '../../constants/data.js';
@@ -101,6 +111,7 @@ function ProductTile({ p, onView }) {
 function ProductDetail({ p, onBack, onAdd, inCart }) {
   const [imgIdx, setImgIdx] = useState(0);
   const [qty,    setQty]    = useState(1);
+  const mobile = useIsMobile();
 
   if (!p) return null;
 
@@ -109,121 +120,118 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
   const src   = imgs[imgIdx] || "";
   const price = +(p.price) || 0;
 
+  /* ── Shared: image carousel ── */
+  const ImageCarousel = (
+    <div style={{ display:"flex", gap:8, width:"100%" }}>
+      <div style={{ flex:1, position:"relative", aspectRatio:"1/1", background:SOFT, borderRadius:12, overflow:"hidden" }}>
+        {src ? (
+          <img src={src} alt={p.name || ""}
+            style={{ width:"100%", height:"100%", objectFit:"contain", padding:mobile?10:12, boxSizing:"border-box", display:"block" }}
+          />
+        ) : (
+          <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}>🎀</div>
+        )}
+        {total > 1 && (
+          <>
+            <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{
+              position:"absolute", left:6, top:"50%", transform:"translateY(-50%)",
+              background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
+              width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
+              display:"flex", alignItems:"center", justifyContent:"center",
+              boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
+            }}>‹</button>
+            <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{
+              position:"absolute", right:6, top:"50%", transform:"translateY(-50%)",
+              background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
+              width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
+              display:"flex", alignItems:"center", justifyContent:"center",
+              boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
+            }}>›</button>
+          </>
+        )}
+      </div>
+      {/* Vertical thumbnail strip */}
+      {total > 1 && (
+        <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+          {imgs.map((url,i) => (
+            <div key={i} onClick={()=>setImgIdx(i)} style={{
+              width:mobile?48:52, height:mobile?48:52, borderRadius:8, overflow:"hidden",
+              border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
+              background:SOFT, cursor:"pointer", flexShrink:0,
+            }}>
+              <img src={url} alt="" style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
+  /* ── Shared: product info ── */
+  const ProductInfo = (
+    <div style={{ flex:1, minWidth:0 }}>
+      <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:mobile?20:22, fontWeight:700, fontStyle:"italic", color:HOT, margin:"0 0 6px", lineHeight:1.2 }}>
+        {p.fullName || p.name || ""}
+      </h2>
+      <div style={{ fontSize:mobile?17:18, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:16 }}>
+        ${price.toFixed(2)}
+      </div>
+      <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:20 }}>
+        <div style={{ display:"flex", alignItems:"center", gap:10, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"6px 12px" }}>
+          <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>−</button>
+          <span style={{ fontSize:14, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:16, textAlign:"center" }}>{qty}</span>
+          <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>+</button>
+        </div>
+        <button onClick={()=>onAdd(p)} style={{
+          flex:1, padding:"12px", fontSize:14, fontFamily:"'Nunito',sans-serif",
+          fontWeight:700, borderRadius:50, cursor:"pointer",
+          background: inCart ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`,
+          color: inCart ? HOT : WHITE,
+          border: inCart ? `1.5px solid ${HOT}` : "none",
+        }}>
+          {inCart ? "✓ In Cart" : "Add To Cart"}
+        </button>
+      </div>
+      {p.desc ? (
+        <p style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, margin:"0 0 14px" }}>
+          {p.desc}
+        </p>
+      ) : null}
+      {(p.bullets?.length > 0) ? (
+        <ul style={{ listStyle:"none", padding:0, margin:0 }}>
+          {p.bullets.map((b,i) => (
+            <li key={i} style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:6, display:"flex", gap:8 }}>
+              <span style={{ color:HOT, flexShrink:0 }}>·</span>{b}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+
   return (
     <div style={{ background:WHITE, paddingBottom:40 }}>
-
-      {/* Back button */}
       <button onClick={onBack} style={{
         display:"flex", alignItems:"center", gap:6,
         background:"none", border:`1.5px solid ${BORDER}`,
-        borderRadius:50, padding:"8px 16px", marginBottom:24,
+        borderRadius:50, padding:"8px 16px", marginBottom:20,
         fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
         color:DARK, cursor:"pointer",
-      }}>
-        ← Back
-      </button>
+      }}>← Back</button>
 
-      {/* Side-by-side layout */}
-      <div style={{ display:"flex", gap:24, alignItems:"flex-start" }}>
-
-        {/* ── LEFT: info ── */}
-        <div style={{ flex:1, minWidth:0 }}>
-
-          {/* Name */}
-          <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:22, fontWeight:700, fontStyle:"italic", color:HOT, margin:"0 0 8px", lineHeight:1.2 }}>
-            {p.fullName || p.name || ""}
-          </h2>
-
-          {/* Price */}
-          <div style={{ fontSize:18, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20 }}>
-            ${price.toFixed(2)}
-          </div>
-
-          {/* Qty + Add to Cart */}
-          <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:24 }}>
-            <div style={{ display:"flex", alignItems:"center", gap:10, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"6px 12px" }}>
-              <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>−</button>
-              <span style={{ fontSize:14, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:16, textAlign:"center" }}>{qty}</span>
-              <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>+</button>
-            </div>
-            <button onClick={()=>onAdd(p)} style={{
-              flex:1, padding:"11px", fontSize:13, fontFamily:"'Nunito',sans-serif",
-              fontWeight:700, borderRadius:50, cursor:"pointer",
-              background: inCart ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`,
-              color: inCart ? HOT : WHITE,
-              border: inCart ? `1.5px solid ${HOT}` : "none",
-            }}>
-              {inCart ? "✓ In Cart" : "Add To Cart"}
-            </button>
-          </div>
-
-          {/* Description */}
-          {p.desc ? (
-            <p style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, margin:"0 0 14px" }}>
-              {p.desc}
-            </p>
-          ) : null}
-
-          {/* Bullets */}
-          {(p.bullets?.length > 0) ? (
-            <ul style={{ listStyle:"none", padding:0, margin:0 }}>
-              {p.bullets.map((b,i) => (
-                <li key={i} style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:6, display:"flex", gap:8 }}>
-                  <span style={{ color:HOT, flexShrink:0 }}>·</span>{b}
-                </li>
-              ))}
-            </ul>
-          ) : null}
+      {mobile ? (
+        /* ── MOBILE: image on top, info below ── */
+        <div>
+          <div style={{ marginBottom:20 }}>{ImageCarousel}</div>
+          {ProductInfo}
         </div>
-
-        {/* ── RIGHT: image + thumbnails ── */}
-        <div style={{ display:"flex", gap:8, flexShrink:0, width:"45%" }}>
-
-          {/* Main image */}
-          <div style={{ flex:1, position:"relative", aspectRatio:"1/1", background:SOFT, borderRadius:12, overflow:"hidden" }}>
-            {src ? (
-              <img src={src} alt={p.name || ""}
-                style={{ width:"100%", height:"100%", objectFit:"contain", padding:12, boxSizing:"border-box", display:"block" }}
-              />
-            ) : (
-              <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}>🎀</div>
-            )}
-            {total > 1 && (
-              <>
-                <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{
-                  position:"absolute", left:6, top:"50%", transform:"translateY(-50%)",
-                  background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
-                  width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
-                  display:"flex", alignItems:"center", justifyContent:"center",
-                  boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
-                }}>‹</button>
-                <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{
-                  position:"absolute", right:6, top:"50%", transform:"translateY(-50%)",
-                  background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
-                  width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
-                  display:"flex", alignItems:"center", justifyContent:"center",
-                  boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
-                }}>›</button>
-              </>
-            )}
-          </div>
-
-          {/* Thumbnail strip (vertical, right of image) */}
-          {total > 1 && (
-            <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
-              {imgs.map((url,i) => (
-                <div key={i} onClick={()=>setImgIdx(i)} style={{
-                  width:52, height:52, borderRadius:8, overflow:"hidden",
-                  border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
-                  background:SOFT, cursor:"pointer", flexShrink:0,
-                }}>
-                  <img src={url} alt="" style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }} />
-                </div>
-              ))}
-            </div>
-          )}
+      ) : (
+        /* ── DESKTOP: info left, image right ── */
+        <div style={{ display:"flex", gap:24, alignItems:"flex-start" }}>
+          {ProductInfo}
+          <div style={{ flexShrink:0, width:"45%" }}>{ImageCarousel}</div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
