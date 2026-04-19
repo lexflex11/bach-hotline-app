@@ -1101,21 +1101,21 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
         </div>
 
         {/* ── Make a Reservation ── */}
-        <div style={{ background:"#1a1a1a", borderRadius:20, padding:"20px 18px", marginBottom:14 }}>
-          <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:WHITE, marginBottom:4 }}>
+        <div style={{ background:WHITE, borderRadius:20, padding:"20px 18px", marginBottom:14, border:`1.5px solid ${BORDER}` }}>
+          <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, marginBottom:4 }}>
             Book Your Table
           </div>
-          <div style={{ fontSize:12, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:16 }}>
+          <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:16, opacity:0.7 }}>
             {groupSize} guests{date ? ` · ${date}` : ""}: secure your spot before it fills up
           </div>
-          <div style={{ background:"#2a2a2a", borderRadius:14, padding:"14px", marginBottom:14 }}>
-            <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:WHITE, marginBottom:4 }}>
+          <div style={{ background:SOFT, borderRadius:14, padding:"14px", marginBottom:14, border:`1px solid ${BORDER}` }}>
+            <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, marginBottom:4 }}>
               {r.name}
             </div>
-            <div style={{ fontSize:12, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:12 }}>
+            <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:12, opacity:0.7 }}>
               {r.cuisine} · {r.priceRange} · Up to {r.groupMax} guests
             </div>
-            <div style={{ fontSize:11, color:"#888", fontFamily:"'Nunito',sans-serif", lineHeight:1.5 }}>
+            <div style={{ fontSize:11, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.5, opacity:0.7 }}>
               {r.desc.slice(0,100)}...
             </div>
           </div>
