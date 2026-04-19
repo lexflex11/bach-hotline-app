@@ -830,8 +830,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-queen-playing-card", type:"plate", name:"Queen Playing Card Plates",
-    desc:"8 ct · 6\" x 9\"", price:"$12.50",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/690d25d9dd14c753a31b50be/1767900692108/Ebook+Thumbnail+with+Video+-+2025-05-18T120552.586.png?format=1500w",
+    desc:"Deal up some love with these queen playing card plates! With bold red and pink details, they're perfect for galentine's brunch or a whimsical party.",
+    bullets:["Set of 8","Dimensions: 6\"w x 9\"l","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.50",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c22b0dcc-dc8b-49ee-8b6b-c1c641cc7102/Ebook+Thumbnail+with+Video+-+2025-05-18T120552.586.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/7d40bae2-3e88-4210-a646-34d16eb3c69a/Ebook+Thumbnail+with+Video+-+2025-05-18T120610.360.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c22b0dcc-dc8b-49ee-8b6b-c1c641cc7102/Ebook+Thumbnail+with+Video+-+2025-05-18T120552.586.png?format=500w",
     bg:"#E8112D", accent:"#FFB5C2",
     tags:["red","scarlett","hotpink","blush","baby-pink","pink","black","white","gold","crystal-red"],
   },
