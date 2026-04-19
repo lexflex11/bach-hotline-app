@@ -3531,7 +3531,7 @@ export const PARTY_ACCESSORIES = [
     price:"$23.00",
     desc:"Ready to shine? This disco ball headband is the perfect party starter for the bride tribe, adding a fun, glittery vibe to your celebration!",
     bullets:["Set of 1","Dimensions: 4.5\"w x 7.5\"l","One size fits all"],
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767935005862/Ebook+Thumbnail+with+Video+-+2025-02-16T151446.198.png?format=500w",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0b21511c-1176-4e40-a303-7e680fbb3c5f/Ebook+Thumbnail+with+Video+-+2025-02-16T151446.198.png?format=500w",
     bg:"#F4A7B9", accent:"#E91E8C",
     etsyUrl:"https://bachhotline.squarespace.com/party-accessories/p/disco-stars-headband",
   },
