@@ -124,11 +124,11 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
 
   /* ── Mobile image carousel (arrows inside) ── */
   const MobileCarousel = (
-    <div style={{ position:"relative", aspectRatio:"1/1", background:SOFT, borderRadius:12, overflow:"hidden", marginBottom:6 }}>
+    <div style={{ position:"relative", aspectRatio:"1/1", background:WHITE, borderRadius:12, overflow:"hidden", marginBottom:6 }}>
       {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", padding:10, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}>🎀</div>}
       {total > 1 && <>
-        <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ position:"absolute", left:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", fontSize:18, color:DARK, display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>‹</button>
-        <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ position:"absolute", right:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", fontSize:18, color:DARK, display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>›</button>
+        <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ position:"absolute", left:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", fontSize:18, color:"#000", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>‹</button>
+        <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ position:"absolute", right:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", fontSize:18, color:"#000", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>›</button>
       </>}
     </div>
   );
@@ -137,18 +137,18 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
   const DesktopGallery = (
     <div style={{ display:"flex", alignItems:"center", gap:8 }}>
       {/* Prev arrow */}
-      <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:28, color:DARK, padding:"0 4px", opacity: total>1?1:0.2, flexShrink:0 }}>‹</button>
+      <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:28, color:"#000", padding:"0 4px", opacity: total>1?1:0.2, flexShrink:0 }}>‹</button>
       {/* Main image */}
-      <div style={{ flex:1, aspectRatio:"1/1", background:SOFT, borderRadius:16, overflow:"hidden" }}>
+      <div style={{ flex:1, aspectRatio:"1/1", background:WHITE, borderRadius:16, overflow:"hidden" }}>
         {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", padding:20, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:52 }}>🎀</div>}
       </div>
       {/* Next arrow */}
-      <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:28, color:DARK, padding:"0 4px", opacity: total>1?1:0.2, flexShrink:0 }}>›</button>
+      <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:28, color:"#000", padding:"0 4px", opacity: total>1?1:0.2, flexShrink:0 }}>›</button>
       {/* Thumbnail column */}
       {total > 1 && (
         <div style={{ display:"flex", flexDirection:"column", gap:8, flexShrink:0 }}>
           {imgs.map((url,i) => (
-            <div key={i} onClick={()=>setImgIdx(i)} style={{ width:64, height:64, borderRadius:10, overflow:"hidden", border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`, background:SOFT, cursor:"pointer" }}>
+            <div key={i} onClick={()=>setImgIdx(i)} style={{ width:64, height:64, borderRadius:10, overflow:"hidden", border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`, background:WHITE, cursor:"pointer" }}>
               <img src={url} alt="" style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }}/>
             </div>
           ))}
