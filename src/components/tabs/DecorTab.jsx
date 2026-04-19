@@ -794,8 +794,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-gemini", type:"plate", name:"Gemini Plates",
-    desc:"8 ct · 10\" x 10\"", price:"$12.66",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f18f71b8-38ce-4f55-b260-64ca5c3038e4/Ebook+Thumbnail+with+Video+-+2025-06-19T144433.522.png",
+    desc:"Serve cosmic vibes and star powered style with these gemini paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
+    bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.66",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f18f71b8-38ce-4f55-b260-64ca5c3038e4/Ebook+Thumbnail+with+Video+-+2025-06-19T144433.522.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/89e370db-910d-4d6e-b71e-b8ded0b120cc/Ebook+Thumbnail+with+Video+-+2025-06-19T144611.369.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f18f71b8-38ce-4f55-b260-64ca5c3038e4/Ebook+Thumbnail+with+Video+-+2025-06-19T144433.522.png?format=500w",
     bg:"#FFE800", accent:"#9C27B0",
     tags:["yellow","lemonade","goldenrod","lavender","purple","blossom","peri","gold","champagne","white","silver"],
   },
