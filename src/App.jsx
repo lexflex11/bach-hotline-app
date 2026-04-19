@@ -61,7 +61,7 @@ export default function App() {
     <div style={{ minHeight:"100vh", background:PAGE, color:DARK, fontFamily:"'Playfair Display',Georgia,serif" }}>
       <div style={{ background:WHITE, position:"sticky", top:0, zIndex:100, boxShadow:`0 2px 8px rgba(0,0,0,0.08)` }}>
         {/* ── HEADER ROW ── */}
-        <div style={{ padding:"0 16px", display:"flex", alignItems:"center", justifyContent:"space-between", maxWidth:900, margin:"0 auto" }}>
+        <div style={{ padding:"0 16px", display:"flex", alignItems:"center", justifyContent:"space-between", maxWidth:1200, margin:"0 auto" }}>
           <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:110, width:"auto", objectFit:"contain" }} />
           <div style={{ display:"flex", gap:16, alignItems:"center" }}>
             {user.email && (
@@ -91,7 +91,7 @@ export default function App() {
           </div>
         </div>
         {/* ── TAB NAV ── */}
-        <div style={{ display:"flex", maxWidth:900, margin:"0 auto", borderTop:`1px solid ${BORDER}` }}>
+        <div style={{ display:"flex", maxWidth:1200, margin:"0 auto", borderTop:`1px solid ${BORDER}` }}>
           {[
             { id:"home",  label:"Home"    },
             { id:"shop",  label:"Shop"    },
@@ -118,7 +118,7 @@ export default function App() {
           Group of {groupSize} · {user.name.split(" ")[0]}
         </div>
       </div>
-      <div style={{ padding:"16px 14px 32px", background:PAGE, maxWidth:900, margin:"0 auto" }}>
+      <div style={{ padding:"16px 14px 32px", background:PAGE, maxWidth:1200, margin:"0 auto" }}>
         {tab==="home"    && <HomeTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} user={user} />}
         {tab==="flights" && <FlightsTab groupSize={groupSize} />}
         {tab==="stays"   && <StaysTab groupSize={groupSize} />}
