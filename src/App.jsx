@@ -62,7 +62,7 @@ export default function App() {
       <div style={{ background:WHITE, position:"sticky", top:0, zIndex:100, boxShadow:`0 2px 8px rgba(0,0,0,0.08)` }}>
         {/* ── HEADER ROW ── */}
         <div style={{ padding:"0 16px", display:"flex", alignItems:"center", justifyContent:"space-between", maxWidth:1200, margin:"0 auto" }}>
-          <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:110, width:"auto", objectFit:"contain" }} />
+          <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:127, width:"auto", objectFit:"contain" }} />
           <div style={{ display:"flex", gap:16, alignItems:"center" }}>
             {user.email && (
               <div onClick={()=>setTab("alerts")} style={{ position:"relative", cursor:"pointer", display:"flex", alignItems:"center" }}>
