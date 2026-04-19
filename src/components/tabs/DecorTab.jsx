@@ -780,8 +780,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-cancer", type:"plate", name:"Cancer Plates",
-    desc:"8 ct · 10\" x 10\"", price:"$12.66",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0a329598-a458-40ab-b0be-20d735e68542/Ebook+Thumbnail+with+Video+-+2025-06-19T140359.246.png",
+    desc:"Serve cosmic vibes and star powered style with these cancer paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
+    bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.66",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0a329598-a458-40ab-b0be-20d735e68542/Ebook+Thumbnail+with+Video+-+2025-06-19T140359.246.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/68c6354c-cf46-46d6-a35e-12fb0f81ee48/Ebook+Thumbnail+with+Video+-+2025-06-19T134652.576.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0a329598-a458-40ab-b0be-20d735e68542/Ebook+Thumbnail+with+Video+-+2025-06-19T140359.246.png?format=500w",
     bg:"#B8D8E8", accent:"#CE93D8",
     tags:["baby-blue","monet","sea-glass","seafoam","lavender","blossom","silver","white","sugar","champagne","peri"],
   },
