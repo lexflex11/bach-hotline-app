@@ -66,18 +66,34 @@ const DECOR_PRODUCTS = [...TABLEWARE, ...PARTY_ACCESSORIES].map(p => {
   };
 });
 
+// ─── Pink corner bracket decoration ──────────────────────────────────────────
+const CORNER_SIZE = 18;
+const CORNER_W    = 3;
+const CORNER_OFF  = 6;
+const cornerBase  = { position:"absolute", width:CORNER_SIZE, height:CORNER_SIZE, pointerEvents:"none" };
+function TileCorners() {
+  const c = HOT;
+  return (<>
+    <div style={{ ...cornerBase, top:CORNER_OFF, left:CORNER_OFF,  borderTop:`${CORNER_W}px solid ${c}`, borderLeft:`${CORNER_W}px solid ${c}`,  borderRadius:"3px 0 0 0" }} />
+    <div style={{ ...cornerBase, top:CORNER_OFF, right:CORNER_OFF, borderTop:`${CORNER_W}px solid ${c}`, borderRight:`${CORNER_W}px solid ${c}`, borderRadius:"0 3px 0 0" }} />
+    <div style={{ ...cornerBase, bottom:CORNER_OFF, left:CORNER_OFF,  borderBottom:`${CORNER_W}px solid ${c}`, borderLeft:`${CORNER_W}px solid ${c}`,  borderRadius:"0 0 0 3px" }} />
+    <div style={{ ...cornerBase, bottom:CORNER_OFF, right:CORNER_OFF, borderBottom:`${CORNER_W}px solid ${c}`, borderRight:`${CORNER_W}px solid ${c}`, borderRadius:"0 0 3px 0" }} />
+  </>);
+}
+
 // ─── Product image tile ───────────────────────────────────────────────────────
 function ProductTile({ p, onView }) {
   const [loaded, setLoaded] = useState(false);
   const [err,    setErr]    = useState(false);
   return (
     <div onClick={onView} style={{ cursor:"pointer", textAlign:"center" }}>
-      {/* Image box */}
+      {/* Image box with pink corner brackets */}
       <div style={{
         position:"relative", width:"100%", aspectRatio:"1/1",
-        background:WHITE,
-        marginBottom:8,
+        background:"#FDF5F8",
+        marginBottom:10,
       }}>
+        <TileCorners />
         {!err && p.image ? (
           <img
             src={p.image} alt={p.name}
@@ -85,19 +101,19 @@ function ProductTile({ p, onView }) {
             onError={()=>setErr(true)}
             style={{
               width:"100%", height:"100%", objectFit:"contain",
-              padding:8, boxSizing:"border-box",
+              padding:12, boxSizing:"border-box",
               opacity:loaded?1:0, transition:"opacity 0.3s",
-              display:"block", imageRendering:"auto",
+              display:"block",
             }}
           />
         ) : (
-          <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:32,color:"#f4a0c0"}}>
+          <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,color:"#f4a0c0"}}>
             🎀
           </div>
         )}
       </div>
       {/* Name + Price */}
-      <div style={{fontSize:12,fontWeight:500,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.3,marginBottom:3}}>
+      <div style={{fontSize:13,fontWeight:400,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.3,marginBottom:3}}>
         {p.name}
       </div>
       <div style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>
@@ -120,46 +136,34 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
   const src   = imgs[imgIdx] || "";
   const price = +(p.price) || 0;
 
-  /* ── Shared: image carousel ── */
-  const ImageCarousel = (
-    <div style={{ display:"flex", gap:8, width:"100%" }}>
-      <div style={{ flex:1, position:"relative", aspectRatio:"1/1", background:SOFT, borderRadius:12, overflow:"hidden" }}>
-        {src ? (
-          <img src={src} alt={p.name || ""}
-            style={{ width:"100%", height:"100%", objectFit:"contain", padding:mobile?10:12, boxSizing:"border-box", display:"block" }}
-          />
-        ) : (
-          <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}>🎀</div>
-        )}
-        {total > 1 && (
-          <>
-            <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{
-              position:"absolute", left:6, top:"50%", transform:"translateY(-50%)",
-              background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
-              width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
-              display:"flex", alignItems:"center", justifyContent:"center",
-              boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
-            }}>‹</button>
-            <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{
-              position:"absolute", right:6, top:"50%", transform:"translateY(-50%)",
-              background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%",
-              width:30, height:30, cursor:"pointer", fontSize:16, color:DARK,
-              display:"flex", alignItems:"center", justifyContent:"center",
-              boxShadow:"0 1px 4px rgba(0,0,0,0.12)",
-            }}>›</button>
-          </>
-        )}
+  /* ── Mobile image carousel (arrows inside) ── */
+  const MobileCarousel = (
+    <div style={{ position:"relative", aspectRatio:"1/1", background:SOFT, borderRadius:12, overflow:"hidden", marginBottom:6 }}>
+      {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", padding:10, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}>🎀</div>}
+      {total > 1 && <>
+        <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ position:"absolute", left:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", fontSize:18, color:DARK, display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>‹</button>
+        <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ position:"absolute", right:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", fontSize:18, color:DARK, display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>›</button>
+      </>}
+    </div>
+  );
+
+  /* ── Desktop image gallery: arrow | image | arrow | thumbnails ── */
+  const DesktopGallery = (
+    <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+      {/* Prev arrow */}
+      <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:28, color:DARK, padding:"0 4px", opacity: total>1?1:0.2, flexShrink:0 }}>‹</button>
+      {/* Main image */}
+      <div style={{ flex:1, aspectRatio:"1/1", background:SOFT, borderRadius:16, overflow:"hidden" }}>
+        {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", padding:20, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:52 }}>🎀</div>}
       </div>
-      {/* Vertical thumbnail strip */}
+      {/* Next arrow */}
+      <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:28, color:DARK, padding:"0 4px", opacity: total>1?1:0.2, flexShrink:0 }}>›</button>
+      {/* Thumbnail column */}
       {total > 1 && (
-        <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+        <div style={{ display:"flex", flexDirection:"column", gap:8, flexShrink:0 }}>
           {imgs.map((url,i) => (
-            <div key={i} onClick={()=>setImgIdx(i)} style={{
-              width:mobile?48:52, height:mobile?48:52, borderRadius:8, overflow:"hidden",
-              border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
-              background:SOFT, cursor:"pointer", flexShrink:0,
-            }}>
-              <img src={url} alt="" style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }} />
+            <div key={i} onClick={()=>setImgIdx(i)} style={{ width:64, height:64, borderRadius:10, overflow:"hidden", border: i===imgIdx ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`, background:SOFT, cursor:"pointer" }}>
+              <img src={url} alt="" style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }}/>
             </div>
           ))}
         </div>
@@ -167,40 +171,35 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
     </div>
   );
 
-  /* ── Shared: product info ── */
-  const ProductInfo = (
+  /* ── Product info panel ── */
+  const InfoPanel = (
     <div style={{ flex:1, minWidth:0 }}>
-      <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:mobile?20:22, fontWeight:700, fontStyle:"italic", color:HOT, margin:"0 0 6px", lineHeight:1.2 }}>
+      <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:mobile?22:30, fontWeight:700, fontStyle:"italic", color:HOT, margin:"0 0 10px", lineHeight:1.2 }}>
         {p.fullName || p.name || ""}
       </h2>
-      <div style={{ fontSize:mobile?17:18, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:16 }}>
+      <div style={{ fontSize:mobile?17:20, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
         ${price.toFixed(2)}
       </div>
-      <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:20 }}>
-        <div style={{ display:"flex", alignItems:"center", gap:10, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"6px 12px" }}>
-          <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>−</button>
-          <span style={{ fontSize:14, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:16, textAlign:"center" }}>{qty}</span>
-          <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:DARK, lineHeight:1, padding:0 }}>+</button>
+      <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:28, paddingBottom:28, borderBottom:`1px solid ${BORDER}` }}>
+        <div style={{ display:"flex", alignItems:"center", gap:14, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"8px 16px" }}>
+          <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:20, color:DARK, lineHeight:1, padding:0 }}>−</button>
+          <span style={{ fontSize:15, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{qty}</span>
+          <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:20, color:DARK, lineHeight:1, padding:0 }}>+</button>
         </div>
         <button onClick={()=>onAdd(p)} style={{
-          flex:1, padding:"12px", fontSize:14, fontFamily:"'Nunito',sans-serif",
+          flex:1, padding:mobile?"12px":"14px", fontSize:mobile?14:16, fontFamily:"'Nunito',sans-serif",
           fontWeight:700, borderRadius:50, cursor:"pointer",
           background: inCart ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`,
-          color: inCart ? HOT : WHITE,
-          border: inCart ? `1.5px solid ${HOT}` : "none",
+          color: inCart ? HOT : WHITE, border: inCart ? `1.5px solid ${HOT}` : "none",
         }}>
           {inCart ? "✓ In Cart" : "Add To Cart"}
         </button>
       </div>
-      {p.desc ? (
-        <p style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, margin:"0 0 14px" }}>
-          {p.desc}
-        </p>
-      ) : null}
+      {p.desc ? <p style={{ fontSize:mobile?13:15, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>{p.desc}</p> : null}
       {(p.bullets?.length > 0) ? (
         <ul style={{ listStyle:"none", padding:0, margin:0 }}>
           {p.bullets.map((b,i) => (
-            <li key={i} style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:6, display:"flex", gap:8 }}>
+            <li key={i} style={{ fontSize:mobile?13:14, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, marginBottom:8, display:"flex", gap:10 }}>
               <span style={{ color:HOT, flexShrink:0 }}>·</span>{b}
             </li>
           ))}
@@ -222,14 +221,14 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
       {mobile ? (
         /* ── MOBILE: image on top, info below ── */
         <div>
-          <div style={{ marginBottom:20 }}>{ImageCarousel}</div>
-          {ProductInfo}
+          <div style={{ marginBottom:20 }}>{MobileCarousel}</div>
+          {InfoPanel}
         </div>
       ) : (
-        /* ── DESKTOP: info left, image right ── */
-        <div style={{ display:"flex", gap:24, alignItems:"flex-start" }}>
-          {ProductInfo}
-          <div style={{ flexShrink:0, width:"45%" }}>{ImageCarousel}</div>
+        /* ── DESKTOP: info left, gallery right ── */
+        <div style={{ display:"flex", gap:32, alignItems:"flex-start" }}>
+          {InfoPanel}
+          <div style={{ flexShrink:0, width:"52%" }}>{DesktopGallery}</div>
         </div>
       )}
     </div>
@@ -346,7 +345,7 @@ export default function ShopTab({ cart, setCart }) {
         {/* ── Right: 4-column product grid ── */}
         <div style={{flex:1,minWidth:0}}>
           {filtered.length > 0 ? (
-            <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"24px 14px"}}>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"20px 12px"}}>
               {filtered.map(p=>(
                 <ProductTile key={p.id} p={p} onView={()=>setSelected(p)}/>
               ))}
