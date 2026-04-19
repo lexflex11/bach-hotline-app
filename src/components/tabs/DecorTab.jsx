@@ -900,8 +900,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-heartbeat-gang", type:"plate", name:"Heartbeat Gang Plates",
-    desc:"8 ct · 7.5\" x 7.5\"", price:"$12.76",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/110895ce-549d-4ade-9670-ebc2756e8939/Ebook+Thumbnail+with+Video+-+2025-11-06T162327.491.png",
+    desc:"For the girls who bring the glam and the giggles these heartbeat gang plates are the cutest sidekick to your sips and sweets!",
+    bullets:["Set of 8","Dimensions: 7.5\"w x 7.5\"l","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.76",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/110895ce-549d-4ade-9670-ebc2756e8939/Ebook+Thumbnail+with+Video+-+2025-11-06T162327.491.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/94287b5f-12bf-42a4-a7f5-f04ac8c6618e/Ebook+Thumbnail+with+Video+-+2025-11-06T162341.407.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/110895ce-549d-4ade-9670-ebc2756e8939/Ebook+Thumbnail+with+Video+-+2025-11-06T162327.491.png?format=500w",
     bg:"#E8112D", accent:"#FFB5C2",
     tags:["red","scarlett","hotpink","blush","baby-pink","coral","pink","white","gold","champagne"],
   },
