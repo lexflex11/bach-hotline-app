@@ -61,6 +61,7 @@ const DECOR_PRODUCTS = [...TABLEWARE, ...PARTY_ACCESSORIES].map(p => {
   url:       p.etsyUrl || "",
   desc:      p.desc || "",
   bullets:   p.bullets || [],
+  variants:  p.variants || [],
   isDigital: false,
   bestseller:false,
   };
@@ -109,8 +110,9 @@ function ProductTile({ p, onView }) {
 
 // ─── Product Detail Page (inline, no fixed overlay) ──────────────────────────
 function ProductDetail({ p, onBack, onAdd, inCart }) {
-  const [imgIdx, setImgIdx] = useState(0);
-  const [qty,    setQty]    = useState(1);
+  const [imgIdx,   setImgIdx]   = useState(0);
+  const [qty,      setQty]      = useState(1);
+  const [variantI, setVariantI] = useState(0);
   const mobile = useIsMobile();
 
   if (!p) return null;
@@ -164,6 +166,24 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
       <div style={{ fontSize:mobile?17:20, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
         ${price.toFixed(2)}
       </div>
+      {p.variants?.length > 0 && (
+        <div style={{ marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
+          <div style={{ fontSize:12, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, marginBottom:10, textTransform:"uppercase", letterSpacing:"0.08em" }}>
+            Color: <span style={{ color:HOT }}>{p.variants[variantI].label}</span>
+          </div>
+          <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
+            {p.variants.map((v,i) => (
+              <button key={i} onClick={()=>{ setVariantI(i); setImgIdx(v.imgIdx ?? i); }} style={{
+                padding:"7px 14px", borderRadius:50, fontSize:12, fontWeight:700,
+                fontFamily:"'Nunito',sans-serif", cursor:"pointer",
+                background: i===variantI ? `linear-gradient(135deg,#f472b0,${HOT})` : WHITE,
+                color: i===variantI ? WHITE : DARK,
+                border: i===variantI ? "none" : `1.5px solid ${BORDER}`,
+              }}>{v.label}</button>
+            ))}
+          </div>
+        </div>
+      )}
       <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:28, paddingBottom:28, borderBottom:`1px solid ${BORDER}` }}>
         <div style={{ display:"flex", alignItems:"center", gap:14, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"8px 16px" }}>
           <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:20, color:DARK, lineHeight:1, padding:0 }}>−</button>
