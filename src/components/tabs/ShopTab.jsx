@@ -188,10 +188,10 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
         </div>
       )}
       <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:28, paddingBottom:28, borderBottom:`1px solid ${BORDER}` }}>
-        <div style={{ display:"flex", alignItems:"center", gap:14, border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"8px 16px" }}>
-          <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:20, color:DARK, lineHeight:1, padding:0 }}>−</button>
-          <span style={{ fontSize:15, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{qty}</span>
-          <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:20, color:DARK, lineHeight:1, padding:0 }}>+</button>
+        <div style={{ display:"flex", alignItems:"center", gap:10, border:`1px solid ${BORDER}`, borderRadius:50, padding:"4px 12px" }}>
+          <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:DARK, lineHeight:1, padding:0 }}>−</button>
+          <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:16, textAlign:"center" }}>{qty}</span>
+          <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:DARK, lineHeight:1, padding:0 }}>+</button>
         </div>
         <button onClick={()=>onAdd(p)} style={{
           flex:1, padding:mobile?"12px":"14px", fontSize:mobile?14:16, fontFamily:"'Nunito',sans-serif",
