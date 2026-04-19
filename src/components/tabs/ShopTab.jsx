@@ -98,7 +98,7 @@ function ProductTile({ p, onView }) {
         )}
       </div>
       {/* Name + Price */}
-      <div style={{fontSize:13,fontWeight:400,color:DARK,fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:3}}>
+      <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:3}}>
         {p.name}
       </div>
       <div style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>
@@ -160,7 +160,7 @@ function ProductDetail({ p, onBack, onAdd, inCart }) {
   /* ── Product info panel ── */
   const InfoPanel = (
     <div style={{ flex:1, minWidth:0 }}>
-      <h2 style={{ fontFamily:"'Acme',sans-serif", fontSize:mobile?22:30, fontWeight:400, fontStyle:"normal", color:HOT, margin:"0 0 10px", lineHeight:1.2 }}>
+      <h2 style={{ fontFamily:"'Acme',sans-serif", fontSize:mobile?22:30, fontWeight:400, fontStyle:"normal", color:"#f496c3", margin:"0 0 10px", lineHeight:1.2 }}>
         {p.fullName || p.name || ""}
       </h2>
       <div style={{ fontSize:mobile?17:20, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
