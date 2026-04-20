@@ -1925,8 +1925,14 @@ export const TABLEWARE = [
   },
   {
     id:"cup-black-suit-potion", type:"cup", name:"Black Suit Potion Cups",
-    desc:"12 ct · 12 oz", price:"$13.80",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/679ba45c6c9a8e41d1c9c8fb/1767901711078/Ebook+Thumbnail+with+Video+-+2025-01-30T101320.249.png?format=1500w",
+    desc:"Serve up your spooky potions in style with our lapel paper party cups! Inspired by Wednesday Addams.",
+    bullets:["Set of 8","12oz capacity","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$13.80",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/145fbae7-7c5a-4647-9ffe-54ac0c7d1b17/Ebook+Thumbnail+with+Video+-+2025-01-30T101320.249.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/8767fab3-93f2-4ea5-ba69-13eb36da199e/Ebook+Thumbnail+with+Video+-+2025-01-27T144933.540.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/145fbae7-7c5a-4647-9ffe-54ac0c7d1b17/Ebook+Thumbnail+with+Video+-+2025-01-30T101320.249.png?format=500w",
     bg:"#1A1A1A", accent:"#9C27B0",
     tags:["black","purple","plum","crystal-purple","navy","metallic-midnight-blue","silver","gray-smoke","white","crystal-clear"],
   },
