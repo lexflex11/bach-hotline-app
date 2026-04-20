@@ -1912,8 +1912,14 @@ export const TABLEWARE = [
   // ── Cups ─────────────────────────────────────────────────────────────────────
   {
     id:"cup-pink-lemonade", type:"cup", name:"Pink Lemonade Cups",
-    desc:"12 ct · 12 oz", price:"$9.99",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d391d853-11ef-4738-bec4-7ec8c077ece7/Ebook+Thumbnail+with+Video-378.png",
+    desc:"Sip happy with our pink lemonade cups. Bright, bold, and full of fun.",
+    bullets:["Set of 8","12oz capacity","Dimensions: 4.5\"l x 3.5\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$9.99",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d391d853-11ef-4738-bec4-7ec8c077ece7/Ebook+Thumbnail+with+Video-378.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/17e5d03e-f197-46b8-8f7a-adb603f921aa/Ebook+Thumbnail+with+Video-377.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d391d853-11ef-4738-bec4-7ec8c077ece7/Ebook+Thumbnail+with+Video-378.png?format=500w",
     bg:"#FFB5C2", accent:"#FFE800",
     tags:["hotpink","blush","baby-pink","pink","yellow","lemonade","coral","taffy","white","sugar","champagne"],
   },
