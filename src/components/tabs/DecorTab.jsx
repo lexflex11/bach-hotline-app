@@ -745,8 +745,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-sagittarius", type:"plate", name:"Sagittarius Plates",
-    desc:"8 ct · 10\" x 10\"", price:"$12.66",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/bb8685aa-d811-4507-a5d4-c4c2bcf294ac/Ebook+Thumbnail+with+Video+-+2025-06-19T153901.572.png",
+    desc:"Serve cosmic vibes and star powered style with these sagittarius paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
+    bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.66",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/bb8685aa-d811-4507-a5d4-c4c2bcf294ac/Ebook+Thumbnail+with+Video+-+2025-06-19T153901.572.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/925c7626-ab94-4cf4-9296-d8d598bae575/Ebook+Thumbnail+with+Video+-+2025-06-20T142921.861.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/bb8685aa-d811-4507-a5d4-c4c2bcf294ac/Ebook+Thumbnail+with+Video+-+2025-06-19T153901.572.png?format=500w",
     bg:"#FF6B1A", accent:"#9C27B0",
     tags:["orange","burnt-orange","aloha","coral","purple","plum","gold","champagne","white","red","scarlett"],
   },
