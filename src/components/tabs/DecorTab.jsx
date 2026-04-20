@@ -998,8 +998,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-retro-blooms", type:"plate", name:"Retro Blooms Plates",
-    desc:"8 ct · 9\" x 9\"", price:"$15.78",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/690cc785dc1bc40ece1c8483/1767901099850/Ebook+Thumbnail+with+Video+-+2025-11-06T112025.926.png?format=1500w",
+    desc:"Flower power meets party power! These retro floral decagon plates add a funky, fresh vibe to your table.",
+    bullets:["Set of 8","Dimensions: 9\"l x 9\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$15.78",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/06bb4244-9570-4308-b725-d9aa367d440e/Ebook+Thumbnail+with+Video+-+2025-11-06T112025.926.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f65d78d8-1aa0-4545-84d6-1270c96f9c5b/Ebook+Thumbnail+with+Video+-+2025-11-06T112036.020.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/06bb4244-9570-4308-b725-d9aa367d440e/Ebook+Thumbnail+with+Video+-+2025-11-06T112025.926.png?format=500w",
     bg:"#FF9B7A", accent:"#4CAF50",
     tags:["orange","coral","burnt-orange","aloha","yellow","lemonade","green","lime-green","hotpink","taffy","turquoise"],
   },
