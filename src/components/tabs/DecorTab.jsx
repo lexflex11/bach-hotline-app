@@ -1998,8 +1998,14 @@ export const TABLEWARE = [
   },
   {
     id:"cup-palm-tree", type:"cup", name:"Palm Palm Tree Cups",
-    desc:"12 ct · 12 oz", price:"$11.00",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68b8efa9f5b31a653794883d/1767901988596/Ebook+Thumbnail+with+Video+-+2025-11-04T121323.219.png?format=1500w",
+    desc:"Palm trees and pretty pink? Yes, please! These cups are the perfect way to add instant vacay energy to your summer celebration.",
+    bullets:["Set of 10","9oz capacity","Dimensions: 4.5\"l x 3.5\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$11.00",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0461f780-782d-41ae-b2b0-d48e3909ac43/Ebook+Thumbnail+with+Video+-+2025-11-04T121323.219.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/bf80ebd0-cd07-4ee3-965a-76d2b3d06ce7/Ebook+Thumbnail+with+Video+-+2025-11-04T121340.847.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0461f780-782d-41ae-b2b0-d48e3909ac43/Ebook+Thumbnail+with+Video+-+2025-11-04T121323.219.png?format=500w",
     bg:"#29B6F6", accent:"#4CAF50",
     tags:["teal","turquoise","seafoam","sea-glass","lime-green","green","meadow","aloha","orange","coral","yellow","lemonade","hotpink","white"],
   },
