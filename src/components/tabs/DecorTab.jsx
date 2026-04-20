@@ -952,8 +952,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-disco-daisy-van", type:"plate", name:"Disco Daisy Van Plates",
-    desc:"8 ct · 9\" x 9\"", price:"$13.76",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/e2376bd5-0596-4e4d-baaa-916a498de57f/Ebook+Thumbnail+with+Video+-+2025-05-08T104844.492.png",
+    desc:"Let the good times roll with our disco daisy van paper plates! Designed like a vintage flower power van, these funky plates bring a retro vibe to any party.",
+    bullets:["Set of 8","Dimensions: 9\"w x 9\"l","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$13.76",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/e2376bd5-0596-4e4d-baaa-916a498de57f/Ebook+Thumbnail+with+Video+-+2025-05-08T104844.492.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/5b9e32ef-4463-4fda-a997-7cbd6ffdc4f5/Ebook+Thumbnail+with+Video+-+2025-05-19T165348.071.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/e2376bd5-0596-4e4d-baaa-916a498de57f/Ebook+Thumbnail+with+Video+-+2025-05-08T104844.492.png?format=500w",
     bg:"#FFE800", accent:"#E91E8C",
     tags:["yellow","lemonade","hotpink","orange","green","lime-green","blue","lavender","white","confetti","rainbow"],
   },
