@@ -939,8 +939,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-clam-shell", type:"plate", name:"Clam Shell Plates",
-    desc:"8 ct · 7.25\" x 7.25\"", price:"$13.56",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68488e361ef4b52dec057a41/1767900799147/Ebook+Thumbnail+with+Video+-+2025-06-07T180250.169.png?format=1500w",
+    desc:"Add ocean magic to your party with these clam shell paper plates for mermaid birthdays, beach picnics, or under the sea adventures! Cute, coastal, and totally Insta-worthy!",
+    bullets:["Set of 8","Dimensions: 7.25\"l x 7.25\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$13.56",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/733589e0-e937-4be1-a014-3a53bface8b5/Ebook+Thumbnail+with+Video+-+2025-06-07T180250.169.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a0bd61f4-582d-417a-9963-3bf003448ff9/Ebook+Thumbnail+with+Video+-+2025-06-07T180411.610.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/733589e0-e937-4be1-a014-3a53bface8b5/Ebook+Thumbnail+with+Video+-+2025-06-07T180250.169.png?format=500w",
     bg:"#A8D8D8", accent:"#FFD700",
     tags:["sea-glass","seafoam","teal","turquoise","baby-blue","monet","mint","champagne","gold","white","lace"],
   },
