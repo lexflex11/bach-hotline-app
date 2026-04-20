@@ -839,8 +839,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-aquarius", type:"plate", name:"Aquarius Plates",
-    desc:"8 ct · 10\" x 10\"", price:"$12.66",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f071f614-6a90-4346-bdbe-a806bfc89af5/Ebook+Thumbnail+with+Video+-+2025-06-19T141417.059.png",
+    desc:"Serve cosmic vibes and star powered style with these aquarius paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
+    bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.66",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f071f614-6a90-4346-bdbe-a806bfc89af5/Ebook+Thumbnail+with+Video+-+2025-06-19T141417.059.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/227a0547-989f-4f6c-9555-6ca4bcb6d992/Ebook+Thumbnail+with+Video+-+2025-06-19T141702.767.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f071f614-6a90-4346-bdbe-a806bfc89af5/Ebook+Thumbnail+with+Video+-+2025-06-19T141417.059.png?format=500w",
     bg:"#81D4FA", accent:"#0288D1",
     tags:["blue","baby-blue","monet","georgia","blue-slate","seafoam","teal","turquoise","sea-glass","navy","silver","white"],
   },
