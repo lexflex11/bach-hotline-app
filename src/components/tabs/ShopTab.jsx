@@ -300,6 +300,7 @@ export default function ShopTab({ cart, setCart }) {
   const [search,   setSearch]   = useState("");
   const [selected, setSelected] = useState(null);
   const [cartOpen, setCartOpen] = useState(false);
+  const mobile = useIsMobile();
 
   const inCart = id => cart.some(c=>c.id===id);
   const add    = p  => { if (!inCart(p.id)) setCart(prev=>[...prev,p]); };
@@ -332,15 +333,15 @@ export default function ShopTab({ cart, setCart }) {
       <div style={{display:"flex",gap:0,alignItems:"flex-start"}}>
 
         {/* ── Left sidebar: plain text category list ── */}
-        <div style={{width:130,flexShrink:0,paddingRight:16,paddingTop:4}}>
+        <div style={{width:mobile?88:130,flexShrink:0,paddingRight:mobile?8:16,paddingTop:4}}>
           {SHOP_CATS.map(c=>(
             <div key={c.id} onClick={()=>setCat(c.id)} style={{
               fontFamily:"'Playfair Display',Georgia,serif",
-              fontSize:15,
+              fontSize:mobile?12:15,
               fontWeight: cat===c.id ? 700 : 400,
               color: cat===c.id ? HOT : DARK,
               cursor:"pointer",
-              marginBottom:18,
+              marginBottom:mobile?12:18,
               lineHeight:1.2,
               transition:"color 0.15s",
             }}>
@@ -349,10 +350,10 @@ export default function ShopTab({ cart, setCart }) {
           ))}
         </div>
 
-        {/* ── Right: 4-column product grid ── */}
+        {/* ── Right: product grid (2 cols mobile, 4 cols desktop) ── */}
         <div style={{flex:1,minWidth:0}}>
           {filtered.length > 0 ? (
-            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"20px 12px"}}>
+            <div style={{display:"grid",gridTemplateColumns:mobile?"repeat(2,1fr)":"repeat(4,1fr)",gap:mobile?"16px 10px":"20px 12px"}}>
               {filtered.map(p=>(
                 <ProductTile key={p.id} p={p} onView={()=>setSelected(p)}/>
               ))}
