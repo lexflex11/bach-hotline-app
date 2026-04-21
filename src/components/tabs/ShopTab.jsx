@@ -205,11 +205,11 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView }) {
           {inCart ? "✓ In Cart" : "Add To Cart"}
         </button>
       </div>
-      {p.desc ? <p style={{ fontSize:mobile?13:15, color:DARK, fontFamily:"'Lato',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>{p.desc}</p> : null}
+      {p.desc ? <p style={{ fontSize:mobile?13:15, fontWeight:300, color:DARK, fontFamily:"'Lato',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>{p.desc}</p> : null}
       {(p.bullets?.length > 0) ? (
         <ul style={{ listStyle:"none", padding:0, margin:0 }}>
           {p.bullets.map((b,i) => (
-            <li key={i} style={{ fontSize:mobile?13:14, color:DARK, fontFamily:"'Lato',sans-serif", lineHeight:1.8, marginBottom:8, display:"flex", gap:10 }}>
+            <li key={i} style={{ fontSize:mobile?13:14, fontWeight:300, color:DARK, fontFamily:"'Lato',sans-serif", lineHeight:1.8, marginBottom:8, display:"flex", gap:10 }}>
               <span style={{ color:HOT, flexShrink:0 }}>·</span>{b}
             </li>
           ))}
