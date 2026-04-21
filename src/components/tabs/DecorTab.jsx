@@ -3842,9 +3842,10 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
             background: SOFT, color: HOT, border: `1.5px solid ${HOT}`,
           } : {}),
         }}>
-          {cart.some(c=>c.id===`garland-${arrangement}`) ? "✓ Garland Added to Package" : `Add Garland to My Package ${price}`}
+          {cart.some(c=>c.id===`garland-${arrangement}`) ? "✓ Garland Added to Package" : "Add Garland to My Package"}
         </button>
       )}
+      <div style={{height:20}}/>
 
     </div>
   );
