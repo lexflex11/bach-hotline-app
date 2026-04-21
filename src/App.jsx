@@ -26,13 +26,16 @@ import MediaTab from './components/tabs/MediaTab.jsx';
 
 // ─── ROOT APP ─────────────────────────────────────────────────────────────────
 export default function App() {
-  const [user, setUser]           = useState(null);
-  const [tab, setTab]             = useState("home");
+  const [user, setUserState]      = useState(() => { try { const u = localStorage.getItem("bh_user"); return u ? JSON.parse(u) : null; } catch { return null; } });
+  const [tab, setTabState]        = useState(() => localStorage.getItem("bh_tab") || "home");
   const [groupSize, setGroupSize] = useState(8);
   const [cart, setCart]           = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const [tabHistory, setTabHistory] = useState(["home"]);
+  const [tabHistory, setTabHistory] = useState(() => [localStorage.getItem("bh_tab") || "home"]);
+
+  const setUser = (u) => { if (u) localStorage.setItem("bh_user", JSON.stringify(u)); else localStorage.removeItem("bh_user"); setUserState(u); };
+  const setTab  = (t) => { localStorage.setItem("bh_tab", t); setTabState(t); };
 
   // Keep browser back button working within the app
   useEffect(() => {
