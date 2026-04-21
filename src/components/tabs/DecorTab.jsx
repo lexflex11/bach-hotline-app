@@ -712,7 +712,12 @@ export const TABLEWARE = [
   },
   {
     id:"plate-vegas",    type:"plate", name:"Vegas Casino Paper Plates",
-    desc:"Bachelorette Party",     price:"$10.95",
+    desc:"Totally giving \"Welcome to Fabulous Bachelorette!\" They're the perfect mix of cute, glam, and easy cleanup for a night your girls won't forget.",
+    bullets:["Set of 8","Dimensions: 6.5\"w x 10\"l","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$10.95",
+    images:[
+      "https://images.weserv.nl/?url=i.etsystatic.com/40669879/r/il/41c451/7875376356/il_fullxfull.7875376356_mnir.jpg",
+    ],
     image:"https://images.weserv.nl/?url=i.etsystatic.com/40669879/r/il/41c451/7875376356/il_fullxfull.7875376356_mnir.jpg",
     bg:"#F4A7B9", accent:"#C4956A",
     tags:["hotpink","blush","gold","champagne"],
