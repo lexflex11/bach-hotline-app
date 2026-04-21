@@ -3797,20 +3797,20 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
 
       {/* Kit contents */}
       <div style={{marginBottom:14,padding:"14px 16px",borderRadius:14,background:"#fff",border:`1.5px solid ${BORDER}`}}>
-        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:10}}>
-          What's Included 130 Balloons
+        <div style={{fontSize:14,fontWeight:400,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",marginBottom:10}}>
+          What's Included: 130 Balloons
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
           {[
             { size:'24"', count:5,  label:"Statement",  note:"Large focal balloons" },
-            { size:'18"', count:15, label:"Accent",      note:"Mid-size highlights"  },
-            { size:'12"', count:80, label:"Base",        note:"Core of the garland"  },
-            { size:'5"',  count:40, label:"Fillers",     note:"Gap-filling clusters" },
+            { size:'18"', count:15, label:"Accent",      note:"Midsize highlights"  },
+            { size:'11"', count:80, label:"Base",        note:"Core of the garland"  },
+            { size:'5"',  count:40, label:"Fillers",     note:"Gap filling clusters" },
           ].map(b => (
             <div key={b.size} style={{padding:"10px 12px",borderRadius:10,background:WHITE,border:`1px solid ${MID}`}}>
-              <div style={{fontSize:13,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1}}>{b.count} balloons</div>
+              <div style={{fontSize:13,fontWeight:400,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1}}>{b.count} balloons: {b.size}</div>
               <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600,marginTop:2}}>{b.label}</div>
-              <div style={{fontSize:9,color:DARK,fontFamily:"'Nunito',sans-serif",marginTop:1}}>{b.note}</div>
+              <div style={{fontSize:9,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginTop:1}}>{b.note}</div>
             </div>
           ))}
         </div>
