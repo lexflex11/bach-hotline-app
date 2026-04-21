@@ -2250,8 +2250,21 @@ export const TABLEWARE = [
 
   {
     id:"napkin-scorpio", type:"napkin", name:"Scorpio Napkins",
-    desc:"20 ct · 5\" x 5\"", price:"$10.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/16b52bfb-9df4-4bbc-b904-451b384aef0d/Ebook+Thumbnail+with+Video+-+2025-06-20T160650.136.png",
+    desc:"Serve cosmic vibes and star powered style with these scorpio paper napkins perfect for celestial queens and astrology lovers alike!",
+    bullets:["Set of 16","Dimensions: 8\"l x 4.25\"w (guest napkins)","Dimensions: 6.5\"l x 6.5\"w (large napkins)","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$10.00",
+    variantLabel:"Size",
+    variants:[
+      { label:"Guest Napkins", price:"11.00", imgIdx:0 },
+      { label:"Large Napkins", price:"10.00", imgIdx:1 },
+    ],
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c8ff86a3-180f-416b-a0bb-092a49679398/Ebook+Thumbnail+with+Video+-+2025-06-20T160424.498.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/16b52bfb-9df4-4bbc-b904-451b384aef0d/Ebook+Thumbnail+with+Video+-+2025-06-20T160650.136.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/3f218f4a-b14f-40ca-8428-eecd0309eb94/Ebook+Thumbnail+with+Video+-+2025-06-24T090349.699.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c3644403-9295-41b6-a7c1-6c7fb9ef455e/Ebook+Thumbnail+with+Video+-+2025-06-24T090628.675.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c8ff86a3-180f-416b-a0bb-092a49679398/Ebook+Thumbnail+with+Video+-+2025-06-20T160424.498.png?format=500w",
     bg:"#E91E8C", accent:"#FFD700",
     tags:["hotpink","blush","baby-pink","pink","gold","metallic-gold","champagne","white","crystal-clear","sugar","metallic-fuchsia"],
   },
