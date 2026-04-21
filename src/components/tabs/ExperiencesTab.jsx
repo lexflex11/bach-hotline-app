@@ -62,11 +62,30 @@ const PICKS = [
   },
 ];
 
-export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSize: setGlobalGroupSize }) {
+export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSize: setGlobalGroupSize, user }) {
   const [city,       setCity]      = useState("");
   const [date,       setDate]      = useState("");
   const [vibe,       setVibe]      = useState("");
   const [groupSize,  setGroupSize] = useState(initialGroupSize || 8);
+
+  const savedKey = user ? `bh_exp_saved_${user.id}` : null;
+  const [saved, setSaved] = useState(() => {
+    if (!savedKey) return [];
+    try { return JSON.parse(localStorage.getItem(savedKey) || "[]"); } catch { return []; }
+  });
+
+  const isSaved = id => saved.some(s => s.id === id);
+  const toggleSave = (e, item) => {
+    e.stopPropagation();
+    if (!user || !user.email) return; // guests can't save
+    setSaved(prev => {
+      const next = isSaved(item.id)
+        ? prev.filter(s => s.id !== item.id)
+        : [...prev, { id: item.id, name: item.name, image: item.image, url: item.url }];
+      localStorage.setItem(savedKey, JSON.stringify(next));
+      return next;
+    });
+  };
 
   const adjGroupSize = (val) => {
     const next = Math.max(1, val);
@@ -206,6 +225,21 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
               }}>
                 {item.category}
               </div>
+              {/* Heart save button */}
+              <button
+                onClick={e => toggleSave(e, item)}
+                style={{
+                  position:"absolute", top:5, right:5,
+                  width:26, height:26, borderRadius:"50%",
+                  background:"rgba(255,255,255,0.9)",
+                  border:"none", cursor: user?.email ? "pointer" : "default",
+                  display:"flex", alignItems:"center", justifyContent:"center", padding:0,
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill={isSaved(item.id) ? HOT : "none"} stroke={HOT} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </button>
             </div>
             {/* Info */}
             <div style={{ padding:"6px 7px 8px" }}>

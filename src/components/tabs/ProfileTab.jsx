@@ -6,6 +6,7 @@ import SH from '../ui/SH.jsx';
 export default function ProfileTab({ user, onLogout, cart }) {
   const [editing, setEditing] = useState(false);
   const [displayName, setDisplayName] = useState(user.name);
+  const expSaved = (() => { try { return JSON.parse(localStorage.getItem(`bh_exp_saved_${user.id}`) || "[]").length; } catch { return 0; } })();
   const ROLE_MAP = { bride:"👰 The Bride", moh:"💍 Maid of Honor", guest:"👯 Bride Tribe" };
   return (
     <div>
@@ -21,7 +22,7 @@ export default function ProfileTab({ user, onLogout, cart }) {
         <div style={{ fontSize:11, color:`rgba(45,10,24,0.5)`, fontFamily:"'Nunito',sans-serif", marginTop:4 }}>{user.email}</div>
       </div>
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:16 }}>
-        {[["✈️","Flights Saved","3"],["🏠","Stays Saved","5"],["🛒","Cart Items",String(cart.length)],["🔔","Active Alerts","4"]].map(([icon,label,val])=>(
+        {[["✈️","Flights Saved","3"],["🏠","Stays Saved","5"],["🛒","Cart Items",String(cart.length)],["🔔","Active Alerts","4"],["🎟️","Experiences Saved",String(expSaved)]].map(([icon,label,val])=>(
           <div key={label} style={{ ...C, textAlign:"center", padding:"14px 10px" }}>
             <div style={{ fontSize:22, marginBottom:4 }}>{icon}</div>
             <div style={{ fontSize:20, fontWeight:900, color:HOT, fontFamily:"'Playfair Display',Georgia,serif" }}>{val}</div>
