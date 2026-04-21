@@ -2395,8 +2395,14 @@ export const TABLEWARE = [
   },
   {
     id:"cup-heartbeat-gang", type:"cup", name:"Heartbeat Gang Cups",
-    desc:"12 ct · 12 oz", price:"$11.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a1d64160-c511-4e4b-b0a6-6218be7049a1/Ebook+Thumbnail+with+Video+-+2025-11-03T172558.659.png",
+    desc:"Hearts, neon, and sparkle? Say less! These heartbeat gang cups bring serious party energy to your Galentine's celebration!",
+    bullets:["Set of 8","Capacity: 9oz","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$11.00",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a1d64160-c511-4e4b-b0a6-6218be7049a1/Ebook+Thumbnail+with+Video+-+2025-11-03T172558.659.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/7298457d-14b5-46f4-b0f7-5574d5ff62c9/Ebook+Thumbnail+with+Video+-+2025-11-03T172424.645.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a1d64160-c511-4e4b-b0a6-6218be7049a1/Ebook+Thumbnail+with+Video+-+2025-11-03T172558.659.png?format=500w",
     bg:"#E8112D", accent:"#E91E8C",
     tags:["red","scarlett","hotpink","blush","baby-pink","pink","white","sugar","crystal-clear","coral","taffy"],
   },
