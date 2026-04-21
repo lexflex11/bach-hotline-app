@@ -2271,8 +2271,21 @@ export const TABLEWARE = [
 
   {
     id:"napkin-sagittarius", type:"napkin", name:"Sagittarius Napkins",
-    desc:"20 ct · 5\" x 5\"", price:"$10.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1a2ec52a-4839-4efe-a850-b69a4c7ed06d/Ebook+Thumbnail+with+Video+-+2025-06-24T095218.092.png",
+    desc:"Serve cosmic vibes and star powered style with these sagittarius paper napkins perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
+    bullets:["Set of 16","Dimensions: 8\"l x 4.25\"w (guest napkins)","Dimensions: 6.5\"l x 6.5\"w (large napkins)","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$10.00",
+    variantLabel:"Size",
+    variants:[
+      { label:"Guest Napkins", price:"11.00", imgIdx:0 },
+      { label:"Large Napkins", price:"10.00", imgIdx:1 },
+    ],
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/3271f579-1c89-466f-84ce-8cb86b3cf43e/Ebook+Thumbnail+with+Video+-+2025-06-24T095317.787.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1a2ec52a-4839-4efe-a850-b69a4c7ed06d/Ebook+Thumbnail+with+Video+-+2025-06-24T095218.092.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a9c54d4a-95de-4b80-93a3-ff704c9946a5/Ebook+Thumbnail+with+Video+-+2025-06-24T095542.378.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/becb8187-b0a0-4a29-b7b4-ff3564dbbadb/Ebook+Thumbnail+with+Video+-+2025-06-24T095727.566.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/3271f579-1c89-466f-84ce-8cb86b3cf43e/Ebook+Thumbnail+with+Video+-+2025-06-24T095317.787.png?format=500w",
     bg:"#29B6F6", accent:"#C0C0C0",
     tags:["blue","baby-blue","monet","georgia","blue-slate","navy","crystal-sapphire","silver","gray-smoke","fog","white","crystal-clear","sugar"],
   },
