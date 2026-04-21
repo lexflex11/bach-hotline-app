@@ -1139,10 +1139,41 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 }
 
 // ─── Main EatsTab ─────────────────────────────────────────────────────────────
+const CUISINE_CATS = [
+  { id:"all",       label:"All",           emoji:"🍽️" },
+  { id:"brunch",    label:"Brunch",        emoji:"🥞" },
+  { id:"sushi",     label:"Sushi",         emoji:"🍣" },
+  { id:"mexican",   label:"Mexican",       emoji:"🌮" },
+  { id:"american",  label:"American",      emoji:"🍔" },
+  { id:"cocktails", label:"Cocktails",     emoji:"🍹" },
+  { id:"asian",     label:"Asian",         emoji:"🥢" },
+  { id:"seafood",   label:"Seafood",       emoji:"🦞" },
+  { id:"coffee",    label:"Coffee",        emoji:"☕" },
+  { id:"sweets",    label:"Sweet Treats",  emoji:"🍰" },
+];
+
+function matchCategory(r, cat) {
+  if (cat === "all") return true;
+  const haystack = [r.cuisine, r.vibe, ...(r.tags||[])].join(" ").toLowerCase();
+  const map = {
+    brunch:    ["brunch","breakfast","mimosa","morning"],
+    sushi:     ["sushi","japanese","robata","omakase"],
+    mexican:   ["mexican","taco","cantina","tequila"],
+    american:  ["american","southern","burger","farm","bbq","brasserie"],
+    cocktails: ["cocktail","bar","drinks","speakeasy"],
+    asian:     ["asian","fusion","chinese","korean","thai","vietnamese"],
+    seafood:   ["seafood","fish","lobster","oyster","crab","shrimp"],
+    coffee:    ["coffee","cafe","espresso","latte"],
+    sweets:    ["sweet","dessert","bakery","pastry","cake","ice cream"],
+  };
+  return (map[cat]||[]).some(kw => haystack.includes(kw));
+}
+
 export default function EatsTab({ groupSize }) {
   const [city,       setCity]       = useState("");
   const [date,       setDate]       = useState("");
   const [time,       setTime]       = useState("");
+  const [category,   setCategory]   = useState("all");
   const [results,    setResults]    = useState(null);  // null = not searched yet
   const [selected,   setSelected]   = useState(null);  // restaurant detail view
 
@@ -1153,6 +1184,10 @@ export default function EatsTab({ groupSize }) {
     const data = RESTAURANTS[city] || DEFAULT_RESTAURANTS;
     setResults(data);
   }
+
+  const filteredResults = results
+    ? results.filter(r => matchCategory(r, category))
+    : null;
 
   const inputStyle = {
     width:"100%", padding:"10px 12px", borderRadius:10,
@@ -1204,6 +1239,27 @@ export default function EatsTab({ groupSize }) {
         </div>
       </div>
 
+      {/* Category chips */}
+      <div style={{ marginBottom:14 }}>
+        <div style={{ ...labelStyle, paddingLeft:2, marginBottom:8 }}>Cuisine / Vibe <span style={{ textTransform:"none", fontWeight:400, opacity:0.6 }}>(optional)</span></div>
+        <div style={{ display:"flex", gap:8, overflowX:"auto", paddingBottom:6, WebkitOverflowScrolling:"touch", scrollbarWidth:"none" }}>
+          {CUISINE_CATS.map(cat => (
+            <button key={cat.id} onClick={()=>setCategory(cat.id)} style={{
+              flexShrink:0, display:"flex", alignItems:"center", gap:5,
+              padding:"8px 14px", borderRadius:50, fontSize:12, fontWeight:700,
+              fontFamily:"'Nunito',sans-serif", cursor:"pointer",
+              background: category===cat.id ? "#F496C2" : WHITE,
+              color: category===cat.id ? WHITE : DARK,
+              border: category===cat.id ? "none" : `1.5px solid ${BORDER}`,
+              boxShadow: category===cat.id ? "0 2px 8px rgba(244,150,194,0.35)" : "none",
+              transition:"all 0.15s",
+            }}>
+              <span>{cat.emoji}</span>{cat.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* CTA / Find button */}
       <div style={{ ...C, background:SOFT, border:`1.5px solid ${MID}`, marginBottom:20 }}>
         {city ? (
@@ -1240,19 +1296,27 @@ export default function EatsTab({ groupSize }) {
       </div>
 
       {/* ── Results ── */}
-      {results && (
+      {filteredResults && (
         <>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
             <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:17, fontWeight:700, color:DARK }}>
-              {results.length} Restaurants Found
+              {filteredResults.length} Restaurant{filteredResults.length !== 1 ? "s" : ""} Found
             </div>
             <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif" }}>
               {selectedDest?.name}
             </div>
           </div>
-          {results.map(r => (
-            <RestaurantCard key={r.id} r={r} onView={setSelected} />
-          ))}
+          {filteredResults.length === 0 ? (
+            <div style={{ textAlign:"center", padding:"32px 16px", color:DARK, fontFamily:"'Nunito',sans-serif" }}>
+              <div style={{ fontSize:28, marginBottom:8 }}>🔍</div>
+              <div style={{ fontSize:14, fontWeight:700, marginBottom:4 }}>No matches for this category</div>
+              <div style={{ fontSize:12, color:HOT, opacity:0.8 }}>Try a different cuisine or pick "All"</div>
+            </div>
+          ) : (
+            filteredResults.map(r => (
+              <RestaurantCard key={r.id} r={r} onView={setSelected} />
+            ))
+          )}
         </>
       )}
     </div>
