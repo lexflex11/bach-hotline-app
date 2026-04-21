@@ -113,6 +113,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView }) {
   const [imgIdx,   setImgIdx]   = useState(0);
   const [qty,      setQty]      = useState(1);
   const [variantI, setVariantI] = useState(0);
+  const [recQty,   setRecQty]   = useState({});
   const mobile = useIsMobile();
 
   if (!p) return null;
@@ -267,13 +268,21 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView }) {
                   <div style={{ fontFamily:"'Acme',sans-serif", fontSize:15, color:"#f496c3", lineHeight:1.3, marginBottom:3 }}>{r.name}</div>
                   <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:13, color:DARK }}>${(+r.price||0).toFixed(2)}</div>
                 </div>
-                {/* Add button */}
-                <button onClick={e=>{ e.stopPropagation(); onAdd(r); }} style={{
-                  flexShrink:0, padding:"8px 20px", borderRadius:50, fontSize:13, fontWeight:700,
-                  fontFamily:"'Nunito',sans-serif", cursor:"pointer",
-                  background:"#F496C2", color:WHITE, border:"none",
-                  boxShadow:"0 3px 12px rgba(244,150,194,0.30)",
-                }}>Add</button>
+                {/* Add button / qty stepper */}
+                {recQty[r.id] > 0 ? (
+                  <div onClick={e=>e.stopPropagation()} style={{ display:"flex", alignItems:"center", gap:0, border:`1.5px solid #F496C2`, borderRadius:50, overflow:"hidden", flexShrink:0 }}>
+                    <button onClick={()=>setRecQty(q=>{ const n={...q}; if(n[r.id]<=1){delete n[r.id]}else{n[r.id]--}; return n; })} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:"#F496C2", fontWeight:700, padding:"4px 10px", lineHeight:1 }}>−</button>
+                    <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{recQty[r.id]}</span>
+                    <button onClick={()=>setRecQty(q=>({...q,[r.id]:(q[r.id]||0)+1}))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:"#F496C2", fontWeight:700, padding:"4px 10px", lineHeight:1 }}>+</button>
+                  </div>
+                ) : (
+                  <button onClick={e=>{ e.stopPropagation(); onAdd(r); setRecQty(q=>({...q,[r.id]:1})); }} style={{
+                    flexShrink:0, padding:"8px 20px", borderRadius:50, fontSize:13, fontWeight:700,
+                    fontFamily:"'Nunito',sans-serif", cursor:"pointer",
+                    background:"#F496C2", color:WHITE, border:"none",
+                    boxShadow:"0 3px 12px rgba(244,150,194,0.30)",
+                  }}>Add</button>
+                )}
               </div>
             ))}
           </div>
