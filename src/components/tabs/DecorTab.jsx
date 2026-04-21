@@ -2434,8 +2434,14 @@ export const TABLEWARE = [
   },
   {
     id:"cup-mermaid-fringe", type:"cup", name:"Mermaid Fringe Cups",
-    desc:"12 ct · 12 oz", price:"$11.00",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68ba5d74bb187f4ec7c30cab/1767902046881/Ebook+Thumbnail+with+Video+-+2025-09-04T225037.656.png?format=1500w",
+    desc:"Sip like a sea queen! These dazzling mermaid cups shimmer with layered scalloped foil, making every drink feel like an under the sea adventure.",
+    bullets:["Set of 8","Capacity: 9oz","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$11.00",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/01258a5f-cabf-45d0-8b36-b60acdbb0c4b/Ebook+Thumbnail+with+Video+-+2025-09-04T225037.656.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/6b5e2ce1-ef28-4e2d-aabb-da1561e08700/Ebook+Thumbnail+with+Video+-+2025-09-04T225400.251.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/01258a5f-cabf-45d0-8b36-b60acdbb0c4b/Ebook+Thumbnail+with+Video+-+2025-09-04T225037.656.png?format=500w",
     bg:"#00B8D4", accent:"#CE93D8",
     tags:["teal","turquoise","seafoam","sea-glass","metallic-teal","blue","baby-blue","monet","purple","lavender","hotpink","silver","white"],
   },
