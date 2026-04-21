@@ -105,7 +105,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           Members Only
         </h2>
         <p style={{ fontSize:13, color:"#888", fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:28, maxWidth:280, margin:"0 auto 28px" }}>
-          Create a free account to unlock AI-powered itinerary planning tailored to your group.
+          Create a free account to unlock custom itinerary planning tailored to your group.
         </p>
         <button onClick={onSignUp} style={{
           background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none",
