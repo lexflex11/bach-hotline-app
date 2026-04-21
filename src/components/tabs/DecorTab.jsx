@@ -1827,8 +1827,8 @@ export const TABLEWARE = [
   },
   {
     id:"napkin-off-market", type:"napkin", name:"Off The Market Napkins",
-    desc:"She's officially off the market! Celebrate the bride-to-be with these cheeky napkins — perfect for bachelorette parties and bridal showers.",
-    bullets:["Set of 8","Dimensions: 5\"w x 5\"l","Durable, lightweight, and disposable for easy cleanup"],
+    desc:"Celebrate the bride to be in style with off the market fringe paper napkins. Featuring playful fringe and bold lettering, these napkins are ready to party just like the bride.",
+    bullets:["Set of 8","Dimensions: 5\"l x 5\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$9.36",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/149395c0-5bf6-4ac3-b1a9-e03105afdb4d/Ebook+Thumbnail+with+Video+-+2025-05-18T185535.880.png?format=500w",
