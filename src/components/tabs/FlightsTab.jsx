@@ -52,9 +52,9 @@ export default function FlightsTab({ groupSize }) {
   const [section,  setSection]    = useState("us"); // "us" | "intl"
 
   const TIMES = [
-    { code:"ANYTIME",   label:"Any Time",  icon:"🕐" },
-    { code:"MORNING",   label:"Morning",   icon:"🌅", sub:"6am – 12pm" },
-    { code:"AFTERNOON", label:"Afternoon", icon:"☀️",  sub:"12pm – 6pm" },
+    { code:"ANYTIME",   label:"Any Time",  icon:null },
+    { code:"MORNING",   label:"Morning",   icon:null, sub:"6am – 12pm" },
+    { code:"AFTERNOON", label:"Afternoon", icon:null, sub:"12pm – 6pm" },
     { code:"EVENING",   label:"Evening",   icon:"🌙", sub:"6pm – midnight" },
   ];
 
@@ -80,7 +80,7 @@ export default function FlightsTab({ groupSize }) {
       {/* ── STEP 1 — Departure city ── */}
       <div style={{...C, marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
-          ✈️ Step 1 — Where are you flying from?
+          Where are you flying from?
         </div>
         <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8,marginBottom:10}}>
           Pick the airport closest to your group
@@ -99,12 +99,12 @@ export default function FlightsTab({ groupSize }) {
       {/* ── STEP 2 — Destination ── */}
       <div style={{...C, marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
-          🗺️ Step 2 — Where are you going?
+          Where are you going?
         </div>
 
         {/* US / International toggle */}
         <div style={{display:"flex",gap:6,marginBottom:12}}>
-          {[["us","🇺🇸 US Cities"],["intl","🌍 International"]].map(([k,v]) => (
+          {[["us","US Cities"],["intl","International"]].map(([k,v]) => (
             <button key={k} onClick={()=>setSection(k)} style={{...BG,flex:1,padding:"8px",fontSize:12,fontWeight:700,background:section===k?HOT:WHITE,color:section===k?WHITE:HOT,border:`1.5px solid ${section===k?HOT:BORDER}`,borderRadius:10}}>
               {v}
             </button>
@@ -115,7 +115,6 @@ export default function FlightsTab({ groupSize }) {
           {(section==="us" ? usDests : intlDests).map(d => (
             <button key={d.id} onClick={()=>setDest(d.id)}
               style={{background:dest===d.id?SOFT:WHITE,border:dest===d.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,borderRadius:12,padding:"10px",cursor:"pointer",textAlign:"left",transition:"all 0.18s",boxShadow:dest===d.id?`0 2px 10px rgba(230,101,130,0.18)`:"none"}}>
-              <div style={{fontSize:20,marginBottom:3}}>{d.emoji}</div>
               <div style={{fontSize:12,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:dest===d.id?HOT:DARK}}>{d.name}</div>
               <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.75,marginTop:2}}>{d.vibe}</div>
               {d.international && <div style={{fontSize:9,marginTop:4,color:PUNCH,fontFamily:"'Nunito',sans-serif",fontWeight:700}}>{d.trend}</div>}
@@ -127,12 +126,12 @@ export default function FlightsTab({ groupSize }) {
       {/* ── STEP 3 — Dates & Times ── */}
       <div style={{...C, marginBottom:14}}>
         <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>
-          📅 Step 3 — Dates & preferred times
+          Dates & preferred times
         </div>
 
         {/* Departure row */}
         <div style={{marginBottom:14}}>
-          <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,marginBottom:6,textTransform:"uppercase",letterSpacing:0.5}}>✈️ Departure</div>
+          <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,marginBottom:6,textTransform:"uppercase",letterSpacing:0.5}}>Departure</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:8}}>
             <input
               type="date"
@@ -149,7 +148,6 @@ export default function FlightsTab({ groupSize }) {
             {TIMES.map(t => (
               <button key={t.code} onClick={()=>setDepTime(t.code)}
                 style={{padding:"8px 4px",borderRadius:10,border:`1.5px solid ${depTime===t.code?HOT:BORDER}`,background:depTime===t.code?SOFT:WHITE,cursor:"pointer",textAlign:"center"}}>
-                <div style={{fontSize:14}}>{t.icon}</div>
                 <div style={{fontSize:9,fontWeight:700,color:depTime===t.code?HOT:DARK,fontFamily:"'Nunito',sans-serif",marginTop:2}}>{t.label}</div>
                 {t.sub && <div style={{fontSize:8,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginTop:1,lineHeight:1.2}}>{t.sub}</div>}
               </button>
@@ -159,7 +157,7 @@ export default function FlightsTab({ groupSize }) {
 
         {/* Return row */}
         <div style={{paddingTop:12,borderTop:`1px solid ${SOFT}`}}>
-          <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,marginBottom:6,textTransform:"uppercase",letterSpacing:0.5}}>🏠 Return</div>
+          <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,marginBottom:6,textTransform:"uppercase",letterSpacing:0.5}}>Return</div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:8}}>
             <input
               type="date"
@@ -176,7 +174,6 @@ export default function FlightsTab({ groupSize }) {
             {TIMES.map(t => (
               <button key={t.code} onClick={()=>setRetTime(t.code)}
                 style={{padding:"8px 4px",borderRadius:10,border:`1.5px solid ${retTime===t.code?HOT:BORDER}`,background:retTime===t.code?SOFT:WHITE,cursor:"pointer",textAlign:"center"}}>
-                <div style={{fontSize:14}}>{t.icon}</div>
                 <div style={{fontSize:9,fontWeight:700,color:retTime===t.code?HOT:DARK,fontFamily:"'Nunito',sans-serif",marginTop:2}}>{t.label}</div>
                 {t.sub && <div style={{fontSize:8,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginTop:1,lineHeight:1.2}}>{t.sub}</div>}
               </button>
@@ -190,7 +187,7 @@ export default function FlightsTab({ groupSize }) {
         {selectedDest ? (
           <>
             <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
-              {selectedDest.emoji} {fromCode} → {selectedDest.name}
+              {fromCode} → {selectedDest.name}
             </div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>
               {groupSize} travelers · {depDate ? `${depDate}${retDate ? ` → ${retDate}` : " (one way)"}` : "flexible dates"} · real-time prices
@@ -204,7 +201,7 @@ export default function FlightsTab({ groupSize }) {
               fontFamily:"'Nunito',sans-serif", fontSize:14, fontWeight:800,
               letterSpacing:"0.3px",
             }}>
-              ✈️ Find Best Prices
+              Find Best Prices
             </button>
             <div style={{fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginTop:8,textAlign:"center"}}>
               We'll scan and surface the best available fares for your group
@@ -212,7 +209,6 @@ export default function FlightsTab({ groupSize }) {
           </>
         ) : (
           <div style={{textAlign:"center",padding:"8px 0"}}>
-            <div style={{fontSize:22,marginBottom:6}}>🗺️</div>
             <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Pick a destination above</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:4,opacity:0.75}}>Then we'll pull up real flights for {groupSize} people</div>
           </div>
