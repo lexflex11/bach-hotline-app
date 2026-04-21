@@ -4834,7 +4834,6 @@ function CuratedThemes({ cart, setCart }) {
             <div key={theme.id} style={{borderRadius:18,border:`1.5px solid ${allAdded?HOT:BORDER}`,background:allAdded?SOFT:WHITE,padding:"16px",transition:"all 0.2s"}}>
               <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:10}}>
                 <div>
-                  <div style={{fontSize:18,marginBottom:4}}>{theme.emoji}</div>
                   <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{theme.name}</div>
                   <div style={{fontSize:11,color:"#aaa",fontFamily:"'Nunito',sans-serif",marginTop:2}}>{theme.desc}</div>
                 </div>
