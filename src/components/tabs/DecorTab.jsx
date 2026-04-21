@@ -3947,7 +3947,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
-          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+          <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
           {countSize && <div style={{fontSize:8,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>}
           <div style={{fontSize:11,fontWeight:900,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:5}}>
@@ -4472,7 +4472,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
-          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+          <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
           {countSize && <div style={{fontSize:8,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>}
           <div style={{fontSize:11,fontWeight:900,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:5}}>
@@ -4664,7 +4664,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
             <TablewearVisual item={item}/>
           </div>
           <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+            <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
             <div style={{marginTop:5}}>
               <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>{item.price} each</div>
               <button onClick={() => setActiveNumId(activeNumId === item.id ? null : item.id)} style={{
@@ -4685,7 +4685,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
-          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+          <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
           <div style={{fontSize:11,fontWeight:900,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
           <button onClick={() => toggle(item)} style={{
             background:added?SOFT:`linear-gradient(135deg,#f472b0,${HOT})`,
