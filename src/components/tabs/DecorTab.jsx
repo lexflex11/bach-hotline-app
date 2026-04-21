@@ -3963,8 +3963,10 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
       : "0 4px 16px rgba(0,0,0,0.09)";
     const countSize = getCountSize(item);
     return (
-      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
-        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
+      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+        <div style={{position:"absolute",top:0,left:0,width:36,height:36,background:"#f496c3",borderRadius:"0 0 100% 0",zIndex:1,pointerEvents:"none"}}/>
+        <div style={{position:"absolute",top:0,right:0,width:36,height:36,background:"#f496c3",borderRadius:"0 0 0 100%",zIndex:1,pointerEvents:"none"}}/>
+        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fdf5f8"}}>
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
@@ -4488,8 +4490,10 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
     const countSize = getCountSize(item);
     return (
-      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
-        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
+      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+        <div style={{position:"absolute",top:0,left:0,width:36,height:36,background:"#f496c3",borderRadius:"0 0 100% 0",zIndex:1,pointerEvents:"none"}}/>
+        <div style={{position:"absolute",top:0,right:0,width:36,height:36,background:"#f496c3",borderRadius:"0 0 0 100%",zIndex:1,pointerEvents:"none"}}/>
+        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fdf5f8"}}>
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
