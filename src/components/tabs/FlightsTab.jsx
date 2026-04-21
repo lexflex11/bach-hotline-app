@@ -118,9 +118,7 @@ export default function FlightsTab({ groupSize }) {
 
       {/* ── STEP 3 — Dates & Times ── */}
       <div style={{...C, marginBottom:14}}>
-        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>
-          Dates & preferred times
-        </div>
+
 
         {/* Departure row */}
         <div style={{marginBottom:14}}>
