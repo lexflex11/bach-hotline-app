@@ -3910,45 +3910,58 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
     score: item.tags.filter(t => selectedColors.includes(t)).length,
   })).sort((a,b) => b.score - a.score);
 
+  const [quantities, setQuantities] = useState({});
+  const getQty = id => quantities[id] || 1;
+  const adjQty = (id, val) => setQuantities(prev => ({ ...prev, [id]: Math.max(1, val) }));
+
   const inCart = id => cart.some(c => c.id === id);
-  const toggle = item => {
+  const toggle = (item) => {
+    const qty = getQty(item.id);
     if (inCart(item.id)) {
       setCart(prev => prev.filter(c => c.id !== item.id));
     } else {
       setCart(prev => [...prev, {
         id: item.id, name: item.name,
-        price: parseFloat(item.price.replace("$","")),
-        image: item.image, category: "tableware",
+        price: parseFloat(item.price.replace("$","")) * qty,
+        qty, image: item.image, category: "tableware",
       }]);
     }
   };
 
+  const getCountSize = (item) => {
+    if (item.bullets?.length >= 2) return `${item.bullets[0]} · ${item.bullets[1]}`;
+    if (item.bullets?.length === 1) return item.bullets[0];
+    return item.desc || null;
+  };
+
   const renderProductItem = (item) => {
     const added = inCart(item.id);
+    const qty = getQty(item.id);
     const shadow = added
       ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`
       : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
-    const btnColor = added ? HOT : WHITE;
-    const btnBorder = added ? `1.5px solid ${HOT}` : "none";
+    const countSize = getCountSize(item);
     return (
       <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
           <TablewearVisual item={item}/>
         </div>
-        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-          <div>
-            <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
-            {item.desc && <div style={{fontSize:8,color:"#888",fontFamily:"'Nunito',sans-serif",lineHeight:1.35}}>{item.desc}</div>}
+        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
+          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
+          {countSize && <div style={{fontSize:8,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>}
+          <div style={{fontSize:11,fontWeight:900,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:5}}>
+            <button onClick={()=>adjQty(item.id, qty-1)} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>−</button>
+            <span style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:14,textAlign:"center"}}>{qty}</span>
+            <button onClick={()=>adjQty(item.id, qty+1)} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>+</button>
           </div>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{item.price}</div>
-            <button onClick={()=>toggle(item)} style={{
-              background:btnBg, color:btnColor, border:btnBorder,
-              borderRadius:20, padding:"4px 8px",
-              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-            }}>{added ? "✓" : "+ Add"}</button>
-          </div>
+          <button onClick={()=>toggle(item)} style={{
+            background:added?SOFT:`linear-gradient(135deg,#f472b0,${HOT})`,
+            color:added?HOT:WHITE,
+            border:added?`1.5px solid ${HOT}`:"none",
+            borderRadius:20, padding:"5px 0", width:"100%",
+            fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+          }}>{added ? "✓ Added" : "+ Add"}</button>
         </div>
       </div>
     );
@@ -4424,40 +4437,56 @@ export const PARTY_ACCESSORIES = [
 ];
 
 function PartyAccessoriesStep({ stepNum, cart, setCart }) {
+  const [quantities, setQuantities] = useState({});
+  const getQty = id => quantities[id] || 1;
+  const adjQty = (id, val) => setQuantities(prev => ({ ...prev, [id]: Math.max(1, val) }));
+
   const inCart = id => cart.some(c => c.id === id);
-  const toggle = item => {
+  const toggle = (item) => {
+    const qty = getQty(item.id);
     if (inCart(item.id)) {
       setCart(prev => prev.filter(c => c.id !== item.id));
     } else {
       setCart(prev => [...prev, {
         id: item.id, name: item.name,
-        price: parseFloat(item.price.replace("$","")),
-        image: item.image, category: "accessory",
+        price: parseFloat(item.price.replace("$","")) * qty,
+        qty, image: item.image, category: "accessory",
       }]);
     }
   };
 
+  const getCountSize = (item) => {
+    if (item.bullets?.length >= 2) return `${item.bullets[0]} · ${item.bullets[1]}`;
+    if (item.bullets?.length === 1) return item.bullets[0];
+    return item.desc || null;
+  };
+
   const renderItem = (item) => {
     const added = inCart(item.id);
+    const qty = getQty(item.id);
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
-    const btnColor = added ? HOT : WHITE;
-    const btnBorder = added ? `1.5px solid ${HOT}` : "none";
+    const countSize = getCountSize(item);
     return (
       <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
           <TablewearVisual item={item}/>
         </div>
-        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
+        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
           <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{item.price}</div>
-            <button onClick={()=>toggle(item)} style={{
-              background:btnBg, color:btnColor, border:btnBorder,
-              borderRadius:20, padding:"4px 8px",
-              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-            }}>{added ? "✓" : "+ Add"}</button>
+          {countSize && <div style={{fontSize:8,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>}
+          <div style={{fontSize:11,fontWeight:900,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:5}}>
+            <button onClick={()=>adjQty(item.id, qty-1)} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>−</button>
+            <span style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:14,textAlign:"center"}}>{qty}</span>
+            <button onClick={()=>adjQty(item.id, qty+1)} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>+</button>
           </div>
+          <button onClick={()=>toggle(item)} style={{
+            background:added?SOFT:`linear-gradient(135deg,#f472b0,${HOT})`,
+            color:added?HOT:WHITE,
+            border:added?`1.5px solid ${HOT}`:"none",
+            borderRadius:20, padding:"5px 0", width:"100%",
+            fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+          }}>{added ? "✓ Added" : "+ Add"}</button>
         </div>
       </div>
     );
@@ -4650,24 +4679,21 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
     }
     const added = inCart(item.id);
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `linear-gradient(135deg,#f472b0,${HOT})`;
-    const btnColor = added ? HOT : WHITE;
-    const btnBorder = added ? `1.5px solid ${HOT}` : "none";
     return (
       <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
           <TablewearVisual item={item}/>
         </div>
-        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
+        <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
           <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:2}}>{item.name}</div>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginTop:5}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>{item.price}</div>
-            <button onClick={() => toggle(item)} style={{
-              background:btnBg, color:btnColor, border:btnBorder,
-              borderRadius:20, padding:"4px 8px",
-              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-            }}>{added ? "✓" : "+ Add"}</button>
-          </div>
+          <div style={{fontSize:11,fontWeight:900,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
+          <button onClick={() => toggle(item)} style={{
+            background:added?SOFT:`linear-gradient(135deg,#f472b0,${HOT})`,
+            color:added?HOT:WHITE,
+            border:added?`1.5px solid ${HOT}`:"none",
+            borderRadius:20, padding:"5px 0", width:"100%",
+            fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+          }}>{added ? "✓ Added" : "+ Add"}</button>
         </div>
       </div>
     );
