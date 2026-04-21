@@ -62,10 +62,17 @@ const PICKS = [
   },
 ];
 
-export default function ExperiencesTab({ groupSize }) {
-  const [city,  setCity]  = useState("");
-  const [date,  setDate]  = useState("");
-  const [vibe,  setVibe]  = useState("");
+export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSize: setGlobalGroupSize }) {
+  const [city,       setCity]      = useState("");
+  const [date,       setDate]      = useState("");
+  const [vibe,       setVibe]      = useState("");
+  const [groupSize,  setGroupSize] = useState(initialGroupSize || 8);
+
+  const adjGroupSize = (val) => {
+    const next = Math.max(1, val);
+    setGroupSize(next);
+    if (setGlobalGroupSize) setGlobalGroupSize(next);
+  };
 
   const selectedDest = DESTS.find(d => d.id === city);
 
@@ -111,7 +118,7 @@ export default function ExperiencesTab({ groupSize }) {
         <select value={city} onChange={e => setCity(e.target.value)} style={{ ...inputStyle, appearance: "none" }}>
           <option value="">Choose a city…</option>
           {DESTS.filter(d => d.id !== "all").map(d => (
-            <option key={d.id} value={d.id}>{d.emoji} {d.name}</option>
+            <option key={d.id} value={d.id}>{d.name}</option>
           ))}
         </select>
       </div>
@@ -133,8 +140,10 @@ export default function ExperiencesTab({ groupSize }) {
       {/* Group size */}
       <div style={{ ...C, marginBottom: 14 }}>
         <div style={labelStyle}>Group Size</div>
-        <div style={{ fontSize: 22, fontWeight: 900, color: PUNCH, fontFamily: "'Playfair Display',Georgia,serif" }}>
-          {groupSize} 👯
+        <div style={{ display:"flex", alignItems:"center", gap:16, marginTop:4 }}>
+          <button onClick={()=>adjGroupSize(groupSize-1)} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>−</button>
+          <div style={{ fontSize:22, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif", minWidth:24, textAlign:"center" }}>{groupSize}</div>
+          <button onClick={()=>adjGroupSize(groupSize+1)} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>+</button>
         </div>
       </div>
 
@@ -161,7 +170,6 @@ export default function ExperiencesTab({ groupSize }) {
           </>
         ) : (
           <div style={{ textAlign: "center", padding: "8px 0" }}>
-            <div style={{ fontSize: 22, marginBottom: 6 }}>🎉</div>
             <div style={{ fontSize: 13, fontWeight: 700, fontFamily: "'Playfair Display',Georgia,serif", color: DARK }}>Pick a destination above</div>
             <div style={{ fontSize: 11, color: HOT, fontFamily: "'Nunito',sans-serif", marginTop: 4, opacity: 0.75 }}>
               Then we'll find the best experiences for {groupSize} people

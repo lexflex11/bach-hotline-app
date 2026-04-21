@@ -126,7 +126,7 @@ export default function App() {
         {tab==="flights" && <FlightsTab groupSize={groupSize} />}
         {tab==="stays"   && <StaysTab groupSize={groupSize} />}
         {tab==="eats"        && <EatsTab groupSize={groupSize} />}
-        {tab==="experiences" && <ExperiencesTab groupSize={groupSize} />}
+        {tab==="experiences" && <ExperiencesTab groupSize={groupSize} setGroupSize={setGroupSize} />}
         {tab==="plan"    && <PlanTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} user={user} onSignUp={()=>setUser(null)} />}
         {tab==="budget"  && <BudgetTab groupSize={groupSize} user={user} onSignUp={()=>setUser(null)} />}
         {tab==="mood"    && <MoodTab setTab={setTab} />}
