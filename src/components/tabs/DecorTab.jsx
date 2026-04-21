@@ -673,10 +673,16 @@ export const TABLEWARE = [
   },
   {
     id:"plate-star",     type:"plate", name:"Foil Star Paper Plates",
-    desc:"Bachelorette Party",     price:"$12.50",
-    image: null,         bg:"#D0D0D0", accent:"#A0A0A0",
+    desc:"Shine bright, bride tribe! These silver star-shaped plates bring glamour to bachelorette celebrations, perfect for snacks, sweets, and star studded vibes.",
+    bullets:["Set of 8","Dimensions: 11\"w x 11\"l","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.50",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767897977380/Ebook+Thumbnail+with+Video+-+2025-01-22T204555.167.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767897977380/Ebook+Thumbnail+with+Video+-+2025-01-22T204555.167.png?format=500w",
+    bg:"#D0D0D0", accent:"#A0A0A0",
     tags:["silver","white","champagne","gold"],
-    etsyUrl:"https://bachhotlinesupplies.etsy.com",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/foil-star-plates",
   },
   {
     id:"plate-romcom",   type:"plate", name:"RomCom Paper Plates",
