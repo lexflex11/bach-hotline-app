@@ -4697,7 +4697,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
           <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
             <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
             <div style={{marginTop:5}}>
-              <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>{item.price} each</div>
+              <div style={{fontSize:11,fontWeight:400,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>{item.price} each</div>
               <button onClick={() => setActiveNumId(activeNumId === item.id ? null : item.id)} style={{
                 width:"100%", background:btnBg, color:btnColor, border:btnBorder,
                 borderRadius:20, padding:"5px 0",
