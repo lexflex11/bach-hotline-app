@@ -4844,15 +4844,22 @@ function CuratedThemes({ cart, setCart }) {
                   ))}
                 </div>
               </div>
-              <div style={{marginBottom:12}}>
+              <div style={{marginBottom:12,display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
                 {theme.items.map(id => {
                   const item = allItems(id);
                   if (!item) return null;
                   const added = cart.some(c => c.id === id);
+                  const imgSrc = (item.images && item.images[0]) || item.image || "";
                   return (
-                    <div key={id} style={{display:"flex",justifyContent:"space-between",fontFamily:"'Nunito',sans-serif",fontSize:11,marginBottom:4,color:added?HOT:DARK}}>
-                      <span>{added?"✓ ":""}{item.name}</span>
-                      <span style={{fontWeight:700,color:added?HOT:PUNCH,flexShrink:0,marginLeft:8}}>{item.price}</span>
+                    <div key={id} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 8px",borderRadius:10,background:added?SOFT:WHITE,border:`1px solid ${added?HOT:BORDER}`}}>
+                      {imgSrc
+                        ? <img src={imgSrc} alt={item.name} style={{width:40,height:40,objectFit:"contain",borderRadius:6,background:"#fff",flexShrink:0,border:`1px solid ${BORDER}`,padding:2,boxSizing:"border-box"}}/>
+                        : <div style={{width:40,height:40,borderRadius:6,background:SOFT,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16}}>🎀</div>
+                      }
+                      <div style={{flex:1,minWidth:0}}>
+                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,fontWeight:300,color:added?HOT:DARK,lineHeight:1.3,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{added?"✓ ":""}{item.name}</div>
+                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,fontWeight:700,color:added?HOT:PUNCH,marginTop:1}}>{item.price}</div>
+                      </div>
                     </div>
                   );
                 })}
