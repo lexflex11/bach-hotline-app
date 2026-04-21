@@ -1504,8 +1504,14 @@ export const TABLEWARE = [
   },
   {
     id:"napkin-dirty", type:"napkin", name:"I Like It Dirty Napkins",
-    desc:"20 ct · 5\" x 5\"", price:"$12.62",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684875571ef4b52dec055da0/1767921918181/Ebook+Thumbnail+with+Video+-+2025-06-07T235757.012.png?format=1500w",
+    desc:"Shake things up with these I like it dirty cocktail paper napkins. The ultimate flirty touch for martini lovers, bachelorettes, and bold party vibes!",
+    bullets:["Set of 20","Dimensions: 5\"l x 5\"w","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.62",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/ed9a65c8-9466-470e-b819-96d76cc9b8e3/Ebook+Thumbnail+with+Video+-+2025-06-07T235757.012.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/66ca5230-678d-4131-bb91-aa8b438396c9/Ebook+Thumbnail+with+Video+-+2025-06-07T235718.215.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/ed9a65c8-9466-470e-b819-96d76cc9b8e3/Ebook+Thumbnail+with+Video+-+2025-06-07T235757.012.png?format=500w",
     bg:"#1A1A1A", accent:"#C0C0C0",
     tags:["black","silver","gray-smoke","white","navy","metallic-midnight-blue","fog","crystal-clear","gold","champagne"],
   },
