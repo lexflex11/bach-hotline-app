@@ -1169,10 +1169,11 @@ function matchCategory(r, cat) {
   return (map[cat]||[]).some(kw => haystack.includes(kw));
 }
 
-export default function EatsTab({ groupSize }) {
+export default function EatsTab({ groupSize: initialGroupSize }) {
   const [city,       setCity]       = useState("");
   const [date,       setDate]       = useState("");
   const [time,       setTime]       = useState("");
+  const [groupSize,  setGroupSize]  = useState(initialGroupSize || 8);
   const [category,   setCategory]   = useState("all");
   const [results,    setResults]    = useState(null);  // null = not searched yet
   const [selected,   setSelected]   = useState(null);  // restaurant detail view
@@ -1234,8 +1235,10 @@ export default function EatsTab({ groupSize }) {
 
       <div style={{ ...C, marginBottom:14 }}>
         <div style={labelStyle}>Group Size</div>
-        <div style={{ fontSize:22, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif" }}>
-          {groupSize}
+        <div style={{ display:"flex", alignItems:"center", gap:16, marginTop:4 }}>
+          <button onClick={()=>setGroupSize(g=>Math.max(1,g-1))} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Nunito',sans-serif" }}>−</button>
+          <div style={{ fontSize:22, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif", minWidth:24, textAlign:"center" }}>{groupSize}</div>
+          <button onClick={()=>setGroupSize(g=>Math.min(50,g+1))} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Nunito',sans-serif" }}>+</button>
         </div>
       </div>
 
