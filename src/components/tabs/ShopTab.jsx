@@ -396,7 +396,7 @@ export default function ShopTab({ cart, setCart }) {
             <div key={c.id} onClick={()=>setCat(c.id)} style={{
               fontFamily:"'Playfair Display',Georgia,serif",
               fontSize:mobile?12:15,
-              fontWeight: cat===c.id ? 700 : 400,
+              fontWeight: cat===c.id ? 500 : 300,
               color: cat===c.id ? HOT : DARK,
               cursor:"pointer",
               marginBottom:mobile?12:18,
