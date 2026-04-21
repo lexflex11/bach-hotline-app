@@ -2187,8 +2187,21 @@ export const TABLEWARE = [
 
   {
     id:"napkin-virgo", type:"napkin", name:"Virgo Napkins",
-    desc:"20 ct · 5\" x 5\"", price:"$10.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/344cb799-9258-416f-8519-1476ae90ebde/Ebook+Thumbnail+with+Video+-+2025-06-24T140524.467.png",
+    desc:"Serve cosmic vibes and star powered style with these virgo paper napkins perfect for celestial queens and astrology lovers alike!",
+    bullets:["Set of 16","Dimensions: 8\"l x 4.25\"w (guest napkins)","Dimensions: 6.5\"l x 6.5\"w (large napkins)","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$10.00",
+    variantLabel:"Size",
+    variants:[
+      { label:"Guest Napkins", price:"11.00", imgIdx:0 },
+      { label:"Large Napkins", price:"10.00", imgIdx:1 },
+    ],
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/756879d1-b0a7-43ce-86f7-a46fd3507d1e/Ebook+Thumbnail+with+Video+-+2025-06-24T140357.690.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/344cb799-9258-416f-8519-1476ae90ebde/Ebook+Thumbnail+with+Video+-+2025-06-24T140524.467.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/5c8826fe-e34e-4a1d-b568-6b70fca93346/Ebook+Thumbnail+with+Video+-+2025-06-24T140736.032.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f47ce2e3-b186-4f6b-b6e4-f757c0c88c63/Ebook+Thumbnail+with+Video+-+2025-06-24T141025.351.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/756879d1-b0a7-43ce-86f7-a46fd3507d1e/Ebook+Thumbnail+with+Video+-+2025-06-24T140357.690.png?format=500w",
     bg:"#F8F8F8", accent:"#4CAF50",
     tags:["white","crystal-clear","sugar","green","meadow","lime-green","gold","champagne","silver","lace","earth","stone"],
   },
