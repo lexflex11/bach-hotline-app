@@ -3756,27 +3756,6 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
       </div>
 
 
-      {/* Mixed / Color Block */}
-      <div style={{marginBottom:14}}>
-        <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:"0.8px",marginBottom:6}}>
-          Color Pattern
-          <span style={{marginLeft:8,fontWeight:400,color:"#bbb",textTransform:"none",letterSpacing:0}}>{arrangement==="mixed"?"Mixed":"Color Block"}</span>
-        </div>
-        <div style={{fontSize:11,color:"#999",fontFamily:"'Nunito',sans-serif",marginBottom:8,lineHeight:1.5}}>
-          {arrangement==="mixed"
-            ? "Colors are blended throughout the garland. Pick up to 5."
-            : "Each color fills its own section of the garland. Pick up to 5."}
-        </div>
-        <div style={{display:"flex",gap:8}}>
-          {[{id:"mixed",label:"Mixed"},{id:"colorblock",label:"Color Block"}].map(o=>(
-            <button key={o.id} onClick={()=>{setArrangement(o.id);setSelected([]);}} style={{
-              padding:"9px 16px",borderRadius:8,cursor:"pointer",fontFamily:"'Nunito',sans-serif",
-              fontSize:12,fontWeight:700,border:arrangement===o.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
-              background:arrangement===o.id?SOFT:WHITE,color:arrangement===o.id?HOT:DARK,transition:"all 0.15s",
-            }}>{o.label}</button>
-          ))}
-        </div>
-      </div>
 
       {/* Color palette grid */}
       <div style={{marginBottom:16}}>
