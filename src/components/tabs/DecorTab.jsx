@@ -3738,7 +3738,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
       {/* Selected color pills */}
       <div style={{display:"flex",gap:6,flexWrap:"wrap",marginTop:10,marginBottom:14,minHeight:28}}>
         {selected.length === 0
-          ? <div style={{fontSize:11,color:"#bbb",fontFamily:"'Nunito',sans-serif",paddingTop:4}}>No colors selected yet — pick up to {maxColors}</div>
+          ? null
           : selected.map(id=>{
               const col = BALLOON_COLORS.find(c=>c.id===id);
               return (
