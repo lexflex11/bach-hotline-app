@@ -2208,8 +2208,21 @@ export const TABLEWARE = [
 
   {
     id:"napkin-gemini", type:"napkin", name:"Gemini Napkins",
-    desc:"20 ct · 5\" x 5\"", price:"$10.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f142cbf0-9c1e-49d3-ae79-4040c8c2e9af/Ebook+Thumbnail+with+Video+-+2025-06-20T155423.542.png",
+    desc:"Serve cosmic vibes and star powered style with these gemini paper napkins perfect for celestial queens and astrology lovers alike!",
+    bullets:["Set of 16","Dimensions: 8\"l x 4.25\"w (guest napkins)","Dimensions: 6.5\"l x 6.5\"w (large napkins)","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$10.00",
+    variantLabel:"Size",
+    variants:[
+      { label:"Guest Napkins", price:"11.00", imgIdx:0 },
+      { label:"Large Napkins", price:"10.00", imgIdx:1 },
+    ],
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/37fa4743-c148-40bc-bd05-e6c7d7103e3f/Ebook+Thumbnail+with+Video+-+2025-06-20T155415.092.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f142cbf0-9c1e-49d3-ae79-4040c8c2e9af/Ebook+Thumbnail+with+Video+-+2025-06-20T155423.542.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/8a7288fe-7504-4c26-933d-6685992be1e9/Ebook+Thumbnail+with+Video+-+2025-06-20T160038.448.png?format=500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/9836229a-92fc-4630-8196-fe0ec461d569/Ebook+Thumbnail+with+Video+-+2025-06-20T160003.351.png?format=500w",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/37fa4743-c148-40bc-bd05-e6c7d7103e3f/Ebook+Thumbnail+with+Video+-+2025-06-20T155415.092.png?format=500w",
     bg:"#FFD700", accent:"#9C27B0",
     tags:["yellow","lemonade","goldenrod","crystal-yellow","purple","lavender","blossom","white","crystal-clear","silver","champagne","hotpink"],
   },
