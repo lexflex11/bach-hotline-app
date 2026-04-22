@@ -3926,6 +3926,8 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
     const countSize = getCountSize(item);
     return (
       <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+        <div style={{position:"absolute",top:0,left:0,width:36,height:36,background:"#f496c3",borderRadius:"0 0 100% 0",zIndex:1,pointerEvents:"none"}}/>
+        <div style={{position:"absolute",bottom:0,right:0,width:36,height:36,background:"#f496c3",borderRadius:"100% 0 0 0",zIndex:1,pointerEvents:"none"}}/>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fff"}}>
           <TablewearVisual item={item}/>
         </div>
@@ -4449,6 +4451,8 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
     const countSize = getCountSize(item);
     return (
       <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+        <div style={{position:"absolute",top:0,left:0,width:36,height:36,background:"#f496c3",borderRadius:"0 0 100% 0",zIndex:1,pointerEvents:"none"}}/>
+        <div style={{position:"absolute",bottom:0,right:0,width:36,height:36,background:"#f496c3",borderRadius:"100% 0 0 0",zIndex:1,pointerEvents:"none"}}/>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fff"}}>
           <TablewearVisual item={item}/>
         </div>
@@ -4536,6 +4540,8 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
       : item;
     return (
       <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+        <div style={{position:"absolute",top:0,left:0,width:36,height:36,background:"#f496c3",borderRadius:"0 0 100% 0",zIndex:1,pointerEvents:"none"}}/>
+        <div style={{position:"absolute",bottom:0,right:0,width:36,height:36,background:"#f496c3",borderRadius:"100% 0 0 0",zIndex:1,pointerEvents:"none"}}/>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fdf5f8"}}>
           <TablewearVisual item={displayItem}/>
         </div>
