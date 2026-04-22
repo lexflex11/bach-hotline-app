@@ -3366,6 +3366,7 @@ export const TABLEWARE = [
     id:"confetti-whimsy", type:"confetti", name:"Whimsy Confetti",
     desc:"table scatter", price:"$8.99",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c9f67d29-b39f-4ab5-92a9-bd5ebb643dbe/Ebook+Thumbnail+with+Video+-+2025-05-12T180718.730.png",
+    tubeImage:"https://i.etsystatic.com/40669879/r/il/b4605f/7123941961/il_fullxfull.7123941961_8bg4.jpg",
     bg:"#FFB5C2", accent:"#CE93D8",
     tags:["hotpink","blush","baby-pink","pink","lavender","purple","blossom","white","crystal-clear","confetti","rainbow","silver"],
   },
