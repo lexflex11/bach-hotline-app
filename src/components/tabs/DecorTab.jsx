@@ -4501,6 +4501,9 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
 function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
   const items = TABLEWARE.filter(i => i.type === "confetti");
   const [sizes, setSizes] = useState({}); // itemId → "mini" | "tube"
+  const [quantities, setQuantities] = useState({}); // itemId → qty
+  const getQty = id => quantities[id] || 1;
+  const adjQty = (id, val) => setQuantities(prev => ({ ...prev, [id]: Math.max(1, val) }));
 
   const scored = items.map(item => ({
     ...item,
@@ -4528,13 +4531,11 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
   const renderConfettiItem = (item) => {
     const size = getSize(item.id);
     const added = inCart(item.id, size);
+    const qty = getQty(item.id);
     const sizePrice = size === "mini"
       ? parseFloat(item.price.replace("$","")).toFixed(2)
       : (parseFloat(item.price.replace("$","")) * 2).toFixed(2);
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
-    const btnBg = added ? SOFT : `#f496c3`;
-    const btnColor = added ? HOT : WHITE;
-    const btnBorder = added ? `1.5px solid ${HOT}` : "none";
     const displayItem = size === "tube" && item.tubeImage
       ? { ...item, image: item.tubeImage }
       : item;
@@ -4556,14 +4557,17 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
               }}>{opt.label}</button>
             ))}
           </div>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{fontSize:11,fontWeight:400,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${sizePrice}</div>
-            <button onClick={() => toggle(item, size)} style={{
-              background:btnBg, color:btnColor, border:btnBorder,
-              borderRadius:20, padding:"4px 8px",
-              fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-            }}>{added ? "✓" : "+ Add"}</button>
+          <div style={{fontSize:11,fontWeight:400,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>${sizePrice}</div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:5}}>
+            <button onClick={()=>adjQty(item.id, qty-1)} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>−</button>
+            <span style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:14,textAlign:"center"}}>{qty}</span>
+            <button onClick={()=>adjQty(item.id, qty+1)} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>+</button>
           </div>
+          <button onClick={() => toggle(item, size)} style={{
+            background:added?SOFT:`#f496c3`, color:added?HOT:WHITE, border:added?`1.5px solid ${HOT}`:"none",
+            borderRadius:20, padding:"5px 0", width:"100%",
+            fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+          }}>{added ? "✓ Added" : "+ Add"}</button>
         </div>
       </div>
     );
