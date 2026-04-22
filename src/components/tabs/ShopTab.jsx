@@ -110,7 +110,7 @@ function ProductTile({ p, onView }) {
 }
 
 // ─── Product Detail Page (inline, no fixed overlay) ──────────────────────────
-function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView }) {
+function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart }) {
   const [imgIdx,   setImgIdx]   = useState(0);
   const [qty,      setQty]      = useState(1);
   const [variantI, setVariantI] = useState(0);
@@ -271,20 +271,38 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView }) {
                   <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:13, color:DARK }}>${(+r.price||0).toFixed(2)}</div>
                 </div>
                 {/* Add button / qty stepper */}
-                {recQty[r.id] > 0 ? (
-                  <div onClick={e=>e.stopPropagation()} style={{ display:"flex", alignItems:"center", gap:0, border:`1.5px solid #F496C2`, borderRadius:50, overflow:"hidden", flexShrink:0 }}>
-                    <button onClick={()=>setRecQty(q=>{ const n={...q}; if(n[r.id]<=1){delete n[r.id]}else{n[r.id]--}; return n; })} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:"#F496C2", fontWeight:700, padding:"4px 10px", lineHeight:1 }}>−</button>
-                    <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{recQty[r.id]}</span>
-                    <button onClick={()=>setRecQty(q=>({...q,[r.id]:(q[r.id]||0)+1}))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:"#F496C2", fontWeight:700, padding:"4px 10px", lineHeight:1 }}>+</button>
-                  </div>
-                ) : (
-                  <button onClick={e=>{ e.stopPropagation(); onAdd(r); setRecQty(q=>({...q,[r.id]:1})); }} style={{
-                    flexShrink:0, padding:"8px 20px", borderRadius:50, fontSize:13, fontWeight:700,
-                    fontFamily:"'Nunito',sans-serif", cursor:"pointer",
-                    background:"#F496C2", color:WHITE, border:"none",
-                    boxShadow:"0 3px 12px rgba(244,150,194,0.30)",
-                  }}>Add</button>
-                )}
+                {(() => {
+                  const unitPrice = +r.price || 0;
+                  const qty = recQty[r.id] || 0;
+                  const decRec = e => {
+                    e.stopPropagation();
+                    const nq = qty - 1;
+                    setRecQty(q => { const n={...q}; if(nq<=0){delete n[r.id]}else{n[r.id]=nq}; return n; });
+                    if(nq<=0) setCart(prev=>prev.filter(c=>c.id!==r.id));
+                    else setCart(prev=>prev.map(c=>c.id===r.id?{...c,price:unitPrice*nq}:c));
+                  };
+                  const incRec = e => {
+                    e.stopPropagation();
+                    const nq = qty + 1;
+                    setRecQty(q=>({...q,[r.id]:nq}));
+                    if(qty===0) setCart(prev=>[...prev,{...r,price:unitPrice}]);
+                    else setCart(prev=>prev.map(c=>c.id===r.id?{...c,price:unitPrice*nq}:c));
+                  };
+                  return qty > 0 ? (
+                    <div onClick={e=>e.stopPropagation()} style={{ display:"flex", alignItems:"center", gap:0, border:`1.5px solid #F496C2`, borderRadius:50, overflow:"hidden", flexShrink:0 }}>
+                      <button onClick={decRec} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:"#F496C2", fontWeight:700, padding:"4px 10px", lineHeight:1 }}>−</button>
+                      <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{qty}</span>
+                      <button onClick={incRec} style={{ background:"none", border:"none", cursor:"pointer", fontSize:18, color:"#F496C2", fontWeight:700, padding:"4px 10px", lineHeight:1 }}>+</button>
+                    </div>
+                  ) : (
+                    <button onClick={e=>{ e.stopPropagation(); setRecQty(q=>({...q,[r.id]:1})); setCart(prev=>[...prev,{...r,price:unitPrice}]); }} style={{
+                      flexShrink:0, padding:"8px 20px", borderRadius:50, fontSize:13, fontWeight:700,
+                      fontFamily:"'Nunito',sans-serif", cursor:"pointer",
+                      background:"#F496C2", color:WHITE, border:"none",
+                      boxShadow:"0 3px 12px rgba(244,150,194,0.30)",
+                    }}>Add</button>
+                  );
+                })()}
               </div>
             ))}
           </div>
@@ -379,6 +397,7 @@ export default function ShopTab({ cart, setCart }) {
           inCart={inCart(selected.id)}
           recommended={recommended}
           onView={p=>{ setSelected(p); window.scrollTo(0,0); }}
+          setCart={setCart}
         />
       </div>
     );
