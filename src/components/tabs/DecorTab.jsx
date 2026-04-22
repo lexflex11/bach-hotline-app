@@ -4687,6 +4687,11 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
   const activeNumItem = scored.find(i => i.id === activeNumId);
 
   const renderFoilItem = (item) => {
+    const sizeMatch = item.name.match(/^(\d+)"\s*/);
+    const inchSize = sizeMatch ? sizeMatch[1] : null;
+    const displayName = item.name.replace(/^\d+"\s*/, "");
+    const countSize = inchSize ? `Set of 1 · Dimensions: ${inchSize}"` : "Set of 1";
+
     if (item.numberBalloon) {
       const selectedNums = [0,1,2,3,4,5,6,7,8,9].filter(n => numInCart(item,n));
       const hasNums = selectedNums.length > 0;
@@ -4701,7 +4706,8 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
             <TablewearVisual item={item}/>
           </div>
           <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
-            <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
+            <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{displayName}</div>
+            <div style={{fontSize:8,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>
             <div>
               <div style={{fontSize:11,fontWeight:400,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>{item.price} each</div>
               <button onClick={() => setActiveNumId(activeNumId === item.id ? null : item.id)} style={{
@@ -4722,7 +4728,8 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
           <TablewearVisual item={item}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
-          <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
+          <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{displayName}</div>
+          <div style={{fontSize:8,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>
           <div style={{fontSize:11,fontWeight:400,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
           <button onClick={() => toggle(item)} style={{
             background:added?SOFT:`#f496c3`,
