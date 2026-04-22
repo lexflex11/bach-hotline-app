@@ -4546,7 +4546,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
           <TablewearVisual item={displayItem}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
-          <div style={{fontSize:10,fontWeight:800,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.25,marginBottom:4}}>{item.name}</div>
+          <div style={{fontSize:13,fontWeight:400,color:DARK,fontFamily:"'Playfair Display',Georgia,serif",lineHeight:1.3,marginBottom:4}}>{item.name}</div>
           <div style={{display:"flex",gap:3,marginBottom:5}}>
             {[{id:"mini",label:"Mini"},{id:"tube",label:"Tube"}].map(opt => (
               <button key={opt.id} onClick={() => setSizes(prev => ({...prev,[item.id]:opt.id}))} style={{
@@ -4559,7 +4559,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
             ))}
           </div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-            <div style={{fontSize:11,fontWeight:900,color:PUNCH,fontFamily:"'Nunito',sans-serif"}}>${sizePrice}</div>
+            <div style={{fontSize:11,fontWeight:400,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${sizePrice}</div>
             <button onClick={() => toggle(item, size)} style={{
               background:btnBg, color:btnColor, border:btnBorder,
               borderRadius:20, padding:"4px 8px",
