@@ -4867,9 +4867,7 @@ function CuratedThemes({ cart, setCart }) {
               </div>
               <button onClick={()=>allAdded?null:addTheme(theme)} style={{
                 ...BP,width:"100%",padding:"12px",fontSize:13,
-                background:allAdded?SOFT:undefined,
-                color:allAdded?HOT:undefined,
-                border:allAdded?`1.5px solid ${HOT}`:undefined,
+                ...(allAdded?{background:SOFT,color:HOT,border:`1.5px solid ${HOT}`}:{}),
               }}>
                 {allAdded?"✓ All Items Added":`Add ${theme.name} Set →`}
               </button>
