@@ -4750,11 +4750,18 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
           <div style={{fontSize:11,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2,display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical",overflow:"hidden"}}>{displayName}</div>
           <div style={{fontSize:8,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>
           <div style={{fontSize:11,fontWeight:400,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
-            <button onClick={e=>{e.stopPropagation();adjFoilQty(item,-1);}} style={{width:24,height:24,borderRadius:"50%",border:`1.5px solid ${HOT}`,background:WHITE,color:HOT,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",lineHeight:1}}>&minus;</button>
-            <span style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:16,textAlign:"center"}}>{qty}</span>
-            <button onClick={e=>{e.stopPropagation();adjFoilQty(item,1);}} style={{width:24,height:24,borderRadius:"50%",border:`1.5px solid ${HOT}`,background:HOT,color:WHITE,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",lineHeight:1}}>+</button>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:5}}>
+            <button onClick={e=>{e.stopPropagation();adjFoilQty(item,-1);}} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>&minus;</button>
+            <span style={{fontSize:11,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:14,textAlign:"center"}}>{qty}</span>
+            <button onClick={e=>{e.stopPropagation();adjFoilQty(item,1);}} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>+</button>
           </div>
+          <button onClick={e=>{e.stopPropagation();adjFoilQty(item, added?-qty:1);}} style={{
+            background:added?SOFT:`#f496c3`,
+            color:added?HOT:WHITE,
+            border:added?`1.5px solid ${HOT}`:"none",
+            borderRadius:20, padding:"5px 0", width:"100%",
+            fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
+          }}>{added ? "✓ Added" : "+ Add"}</button>
         </div>
       </div>
     );
