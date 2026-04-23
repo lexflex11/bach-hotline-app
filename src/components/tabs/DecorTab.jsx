@@ -828,9 +828,10 @@ export const TABLEWARE = [
   },
   {
     id:"plate-libra", type:"plate", name:"Libra Plates",
+    desc:"Serve celestial vibes with these Libra paper plates — perfect for astrology-themed bachelorette parties.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w"],
     price:"$12.66",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/cb2ca1d1-0874-431c-a7af-d9a9a6a69ab7/Ebook+Thumbnail+with+Video+-+2025-06-19T151048.912.png",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767900151827/Ebook+Thumbnail+with+Video+-+2025-06-19T151048.912.png",
     bg:"#F4A7B9", accent:"#FFD700",
     tags:["blush","baby-pink","pink","cameo","lavender","blossom","gold","champagne","white","silver","peri"],
   },
