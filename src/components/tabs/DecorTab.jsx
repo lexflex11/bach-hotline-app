@@ -1260,7 +1260,7 @@ export const TABLEWARE = [
   {
     id:"plate-spooky-icons", type:"plate", name:"Spooky Icons Plates",
     desc:"8 ct · 9\" round", price:"$14.38",
-    bullets:["Set of 8","Dimensions: 9\" round"],
+    bullets:["Set of 8","Dimensions: 9\"l x 9\"w"],
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/6dc7c95c-7bf9-41f6-83c2-e9e5fdea2512/Ebook+Thumbnail+with+Video+-+2025-05-18T121452.243.png",
     bg:"#1A1A1A", accent:"#9C27B0",
     tags:["black","purple","plum","crystal-purple","sangria","evergreen","metallic-forest-green","orange","burnt-orange","gray-smoke"],
