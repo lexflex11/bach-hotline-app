@@ -4827,7 +4827,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
           <div style={{fontSize:11,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{displayName}</div>
-          <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>
+          <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:4}}><div>{countSize.line1}</div>{countSize.line2&&<div>{countSize.line2}</div>}</div>
           <div style={{fontSize:11,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginBottom:5}}>
             <button onClick={e=>{e.stopPropagation();adjFoilQty(item,-1);}} style={{width:20,height:20,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:13,color:HOT,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>&minus;</button>
