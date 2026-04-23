@@ -1,4 +1,14 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+
+function useIsMobile() {
+  const [mobile, setMobile] = useState(window.innerWidth < 500);
+  useEffect(() => {
+    const h = () => setMobile(window.innerWidth < 500);
+    window.addEventListener('resize', h);
+    return () => window.removeEventListener('resize', h);
+  }, []);
+  return mobile;
+}
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
@@ -3957,6 +3967,7 @@ function Carousel({ items, renderItem }) {
 
 // ─── Product Step ─────────────────────────────────────────────────────────────
 function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, cart, setCart }) {
+  const mobile = useIsMobile();
   const items = TABLEWARE.filter(i => i.type === type);
   const scored = items.map(item => ({
     ...item,
@@ -4008,8 +4019,14 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
           <div style={{fontSize:11,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
           {item.bullets?.length >= 1 && (
             <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:4}}>
-              <div>{item.bullets[0]}</div>
-              {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:")}</div>}
+              {mobile ? (
+                <>
+                  <div>{item.bullets[0]}</div>
+                  {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:")}</div>}
+                </>
+              ) : (
+                <div>{item.bullets[0]}{item.bullets[1] ? ` · ${item.bullets[1].replace(/^Dimensions:/i,"Size:")}` : ""}</div>
+              )}
             </div>
           )}
           <div style={{fontSize:11,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
@@ -4500,6 +4517,7 @@ export const PARTY_ACCESSORIES = [
 ];
 
 function PartyAccessoriesStep({ stepNum, cart, setCart }) {
+  const mobile = useIsMobile();
   const [quantities, setQuantities] = useState({});
   const getQty = id => quantities[id] || 1;
   const adjQty = (id, val) => setQuantities(prev => ({ ...prev, [id]: Math.max(1, val) }));
@@ -4543,8 +4561,14 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
           <div style={{fontSize:11,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{item.name}</div>
           {item.bullets?.length >= 1 && (
             <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:4}}>
-              <div>{item.bullets[0]}</div>
-              {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:")}</div>}
+              {mobile ? (
+                <>
+                  <div>{item.bullets[0]}</div>
+                  {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:")}</div>}
+                </>
+              ) : (
+                <div>{item.bullets[0]}{item.bullets[1] ? ` · ${item.bullets[1].replace(/^Dimensions:/i,"Size:")}` : ""}</div>
+              )}
             </div>
           )}
           <div style={{fontSize:11,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
