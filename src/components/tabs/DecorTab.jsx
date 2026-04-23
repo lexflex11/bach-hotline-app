@@ -746,6 +746,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-aries", type:"plate", name:"Aries Plates",
+    related:["napkin-aries","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these aries paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -759,6 +760,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-sagittarius", type:"plate", name:"Sagittarius Plates",
+    related:["napkin-sagittarius","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these sagittarius paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -772,6 +774,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-leo", type:"plate", name:"Leo Plates",
+    related:["napkin-leo","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these leo paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -785,6 +788,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-virgo", type:"plate", name:"Virgo Plates",
+    related:["napkin-virgo","napkin-zodiac"],
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w"],
     price:"$12.66",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f254e469-94e7-4419-9e2f-917376020702/Ebook+Thumbnail+with+Video+-+2025-06-20T144445.334.png",
@@ -793,6 +797,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-scorpio", type:"plate", name:"Scorpio Plates",
+    related:["napkin-scorpio","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these Scorpio paper plates perfect for celestial queens and astrology lovers alike!",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -802,6 +807,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-taurus", type:"plate", name:"Taurus Plates",
+    related:["napkin-taurus","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these taurus paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.99",
@@ -815,6 +821,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-cancer", type:"plate", name:"Cancer Plates",
+    related:["napkin-cancer","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these cancer paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -828,6 +835,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-libra", type:"plate", name:"Libra Plates",
+    related:["napkin-libra","napkin-zodiac"],
     desc:"Serve celestial vibes with these Libra paper plates — perfect for astrology-themed bachelorette parties.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w"],
     price:"$12.66",
@@ -837,6 +845,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-gemini", type:"plate", name:"Gemini Plates",
+    related:["napkin-gemini","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these gemini paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -850,6 +859,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-aquarius", type:"plate", name:"Aquarius Plates",
+    related:["napkin-aquarius","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these aquarius paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -863,6 +873,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-pisces", type:"plate", name:"Pisces Plates",
+    related:["napkin-pisces","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these pisces paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
@@ -876,6 +887,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-capricorn", type:"plate", name:"Capricorn Plates",
+    related:["napkin-capricorn","napkin-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these Capricorn paper plates perfect for celestial queens and astrology lovers alike!",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
