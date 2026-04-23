@@ -760,7 +760,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-sagittarius", type:"plate", name:"Sagittarius Plates",
-    related:["napkin-sagittarius","napkin-zodiac"],
+    related:["napkin-sagittarius"],
     desc:"Serve cosmic vibes and star powered style with these sagittarius paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
