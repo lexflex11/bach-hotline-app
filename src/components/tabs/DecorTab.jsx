@@ -4988,7 +4988,7 @@ function CuratedThemes({ cart, setCart }) {
     <div style={{marginTop:28,paddingTop:20,borderTop:`2px solid ${MID}`}}>
       <div style={{textAlign:"center",marginBottom:18}}>
         <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",letterSpacing:"1.5px",textTransform:"uppercase",marginBottom:4}}>Not sure where to start?</div>
-        <div style={{fontSize:18,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>Shop Curated Themes</div>
+        <div style={{fontSize:18,fontWeight:300,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>Shop Curated Themes</div>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:14}}>
         {CURATED_THEMES.map(theme => {
