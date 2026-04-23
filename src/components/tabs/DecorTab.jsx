@@ -746,7 +746,7 @@ export const TABLEWARE = [
   },
   {
     id:"plate-aries", type:"plate", name:"Aries Plates",
-    related:["napkin-aries","napkin-zodiac"],
+    related:["napkin-aries","napkin-zodiac","plate-zodiac"],
     desc:"Serve cosmic vibes and star powered style with these aries paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",

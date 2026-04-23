@@ -402,7 +402,7 @@ export default function ShopTab({ cart, setCart }) {
       .map(id => DECOR_PRODUCTS.find(p => p.id === id))
       .filter(Boolean);
 
-    if (pinned.length >= 4) return pinned.slice(0, 4);
+    if (pinned.length >= 5) return pinned.slice(0, 5);
 
     // Step 2: fill remaining slots with tag-matched cross-category items
     const pinnedIds = new Set(pinned.map(p => p.id));
@@ -420,14 +420,14 @@ export default function ShopTab({ cart, setCart }) {
       if (!seen.has(p.category)) {
         seen.add(p.category);
         fills.push(p);
-        if (pinned.length + fills.length >= 4) break;
+        if (pinned.length + fills.length >= 5) break;
       }
     }
-    if (pinned.length + fills.length < 4) {
+    if (pinned.length + fills.length < 5) {
       for (const p of scored) {
         if (!fills.find(x => x.id === p.id)) {
           fills.push(p);
-          if (pinned.length + fills.length >= 4) break;
+          if (pinned.length + fills.length >= 5) break;
         }
       }
     }
