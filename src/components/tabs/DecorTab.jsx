@@ -2669,19 +2669,6 @@ export const TABLEWARE = [
     etsyUrl:"https://bachhotlinesupplies.etsy.com",
   },
   {
-    id:"cup-white",      type:"cup",  name:"Pearl White Cups",
-    desc:"Bachelorette Party",      price:"$7.99",
-    image: null,         bg:"#F8F8F8", accent:"#ddd",
-    tags:["white","silver","champagne","lavender","blush"],
-    etsyUrl:"https://bachhotlinesupplies.etsy.com",
-  },
-  {
-    id:"cup-cowprint",   type:"cup",  name:"Cow Print Cups",
-    desc:"25 ct · 16oz", price:"$11.99",
-    image: null,         bg:"#fff", accent:"#1a1a1a",
-    tags:["cow","dalmatian","white"],
-    etsyUrl:"https://bachhotlinesupplies.etsy.com",
-  },
   {
     id:"cup-holographic",type:"cup",  name:"Holographic Cups",
     desc:"25 ct · 16oz", price:"$12.99",
