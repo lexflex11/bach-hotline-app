@@ -391,6 +391,15 @@ export default function ShopTab({ cart, setCart }) {
   const add    = p  => { if (!inCart(p.id)) setCart(prev=>[...prev,p]); };
   const remove = id => setCart(prev=>prev.filter(c=>c.id!==id));
 
+  // Memoize so random shuffle only runs when selected product changes, not on every cart update
+  const recommended = React.useMemo(() => {
+    if (!selected) return [];
+    return DECOR_PRODUCTS
+      .filter(p => p.id !== selected.id && p.category === selected.category)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 4);
+  }, [selected?.id]);
+
   const filtered = DECOR_PRODUCTS.filter(p => {
     const mc = cat === "all" || p.category === cat;
     const ms = !search || p.name.toLowerCase().includes(search.toLowerCase());
@@ -399,16 +408,12 @@ export default function ShopTab({ cart, setCart }) {
 
   // Show product detail page inline (replaces grid)
   if (selected) {
-    const recommended = DECOR_PRODUCTS
-      .filter(p => p.id !== selected.id && p.category === selected.category)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 4);
     return (
       <div style={{ paddingBottom:24 }}>
         <ProductDetail
           p={selected}
           onBack={()=>setSelected(null)}
-          onAdd={add}
+          onAdd={p=>add(p)}
           inCart={inCart(selected.id)}
           recommended={recommended}
           onView={p=>{ setSelected(p); window.scrollTo(0,0); }}
