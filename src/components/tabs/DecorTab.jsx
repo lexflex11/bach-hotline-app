@@ -782,8 +782,9 @@ export const TABLEWARE = [
   },
   {
     id:"plate-scorpio", type:"plate", name:"Scorpio Plates",
-    desc:"8 ct · 10\" x 10\"", price:"$12.66",
-    bullets:["Set of 8","Dimensions: 10\"w x 10\"l"],
+    desc:"Serve cosmic vibes and star powered style with these Scorpio paper plates perfect for celestial queens and astrology lovers alike!",
+    bullets:["Set of 8","Dimensions: 10\" x 10\"","Durable, lightweight, and disposable for easy cleanup"],
+    price:"$12.66",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/69c961ce-45a6-486b-8994-fa2ba97ce94b/Ebook+Thumbnail+with+Video+-+2025-06-20T143712.766.png",
     bg:"#1A1A1A", accent:"#E8112D",
     tags:["black","red","scarlett","sangria","crystal-burgundy","purple","plum","crystal-purple","orange","burnt-orange","gray-smoke","navy"],
