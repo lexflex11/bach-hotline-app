@@ -2630,6 +2630,7 @@ export const TABLEWARE = [
   {
     id:"cup-giddy-up", type:"cup", name:"Giddy Up Sluts Espresso Cup",
     desc:"Bachelorette Party", price:"$22.26",
+    bullets:["Set of 2","Capacity: 3oz"],
     image:"https://images.weserv.nl/?url=i.etsystatic.com/40669879/r/il/99c7e3/7806352486/il_fullxfull.7806352486_g77x.jpg",
     bg:"#C4956A", accent:"#1A1A1A",
     tags:["terracotta","muse","malted","stone","earth","cocoa","burnt-orange","champagne","lace","white","black","mustard"],
