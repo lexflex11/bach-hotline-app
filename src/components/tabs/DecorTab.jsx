@@ -2335,7 +2335,7 @@ export const TABLEWARE = [
   {
     id:"cup-pink-lemonade", type:"cup", name:"Pink Lemonade Cups",
     desc:"Sip happy with our pink lemonade cups. Bright, bold, and full of fun.",
-    bullets:["Set of 8","12oz capacity","Dimensions: 4.5\"l x 3.5\"w","Durable, lightweight, and disposable for easy cleanup"],
+    bullets:["Set of 8","Capacity: 12oz","Dimensions: 4.5\"l x 3.5\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$9.99",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d391d853-11ef-4738-bec4-7ec8c077ece7/Ebook+Thumbnail+with+Video-378.png?format=500w",
@@ -2348,7 +2348,7 @@ export const TABLEWARE = [
   {
     id:"cup-black-suit-potion", type:"cup", name:"Black Suit Potion Cups",
     desc:"Serve up your spooky potions in style with our lapel paper party cups! Inspired by Wednesday Addams.",
-    bullets:["Set of 8","12oz capacity","Durable, lightweight, and disposable for easy cleanup"],
+    bullets:["Set of 8","Capacity: 12oz","Durable, lightweight, and disposable for easy cleanup"],
     price:"$13.80",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/145fbae7-7c5a-4647-9ffe-54ac0c7d1b17/Ebook+Thumbnail+with+Video+-+2025-01-30T101320.249.png?format=500w",
@@ -2361,7 +2361,7 @@ export const TABLEWARE = [
   {
     id:"cup-3d-planet", type:"cup", name:"3D Planet Cups",
     desc:"Blast off into bridal fun with these galaxy chic cups! Add the space rings to turn each drink into a planet because your crew deserves a celebration that's truly stellar.",
-    bullets:["Set of 8","9oz capacity","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
+    bullets:["Set of 8","Capacity: 9oz","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.00",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c4edd5ce-94a6-4f77-876f-6252fbd2ebe1/Ebook+Thumbnail+with+Video+-+2025-11-03T140309.152.png?format=500w",
@@ -2384,7 +2384,7 @@ export const TABLEWARE = [
   {
     id:"cup-love-notes", type:"cup", name:"Love Notes Cups",
     desc:"Send sweet sips with these love notes cups! Neon pops and gold foil details make them the perfect match for any Valentine's or Galentine's Day bash.",
-    bullets:["Set of 8","9oz capacity","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
+    bullets:["Set of 8","Capacity: 9oz","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$11.00",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/ae6e5dd9-91ff-4706-91ae-1e9ca562149b/Ebook+Thumbnail+with+Video+-+2025-11-04T124253.381.png?format=500w",
@@ -2397,7 +2397,7 @@ export const TABLEWARE = [
   {
     id:"cup-cherry", type:"cup", name:"Cherry Cups",
     desc:"Pop some cherry charm into your celebration! These adorable cups are perfect for outdoor picnics, fruity themes, or any party that needs a splash of red and whimsy.",
-    bullets:["Set of 8","9oz capacity","Durable, lightweight, and disposable for easy cleanup"],
+    bullets:["Set of 8","Capacity: 9oz","Durable, lightweight, and disposable for easy cleanup"],
     price:"$11.00",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/85159ffc-afc6-4b3b-8f95-b4caeb48b80c/Ebook+Thumbnail+with+Video+-+2025-11-03T153201.078.png?format=500w",
@@ -2410,7 +2410,7 @@ export const TABLEWARE = [
   {
     id:"cup-girl-power", type:"cup", name:"Girl Power Cups",
     desc:"Zap! Bang! Pow! These pastel party cups pack a punch with silver foil details and bold superhero flair.",
-    bullets:["Set of 8","9oz capacity","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
+    bullets:["Set of 8","Capacity: 9oz","Dimensions: 3.5\"l x 3\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$11.00",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/dfb6200c-71ef-4a00-9519-cdceee68c370/Ebook+Thumbnail+with+Video+-+2025-11-04T142254.958.png?format=500w",
@@ -2423,7 +2423,7 @@ export const TABLEWARE = [
   {
     id:"cup-palm-tree", type:"cup", name:"Palm Palm Tree Cups",
     desc:"Palm trees and pretty pink? Yes, please! These cups are the perfect way to add instant vacay energy to your summer celebration.",
-    bullets:["Set of 10","9oz capacity","Dimensions: 4.5\"l x 3.5\"w","Durable, lightweight, and disposable for easy cleanup"],
+    bullets:["Set of 10","Capacity: 9oz","Dimensions: 4.5\"l x 3.5\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$11.00",
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0461f780-782d-41ae-b2b0-d48e3909ac43/Ebook+Thumbnail+with+Video+-+2025-11-04T121323.219.png?format=500w",
@@ -4009,7 +4009,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
           {item.bullets?.length >= 1 && (
             <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:4}}>
               <div>{item.bullets[0]}</div>
-              {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:").replace(/^Capacity:\s*(\S+)/i,"$1 capacity")}</div>}
+              {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:")}</div>}
             </div>
           )}
           <div style={{fontSize:11,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
@@ -4544,7 +4544,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
           {item.bullets?.length >= 1 && (
             <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:4}}>
               <div>{item.bullets[0]}</div>
-              {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:").replace(/^Capacity:\s*(\S+)/i,"$1 capacity")}</div>}
+              {item.bullets[1] && <div>{item.bullets[1].replace(/^Dimensions:/i,"Size:")}</div>}
             </div>
           )}
           <div style={{fontSize:11,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5}}>{item.price}</div>
