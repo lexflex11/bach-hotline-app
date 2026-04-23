@@ -319,8 +319,20 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
 }
 
 // ─── Cart Drawer ──────────────────────────────────────────────────────────────
-function CartDrawer({ cart, onRemove, onClose }) {
-  const total = cart.reduce((s,i)=>s+i.price,0);
+function CartDrawer({ cart, setCart, onRemove, onClose }) {
+  const total = cart.reduce((s,i)=>s+(i.price||0),0);
+
+  const adjQty = (item, delta) => {
+    const unitPrice = item.unitPrice || (item.price / (item.qty || 1));
+    const curQty = item.qty || 1;
+    const newQty = Math.max(0, curQty + delta);
+    if (newQty === 0) {
+      setCart(prev => prev.filter(c => c.id !== item.id));
+    } else {
+      setCart(prev => prev.map(c => c.id === item.id ? {...c, qty: newQty, price: unitPrice * newQty} : c));
+    }
+  };
+
   return (
     <div style={{position:"fixed",inset:0,zIndex:500,display:"flex",alignItems:"flex-end",justifyContent:"center"}}>
       <div onClick={onClose} style={{position:"absolute",inset:0,background:"rgba(45,10,24,0.45)",backdropFilter:"blur(6px)"}}/>
@@ -333,7 +345,7 @@ function CartDrawer({ cart, onRemove, onClose }) {
         <div style={{width:44,height:4,borderRadius:2,background:MID,margin:"14px auto 10px"}}/>
         <div style={{padding:"0 18px"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
-            <h3 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:18,fontWeight:700,color:DARK,margin:0}}>
+            <h3 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:18,fontWeight:400,color:DARK,margin:0}}>
               Your Cart ({cart.length})
             </h3>
             <button onClick={onClose} style={{background:"none",border:"none",fontSize:20,cursor:"pointer",color:"#aaa"}}>×</button>
@@ -345,19 +357,29 @@ function CartDrawer({ cart, onRemove, onClose }) {
             </div>
           ) : (
             <>
-              {cart.map(item=>(
-                <div key={item.id} style={{display:"flex",alignItems:"center",gap:12,marginBottom:14,paddingBottom:14,borderBottom:`1px solid ${BORDER}`}}>
-                  <div style={{position:"relative",width:58,height:58,borderRadius:6,overflow:"hidden",background:"#FDF5F8",flexShrink:0}}>
-                    <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+              {cart.map(item => {
+                const qty = item.qty || 1;
+                return (
+                  <div key={item.id} style={{display:"flex",alignItems:"center",gap:12,marginBottom:14,paddingBottom:14,borderBottom:`1px solid ${BORDER}`}}>
+                    <div style={{position:"relative",width:58,height:58,borderRadius:6,overflow:"hidden",background:"#FDF5F8",flexShrink:0}}>
+                      {item.image ? <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"contain",padding:4,boxSizing:"border-box"}}/> : <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22}}>🎀</div>}
+                    </div>
+                    <div style={{flex:1,minWidth:0}}>
+                      <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
+                      <div style={{display:"flex",alignItems:"center",gap:8}}>
+                        <div style={{display:"flex",alignItems:"center",border:`1.5px solid ${BORDER}`,borderRadius:50,overflow:"hidden"}}>
+                          <button onClick={()=>adjQty(item,-1)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:HOT,fontWeight:700,padding:"2px 8px",lineHeight:1}}>−</button>
+                          <span style={{fontSize:12,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:16,textAlign:"center"}}>{qty}</span>
+                          <button onClick={()=>adjQty(item,1)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:HOT,fontWeight:700,padding:"2px 8px",lineHeight:1}}>+</button>
+                        </div>
+                        <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${(item.price||0).toFixed(2)}</div>
+                      </div>
+                    </div>
+                    <button onClick={()=>onRemove(item.id)} style={{background:SOFT,border:`1px solid ${BORDER}`,borderRadius:"50%",width:28,height:28,cursor:"pointer",color:PUNCH,fontSize:14,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>×</button>
                   </div>
-                  <div style={{flex:1,minWidth:0}}>
-                    <div style={{fontSize:13,fontWeight:600,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:2,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
-                    <div style={{fontSize:14,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${item.price.toFixed(2)}</div>
-                  </div>
-                  <button onClick={()=>onRemove(item.id)} style={{background:SOFT,border:`1px solid ${BORDER}`,borderRadius:"50%",width:28,height:28,cursor:"pointer",color:PUNCH,fontSize:14,display:"flex",alignItems:"center",justifyContent:"center"}}>×</button>
-                </div>
-              ))}
-              <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Nunito',sans-serif",fontWeight:700,fontSize:15}}>
+                );
+              })}
+              <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Nunito',sans-serif",fontWeight:300,fontSize:15,color:DARK}}>
                 <span>Total</span>
                 <span>${total.toFixed(2)}</span>
               </div>

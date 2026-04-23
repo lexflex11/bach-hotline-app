@@ -4698,9 +4698,9 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
     if (nq === 0) {
       setCart(prev => prev.filter(c => c.id !== item.id));
     } else if (cur === 0) {
-      setCart(prev => [...prev, { id:item.id, name:item.name, price:unitPrice*nq, image:item.image, category:"foil" }]);
+      setCart(prev => [...prev, { id:item.id, name:item.name, price:unitPrice*nq, qty:nq, unitPrice, image:item.image, category:"foil" }]);
     } else {
-      setCart(prev => prev.map(c => c.id===item.id ? {...c, price:unitPrice*nq} : c));
+      setCart(prev => prev.map(c => c.id===item.id ? {...c, price:unitPrice*nq, qty:nq} : c));
     }
   };
 
