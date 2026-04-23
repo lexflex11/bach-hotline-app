@@ -1067,9 +1067,14 @@ export const TABLEWARE = [
   },
   {
     id:"plate-vinyl-disco", type:"plate", name:"Vinyl Disco Plates",
+    desc:"Spin into the party! These vinyl record-inspired plates bring retro disco energy to any bachelorette bash.",
     bullets:["Set of 8","Dimensions: 9\"l x 9\"w"],
     price:"$11.22",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68ebfd05c8d07324547aaea0/1767901345848/Ebook+Thumbnail+with+Video-123.png?format=1500w",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/9696d8c6-3996-422f-9838-c7f8493eaaa9/Ebook+Thumbnail+with+Video-123.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/175194c1-bb42-4e0b-82c2-2bde35b37647/Ebook+Thumbnail+with+Video-122.png",
+    ],
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/9696d8c6-3996-422f-9838-c7f8493eaaa9/Ebook+Thumbnail+with+Video-123.png",
     bg:"#1A1A1A", accent:"#C0C0C0",
     tags:["black","silver","gray-smoke","fog","metallic-blue","navy","purple","plum","hotpink","metallic-fuchsia","metallic-midnight-blue"],
   },
