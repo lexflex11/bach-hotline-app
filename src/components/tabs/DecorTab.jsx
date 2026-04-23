@@ -4038,7 +4038,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
       ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)`
       : "0 4px 16px rgba(0,0,0,0.09)";
     return (
-      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+      <div key={item.id} style={{background:WHITE,borderRadius:"0 0 18px 18px",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fff"}}>
           <TablewearVisual item={item}/>
         </div>
@@ -4588,7 +4588,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
     const qty = getQty(item.id);
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
     return (
-      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+      <div key={item.id} style={{background:WHITE,borderRadius:"0 0 18px 18px",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fff"}}>
           <TablewearVisual item={item}/>
         </div>
@@ -4687,8 +4687,8 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
       ? { ...item, image: item.tubeImage }
       : item;
     return (
-      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
-        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fdf5f8"}}>
+      <div key={item.id} style={{background:WHITE,borderRadius:"0 0 18px 18px",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column",position:"relative"}}>
+        <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0,background:"#fff"}}>
           <TablewearVisual item={displayItem}/>
         </div>
         <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column",justifyContent:"space-between"}}>
@@ -4816,7 +4816,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
       const btnBorder = hasNums ? `1.5px solid ${HOT}` : "none";
       const btnLabel = hasNums ? `#${selectedNums.join(", ")} ✓` : "Pick Numbers";
       return (
-        <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
+        <div key={item.id} style={{background:WHITE,borderRadius:"0 0 18px 18px",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
           <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
             <TablewearVisual item={item}/>
           </div>
@@ -4839,7 +4839,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
     const added = qty > 0;
     const shadow = added ? `0 0 0 2px ${HOT}, 0 4px 16px rgba(233,30,140,0.15)` : "0 4px 16px rgba(0,0,0,0.09)";
     return (
-      <div key={item.id} style={{background:WHITE,borderRadius:18,overflow:"hidden",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
+      <div key={item.id} style={{background:WHITE,borderRadius:"0 0 18px 18px",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
         <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
           <TablewearVisual item={item}/>
         </div>
