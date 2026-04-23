@@ -3630,7 +3630,7 @@ function TablewearVisual({ item }) {
     return (
       <img
         src={proxyImg(item.image)} alt={item.name}
-        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fafafa"}}
+        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fafafa",padding:"6px",boxSizing:"border-box"}}
         onError={e=>{e.target.style.display="none";}}
       />
     );
