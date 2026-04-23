@@ -270,42 +270,29 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
                   <div style={{ fontFamily:"'Acme',sans-serif", fontSize:15, color:"#f496c3", lineHeight:1.3, marginBottom:3 }}>{r.name}</div>
                   <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:13, color:DARK }}>${(+r.price||0).toFixed(2)}</div>
                 </div>
-                {/* Qty stepper + Add/Added button */}
+                {/* Qty stepper — adjusting qty auto-adds/updates cart */}
                 {(() => {
                   const unitPrice = +r.price || 0;
-                  const qty = recQty[r.id] || 1;
-                  const added = recQty[`${r.id}_added`] || false;
+                  const qty = recQty[r.id] || 0;
                   const dec = e => {
                     e.stopPropagation();
-                    setRecQty(q=>({...q,[r.id]:Math.max(1,qty-1)}));
+                    const nq = Math.max(0, qty - 1);
+                    setRecQty(q => { const n={...q}; if(nq===0){delete n[r.id]}else{n[r.id]=nq}; return n; });
+                    if (nq === 0) setCart(prev => prev.filter(c => c.id !== r.id));
+                    else setCart(prev => prev.map(c => c.id===r.id ? {...c, qty:nq, price:unitPrice*nq} : c));
                   };
                   const inc = e => {
                     e.stopPropagation();
-                    setRecQty(q=>({...q,[r.id]:qty+1}));
-                  };
-                  const addToCart = e => {
-                    e.stopPropagation();
-                    setRecQty(q=>({...q,[`${r.id}_added`]:true}));
-                    setCart(prev => {
-                      const exists = prev.find(c=>c.id===r.id);
-                      if (exists) return prev.map(c=>c.id===r.id?{...c,price:unitPrice*qty}:c);
-                      return [...prev,{...r,price:unitPrice*qty}];
-                    });
+                    const nq = qty + 1;
+                    setRecQty(q=>({...q,[r.id]:nq}));
+                    if (qty === 0) setCart(prev => [...prev, {...r, qty:nq, unitPrice, price:unitPrice*nq}]);
+                    else setCart(prev => prev.map(c => c.id===r.id ? {...c, qty:nq, price:unitPrice*nq} : c));
                   };
                   return (
-                    <div onClick={e=>e.stopPropagation()} style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:5, flexShrink:0 }}>
-                      <div style={{ display:"flex", alignItems:"center", gap:0, border:`1.5px solid #F496C2`, borderRadius:50, overflow:"hidden" }}>
-                        <button onClick={dec} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:"#F496C2", fontWeight:700, padding:"4px 9px", lineHeight:1 }}>−</button>
-                        <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:18, textAlign:"center" }}>{qty}</span>
-                        <button onClick={inc} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:"#F496C2", fontWeight:700, padding:"4px 9px", lineHeight:1 }}>+</button>
-                      </div>
-                      <button onClick={addToCart} style={{
-                        padding:"6px 16px", borderRadius:50, fontSize:12, fontWeight:700,
-                        fontFamily:"'Nunito',sans-serif", cursor:"pointer", whiteSpace:"nowrap",
-                        background: added ? SOFT : "#F496C2",
-                        color: added ? HOT : WHITE,
-                        border: added ? `1.5px solid ${HOT}` : "none",
-                      }}>{added ? "✓ Added" : "Add"}</button>
+                    <div onClick={e=>e.stopPropagation()} style={{ display:"flex", alignItems:"center", gap:0, border:`1.5px solid #F496C2`, borderRadius:50, overflow:"hidden", flexShrink:0 }}>
+                      <button onClick={dec} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:"#F496C2", fontWeight:700, padding:"5px 10px", lineHeight:1, opacity: qty===0?0.3:1 }}>−</button>
+                      <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{qty}</span>
+                      <button onClick={inc} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:"#F496C2", fontWeight:700, padding:"5px 10px", lineHeight:1 }}>+</button>
                     </div>
                   );
                 })()}
