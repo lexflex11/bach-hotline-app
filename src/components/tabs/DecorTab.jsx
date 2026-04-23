@@ -3669,7 +3669,7 @@ function TablewearVisual({ item }) {
     return (
       <img
         src={proxyImg(item.image)} alt={item.name}
-        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fafafa",padding:"6px",boxSizing:"border-box"}}
+        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fff",padding:"6px",boxSizing:"border-box"}}
         onError={e=>{e.target.style.display="none";}}
       />
     );
@@ -3677,7 +3677,7 @@ function TablewearVisual({ item }) {
   if (item.type === "plate") {
     const isCow = item.id.includes("cow");
     return (
-      <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",background:"#fdf5f8"}}>
+      <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",background:"#fff"}}>
         <div style={{
           width:64,height:64,borderRadius:"50%",
           background:item.bg,
