@@ -4746,7 +4746,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
     const sizeMatch = item.name.match(/^(\d+)"\s*/);
     const inchSize = sizeMatch ? sizeMatch[1] : null;
     const displayName = item.name.replace(/^\d+"\s*/, "");
-    const countSize = inchSize ? `Set of 1 · Size: ${inchSize}"` : "Set of 1";
+    const countSize = inchSize ? { line1:"Set of 1", line2:`Size: ${inchSize}"` } : { line1:"Set of 1", line2:null };
 
     if (item.numberBalloon) {
       const selectedNums = [0,1,2,3,4,5,6,7,8,9].filter(n => numInCart(item,n));
@@ -4763,7 +4763,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
           </div>
           <div style={{padding:"7px 8px 8px",flex:1,display:"flex",flexDirection:"column"}}>
             <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:2}}>{displayName}</div>
-            <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.3,marginBottom:4}}>{countSize}</div>
+            <div style={{fontSize:8,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:4}}><div>{countSize.line1}</div>{countSize.line2&&<div>{countSize.line2}</div>}</div>
             <div>
               <div style={{fontSize:11,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>{item.price} each</div>
               <button onClick={() => setActiveNumId(activeNumId === item.id ? null : item.id)} style={{
