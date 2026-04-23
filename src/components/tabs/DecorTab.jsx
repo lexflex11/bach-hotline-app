@@ -1995,6 +1995,7 @@ export const TABLEWARE = [
   {
     id:"napkin-diamond", type:"napkin", name:"Diamond Napkins",
     desc:"18 ct · 5\" x 5\"", price:"$9.99",
+    bullets:["Set of 18","Dimensions: 5\"l x 5\"w","Durable, lightweight, and disposable for easy cleanup"],
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/78343a74-0323-41d2-a89d-e4525f43e6be/Ebook+Thumbnail+with+Video+-+2025-01-24T180336.314.png",
     bg:"#1A1A1A", accent:"#CE93D8",
     tags:["black","purple","plum","crystal-purple","silver","gray-smoke","lavender","navy","metallic-midnight-blue"],
@@ -2002,6 +2003,7 @@ export const TABLEWARE = [
   {
     id:"napkin-queen-card", type:"napkin", name:"Queen Card Napkins",
     desc:"16 ct · 5.5\" x 7\"", price:"$12.62",
+    bullets:["Set of 16","Dimensions: 5.5\"l x 7\"w","Durable, lightweight, and disposable for easy cleanup"],
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68499f331ef4b52dec0636bc/1767922376235/Ebook+Thumbnail+with+Video+-+2025-06-08T010753.060.png?format=1500w",
     bg:"#E8112D", accent:"#FFD700",
     tags:["red","scarlett","hotpink","black","white","gold","metallic-gold","champagne","crystal-red"],
@@ -2009,6 +2011,7 @@ export const TABLEWARE = [
   {
     id:"napkin-fries-guys", type:"napkin", name:"Fries Before Guys Napkins",
     desc:"16 ct · 6\" x 4\"", price:"$11.00",
+    bullets:["Set of 16","Dimensions: 6\"l x 4\"w","Durable, lightweight, and disposable for easy cleanup"],
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/e455f9c2-e856-4dd3-a236-f33b09625f0e/Ebook+Thumbnail+with+Video+-+2025-07-05T085433.945.png",
     bg:"#FFE800", accent:"#9C27B0",
     tags:["yellow","lemonade","goldenrod","mustard","crystal-yellow","purple","plum","lavender","blossom","peri","white","sugar"],
@@ -2029,6 +2032,7 @@ export const TABLEWARE = [
   {
     id:"napkin-vegas", type:"napkin", name:"Vegas Casino Bachelorette Paper Napkins",
     desc:"Bachelorette Party", price:"$10.36",
+    bullets:["Set of 20","Dimensions: 5\"l x 5\"w","Durable, lightweight, and disposable for easy cleanup"],
     image:"https://images.weserv.nl/?url=i.etsystatic.com/40669879/r/il/0505db/7876408656/il_fullxfull.7876408656_mqya.jpg",
     bg:"#F4A7B9", accent:"#C4956A",
     tags:["hotpink","blush","gold","champagne","metallic-gold","black","red","scarlett","white"],
@@ -2036,6 +2040,7 @@ export const TABLEWARE = [
   {
     id:"napkin-bach-club", type:"napkin", name:"Bach Club Paper Napkins",
     desc:"Bachelorette Party", price:"$11.14",
+    bullets:["Set of 20","Dimensions: 5\"l x 5\"w","Durable, lightweight, and disposable for easy cleanup"],
     image:"https://images.weserv.nl/?url=i.etsystatic.com/40669879/r/il/efe7af/7876407064/il_fullxfull.7876407064_99vl.jpg",
     bg:"#E91E8C", accent:"#1A1A1A",
     tags:["hotpink","black","silver","white","metallic-fuchsia","crystal-magenta","gray-smoke","navy","metallic-midnight-blue"],
