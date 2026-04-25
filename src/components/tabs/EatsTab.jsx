@@ -1296,15 +1296,6 @@ function RestaurantCard({ r, onView, favorites, onToggleFavorite }) {
         >
           <span style={{ fontSize:18, lineHeight:1, color: isFav ? WHITE : HOT }}>{isFav ? "♥" : "♡"}</span>
         </button>
-        {/* Tags */}
-        <div style={{ position:"absolute", bottom:10, left:10, display:"flex", gap:5, flexWrap:"wrap" }}>
-          {r.tags.slice(0,2).map(t => (
-            <span key={t} style={{
-              background:HOT, color:WHITE, fontSize:9, fontWeight:700,
-              fontFamily:"'Nunito',sans-serif", padding:"2px 8px", borderRadius:20,
-            }}>{t}</span>
-          ))}
-        </div>
       </div>
 
       {/* Info */}
