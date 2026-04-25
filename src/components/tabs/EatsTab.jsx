@@ -234,7 +234,7 @@ const RESTAURANTS = {
     {
       id:"nola-1", name:"Commander's Palace", cuisine:"Creole", priceRange:"$$$",
       vibe:"Historic · Iconic · Tableside Cocktails",
-      rating:4.9, reviews:1089, groupMin:2, groupMax:30,
+      rating:4.5, reviews:10219, groupMin:2, groupMax:30,
       tags:["Iconic","Creole","Historic"],
       image:"https://cdn.prod.website-files.com/67042d3fabc70a091f4acacc/692f4923777776c4f9e3cf3d_cp_home_hero.avif",
       images:[
@@ -271,7 +271,7 @@ const RESTAURANTS = {
     {
       id:"nola-3", name:"GW Fins", cuisine:"Seafood", priceRange:"$$$",
       vibe:"Upscale · French Quarter · Date Night",
-      rating:4.8, reviews:892, groupMin:2, groupMax:18,
+      rating:4.7, reviews:8741, groupMin:2, groupMax:18,
       tags:["Seafood","Fine Dining","French Quarter"],
       image:"https://images.unsplash.com/photo-1606852836066-f64c9f7ebfaa?w=800&q=80",
       images:[
@@ -289,7 +289,7 @@ const RESTAURANTS = {
     {
       id:"nola-4", name:"Cochon", cuisine:"Cajun / Creole", priceRange:"$$",
       vibe:"Rustic · Warehouse District",
-      rating:4.7, reviews:764, groupMin:2, groupMax:22,
+      rating:4.4, reviews:2776, groupMin:2, groupMax:22,
       tags:["Cajun","Group-Friendly","Craft Cocktails"],
       image:"https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80",
       images:[
@@ -362,7 +362,7 @@ const RESTAURANTS = {
     {
       id:"nola-8", name:"Tipsy Trumpet", cuisine:"American / Gastropub", priceRange:"$$",
       vibe:"Jazz · Cocktails · Bourbon Street Energy",
-      rating:4.8, reviews:347, groupMin:2, groupMax:16,
+      rating:4.8, reviews:265, groupMin:2, groupMax:16,
       tags:["Jazz","Craft Cocktails","Fun","French Quarter"],
       image:"https://www.tipsytrumpet.com/wp-content/uploads/2024/01/1-1536x864.jpg",
       images:[
