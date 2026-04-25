@@ -415,6 +415,101 @@ const RESTAURANTS = {
       whyWeLoveIt:["Most picturesque courtyard in the French Quarterincredible photo backdrop","Bottomless mimosa brunch package perfect for the group","Historic French Quarter setting feels straight out of a movie"],
       reserveUrl:"https://www.opentable.com/tableau-new-orleans",
     },
+    {
+      id:"nola-11", name:"Tsunami Sushi", cuisine:"Japanese / Sushi", priceRange:"$$",
+      vibe:"Lively · CBD · NOLA-Inspired Rolls",
+      rating:4.4, reviews:492, groupMin:2, groupMax:20,
+      tags:["Sushi","Cocktails","CBD","NOLA Rolls"],
+      image:"https://neworleans.servingsushi.com/images/tsunami-new-orleans-exterior.jpg",
+      images:[
+        "https://neworleans.servingsushi.com/images/tsunami-new-orleans-exterior.jpg",
+        "https://neworleans.servingsushi.com/images/tsunami-new-orleans-interior.jpg",
+        "https://neworleans.servingsushi.com/images/tsunami-new-orleans-sushi.jpg",
+      ],
+      hours:"Mon–Thu 11am–9pm · Fri 11am–10pm · Sat 5pm–10pm · Sun Closed",
+      address:"601 Poydras St, Ste B, New Orleans, LA 70130",
+      desc:"Award-winning sushi in the heart of the CBD, where Louisiana flavors crash head-on into Japanese tradition. Tsunami's signature rolls fuse local ingredients like crawfish, alligator, and crab into creative, over-the-top creations. The cocktail menu is equally impressive and the vibe is buzzy and fun.",
+      menuHighlights:["Black & Gold Roll (crunchy shrimp, crawfish, scallions)","Ragin' Cajun Roll (panko alligator, avocado)","Don Tuan Roll (tuna, crab, avocado, graham cracker)","Chirashi Bowl","Specialty Sake Cocktails"],
+      whyWeLoveIt:["The most NOLA-inspired sushi in the city: alligator rolls are a conversation starter","Buzzy CBD location is perfectly positioned before a night out","Extensive cocktail and sake menu perfect for group toasting"],
+      reserveUrl:"https://resy.com/cities/new-orleans-la/venues/tsunami-sushi-new-orleans",
+      websiteUrl:"https://neworleans.servingsushi.com/",
+    },
+    {
+      id:"nola-12", name:"Yakuza House", cuisine:"Japanese Handrolls / Omakase", priceRange:"$$$",
+      vibe:"Elevated · Intimate · Omakase Energy",
+      rating:4.9, reviews:272, groupMin:2, groupMax:12,
+      tags:["Omakase","Handrolls","Best of NOLA","Foodie"],
+      image:"https://yakuzahouse.com/wp-content/uploads/2023/01/yakuza-house-rolls.jpg",
+      images:[
+        "https://yakuzahouse.com/wp-content/uploads/2023/01/yakuza-house-rolls.jpg",
+        "https://yakuzahouse.com/wp-content/uploads/2023/01/yakuza-house-interior.jpg",
+        "https://yakuzahouse.com/wp-content/uploads/2023/01/yakuza-house-nigiri.jpg",
+      ],
+      hours:"Tue–Thu 11am–2:30pm & 4:30pm–9:30pm · Fri–Sat 11am–2:30pm & 4:30pm–10pm · Mon & Sun Closed",
+      address:"2740 Severn Ave, Metairie, LA 70002",
+      desc:"Ranked #72 on Yelp's Top 100 Sushi Spots in the United States, Yakuza House is the definitive best sushi in the greater New Orleans area. Chef Huy Pham's intimate handroll bar offers a NOLA Omakase experience with stunning ingredients like Hokkaido scallop with foie gras and premium toro. Reserve well in advance — this place fills up fast.",
+      menuHighlights:["NOLA Omakase (half or full)","Hokkaido Scallop with Foie Gras","Blue Crab Handroll","Wagyu Beef Sando","Japanese Fluffy Cheesecake"],
+      whyWeLoveIt:["Ranked Top 100 sushi in the entire US: serious foodie cred for the group","Chef Huy at the bar makes it an interactive, personal experience","Japanese sandos and cheesecake make it completely unique to NOLA"],
+      reserveUrl:"https://resy.com/cities/metairie-la/venues/yakuza-house",
+      websiteUrl:"https://yakuzahouse.com/",
+    },
+    {
+      id:"nola-13", name:"Mikimoto Japanese Restaurant", cuisine:"Japanese / Sushi", priceRange:"$$",
+      vibe:"Neighborhood Gem · Carrollton · 25+ Year Institution",
+      rating:4.4, reviews:494, groupMin:2, groupMax:20,
+      tags:["Sushi","NOLA Classic","Neighborhood Gem","Affordable"],
+      image:"https://www.mikimotosushi.com/uploads/1/3/5/4/13547618/s490888440916694628_p3_i1_w640.jpeg",
+      images:[
+        "https://www.mikimotosushi.com/uploads/1/3/5/4/13547618/s490888440916694628_p3_i1_w640.jpeg",
+        "https://www.mikimotosushi.com/uploads/1/3/5/4/13547618/s490888440916694628_p3_i2_w640.jpeg",
+        "https://www.mikimotosushi.com/uploads/1/3/5/4/13547618/s490888440916694628_p3_i3_w640.jpeg",
+      ],
+      hours:"Mon–Thu 11am–10pm · Fri 11am–10:30pm · Sat 4pm–10:30pm · Sun 11:30am–10pm",
+      address:"3301 S Carrollton Ave, New Orleans, LA 70118",
+      desc:"Since 1999, Mikimoto has been New Orleans' neighborhood sushi institution — a beloved spot where locals have been celebrating birthdays and bach trips for over 25 years. Louisiana-accented rolls, generous portions, and consistently excellent quality without the fine-dining price tag. The drive-thru window is an only-in-NOLA bonus.",
+      menuHighlights:["Yellow Dragon Roll","Mango Mania Roll","Dante Roll (chopped tuna, perfect spice)","Crescent City Roll","Chicken Katsu"],
+      whyWeLoveIt:["More than 25 years of NOLA sushi history: a true local institution","Louisiana-inspired rolls at approachable prices — great for a group dinner","Sunday lunch hours make it a perfect post-brunch sushi stop"],
+      reserveUrl:"https://www.mikimotosushi.com/",
+      websiteUrl:"https://www.mikimotosushi.com/",
+    },
+    {
+      id:"nola-14", name:"Origami Restaurant", cuisine:"Japanese / Sushi", priceRange:"$$",
+      vibe:"Cozy · Freret Street · Uptown Local Favorite",
+      rating:4.4, reviews:258, groupMin:2, groupMax:16,
+      tags:["Sushi","Uptown","Cozy","Local Favorite"],
+      image:"https://origaminola.com/wp-content/uploads/2022/01/origami-nola-exterior.jpg",
+      images:[
+        "https://origaminola.com/wp-content/uploads/2022/01/origami-nola-exterior.jpg",
+        "https://origaminola.com/wp-content/uploads/2022/01/origami-nola-rolls.jpg",
+        "https://origaminola.com/wp-content/uploads/2022/01/origami-nola-interior.jpg",
+      ],
+      hours:"Mon–Tue 12pm–2pm & 5pm–8pm · Wed–Sat 12pm–2:30pm & 5pm–8:30pm · Sun Closed",
+      address:"5130 Freret St, New Orleans, LA 70115",
+      desc:"A beloved Uptown staple tucked into a charming renovated house on Freret Street. Origami brilliantly bridges Japanese tradition and New Orleans flavor with signature rolls like the PO-Boy Roll and NOLA City Roll. The cozy, unpretentious vibe makes it a local crowd favorite for casual but delicious sushi.",
+      menuHighlights:["PO-Boy Roll (a NOLA sushi icon)","NOLA City Roll","Rice Crispy Roll (spicy salmon & tuna)","Burning Woman Roll","Softshell Crab Tempura"],
+      whyWeLoveIt:["The PO-Boy Roll is a once-in-a-lifetime NOLA sushi experience","Charming house setting on one of New Orleans' most vibrant streets","Casual, welcoming vibe: no pretension, just excellent food"],
+      reserveUrl:"https://origaminola.com/",
+      websiteUrl:"https://origaminola.com/",
+    },
+    {
+      id:"nola-15", name:"Rock-n-Saké Bar & Sushi", cuisine:"Japanese / Sushi", priceRange:"$$",
+      vibe:"Party-Ready · Warehouse District · Late Night",
+      rating:4.2, reviews:364, groupMin:2, groupMax:24,
+      tags:["Sushi","Late Night","Warehouse District","Party Vibes","OpenTable"],
+      image:"https://rocknsake.com/wp-content/uploads/2022/01/rock-n-sake-interior-new-orleans.jpg",
+      images:[
+        "https://rocknsake.com/wp-content/uploads/2022/01/rock-n-sake-interior-new-orleans.jpg",
+        "https://rocknsake.com/wp-content/uploads/2022/01/rock-n-sake-rolls-new-orleans.jpg",
+        "https://rocknsake.com/wp-content/uploads/2022/01/rock-n-sake-bar-new-orleans.jpg",
+      ],
+      hours:"Fri Lunch 11am–2:30pm · Tue–Wed & Sun Dinner 5pm–10pm · Thu Dinner 5pm–11pm · Fri–Sat Dinner 5:30pm–12am · Mon Closed",
+      address:"823 Fulton St, New Orleans, LA 70130",
+      desc:"The Warehouse District's wildest sushi bar, where the party doesn't stop until midnight on weekends. Rock-n-Saké serves creative rolls with a side of late-night energy — think Voodoo Queen rolls, sake bombs, and a scene that matches the rest of your NOLA weekend. This is sushi with a soundtrack.",
+      menuHighlights:["Voodoo Queen Roll","LSU Roll","Fulton Street Roll","Garlic Coconut Shrimp","Sake Bomb Flight"],
+      whyWeLoveIt:["Open until midnight Fri–Sat: the perfect start to a night out in the Warehouse District","Buzzy bar energy and creative rolls designed for group fun","OpenTable reservations make it easy to book ahead"],
+      reserveUrl:"https://www.opentable.com/r/rock-n-sake-bar-and-sushi-new-orleans",
+      websiteUrl:"https://rocknsake.com/",
+    },
   ],
   charleston: [
     {
@@ -1498,31 +1593,29 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 
 // ─── Main EatsTab ─────────────────────────────────────────────────────────────
 const CUISINE_CATS = [
-  { id:"all",       label:"All",           emoji:"🍽️" },
-  { id:"brunch",    label:"Brunch",        emoji:"🥞" },
-  { id:"sushi",     label:"Sushi",         emoji:"🍣" },
-  { id:"mexican",   label:"Mexican",       emoji:"🌮" },
-  { id:"american",  label:"American",      emoji:"🍔" },
-  { id:"cocktails", label:"Cocktails",     emoji:"🍹" },
-  { id:"asian",     label:"Asian",         emoji:"🥢" },
-  { id:"seafood",   label:"Seafood",       emoji:"🦞" },
-  { id:"coffee",    label:"Coffee",        emoji:"☕" },
-  { id:"sweets",    label:"Sweet Treats",  emoji:"🍰" },
+  { id:"all",          label:"All",              emoji:"🍽️" },
+  { id:"brunch",       label:"Brunch",           emoji:"🥞" },
+  { id:"sushi-seafood",label:"Sushi & Seafood",  emoji:"🍣" },
+  { id:"mexican",      label:"Mexican",          emoji:"🌮" },
+  { id:"american",     label:"American",         emoji:"🍔" },
+  { id:"cocktails",    label:"Cocktails",        emoji:"🍹" },
+  { id:"asian",        label:"Asian",            emoji:"🥢" },
+  { id:"coffee",       label:"Coffee",           emoji:"☕" },
+  { id:"sweets",       label:"Sweet Treats",     emoji:"🍰" },
 ];
 
 function matchCategory(r, cat) {
   if (cat === "all") return true;
   const haystack = [r.cuisine, r.vibe, ...(r.tags||[])].join(" ").toLowerCase();
   const map = {
-    brunch:    ["brunch","breakfast","mimosa","morning"],
-    sushi:     ["sushi","japanese","robata","omakase"],
-    mexican:   ["mexican","taco","cantina","tequila"],
-    american:  ["american","southern","burger","farm","bbq","brasserie"],
-    cocktails: ["cocktail","bar","drinks","speakeasy"],
-    asian:     ["asian","fusion","chinese","korean","thai","vietnamese"],
-    seafood:   ["seafood","fish","lobster","oyster","crab","shrimp"],
-    coffee:    ["coffee","cafe","espresso","latte"],
-    sweets:    ["sweet","dessert","bakery","pastry","cake","ice cream"],
+    brunch:        ["brunch","breakfast","mimosa","morning"],
+    "sushi-seafood":["sushi","japanese","robata","omakase","seafood","fish","lobster","oyster","crab","shrimp","fins"],
+    mexican:       ["mexican","taco","cantina","tequila"],
+    american:      ["american","southern","burger","farm","bbq","brasserie"],
+    cocktails:     ["cocktail","bar","drinks","speakeasy"],
+    asian:         ["asian","fusion","chinese","korean","thai","vietnamese"],
+    coffee:        ["coffee","cafe","espresso","latte"],
+    sweets:        ["sweet","dessert","bakery","pastry","cake","ice cream"],
   };
   return (map[cat]||[]).some(kw => haystack.includes(kw));
 }
@@ -1535,15 +1628,37 @@ export default function EatsTab({ groupSize: initialGroupSize }) {
   const [category,   setCategory]   = useState("all");
   const [results,    setResults]    = useState(null);  // null = not searched yet
   const [selected,   setSelected]   = useState(null);  // restaurant detail view
+  const [eatsView,   setEatsView]   = useState("browse"); // "browse" | "itinerary"
   const [favorites,  setFavorites]  = useState(() => {
     try { return JSON.parse(localStorage.getItem("eats_favorites") || "[]"); }
     catch { return []; }
   });
+  const [planData, setPlanData] = useState(() => {
+    try { return JSON.parse(localStorage.getItem("eats_plan") || "{}"); }
+    catch { return {}; }
+  }); // { id: { day:1, meal:"dinner" } }
+  const [tripDays, setTripDays] = useState(3);
 
   function toggleFavorite(id) {
     setFavorites(prev => {
-      const next = prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id];
+      const isAdding = !prev.includes(id);
+      const next = isAdding ? [...prev, id] : prev.filter(x => x !== id);
       try { localStorage.setItem("eats_favorites", JSON.stringify(next)); } catch {}
+      if (isAdding) {
+        setPlanData(p => {
+          const np = { ...p, [id]: p[id] || { day:1, meal:"dinner" } };
+          try { localStorage.setItem("eats_plan", JSON.stringify(np)); } catch {}
+          return np;
+        });
+      }
+      return next;
+    });
+  }
+
+  function updatePlanItem(id, field, value) {
+    setPlanData(prev => {
+      const next = { ...prev, [id]: { ...(prev[id] || { day:1, meal:"dinner" }), [field]: value } };
+      try { localStorage.setItem("eats_plan", JSON.stringify(next)); } catch {}
       return next;
     });
   }
@@ -1668,8 +1783,36 @@ export default function EatsTab({ groupSize: initialGroupSize }) {
         )}
       </div>
 
-      {/* ── Results ── */}
-      {filteredResults && (
+      {/* ── View Toggle ── */}
+      {results && (
+        <div style={{ display:"flex", gap:8, marginBottom:16 }}>
+          {[
+            { id:"browse",    label:"Browse",       emoji:"🍽️" },
+            { id:"itinerary", label:"My Itinerary",  emoji:"📋", count: favorites.length },
+          ].map(v => (
+            <button key={v.id} onClick={()=>setEatsView(v.id)} style={{
+              flex:1, padding:"10px 8px", borderRadius:12,
+              border: eatsView===v.id ? "none" : `1.5px solid ${BORDER}`,
+              background: eatsView===v.id ? `linear-gradient(135deg,#f472b0,${HOT})` : WHITE,
+              color: eatsView===v.id ? WHITE : DARK,
+              fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
+              cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", gap:6,
+            }}>
+              <span>{v.emoji}</span>{v.label}
+              {v.count > 0 && (
+                <span style={{
+                  background: eatsView===v.id ? "rgba(255,255,255,0.3)" : HOT,
+                  color: WHITE, borderRadius:50, fontSize:10, fontWeight:800,
+                  padding:"1px 7px", marginLeft:2,
+                }}>{v.count}</span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* ── Results (Browse) ── */}
+      {filteredResults && eatsView === "browse" && (
         <>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
             <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:17, fontWeight:700, color:DARK }}>
@@ -1691,6 +1834,165 @@ export default function EatsTab({ groupSize: initialGroupSize }) {
             ))
           )}
         </>
+      )}
+
+      {/* ── Itinerary View ── */}
+      {results && eatsView === "itinerary" && (
+        <div>
+          {/* Trip length picker */}
+          <div style={{ ...C, marginBottom:14 }}>
+            <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:10 }}>
+              <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:16, fontWeight:700, color:DARK }}>
+                Your Dining Itinerary
+              </div>
+              <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                <span style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif" }}>Trip days:</span>
+                {[2,3,4,5].map(n => (
+                  <button key={n} onClick={()=>setTripDays(n)} style={{
+                    width:28, height:28, borderRadius:"50%", fontSize:12, fontWeight:700,
+                    border: tripDays===n ? "none" : `1.5px solid ${BORDER}`,
+                    background: tripDays===n ? HOT : WHITE,
+                    color: tripDays===n ? WHITE : DARK,
+                    cursor:"pointer", fontFamily:"'Nunito',sans-serif",
+                  }}>{n}</button>
+                ))}
+              </div>
+            </div>
+            <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8 }}>
+              Heart restaurants to add them here, then assign each to a day and meal
+            </div>
+          </div>
+
+          {favorites.length === 0 ? (
+            <div style={{ textAlign:"center", padding:"40px 20px", background:SOFT, borderRadius:20 }}>
+              <div style={{ fontSize:36, marginBottom:12 }}>♡</div>
+              <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:16, fontWeight:700, color:DARK, marginBottom:6 }}>No saved spots yet</div>
+              <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8 }}>
+                Tap Browse and heart the restaurants you want to visit
+              </div>
+              <button onClick={()=>setEatsView("browse")} style={{
+                marginTop:14, padding:"10px 22px", borderRadius:50,
+                background:`linear-gradient(135deg,#f472b0,${HOT})`,
+                color:WHITE, border:"none", fontFamily:"'Nunito',sans-serif",
+                fontSize:13, fontWeight:700, cursor:"pointer",
+              }}>Browse Restaurants</button>
+            </div>
+          ) : (
+            Array.from({length:tripDays},(_,di)=>di+1).map(day => {
+              const MEALS = [
+                { id:"brunch",  label:"Brunch",    emoji:"🥂" },
+                { id:"lunch",   label:"Lunch",     emoji:"🥗" },
+                { id:"dinner",  label:"Dinner",    emoji:"🍽️" },
+                { id:"latenight",label:"Late Night",emoji:"🌙" },
+              ];
+              return (
+                <div key={day} style={{ marginBottom:20 }}>
+                  <div style={{
+                    display:"flex", alignItems:"center", gap:10, marginBottom:10,
+                    paddingBottom:8, borderBottom:`2px solid ${MID}`,
+                  }}>
+                    <div style={{
+                      width:32, height:32, borderRadius:"50%",
+                      background:`linear-gradient(135deg,#f472b0,${HOT})`,
+                      display:"flex", alignItems:"center", justifyContent:"center",
+                      fontSize:13, fontWeight:800, color:WHITE, fontFamily:"'Nunito',sans-serif", flexShrink:0,
+                    }}>{day}</div>
+                    <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:16, fontWeight:700, color:DARK }}>Day {day}</div>
+                  </div>
+                  {MEALS.map(meal => {
+                    const assigned = favorites
+                      .map(id => results.find(r => r.id === id))
+                      .filter(r => r && planData[r.id]?.day === day && planData[r.id]?.meal === meal.id);
+                    return (
+                      <div key={meal.id} style={{ marginBottom:10 }}>
+                        <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:0.8, marginBottom:6, display:"flex", alignItems:"center", gap:5 }}>
+                          <span>{meal.emoji}</span>{meal.label}
+                        </div>
+                        {assigned.length > 0 ? assigned.map(r => (
+                          <div key={r.id} style={{
+                            background:WHITE, borderRadius:14, border:`1.5px solid ${BORDER}`,
+                            padding:"10px 14px", marginBottom:8,
+                            display:"flex", alignItems:"center", gap:12,
+                          }}>
+                            <img src={r.image} alt={r.name} style={{ width:48, height:48, borderRadius:10, objectFit:"cover", flexShrink:0 }} />
+                            <div style={{ flex:1, minWidth:0 }}>
+                              <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:13, fontWeight:700, color:DARK, marginBottom:2 }}>{r.name}</div>
+                              <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8 }}>{r.vibe}</div>
+                            </div>
+                            <div style={{ display:"flex", flexDirection:"column", gap:4, flexShrink:0 }}>
+                              <select
+                                value={planData[r.id]?.day || 1}
+                                onChange={e=>updatePlanItem(r.id,"day",Number(e.target.value))}
+                                style={{ fontSize:10, borderRadius:8, border:`1px solid ${BORDER}`, padding:"2px 4px", fontFamily:"'Nunito',sans-serif", color:DARK, background:WHITE }}
+                              >
+                                {Array.from({length:tripDays},(_,i)=><option key={i+1} value={i+1}>Day {i+1}</option>)}
+                              </select>
+                              <select
+                                value={planData[r.id]?.meal || "dinner"}
+                                onChange={e=>updatePlanItem(r.id,"meal",e.target.value)}
+                                style={{ fontSize:10, borderRadius:8, border:`1px solid ${BORDER}`, padding:"2px 4px", fontFamily:"'Nunito',sans-serif", color:DARK, background:WHITE }}
+                              >
+                                {MEALS.map(m=><option key={m.id} value={m.id}>{m.label}</option>)}
+                              </select>
+                            </div>
+                          </div>
+                        )) : (
+                          <div style={{ fontSize:12, color:"#ccc", fontFamily:"'Nunito',sans-serif", padding:"8px 12px", background:SOFT, borderRadius:10, fontStyle:"italic" }}>
+                            No {meal.label.toLowerCase()} planned yet
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })
+          )}
+
+          {/* Unassigned favorites */}
+          {favorites.length > 0 && (() => {
+            const unassigned = favorites
+              .map(id => results.find(r => r.id === id))
+              .filter(r => r && !planData[r.id]);
+            if (!unassigned.length) return null;
+            return (
+              <div style={{ marginTop:4, marginBottom:20 }}>
+                <div style={{ fontSize:12, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:0.8, marginBottom:8 }}>
+                  Saved but not yet scheduled
+                </div>
+                {unassigned.map(r => (
+                  <div key={r.id} style={{
+                    background:WHITE, borderRadius:14, border:`1.5px dashed ${BORDER}`,
+                    padding:"10px 14px", marginBottom:8,
+                    display:"flex", alignItems:"center", gap:12,
+                  }}>
+                    <img src={r.image} alt={r.name} style={{ width:48, height:48, borderRadius:10, objectFit:"cover", flexShrink:0 }} />
+                    <div style={{ flex:1, minWidth:0 }}>
+                      <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:13, fontWeight:700, color:DARK }}>{r.name}</div>
+                    </div>
+                    <div style={{ display:"flex", flexDirection:"column", gap:4, flexShrink:0 }}>
+                      <select
+                        value=""
+                        onChange={e=>updatePlanItem(r.id,"day",Number(e.target.value))}
+                        style={{ fontSize:10, borderRadius:8, border:`1px solid ${BORDER}`, padding:"2px 4px", fontFamily:"'Nunito',sans-serif", color:DARK, background:WHITE }}
+                      >
+                        <option value="">Day?</option>
+                        {Array.from({length:tripDays},(_,i)=><option key={i+1} value={i+1}>Day {i+1}</option>)}
+                      </select>
+                      <select
+                        defaultValue="dinner"
+                        onChange={e=>updatePlanItem(r.id,"meal",e.target.value)}
+                        style={{ fontSize:10, borderRadius:8, border:`1px solid ${BORDER}`, padding:"2px 4px", fontFamily:"'Nunito',sans-serif", color:DARK, background:WHITE }}
+                      >
+                        {[{id:"brunch",label:"Brunch"},{id:"lunch",label:"Lunch"},{id:"dinner",label:"Dinner"},{id:"latenight",label:"Late Night"}].map(m=><option key={m.id} value={m.id}>{m.label}</option>)}
+                      </select>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+        </div>
       )}
     </div>
   );
