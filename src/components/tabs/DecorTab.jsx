@@ -642,7 +642,6 @@ export const TABLEWARE = [
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/5be21dd3-07af-42ae-b7f1-380e6653c5c2/Ebook+Thumbnail+with+Video+-+2025-01-23T115601.216.png?format=500w",
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a57cd80c-b01d-4be3-8d5a-c2ab7dfcf4f6/Ebook+Thumbnail+with+Video+-+2025-01-23T115549.081.png?format=500w",
-      "https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/679282419ae1111daaf72b7f/1767898268601/Ebook+Thumbnail+with+Video+-+2025-01-23T115601.216.png?format=1500w",
     ],
     bullets:["Set of 8","Dimensions: 9\"w x 9\"l","Durable, disposable plates for easy cleanup"],
     bg:"#F4A7B9", accent:"#CC0000",
