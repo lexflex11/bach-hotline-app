@@ -1367,11 +1367,9 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
           <div style={{ display:"flex", flexWrap:"wrap", gap:14, alignItems:"center", marginBottom:8 }}>
             <div style={{ display:"flex", alignItems:"center", gap:5 }}>
               <Stars rating={r.rating} />
-              <span style={{ fontSize:13, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif" }}>{r.rating}</span>
-              <span style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", textDecoration:"underline" }}>{r.reviews} Reviews</span>
+              <span style={{ fontSize:13, fontWeight:300, color:DARK, fontFamily:"'Nunito',sans-serif" }}>{r.rating}</span>
+              <span style={{ fontSize:12, fontWeight:300, color:HOT, fontFamily:"'Nunito',sans-serif", textDecoration:"underline" }}>{r.reviews} Reviews</span>
             </div>
-            <span style={{ fontSize:12, color:"#888", fontFamily:"'Nunito',sans-serif" }}>🍽️ {r.cuisine}</span>
-            <span style={{ fontSize:12, color:"#888", fontFamily:"'Nunito',sans-serif" }}>{r.priceRange}</span>
           </div>
         </div>
 
@@ -1431,14 +1429,6 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
             <div style={{ background:SOFT, borderRadius:12, padding:"10px 12px" }}>
               <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Group Size</div>
               <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif" }}>Up to {r.groupMax} guests</div>
-            </div>
-            <div style={{ background:SOFT, borderRadius:12, padding:"10px 12px" }}>
-              <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Cuisine</div>
-              <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif" }}>{r.cuisine}</div>
-            </div>
-            <div style={{ background:SOFT, borderRadius:12, padding:"10px 12px" }}>
-              <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Price Range</div>
-              <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif" }}>{r.priceRange}</div>
             </div>
           </div>
 
