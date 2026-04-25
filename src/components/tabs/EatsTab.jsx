@@ -1293,7 +1293,7 @@ function RestaurantCard({ r, onView, favorites, onToggleFavorite }) {
           }}
           aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
         >
-          <span style={{ fontSize:18, lineHeight:1 }}>{isFav ? "♥" : "♡"}</span>
+          <span style={{ fontSize:18, lineHeight:1, color: isFav ? WHITE : HOT }}>{isFav ? "♥" : "♡"}</span>
         </button>
         {/* Tags */}
         <div style={{ position:"absolute", bottom:10, left:10, display:"flex", gap:5, flexWrap:"wrap" }}>
