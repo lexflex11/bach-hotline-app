@@ -280,7 +280,7 @@ const RESTAURANTS = {
       ],
       hours:"Sun–Thu 5pm–10pm · Fri–Sat 5pm–11pm",
       address:"808 Bienville St, New Orleans, LA 70112",
-      desc:"GW Fins is the French Quarter's premier seafood destination — daily-changing menu sourced from the best local purveyors. The lamb chops and "wood-grilled fish of the day" are legendary. Perfect for an elevated bach dinner.",
+      desc:"GW Fins is the French Quarter's premier seafood destination — daily-changing menu sourced from the best local purveyors. The lamb chops and wood-grilled fish of the day are legendary. Perfect for an elevated bach dinner.",
       menuHighlights:["Wood-Grilled Fish of the Day","Tuna Crudo","Gulf Shrimp Bisque","Crispy Oysters","Gulf Fish Amandine"],
       whyWeLoveIt:["Daily-changing menu means every visit is unique","French Quarter location for a night out after dinner","One of the most consistent fine dining spots in the city"],
       reserveUrl:"https://www.opentable.com/gw-fins",

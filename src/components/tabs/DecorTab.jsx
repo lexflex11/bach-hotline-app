@@ -2692,7 +2692,6 @@ export const TABLEWARE = [
     etsyUrl:"https://bachhotlinesupplies.etsy.com",
   },
   {
-  {
     id:"cup-holographic",type:"cup",  name:"Holographic Cups",
     desc:"25 ct · 16oz", price:"$12.99",
     image: null,         bg:"linear-gradient(135deg,#F4A7B9,#CE93D8,#81D4FA,#FFD700)", accent:"#E91E8C",
