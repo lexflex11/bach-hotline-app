@@ -1340,7 +1340,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
         display:"flex", alignItems:"center", gap:6,
         background:WHITE, border:`1.5px solid ${BORDER}`,
         borderRadius:50, padding:"9px 16px", margin:"14px 16px 0",
-        fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
+        fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:300,
         color:DARK, cursor:"pointer",
         boxShadow:"0 2px 8px rgba(0,0,0,0.08)", zIndex:10,
       }}>
