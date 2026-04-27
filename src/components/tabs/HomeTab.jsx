@@ -28,7 +28,7 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user }) {
       <SH title="What do you need?" />
       {[
         { icon:"✈️", label:"Group Flights",      sub:"Seamless travel for your entire crew",     tab:"flights"      },
-        { icon:"🏠", label:"Accommodations",     sub:"Best stays for your group",                tab:"stays"        },
+        { icon:"🏠", label:"Accommodations",     sub:"Stay together in style",                   tab:"stays"        },
         { icon:"🍽️", label:"Bites & Sips",        sub:"Restaurants & brunch spots",               tab:"eats"         },
         { icon:"🎉", label:"Experiences",        sub:"Activities, shows & adventures",           tab:"experiences"  },
         { icon:"🎀", label:"Party Supply Shop",  sub:"Your real Etsy products — 534 items",      tab:"shop"         },
