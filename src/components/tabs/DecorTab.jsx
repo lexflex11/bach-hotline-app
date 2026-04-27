@@ -2689,13 +2689,6 @@ export const TABLEWARE = [
   },
 
   // ── Foil Balloons ─────────────────────────────────────────────────────────────
-  {
-    id:"foil-fruit-green-number", type:"foil", numberBalloon:true, name:"34\" Fruit Green Number Balloon",
-    desc:"34\" foil number balloon", price:"$10.99",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/52a8acbc-6d54-45d8-816b-5cb50d5c1f25/Ebook+Thumbnail+with+Video-364.png",
-    bg:"#4CAF50", accent:"#FFD700",
-    tags:["green","lime-green","meadow","empower-mint","yellow","lemonade","white","crystal-clear"],
-  },
 
 
 
@@ -2724,8 +2717,22 @@ export const TABLEWARE = [
 
   {
     id:"foil-rainbow-number", type:"foil", numberBalloon:true, name:"34\" Rainbow Number Balloon",
-    desc:"34\" foil number balloon", price:"$13.68",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/8856029c-ae9f-49e0-a03f-379626f119be/Ebook+Thumbnail+with+Video+-+2025-03-13T174918.813.png",
+    desc:"Make your bash shine with our vibrant 34\" rainbow number foil balloon! Add a bold pop to any celebration — perfect for bachelorettes, birthdays, or anniversaries.",
+    bullets:["1 count, each number is sold separately","Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$13.68",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0526d9e2-c467-4fee-9c29-43219d45b557/Copy+of+Untitled+Design+-+2025-02-09T145327.990.png",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0526d9e2-c467-4fee-9c29-43219d45b557/Copy+of+Untitled+Design+-+2025-02-09T145327.990.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/8856029c-ae9f-49e0-a03f-379626f119be/Ebook+Thumbnail+with+Video+-+2025-03-13T174918.813.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/68933dda-2e53-4653-9c6a-fdc2f61b505c/Ebook+Thumbnail+with+Video+-+2025-03-13T174014.422.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c70f5684-a749-4830-aed2-cc7ac870d414/Ebook+Thumbnail+with+Video+-+2025-03-13T174043.770.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/250bab23-36a3-4ed3-a093-8390bdac0baf/Ebook+Thumbnail+with+Video+-+2025-03-13T174129.144.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/79e47955-c9ca-4bd9-a423-dfe7064a9a45/Ebook+Thumbnail+with+Video+-+2025-03-13T173235.254.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/15499de7-2df7-4c4a-9031-ee64d0d44f8d/Ebook+Thumbnail+with+Video+-+2025-03-13T173350.023.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a2c850f0-f0ce-4ddb-a03f-e99107a6da1f/Ebook+Thumbnail+with+Video+-+2025-03-13T173431.701.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/9593c717-1a34-472d-b740-a09efcc2c1ae/Ebook+Thumbnail+with+Video+-+2025-03-13T173607.664.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/ed56555e-0e7c-46b8-b10c-4775a680835b/Ebook+Thumbnail+with+Video+-+2025-03-13T173848.199.png",
+    ],
     bg:"#FFD700", accent:"#E91E8C",
     tags:["red","orange","yellow","green","blue","purple","hotpink","rainbow","confetti","white","crystal-clear"],
   },
