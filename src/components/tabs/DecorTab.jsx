@@ -3076,7 +3076,9 @@ export const TABLEWARE = [
   },
   {
     id:"foil-seashell", type:"foil", name:"36\" Seashell Balloon",
-    desc:"36\" specialty foil balloon", price:"$17.23",
+    desc:"Make a splash with this 36\" seashell foil balloon for mermaid parties, beach birthdays, or summer celebrations! Shiny, fun, and Insta ready!",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$17.23",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68d317c7e17edb6fe4ec9e8f/1767987123950/Ebook+Thumbnail+with+Video+-+2025-06-07T164630.583.png?format=1500w",
     bg:"#FFDCC2", accent:"#A0887A",
     tags:["peach","blush","champagne","cream","tan","brown","sand","lace","white","coastal","tropical"],
