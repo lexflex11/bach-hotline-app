@@ -3004,7 +3004,9 @@ export const TABLEWARE = [
   },
   {
     id:"foil-sunglasses", type:"foil", name:"31\" Sunglasses Balloon",
-    desc:"31\" specialty foil balloon", price:"$11.02",
+    desc:"Add bold, fun vibes to your bachelorette or bridal shower with this 31\" neon shades foil balloon, perfect for retro or summer party themes.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$11.02",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68d59f2b4fb669549073cb77/1767990638539/Ebook+Thumbnail+with+Video+-+2025-02-24T220518.516.png?format=1500w",
     bg:"#FFD700", accent:"#E91E8C",
     tags:["yellow","lemonade","orange","hotpink","blush","lime-green","green","blue","baby-blue","purple","rainbow","white","crystal-clear"],
