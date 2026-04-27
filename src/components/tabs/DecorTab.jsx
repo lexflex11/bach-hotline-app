@@ -2985,8 +2985,10 @@ export const TABLEWARE = [
 
   {
     id:"foil-red-bow", type:"foil", name:"40\" Red Bow Balloon",
-    desc:"40\" specialty foil balloon", price:"$14.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/c8a2bc4b-807e-4d44-ad1c-edbbcb8ee0c3/Ebook+Thumbnail+with+Video+-+2025-05-25T230643.948.png",
+    desc:"Turn up the glam with our 40\" red bow foil balloon! The perfect extra for your bride to be's big weekend, this giant foil balloon gives serious gift wrapped vibes.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$14.00",
+    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68e2e51be650b237f2cf983b/1767991346113/Ebook+Thumbnail+with+Video+-+2025-05-25T230643.948.png?format=1500w",
     bg:"#E8112D", accent:"#F8F8F8",
     tags:["red","scarlett","crystal-red","white","crystal-clear","sugar","hotpink","coral","gold","champagne"],
   },
