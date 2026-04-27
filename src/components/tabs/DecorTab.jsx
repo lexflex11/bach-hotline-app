@@ -3793,13 +3793,21 @@ function proxyImg(url) {
 
 function TablewearVisual({ item }) {
   const [hovered, setHovered] = React.useState(false);
+  const [origin, setOrigin] = React.useState("50% 50%");
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+    setOrigin(`${x}% ${y}%`);
+  };
   if (item.image) {
     return (
       <img
         src={proxyImg(item.image)} alt={item.name}
         onMouseEnter={()=>setHovered(true)}
-        onMouseLeave={()=>setHovered(false)}
-        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fff",padding:"6px",boxSizing:"border-box",transition:"transform 0.35s ease",transform:hovered?"scale(1.18)":"scale(1)"}}
+        onMouseLeave={()=>{ setHovered(false); setOrigin("50% 50%"); }}
+        onMouseMove={handleMouseMove}
+        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fff",padding:"6px",boxSizing:"border-box",transition:"transform 0.25s ease",transform:hovered?"scale(2)":"scale(1)",transformOrigin:origin,cursor:hovered?"crosshair":"default"}}
         onError={e=>{e.target.style.display="none";}}
       />
     );
