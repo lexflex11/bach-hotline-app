@@ -27,7 +27,7 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user }) {
       </div>
       <SH title="What do you need?" />
       {[
-        { icon:"✈️", label:"Group Flights",      sub:"Find best fares for your whole crew",      tab:"flights"      },
+        { icon:"✈️", label:"Group Flights",      sub:"Seamless travel for your entire crew",     tab:"flights"      },
         { icon:"🏠", label:"Accommodations",     sub:"Best stays for your group",                tab:"stays"        },
         { icon:"🍽️", label:"Bites & Sips",        sub:"Restaurants & brunch spots",               tab:"eats"         },
         { icon:"🎉", label:"Experiences",        sub:"Activities, shows & adventures",           tab:"experiences"  },
