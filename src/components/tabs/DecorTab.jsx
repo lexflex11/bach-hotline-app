@@ -4956,6 +4956,8 @@ const CURATED_THEMES = [
 ];
 
 function CuratedThemes({ cart, setCart }) {
+  const [partySize, setPartySize] = useState(8);
+
   const allItems = id => {
     // handle confetti with size suffix
     if (id.endsWith("-mini") || id.endsWith("-tube")) {
@@ -4970,24 +4972,49 @@ function CuratedThemes({ cart, setCart }) {
     return TABLEWARE.find(i => i.id === id) || null;
   };
 
+  const getSetSize = item => {
+    if (!item || !item.bullets) return 1;
+    const match = item.bullets[0] && item.bullets[0].match(/Set of (\d+)/i);
+    return match ? parseInt(match[1], 10) : 1;
+  };
+
+  const getQty = item => Math.ceil(partySize / getSetSize(item));
+
   const themeAllAdded = theme => theme.items.every(id => cart.some(c => c.id === id));
 
   const addTheme = theme => {
     const toAdd = theme.items.map(allItems).filter(item => item && !cart.some(c => c.id === item.id));
     if (!toAdd.length) return;
-    setCart(prev => [...prev, ...toAdd.map(item => ({
-      id: item.id, name: item.name,
-      price: parseFloat(item.price.replace("$","")),
-      image: item.image, category: "tableware",
-    }))]);
+    setCart(prev => [...prev, ...toAdd.map(item => {
+      const qty = getQty(item);
+      return {
+        id: item.id, name: item.name,
+        price: parseFloat(item.price.replace("$","")),
+        image: item.image, category: "tableware",
+        qty,
+      };
+    })]);
   };
 
   return (
     <div style={{marginTop:28,paddingTop:20,borderTop:`2px solid ${MID}`}}>
-      <div style={{textAlign:"center",marginBottom:18}}>
+      <div style={{textAlign:"center",marginBottom:14}}>
         <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",letterSpacing:"1.5px",textTransform:"uppercase",marginBottom:4}}>Not sure where to start?</div>
         <div style={{fontSize:18,fontWeight:300,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>Shop Curated Themes</div>
         <div style={{fontSize:12,color:"#aaa",fontFamily:"'Nunito',sans-serif",marginTop:2}}>Pre styled sets, add everything with one tap</div>
+      </div>
+      {/* Party size selector */}
+      <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:8,marginBottom:18,padding:"10px 14px",background:SOFT,borderRadius:14,border:`1.5px solid ${MID}`}}>
+        <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",letterSpacing:"0.5px",textTransform:"uppercase",marginRight:4}}>Party Size:</span>
+        {[8,16,24].map(n => (
+          <button key={n} onClick={()=>setPartySize(n)} style={{
+            padding:"5px 14px",borderRadius:20,fontSize:12,fontFamily:"'Nunito',sans-serif",fontWeight:700,cursor:"pointer",
+            border:`1.5px solid ${partySize===n?HOT:BORDER}`,
+            background:partySize===n?HOT:WHITE,
+            color:partySize===n?WHITE:DARK,
+            transition:"all 0.15s",
+          }}>{n}</button>
+        ))}
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:14}}>
         {CURATED_THEMES.map(theme => {
@@ -5011,15 +5038,23 @@ function CuratedThemes({ cart, setCart }) {
                   if (!item) return null;
                   const added = cart.some(c => c.id === id);
                   const imgSrc = (item.images && item.images[0]) || item.image || "";
+                  const qty = getQty(item);
                   return (
-                    <div key={id} style={{display:"flex",alignItems:"flex-start",gap:6,padding:"6px 8px",borderRadius:10,background:added?SOFT:WHITE,border:`1px solid ${added?HOT:BORDER}`}}>
-                      {imgSrc
-                        ? <img src={imgSrc} alt={item.name} style={{width:32,height:32,objectFit:"contain",borderRadius:6,background:"#fff",flexShrink:0,border:`1px solid ${BORDER}`,padding:2,boxSizing:"border-box",marginTop:2}}/>
-                        : <div style={{width:32,height:32,borderRadius:6,background:SOFT,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,marginTop:2}}>🎀</div>
-                      }
+                    <div key={id} style={{display:"flex",alignItems:"flex-start",gap:6,padding:"6px 8px",borderRadius:10,background:added?SOFT:WHITE,border:`1px solid ${added?HOT:BORDER}`,position:"relative"}}>
+                      <div style={{position:"relative",flexShrink:0,marginTop:2}}>
+                        {imgSrc
+                          ? <img src={imgSrc} alt={item.name} style={{width:32,height:32,objectFit:"contain",borderRadius:6,background:"#fff",border:`1px solid ${BORDER}`,padding:2,boxSizing:"border-box",display:"block"}}/>
+                          : <div style={{width:32,height:32,borderRadius:6,background:SOFT,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>🎀</div>
+                        }
+                        {qty > 1 && (
+                          <div style={{position:"absolute",top:-5,right:-5,background:PUNCH,color:WHITE,borderRadius:"50%",width:16,height:16,fontSize:8,fontWeight:700,fontFamily:"'Nunito',sans-serif",display:"flex",alignItems:"center",justifyContent:"center",border:`1.5px solid ${WHITE}`}}>×{qty}</div>
+                        )}
+                      </div>
                       <div style={{flex:1,minWidth:0}}>
                         <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,fontWeight:300,color:added?HOT:DARK,lineHeight:1.3,display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical",overflow:"hidden"}}>{added?"✓ ":""}{item.name}</div>
-                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,fontWeight:300,color:added?HOT:DARK,marginTop:1}}>{item.price}</div>
+                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,fontWeight:300,color:added?HOT:DARK,marginTop:1}}>
+                          {qty > 1 ? `${qty}× · ` : ""}{item.price}{qty > 1 ? ` ea` : ""}
+                        </div>
                       </div>
                     </div>
                   );
