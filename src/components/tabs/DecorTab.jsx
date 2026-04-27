@@ -3283,7 +3283,7 @@ export const TABLEWARE = [
   {
     id:"foil-blue-bell-bowknot", type:"foil", name:"31\" Blue Bell Bowknot Balloon",
     desc:"31\" specialty foil balloon", price:"$8.00",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767935597503/Ebook+Thumbnail+with+Video+-+2025-02-24T213620.013.png?format=1500w",
+    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/67d71281b8f32226f0bde21e/1767935597503/Ebook+Thumbnail+with+Video+-+2025-02-24T213620.013.png?format=1500w",
     bg:"#E3F2FD", accent:"#90CAF9",
     tags:["blue","baby-blue","monet","teal","white","crystal-clear","pastel","lavender","silver"],
   },
