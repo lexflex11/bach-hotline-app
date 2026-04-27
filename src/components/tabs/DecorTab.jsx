@@ -3792,11 +3792,14 @@ function proxyImg(url) {
 }
 
 function TablewearVisual({ item }) {
+  const [hovered, setHovered] = React.useState(false);
   if (item.image) {
     return (
       <img
         src={proxyImg(item.image)} alt={item.name}
-        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fff",padding:"6px",boxSizing:"border-box"}}
+        onMouseEnter={()=>setHovered(true)}
+        onMouseLeave={()=>setHovered(false)}
+        style={{width:"100%",height:"100%",objectFit:"contain",display:"block",background:"#fff",padding:"6px",boxSizing:"border-box",transition:"transform 0.35s ease",transform:hovered?"scale(1.18)":"scale(1)"}}
         onError={e=>{e.target.style.display="none";}}
       />
     );
