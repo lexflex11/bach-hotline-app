@@ -2903,32 +2903,31 @@ export const TABLEWARE = [
   },
 
   {
-    id:"foil-cactus", type:"foil", name:"41\" Cactus Plant Balloon",
-    desc:"41\" specialty foil balloon", price:"$10.22",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6941771a5952ed64469be00f/1768007838556/Ebook+Thumbnail+with+Video+-+2025-05-17T221304.722.png?format=1500w",
-    bg:"#4CAF50", accent:"#FF6B1A",
-    tags:["green","lime-green","meadow","empower-mint","evergreen","teal","turquoise","orange","coral","aloha","yellow","lemonade","white","crystal-clear"],
-  },
-
-  {
     id:"foil-half-moon", type:"foil", name:"26\" Half Moon Balloon",
-    desc:"26\" specialty foil balloon", price:"$8.58",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/5d8a8223-120d-4de0-9ae0-c51dbe142651/Ebook+Thumbnail+with+Video-398.png",
+    desc:"Cute curves, big party energy! Our half moon balloon is the perfect backdrop for your bash.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$8.58",
+    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6951c74e4a48c45392c3aaab/1768007821696/Ebook+Thumbnail+with+Video-398.png?format=1500w",
     bg:"#1A1A1A", accent:"#FFD700",
+    suggested:["plate-star","cup-iridescent-stripe"],
     tags:["black","navy","metallic-midnight-blue","gold","metallic-gold","silver","white","crystal-clear","purple","plum","gray-smoke"],
   },
 
   {
     id:"foil-sweetheart-cherry", type:"foil", name:"34\" Sweetheart Cherry Balloon",
-    desc:"34\" specialty foil balloon", price:"$12.88",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6907dcd98a3aff4c42d033c2/1768008789656/Ebook+Thumbnail+with+Video+-+2025-10-21T110010.874.png?format=1500w",
+    desc:"Make your party extra juicy with this 34\" sweetheart cherry balloon. The ultimate mix of sweet, cheeky, and perfect for your bachelorette bash!",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$12.88",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0ece9eb4-7fda-4942-9d2c-e839f2404c0c/Ebook+Thumbnail+with+Video+-+2025-10-21T110010.874.png",
     bg:"#E8112D", accent:"#4CAF50",
     tags:["red","scarlett","crystal-red","hotpink","blush","green","meadow","lime-green","white","sugar","crystal-clear"],
   },
 
   {
     id:"foil-ladybird", type:"foil", name:"30\" Ladybird Balloon",
-    desc:"30\" specialty foil balloon", price:"$13.28",
+    desc:"Make your party bloom with this sweet ladybird balloon. Fun, colorful, and perfect for any garden or nature inspired event!",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$13.28",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6907d9b02e1a513d9a3a8793/1768008758540/Ebook+Thumbnail+with+Video+-+2025-10-21T124712.439.png?format=1500w",
     bg:"#E8112D", accent:"#1A1A1A",
     tags:["red","scarlett","crystal-red","black","white","crystal-clear","hotpink","orange","burnt-orange"],
@@ -2936,7 +2935,9 @@ export const TABLEWARE = [
 
   {
     id:"foil-wings", type:"foil", name:"41\" Wings Balloon",
-    desc:"41\" specialty foil balloon", price:"$12.00",
+    desc:"Float into the celebration with a white wings foil balloon made for bachelorette party fun.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$12.00",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6951c76c3f4b3e6c55dcd8b2/1767991514412/Ebook+Thumbnail+with+Video-399.png?format=1500w",
     bg:"#F8F8F8", accent:"#C0C0C0",
     tags:["white","crystal-clear","silver","fog","gray-smoke","champagne","gold","lace","lavender","blush","baby-pink"],
@@ -2944,7 +2945,9 @@ export const TABLEWARE = [
 
   {
     id:"foil-pink-leopard-bride", type:"foil", name:"14\" Pink Leopard Bride Balloon",
-    desc:"14\" specialty foil balloon", price:"$9.03",
+    desc:"Bring the wild vibes to your bachelorette bash with our 14\" pink leopard print bride foil balloon! Bold, glam, and totally fierce.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$9.03",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68e2ef53a7ac865209b90f28/1767991479563/Ebook+Thumbnail+with+Video+-+2025-05-18T172244.028.png?format=1500w",
     bg:"#E91E8C", accent:"#1A1A1A",
     tags:["hotpink","blush","baby-pink","pink","black","white","crystal-clear","metallic-fuchsia","crystal-magenta"],
@@ -2952,7 +2955,9 @@ export const TABLEWARE = [
 
   {
     id:"foil-sweet-summer", type:"foil", name:"18\" Sweet Summer Balloon",
-    desc:"18\" specialty foil balloon", price:"$7.00",
+    desc:"Add a pop of fruity fun to your celebration with our 18\" tutti frutti sweet summer foil balloon.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$7.00",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68e2ebbef9144c3031440514/1767991430764/Ebook+Thumbnail+with+Video+-+2025-03-02T110414.905.png?format=1500w",
     bg:"#FFD700", accent:"#E91E8C",
     tags:["yellow","lemonade","orange","coral","aloha","hotpink","blush","lime-green","green","turquoise","teal","rainbow","confetti","white","crystal-clear"],
@@ -2960,7 +2965,9 @@ export const TABLEWARE = [
 
   {
     id:"foil-fruit-green-starburst", type:"foil", name:"40\" Fruit Green Starburst Balloon",
-    desc:"40\" specialty foil balloon", price:"$7.50",
+    desc:"Pop of green, pop of glam. This starburst balloon is perfect for a cute bachelorette setup.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$7.50",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/16c2266a-8927-4036-a6b7-b7122365d506/Ebook+Thumbnail+with+Video+-+2025-12-30T163339.900.png",
     bg:"#4CAF50", accent:"#FFD700",
     tags:["green","lime-green","meadow","empower-mint","yellow","lemonade","teal","turquoise","white","crystal-clear"],
@@ -2968,8 +2975,10 @@ export const TABLEWARE = [
 
   {
     id:"foil-pineapple", type:"foil", name:"31\" Pineapple Balloon",
-    desc:"31\" specialty foil balloon", price:"$11.54",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/b4902972-c1ce-4548-a892-314d22301f6e/Ebook+Thumbnail+with+Video+-+2025-02-17T202053.165.png",
+    desc:"Shine bright with this 31\" pineapple foil balloon! Its shimmering finish is pure tropical magic for any luau, pool party, or bach trip.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$11.54",
+    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68e2e8b2f9144c303144021f/1767991369257/Ebook+Thumbnail+with+Video+-+2025-05-17T231131.222.png?format=1500w",
     bg:"#FFD700", accent:"#4CAF50",
     tags:["yellow","lemonade","goldenrod","mustard","crystal-yellow","green","lime-green","meadow","orange","aloha","white","crystal-clear"],
   },
