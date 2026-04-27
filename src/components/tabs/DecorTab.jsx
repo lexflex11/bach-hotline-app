@@ -2865,6 +2865,16 @@ export const TABLEWARE = [
   },
 
   {
+    id:"foil-whimsy-mushroom", type:"foil", name:"30\" Whimsy Mushroom Balloon",
+    desc:"Add some sparkle and shroomy charm to your party! This 30\" whimsical shroom shine balloon is pure cottagecore magic.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$12.99",
+    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6907e07b2e1a513d9a3a8f6a/1768007861860/Ebook+Thumbnail+with+Video+-+2025-10-21T102050.023.png?format=1500w",
+    bg:"#F4A460", accent:"#FF69B4",
+    tags:["orange","coral","aloha","blush","baby-pink","pink","hotpink","gold","champagne","white","crystal-clear","mushroom","cottagecore"],
+  },
+
+  {
     id:"foil-silver-starburst", type:"foil", name:"40\" Silver Starburst Balloon",
     desc:"Sparkly silver starburst balloon bringing major party glam and bachelorette vibes.",
     bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
