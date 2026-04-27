@@ -2737,6 +2737,27 @@ export const TABLEWARE = [
     tags:["red","orange","yellow","green","blue","purple","hotpink","rainbow","confetti","white","crystal-clear"],
   },
   {
+    id:"foil-black-number", type:"foil", numberBalloon:true, name:"34\" Black Number Balloon",
+    desc:"Sleek, striking, and ready to party! These 34\" foil number balloons are your go to for cool, custom decor.",
+    bullets:["1 count, each number is sold separately","Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$8.99",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0f0cadfc-9874-4db9-8580-0f4cdb775fc1/Ebook+Thumbnail+with+Video+-+2025-01-04T203135.075.png",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/0f0cadfc-9874-4db9-8580-0f4cdb775fc1/Ebook+Thumbnail+with+Video+-+2025-01-04T203135.075.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/5f6c74e2-ee11-4d4d-b088-ca9eeee57f84/Ebook+Thumbnail+with+Video+-+2025-01-04T203249.660.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f5d886d3-268b-437f-a05a-4684de1ab05a/Ebook+Thumbnail+with+Video+-+2025-01-04T203320.700.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/b22c403e-50df-4c60-b2e1-3c839ea2a26a/Ebook+Thumbnail+with+Video-120.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/20d7f0d3-3397-4855-b6d4-567d19a68e9a/Ebook+Thumbnail+with+Video+-+2025-01-04T203355.626.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/9ff71790-5579-4dee-815f-2a2b5541e10e/Ebook+Thumbnail+with+Video+-+2025-01-04T203448.652.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/fed5885d-6973-4481-8dab-511632454da6/Ebook+Thumbnail+with+Video+-+2025-01-04T203947.631.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/3033e405-fd47-445a-b3f8-91af1a4b3826/Ebook+Thumbnail+with+Video+-+2025-01-04T203557.819.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/8547dba4-f75f-4fce-9973-fbdaa6be5df0/Ebook+Thumbnail+with+Video+-+2025-01-04T203804.576.png",
+    ],
+    bg:"#1A1A1A", accent:"#F8F8F8",
+    tags:["black","white","crystal-clear","gray-smoke","silver","dark","matte-black"],
+  },
+
+  {
     id:"foil-zebra-number", type:"foil", numberBalloon:true, name:"40\" Zebra Number Balloon",
     desc:"40\" foil number balloon", price:"$8.99",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/5daa3d3b-50bd-45ec-8dfd-4968ae2c52e0/Ebook+Thumbnail+with+Video+-+2025-01-06T165405.036.png",
@@ -2750,6 +2771,27 @@ export const TABLEWARE = [
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/639ba48a-8d67-4c99-af71-2688dc8b8324/Ebook+Thumbnail+with+Video+-+2025-01-04T204751.446.png",
     bg:"#81D4FA", accent:"#F8F8F8",
     tags:["baby-blue","monet","georgia","teal","turquoise","seafoam","sea-glass","white","crystal-clear","silver","confetti"],
+  },
+
+  {
+    id:"foil-fruit-green-number", type:"foil", numberBalloon:true, name:"34\" Fruit Green Number Balloon",
+    desc:"Count on style! These fabulous 34\" fruit green foil number balloons make any age or date totally party worthy.",
+    bullets:["1 count, each number is sold separately","Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$10.99",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/b5af3179-4bec-48d0-99ae-93763121a610/Ebook+Thumbnail+with+Video-367.png",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/b5af3179-4bec-48d0-99ae-93763121a610/Ebook+Thumbnail+with+Video-367.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/52a8acbc-6d54-45d8-816b-5cb50d5c1f25/Ebook+Thumbnail+with+Video-364.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/6ab2c58d-3111-4f7c-b908-2eb7b3ecc736/Ebook+Thumbnail+with+Video-393.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/d3434bdb-fa71-466c-9afc-0f33269c606f/Ebook+Thumbnail+with+Video-394.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a4f91419-ec73-41b5-b4e9-79770910bbd8/Ebook+Thumbnail+with+Video-396.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/daa8f674-1ded-4558-94a7-88233f113075/Ebook+Thumbnail+with+Video-365.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/57af63a3-81a4-4d6e-b998-0e15c74f0d12/Ebook+Thumbnail+with+Video-366.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/5cdf8a65-242a-44d1-9632-6051d37c308e/Ebook+Thumbnail+with+Video-395.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/bede3c13-e52f-4aeb-a43c-a0774d12b68e/Eboo6.png",
+    ],
+    bg:"#66BB6A", accent:"#F8F8F8",
+    tags:["green","lime-green","meadow","empower-mint","white","crystal-clear"],
   },
 
   {
