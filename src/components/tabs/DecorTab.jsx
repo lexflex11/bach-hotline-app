@@ -3067,7 +3067,9 @@ export const TABLEWARE = [
   },
   {
     id:"foil-watermelon", type:"foil", name:"35\" Watermelon Balloon",
-    desc:"35\" specialty foil balloon", price:"$9.00",
+    desc:"Slice, slice, baby! Make your bachelorette party pop with this vibrant 35\" watermelon foil balloon.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$9.00",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68d304bd9f62a20a3fe87fab/1767987100618/Ebook+Thumbnail+with+Video+-+2025-01-04T230333.934.png?format=1500w",
     bg:"#E53935", accent:"#388E3C",
     tags:["red","cherry","cranberry","green","lime-green","empower-mint","tropical","summer","white"],
