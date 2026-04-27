@@ -486,7 +486,7 @@ export default function ShopTab({ cart, setCart }) {
           {filtered.length > 0 ? (
             <div style={{display:"grid",gridTemplateColumns:mobile?"repeat(2,1fr)":"repeat(4,1fr)",gap:mobile?"16px 10px":"20px 12px"}}>
               {filtered.map(p=>(
-                <ProductTile key={p.id} p={p} onView={()=>setSelected(p)}/>
+                <ProductTile key={p.id} p={p} onView={()=>{ setSelected(p); window.scrollTo(0,0); }}/>
               ))}
             </div>
           ) : (
