@@ -148,7 +148,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
       <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ background:"none", border:"none", cursor:"pointer", padding:"0 8px", opacity: total>1?1:0.2, flexShrink:0 }}>{ChevronLeft}</button>
       {/* Main image */}
       <div style={{ flex:1, aspectRatio:"1/1", background:"#fff", borderRadius:16, overflow:"hidden" }}>
-        {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", padding:20, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:52 }}>🎀</div>}
+        {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", objectPosition:"top center", padding:20, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:52 }}>🎀</div>}
       </div>
       {/* Next arrow */}
       <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ background:"none", border:"none", cursor:"pointer", padding:"0 8px", opacity: total>1?1:0.2, flexShrink:0 }}>{ChevronRight}</button>
