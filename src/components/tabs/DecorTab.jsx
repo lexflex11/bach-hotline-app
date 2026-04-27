@@ -3103,7 +3103,9 @@ export const TABLEWARE = [
   },
   {
     id:"foil-heartburst", type:"foil", name:"33\" Heartburst Balloon",
-    desc:"33\" specialty foil balloon", price:"$12.99",
+    desc:"Glow up your bach bash with this 33\" iridescent rainbow foil balloon! Heart accents make it extra cute and totally whimsical; party magic guaranteed!",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$12.99",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68cc95e676809b67b84736b4/1767987184620/Ebook+Thumbnail+with+Video+-+2025-03-02T103931.656.png?format=1500w",
     bg:"#FCE4EC", accent:"#E91E8C",
     tags:["hotpink","pink","baby-pink","blush","rainbow","iridescent","silver","white","crystal-clear","confetti","bachelorette","purple","lavender","plum","blue","baby-blue","monet","yellow","gold","lemon"],
