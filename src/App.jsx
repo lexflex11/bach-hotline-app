@@ -85,8 +85,8 @@ export default function App() {
               <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{cart.length}</span>
             </div>
             {/* Profile */}
-            <div onClick={()=>setTab("profile")} style={{ width:28, height:28, borderRadius:"50%", background:PUNCH, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div onClick={()=>setTab("profile")} style={{ width:28, height:28, borderRadius:"50%", background:"none", border:`1.5px solid ${HOT}`, display:"flex", alignItems:"center", justifyContent:"center", cursor:"pointer" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={HOT} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="8" r="4"/>
                 <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
               </svg>
