@@ -2844,8 +2844,10 @@ export const TABLEWARE = [
 
   {
     id:"foil-rainbow", type:"foil", name:"32\" Rainbow Balloon",
-    desc:"32\" specialty foil balloon", price:"$9.15",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/69416d473ac5f331c277931c/1768007798403/Ebook+Thumbnail+with+Video+-+2025-01-04T223406.603.png?format=1500w",
+    desc:"Add a pop of party magic with this glam 32\" rainbow balloon! Shiny, bold, and totally extra. It's the ultimate show stealer for your girls' night bash!",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$9.15",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/da86e345-3981-4898-866a-c09dfc2316fb/Ebook+Thumbnail+with+Video+-+2025-01-04T223406.603.png",
     bg:"#FFD700", accent:"#E91E8C",
     tags:["red","orange","yellow","green","blue","purple","hotpink","rainbow","confetti","white","crystal-clear"],
   },
