@@ -15,17 +15,7 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user }) {
         </h1>
         <p style={{ fontSize:13, color:HOT, fontFamily:"'Nunito',sans-serif", margin:"0 0 6px", opacity:0.85 }}>Flights · Stays · Eats · Decor</p>
       </div>
-      <div style={{ ...C, marginBottom:14, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-        <div>
-          <div style={{ fontSize:14, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>Your Bride Tribe</div>
-        </div>
-        <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-          <button onClick={()=>setGroupSize(Math.max(2,groupSize-1))} style={SM}>−</button>
-          <span style={{ fontWeight:300, color:DARK, fontSize:16, minWidth:36, textAlign:"center", fontFamily:"'Nunito',sans-serif", borderRadius:20, padding:"4px 12px" }}>{groupSize}</span>
-          <button onClick={()=>setGroupSize(groupSize+1)} style={SM}>+</button>
-        </div>
-      </div>
-      <SH title="What do you need?" weight={300} />
+<SH title="What do you need?" weight={300} />
       {[
         { icon:"✈️", label:"Group Flights",      sub:"Seamless travel for your entire crew",     tab:"flights"      },
         { icon:"🏠", label:"Accommodations",     sub:"Stay together in style",                   tab:"stays"        },

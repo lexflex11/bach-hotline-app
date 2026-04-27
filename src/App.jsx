@@ -117,9 +117,6 @@ export default function App() {
             );
           })}
         </div>
-        <div style={{ background:SOFT, padding:"2px 16px 3px", fontFamily:"'Nunito',sans-serif", fontSize:10, color:HOT, fontWeight:600, letterSpacing:"0.5px", borderTop:`1px solid ${BORDER}` }}>
-          Group of {groupSize} · {user.name.split(" ")[0]}
-        </div>
       </div>
       <div style={{ padding:"16px 14px 32px", background:PAGE, maxWidth:1200, margin:"0 auto" }}>
         {tab==="home"    && <HomeTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} user={user} />}
