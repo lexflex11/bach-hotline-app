@@ -4956,7 +4956,7 @@ const CURATED_THEMES = [
 ];
 
 function CuratedThemes({ cart, setCart }) {
-  const [partySize, setPartySize] = useState(8);
+  const [itemQtys, setItemQtys] = useState({});
 
   const allItems = id => {
     // handle confetti with size suffix
@@ -4978,22 +4978,21 @@ function CuratedThemes({ cart, setCart }) {
     return match ? parseInt(match[1], 10) : 1;
   };
 
-  const getQty = item => Math.ceil(partySize / getSetSize(item));
+  const getItemQty = (item) => itemQtys[item.id] ?? 1;
+
+  const setItemQty = (id, qty) => setItemQtys(prev => ({ ...prev, [id]: Math.max(1, qty) }));
 
   const themeAllAdded = theme => theme.items.every(id => cart.some(c => c.id === id));
 
   const addTheme = theme => {
     const toAdd = theme.items.map(allItems).filter(item => item && !cart.some(c => c.id === item.id));
     if (!toAdd.length) return;
-    setCart(prev => [...prev, ...toAdd.map(item => {
-      const qty = getQty(item);
-      return {
-        id: item.id, name: item.name,
-        price: parseFloat(item.price.replace("$","")),
-        image: item.image, category: "tableware",
-        qty,
-      };
-    })]);
+    setCart(prev => [...prev, ...toAdd.map(item => ({
+      id: item.id, name: item.name,
+      price: parseFloat(item.price.replace("$","")),
+      image: item.image, category: "tableware",
+      qty: getItemQty(item),
+    }))]);
   };
 
   return (
@@ -5014,29 +5013,28 @@ function CuratedThemes({ cart, setCart }) {
                   ))}
                 </div>
               </div>
-              <div style={{marginBottom:12,display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+              <div style={{marginBottom:12,display:"flex",flexDirection:"column",gap:6}}>
                 {theme.items.map(id => {
                   const item = allItems(id);
                   if (!item) return null;
                   const added = cart.some(c => c.id === id);
                   const imgSrc = (item.images && item.images[0]) || item.image || "";
-                  const qty = getQty(item);
+                  const qty = getItemQty(item);
+                  const setSize = getSetSize(item);
                   return (
-                    <div key={id} style={{display:"flex",alignItems:"flex-start",gap:6,padding:"6px 8px",borderRadius:10,background:added?SOFT:WHITE,border:`1px solid ${added?HOT:BORDER}`,position:"relative"}}>
-                      <div style={{position:"relative",flexShrink:0,marginTop:2}}>
-                        {imgSrc
-                          ? <img src={imgSrc} alt={item.name} style={{width:32,height:32,objectFit:"contain",borderRadius:6,background:"#fff",border:`1px solid ${BORDER}`,padding:2,boxSizing:"border-box",display:"block"}}/>
-                          : <div style={{width:32,height:32,borderRadius:6,background:SOFT,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>🎀</div>
-                        }
-                        {qty > 1 && (
-                          <div style={{position:"absolute",top:-5,right:-5,background:PUNCH,color:WHITE,borderRadius:"50%",width:16,height:16,fontSize:8,fontWeight:700,fontFamily:"'Nunito',sans-serif",display:"flex",alignItems:"center",justifyContent:"center",border:`1.5px solid ${WHITE}`}}>×{qty}</div>
-                        )}
-                      </div>
+                    <div key={id} style={{display:"flex",alignItems:"center",gap:8,padding:"7px 10px",borderRadius:10,background:added?SOFT:WHITE,border:`1px solid ${added?HOT:BORDER}`}}>
+                      {imgSrc
+                        ? <img src={imgSrc} alt={item.name} style={{width:34,height:34,objectFit:"contain",borderRadius:6,background:"#fff",border:`1px solid ${BORDER}`,padding:2,boxSizing:"border-box",flexShrink:0}}/>
+                        : <div style={{width:34,height:34,borderRadius:6,background:SOFT,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>🎀</div>
+                      }
                       <div style={{flex:1,minWidth:0}}>
-                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,fontWeight:300,color:added?HOT:DARK,lineHeight:1.3,display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical",overflow:"hidden"}}>{added?"✓ ":""}{item.name}</div>
-                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,fontWeight:300,color:added?HOT:DARK,marginTop:1}}>
-                          {qty > 1 ? `${qty}× · ` : ""}{item.price}{qty > 1 ? ` ea` : ""}
-                        </div>
+                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:400,color:added?HOT:DARK,lineHeight:1.3,overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{added?"✓ ":""}{item.name}</div>
+                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,color:"#aaa",marginTop:1}}>{item.price}{setSize > 1 ? ` · Set of ${setSize}` : ""}</div>
+                      </div>
+                      <div style={{display:"flex",alignItems:"center",gap:5,flexShrink:0}}>
+                        <button onClick={e=>{e.stopPropagation();setItemQty(id, qty-1);}} style={{width:22,height:22,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:WHITE,color:DARK,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>−</button>
+                        <span style={{fontFamily:"'Nunito',sans-serif",fontSize:12,fontWeight:700,color:DARK,minWidth:14,textAlign:"center"}}>{qty}</span>
+                        <button onClick={e=>{e.stopPropagation();setItemQty(id, qty+1);}} style={{width:22,height:22,borderRadius:"50%",border:`1.5px solid ${HOT}`,background:HOT,color:WHITE,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>+</button>
                       </div>
                     </div>
                   );
