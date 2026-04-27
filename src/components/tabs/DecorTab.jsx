@@ -4947,7 +4947,6 @@ const CURATED_THEMES = [
       "napkin-yes-girl",
       "cup-dusty-pinky",
       "foil-zebra",
-      "foil-zebra-number",
       "confetti-cherries-tube",
       "confetti-lovestruck-tube",
       "confetti-licorice-tube",
