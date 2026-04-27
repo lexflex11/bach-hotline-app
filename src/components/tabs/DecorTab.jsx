@@ -2836,8 +2836,10 @@ export const TABLEWARE = [
 
   {
     id:"foil-barbie", type:"foil", name:"32\" Barbie Balloon",
-    desc:"32\" specialty foil balloon", price:"$12.99",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6941721926a87274e552847e/1768007753441/Ebook+Thumbnail+with+Video+-+2025-01-04T201354.576.png?format=1500w",
+    desc:"This barbie 32\" foil balloon isn't just decor; it's a whole vibe! Perfectly pairs with pink and silver color scheme for the ultimate glam party setup.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate; foil balloons can pop"],
+    price:"$12.99",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/cb785271-e3c2-41c2-8a2d-e3d9e60bc027/Ebook+Thumbnail+with+Video+-+2025-01-04T201354.576.png",
     bg:"#E91E8C", accent:"#FFB5C2",
     tags:["hotpink","blush","baby-pink","pink","white","crystal-clear","metallic-fuchsia","crystal-magenta","lavender"],
   },
