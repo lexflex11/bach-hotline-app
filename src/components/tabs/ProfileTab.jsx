@@ -468,6 +468,99 @@ function BudgetSection({ groupSize }) {
   );
 }
 
+// ─── Meal Planner ─────────────────────────────────────────────────────────────
+const MEAL_SLOTS = [
+  { id:"brunch",    label:"BRUNCH",     icon:"🍴", empty:"No brunch planned yet"   },
+  { id:"lunch",     label:"LUNCH",      icon:"🥗", empty:"No lunch planned yet"    },
+  { id:"dinner",    label:"DINNER",     icon:"🍽️", empty:"No dinner planned yet"   },
+  { id:"lateNight", label:"LATE NIGHT", icon:"🌙", empty:"No late night plans yet" },
+];
+
+function MealPlannerSection({ user }) {
+  const storageKey = `bh_mealplan_${user.id}`;
+  const [days,      setDays]      = useState(3);
+  const [activeDay, setActiveDay] = useState(0);
+  const [plan,      setPlan]      = useState(() => {
+    try { return JSON.parse(localStorage.getItem(storageKey) || "{}"); } catch { return {}; }
+  });
+  const [editing, setEditing] = useState(null);
+  const [editVal, setEditVal] = useState("");
+
+  const slotKey   = (d, s) => `day${d}_${s}`;
+  const savePlan  = next => { setPlan(next); localStorage.setItem(storageKey, JSON.stringify(next)); };
+
+  const startEdit = (d, s) => { setEditVal(plan[slotKey(d,s)] || ""); setEditing(slotKey(d,s)); };
+  const commit    = () => { if (editing) savePlan({ ...plan, [editing]: editVal.trim() }); setEditing(null); setEditVal(""); };
+  const clearDay  = d => { const next={...plan}; MEAL_SLOTS.forEach(s=>delete next[slotKey(d,s.id)]); savePlan(next); };
+  const hasAny    = d => MEAL_SLOTS.some(s => plan[slotKey(d,s.id)]);
+
+  return (
+    <div>
+      {/* Day tabs */}
+      <div style={{ display:"flex", gap:8, marginBottom:16 }}>
+        {Array.from({ length:days }, (_,i) => (
+          <button key={i} onClick={()=>setActiveDay(i)} style={{
+            minWidth:52, height:52, borderRadius:"50%", flexShrink:0,
+            background:activeDay===i?`linear-gradient(135deg,#f472b0,${HOT})`:SOFT,
+            border:activeDay===i?"none":`1.5px solid ${MID}`,
+            color:activeDay===i?WHITE:HOT, cursor:"pointer",
+            display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",
+          }}>
+            <div style={{ fontSize:8, fontWeight:700, fontFamily:"'Nunito',sans-serif", letterSpacing:"0.5px", opacity:0.85 }}>DAY</div>
+            <div style={{ fontSize:18, fontWeight:900, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1.1 }}>{i+1}</div>
+          </button>
+        ))}
+        {days < 7 && (
+          <button onClick={()=>setDays(d=>d+1)} style={{ minWidth:52, height:52, borderRadius:"50%", background:WHITE, border:`1.5px dashed ${BORDER}`, color:"#ccc", fontSize:24, cursor:"pointer", flexShrink:0 }}>+</button>
+        )}
+      </div>
+
+      {/* Meal slots */}
+      {MEAL_SLOTS.map(slot => {
+        const k   = slotKey(activeDay, slot.id);
+        const val = plan[k];
+        const isEd = editing === k;
+        return (
+          <div key={slot.id} style={{ marginBottom:10 }}>
+            <div style={{ fontSize:10, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"1px", marginBottom:5, display:"flex", alignItems:"center", gap:5 }}>
+              <span>{slot.icon}</span>{slot.label}
+            </div>
+            {isEd ? (
+              <div style={{ display:"flex", gap:8 }}>
+                <input
+                  autoFocus
+                  value={editVal}
+                  onChange={e=>setEditVal(e.target.value)}
+                  onKeyDown={e=>{ if(e.key==="Enter") commit(); if(e.key==="Escape") setEditing(null); }}
+                  placeholder="e.g. Hash Kitchen, hotel brunch..."
+                  style={{ flex:1, border:`1.5px solid ${HOT}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Nunito',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box" }}
+                />
+                <button onClick={commit} style={{ ...btn1, width:"auto", padding:"11px 18px", borderRadius:12, fontSize:13 }}>Save</button>
+              </div>
+            ) : val ? (
+              <button onClick={()=>startEdit(activeDay,slot.id)} style={{ width:"100%", textAlign:"left", background:SOFT, border:`1.5px solid ${MID}`, borderRadius:14, padding:"13px 14px", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                <span style={{ fontSize:13, fontFamily:"'Nunito',sans-serif", fontWeight:600, color:DARK }}>{val}</span>
+                <span style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif" }}>Edit ›</span>
+              </button>
+            ) : (
+              <button onClick={()=>startEdit(activeDay,slot.id)} style={{ width:"100%", textAlign:"left", background:"#fdf4f8", border:`1.5px dashed ${MID}`, borderRadius:14, padding:"14px 16px", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+                <span style={{ fontSize:12, fontFamily:"'Nunito',sans-serif", color:"rgba(213,36,56,0.35)" }}>{slot.empty}</span>
+                <span style={{ fontSize:22, color:MID, lineHeight:1 }}>+</span>
+              </button>
+            )}
+          </div>
+        );
+      })}
+
+      {hasAny(activeDay) && (
+        <button onClick={()=>clearDay(activeDay)} style={{ background:"none", border:"none", color:"#ccc", fontFamily:"'Nunito',sans-serif", fontSize:11, cursor:"pointer", marginTop:4, padding:0 }}>
+          Clear Day {activeDay+1}
+        </button>
+      )}
+    </div>
+  );
+}
+
 // ─── Collapsible section wrapper ──────────────────────────────────────────────
 function Section({ title, children, defaultOpen }) {
   const [open, setOpen] = useState(defaultOpen || false);
@@ -546,6 +639,13 @@ export default function ProfileTab({ user, onLogout, cart, groupSize }) {
           <div style={{ fontSize:11, fontWeight:700, padding:"4px 10px", borderRadius:20, background:t.status==="Planning"?`rgba(46,125,50,0.1)`:SOFT, color:t.status==="Planning"?GREEN:HOT, border:`1px solid ${t.status==="Planning"?"rgba(46,125,50,0.25)":MID}`, fontFamily:"'Nunito',sans-serif" }}>{t.status}</div>
         </div>
       ))}
+
+      {/* ── Meal Planner (members only) ── */}
+      {user.role !== "guest" && (
+        <Section title="🍽️ Meal Planner" defaultOpen>
+          <MealPlannerSection user={user} />
+        </Section>
+      )}
 
       {/* ── Group Polls ── */}
       <Section title="Group Polls">
