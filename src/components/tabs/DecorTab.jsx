@@ -5033,9 +5033,9 @@ function CuratedThemes({ cart, setCart }) {
                         <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,color:"#aaa",marginTop:1}}>{item.price}</div>
                       </div>
                       <div style={{display:"flex",alignItems:"center",gap:5,flexShrink:0}}>
-                        <button onClick={e=>{e.stopPropagation();setItemQty(id, qty-1);}} style={{width:22,height:22,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:WHITE,color:DARK,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>−</button>
-                        <span style={{fontFamily:"'Nunito',sans-serif",fontSize:12,fontWeight:700,color:DARK,minWidth:14,textAlign:"center"}}>{qty}</span>
-                        <button onClick={e=>{e.stopPropagation();setItemQty(id, qty+1);}} style={{width:22,height:22,borderRadius:"50%",border:`1.5px solid ${HOT}`,background:HOT,color:WHITE,fontSize:14,fontWeight:700,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>+</button>
+                        <button onClick={e=>{e.stopPropagation();setItemQty(id, qty-1);}} style={{width:22,height:22,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:WHITE,color:DARK,fontSize:14,fontWeight:300,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>−</button>
+                        <span style={{fontFamily:"'Nunito',sans-serif",fontSize:12,fontWeight:300,color:DARK,minWidth:14,textAlign:"center"}}>{qty}</span>
+                        <button onClick={e=>{e.stopPropagation();setItemQty(id, qty+1);}} style={{width:22,height:22,borderRadius:"50%",border:`1.5px solid ${HOT}`,background:HOT,color:WHITE,fontSize:14,fontWeight:300,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",padding:0,lineHeight:1}}>+</button>
                       </div>
                     </div>
                   );
