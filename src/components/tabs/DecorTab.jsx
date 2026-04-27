@@ -2865,6 +2865,16 @@ export const TABLEWARE = [
   },
 
   {
+    id:"foil-cactus", type:"foil", name:"41\" Cactus Plant Balloon",
+    desc:"Bring the fun to your bachelorette party with this 41\" cactus plant foil balloon! Perfect for adding a desert vibe to your tropical or southwestern themed celebration.",
+    bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
+    price:"$10.22",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/e5332727-1602-4afd-9a89-45e2f6a17e94/Ebook+Thumbnail+with+Video+-+2025-05-17T221304.722.png",
+    bg:"#4CAF50", accent:"#E91E8C",
+    tags:["green","lime-green","meadow","empower-mint","red","coral","aloha","hotpink","white","crystal-clear","yellow","lemonade"],
+  },
+
+  {
     id:"foil-whimsy-mushroom", type:"foil", name:"30\" Whimsy Mushroom Balloon",
     desc:"Add some sparkle and shroomy charm to your party! This 30\" whimsical shroom shine balloon is pure cottagecore magic.",
     bullets:["Ships flat and uninflated","Fill with helium for floating","Hand pump or straw not included","Do not overinflate, foil balloons can pop"],
