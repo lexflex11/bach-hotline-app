@@ -1135,7 +1135,8 @@ export const TABLEWARE = [
   },
   {
     id:"plate-rock-on-skeleton", type:"plate", name:"Rock On Skeleton Plates",
-    bullets:["Set of 8","Dimensions: 10\"l x 10\"w"],
+    desc:"Who says skeletons can't party? These plates are loud, proud, and totally ready to turn your table into a rockin' good time!",
+    bullets:["Set of 8","Dimensions: 10\"w x 10\"l","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.00",
     image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/690cf49b03d8727c4c7c0abc/1767899702325/Ebook+Thumbnail+with+Video+-+2025-11-07T112344.695.png?format=1500w",
     bg:"#1A1A1A", accent:"#E91E8C",
