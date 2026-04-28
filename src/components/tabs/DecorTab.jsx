@@ -3644,7 +3644,10 @@ export const TABLEWARE = [
   },
   {
     id:"treatbag-black-stripes", type:"treatbag", name:"Black Stripes Treat Bags",
-    desc:"16 ct · 5.25\"h × 3.25\"w × 8\"l", bullets:["Set of 16","Size: 8\"l x 3.25\"w x 5.25\"h"], price:"$16.00",
+    desc:"Classic stripes with a party twist! These black and white gift bags make every present pop with fun and flair.",
+    bullets:["Set of 16","Size: 8\"l x 3.25\"w x 5.25\"h","Ships flat, easy to assemble"],
+    price:"$16.00",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/black-stripes-treat-bags",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/550c2ad0-964a-497b-868b-88179dae489d/Ebook+Thumbnail+with+Video-403.png",
     bg:"#212121", accent:"#F5F5F5",
     tags:["black","white","silver","crystal-clear","dark","glam","bachelorette","retro"],
