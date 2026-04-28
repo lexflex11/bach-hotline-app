@@ -32,6 +32,13 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [tabHistory, setTabHistory] = useState(() => [localStorage.getItem("bh_tab") || "home"]);
+  const [mobile, setMobile] = useState(() => window.innerWidth < 768);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  useEffect(() => {
+    const h = () => setMobile(window.innerWidth < 768);
+    window.addEventListener("resize", h);
+    return () => window.removeEventListener("resize", h);
+  }, []);
 
   const setUser = (u) => { if (u) localStorage.setItem("bh_user", JSON.stringify(u)); else localStorage.removeItem("bh_user"); setUserState(u); };
   const setTab  = (t) => { localStorage.setItem("bh_tab", t); setTabState(t); };
@@ -66,50 +73,109 @@ export default function App() {
           {/* Logo */}
           <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:100, width:"auto", objectFit:"contain" }} />
           {/* Nav + icons */}
-          <div style={{ display:"flex", alignItems:"center", gap:4 }}>
-            {[
-              { id:"home",    label:"Home"      },
-              { id:"shop",    label:"Shop"      },
-              { id:"decor",   label:"Party Box" },
-              { id:"more",    label:"Planning"  },
-              { id:"profile", label:"My Profile" },
-            ].map(n => {
-              const isMore   = n.id === "more";
-              const isActive = isMore ? drawerOpen : (tab === n.id && !drawerOpen);
-              return (
-                <button key={n.id}
-                  onClick={() => isMore ? setDrawerOpen(p => !p) : (navigateTo(n.id), setDrawerOpen(false))}
-                  style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px",
-                    fontSize:15, fontFamily:"'Nunito',sans-serif", fontWeight:400,
-                    color: isActive ? HOT : DARK,
-                    borderBottom: isActive ? `2px solid ${HOT}` : "2px solid transparent",
-                    transition:"color 0.18s",
-                  }}>
-                  {n.label}
-                </button>
-              );
-            })}
-            {/* Bell */}
-            {user.email && (
-              <div onClick={()=>setTab("alerts")} style={{ position:"relative", cursor:"pointer", display:"flex", alignItems:"center", marginLeft:12 }}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={DARK} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          {mobile ? (
+            /* ── MOBILE HEADER ── */
+            <div style={{ display:"flex", alignItems:"center", gap:14 }}>
+              {/* Cart */}
+              <div onClick={()=>setCartOpen(true)} style={{ cursor:"pointer", display:"flex", alignItems:"center", gap:4 }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={DARK} strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
                 </svg>
-                {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-5, width:14, height:14, borderRadius:"50%", background:HOT, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'Nunito',sans-serif", color:WHITE }}>{alertCount}</div>}
+                <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{cart.length}</span>
               </div>
-            )}
-            {/* Cart */}
-            <div onClick={()=>setCartOpen(true)} style={{ cursor:"pointer", display:"flex", alignItems:"center", gap:5, marginLeft:8 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={DARK} strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-              </svg>
-              <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{cart.length}</span>
+              {/* Hamburger */}
+              <button onClick={()=>setMobileMenuOpen(p=>!p)} style={{ background:"none", border:"none", cursor:"pointer", padding:4, display:"flex", flexDirection:"column", gap:5, alignItems:"center", justifyContent:"center" }}>
+                <span style={{ display:"block", width:22, height:2, background:DARK, borderRadius:2 }}/>
+                <span style={{ display:"block", width:22, height:2, background:DARK, borderRadius:2 }}/>
+                <span style={{ display:"block", width:22, height:2, background:DARK, borderRadius:2 }}/>
+              </button>
             </div>
-          </div>
+          ) : (
+            /* ── DESKTOP HEADER ── */
+            <div style={{ display:"flex", alignItems:"center", gap:4 }}>
+              {[
+                { id:"home",    label:"Home"      },
+                { id:"shop",    label:"Shop"      },
+                { id:"decor",   label:"Party Box" },
+                { id:"more",    label:"Planning"  },
+                { id:"profile", label:"My Profile" },
+              ].map(n => {
+                const isMore   = n.id === "more";
+                const isActive = isMore ? drawerOpen : (tab === n.id && !drawerOpen);
+                return (
+                  <button key={n.id}
+                    onClick={() => isMore ? setDrawerOpen(p => !p) : (navigateTo(n.id), setDrawerOpen(false))}
+                    style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px",
+                      fontSize:15, fontFamily:"'Nunito',sans-serif", fontWeight:400,
+                      color: isActive ? HOT : DARK,
+                      borderBottom: isActive ? `2px solid ${HOT}` : "2px solid transparent",
+                      transition:"color 0.18s",
+                    }}>
+                    {n.label}
+                  </button>
+                );
+              })}
+              {/* Bell */}
+              {user.email && (
+                <div onClick={()=>setTab("alerts")} style={{ position:"relative", cursor:"pointer", display:"flex", alignItems:"center", marginLeft:12 }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={DARK} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                  </svg>
+                  {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-5, width:14, height:14, borderRadius:"50%", background:HOT, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'Nunito',sans-serif", color:WHITE }}>{alertCount}</div>}
+                </div>
+              )}
+              {/* Cart */}
+              <div onClick={()=>setCartOpen(true)} style={{ cursor:"pointer", display:"flex", alignItems:"center", gap:5, marginLeft:8 }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={DARK} strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+                <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{cart.length}</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
+      {/* ── MOBILE MENU OVERLAY ── */}
+      {mobile && mobileMenuOpen && (
+        <>
+          <div onClick={()=>setMobileMenuOpen(false)} style={{ position:"fixed", inset:0, background:"rgba(45,10,24,0.35)", zIndex:190, backdropFilter:"blur(3px)" }} />
+          <div style={{ position:"fixed", top:0, right:0, width:"80%", maxWidth:320, height:"100%", background:WHITE, zIndex:195, boxShadow:"-4px 0 32px rgba(230,101,130,0.18)", overflowY:"auto", display:"flex", flexDirection:"column" }}>
+            {/* Header row */}
+            <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"20px 20px 16px" }}>
+              <img src={LOGO_SRC} alt="Bach Hotline" style={{ height:60, width:"auto", objectFit:"contain" }} />
+              <button onClick={()=>setMobileMenuOpen(false)} style={{ background:"none", border:"none", fontSize:24, cursor:"pointer", color:DARK, lineHeight:1 }}>✕</button>
+            </div>
+            <div style={{ flex:1, padding:"8px 0 32px" }}>
+              {[
+                { id:"home",        label:"Home"         },
+                { id:"shop",        label:"Shop"         },
+                { id:"decor",       label:"Party Box"    },
+                { id:"flights",     label:"Flights"      },
+                { id:"stays",       label:"Stays"        },
+                { id:"eats",        label:"Bites & Sips" },
+                { id:"experiences", label:"Experiences"  },
+                { id:"plan",        label:"Itinerary"    },
+                { id:"mood",        label:"Mood Board"   },
+                { id:"profile",     label:"My Profile"   },
+                ...(user.email ? [
+                  { id:"split",  label:"Split"   },
+                  { id:"dayof",  label:"Day-Of"  },
+                  { id:"alerts", label:"Alerts"  },
+                ] : []),
+              ].map(n => (
+                <button key={n.id} onClick={()=>{ navigateTo(n.id); setMobileMenuOpen(false); setDrawerOpen(false); }}
+                  style={{ width:"100%", background:"none", border:"none", borderBottom:`1px solid ${BORDER}`, padding:"18px 24px", cursor:"pointer", textAlign:"right", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                  <span style={{ fontSize:22, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color: tab===n.id ? HOT : DARK }}>{n.label}</span>
+                  <span style={{ fontSize:16, color:"#ddd" }}>›</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
       <div style={{ padding:"16px 14px 32px", background:PAGE, maxWidth:1200, margin:"0 auto" }}>
         {tab==="home"    && <HomeTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} user={user} />}
         {tab==="flights" && <FlightsTab groupSize={groupSize} />}
