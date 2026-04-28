@@ -4470,7 +4470,7 @@ export const PARTY_ACCESSORIES = [
     name:"Cactus Pool Float",
     price:"$56.00",
     desc:"Saddle up for sunshine, babe! This oversized cactus pool float brings major desert glam to your western theme bachelorette bash, add SPF and cocktails.",
-    bullets:["Size: 44.75\"l x 6.25\"w x 69.5\"h","Set of 1","Material: PVC plastic","Manual or electric pump compatible","Includes 1 repair patch"],
+    bullets:["Size: 44.75\"l x 6.25\"w x 69.5\"h","Set of 1","Manual or electric pump compatible","Includes 1 repair patch"],
     images:[
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/82b086c9-fd5b-4995-9101-6ed78043bee9/Ebook+Thumbnail+with+Video+-+2025-02-18T194517.243.png?format=500w",
       "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/8db95fa1-7609-4a5e-87ae-01b9eaf8e3af/Ebook+Thumbnail+with+Video+-+2025-02-18T194500.592.png?format=500w",
