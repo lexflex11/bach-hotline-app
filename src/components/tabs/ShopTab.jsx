@@ -193,7 +193,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
   const InfoPanel = (
     <div style={{ flex:1, minWidth:0 }}>
       <h2 style={{ fontFamily:"'Acme',sans-serif", fontSize:mobile?22:30, fontWeight:400, fontStyle:"normal", color:"#f496c3", margin:"0 0 10px", lineHeight:1.2 }}>
-        {p.fullName || p.name || ""}
+        {p.name || ""}
       </h2>
       <div style={{ fontSize:mobile?17:20, fontWeight:300, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
         ${price.toFixed(2)}
