@@ -4007,7 +4007,7 @@ export default function EatsTab({ groupSize: initialGroupSize }) {
     : null;
 
   const inputStyle = {
-    width:"100%", padding:"10px 12px", borderRadius:10,
+    width:"100%", maxWidth:"100%", padding:"10px 8px", borderRadius:10,
     border:`1.5px solid ${BORDER}`, fontFamily:"'Nunito',sans-serif",
     fontSize:13, color:DARK, background:WHITE, boxSizing:"border-box", outline:"none",
   };
