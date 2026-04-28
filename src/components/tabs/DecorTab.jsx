@@ -3614,7 +3614,10 @@ export const TABLEWARE = [
   },
   {
     id:"treatbag-cactus", type:"treatbag", name:"Cactus Treat Boxes",
-    desc:"10 ct · 2.3\" × 2.3\"", bullets:["Set of 10","Size: 2.3\"l x 2.3\"w"], price:"$12.00",
+    desc:"Fiesta vibes only! These mini cactus boxes are bursting with pastel colors. Turning up the fun at any boho theme party or sunny western celebration!",
+    bullets:["Set of 10","Size: 2.3\"l x 2.3\"w","Ships flat, easy to assemble"],
+    price:"$12.00",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/cactus-treat-boxes",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/f6e036d4-a9f2-4fa9-8c66-e3683052052e/Ebook+Thumbnail+with+Video+-+2025-05-13T191208.374.png",
     bg:"#E8F5E9", accent:"#FF8F00",
     tags:["green","lime-green","empower-mint","pink","baby-pink","blush","yellow","orange","pastel","western","cowgirl","boho"],
