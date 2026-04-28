@@ -3600,8 +3600,15 @@ export const TABLEWARE = [
   },
   {
     id:"treatbag-shell", type:"treatbag", name:"Shell Treat Bags",
-    desc:"8 ct · 6.5\"h × 6\"l × 3\"w", bullets:["Set of 8","Size: 6\"l x 3\"w x 6.5\"h"], price:"$26.84",
-    image:"https://i.etsystatic.com/40669879/r/il/22cd03/6871762780/il_fullxfull.6871762780_fmjj.jpg",
+    desc:"Glitter, goodies & mermaid magic! These shell treat bags bring all the ocean vibes.",
+    bullets:["Set of 8","Size: 6\"l x 3\"w x 6.5\"h","Ships flat, easy to assemble"],
+    price:"$26.84",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/01a39f20-fdc6-4b0f-9795-429ba68f83d9/Ebook+Thumbnail+with+Video+-+2025-05-13T194717.269.png",
+    images:[
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/01a39f20-fdc6-4b0f-9795-429ba68f83d9/Ebook+Thumbnail+with+Video+-+2025-05-13T194717.269.png",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/a4f10d27-64d2-48f7-9a85-16be11760d1e/Ebook+Thumbnail+with+Video+-+2025-05-13T193801.013.png",
+    ],
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/shell-treat-bags",
     bg:"#E0F7FA", accent:"#F48FB1",
     tags:["teal","blue","baby-blue","monet","pink","baby-pink","blush","peach","iridescent","silver","white","coastal","tropical","mermaid"],
   },
