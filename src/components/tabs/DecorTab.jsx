@@ -1154,7 +1154,11 @@ export const TABLEWARE = [
     desc:"Say it loud, say it proud: SAME PENIS FOREVER! Celebrate the end of your single life in the most playful way with our penis shaped foil paper plates!",
     price:"$13.03",
     bullets:["Set of 25","Size: 5\"w x 7\"l","Durable, lightweight, and disposable for easy cleanup"],
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684a1080b91f060aa52262f5/1767899624325/Ebook+Thumbnail+with+Video+-+2025-02-16T113626.828.png?format=1500w",
+    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684a1080b91f060aa52262f5/1767899624325/Ebook+Thumbnail+with+Video+-+2025-02-16T113626.828.png?format=1500w",
+    images:[
+      "https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/684a1080b91f060aa52262f5/1767899624325/Ebook+Thumbnail+with+Video+-+2025-02-16T113626.828.png?format=1500w",
+      "https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/e03ebbfd-f41a-479e-af31-9bb2e5b02058/Ebook+Thumbnail+with+Video+-+2025-01-20T123831.227.png",
+    ],
     bg:"#F4A7B9", accent:"#E91E8C",
     tags:["hotpink","blush","pink","baby-pink","coral","taffy","pixie","metallic-fuchsia","white","gold","champagne"],
   },
