@@ -3634,8 +3634,11 @@ export const TABLEWARE = [
   },
   {
     id:"treatbag-tea-time", type:"treatbag", name:"Tea Time Treat Boxes",
-    desc:"24 ct · 3.5\"l × 2.4\"w × 3.9\"h", bullets:["Set of 24","Size: 3.5\"l x 2.4\"w x 3.9\"h"], price:"$38.58",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/68a0fe6786322825a8be6da3/1767924184425/Ebook+Thumbnail+with+Video+-+2025-07-21T171314.458.png?format=1500w",
+    desc:"Cutest teapot shaped treat boxes for your girls to take the party home!",
+    bullets:["Set of 24","Size: 3.5\"l x 2.4\"w x 3.9\"h","Ships flat, easy to assemble"],
+    price:"$38.58",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/tea-time-treat-boxes",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/b12d89ef-ac92-447c-9c72-7aed6c7bc5df/Ebook+Thumbnail+with+Video+-+2025-07-21T171314.458.png",
     bg:"#FCE4EC", accent:"#CE93D8",
     tags:["pink","baby-pink","blush","lavender","purple","white","pastel","floral","blossom","bachelorette"],
   },
