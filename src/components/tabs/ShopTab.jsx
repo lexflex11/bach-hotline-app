@@ -275,7 +275,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
         /* ── DESKTOP: info left, gallery right ── */
         <div style={{ display:"flex", gap:32, alignItems:"flex-start" }}>
           {InfoPanel}
-          <div style={{ flexShrink:0, width:"52%" }}>{DesktopGallery}</div>
+          <div style={{ flexShrink:0, width:"40%" }}>{DesktopGallery}</div>
         </div>
       )}
 
