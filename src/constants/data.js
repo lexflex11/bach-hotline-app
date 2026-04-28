@@ -473,7 +473,7 @@ export const NAV = [
   { id:"home",    label:"Home"      },
   { id:"flights", label:"Flights"   },
   { id:"stays",   label:"Stays"     },
-  { id:"eats",    label:"Eats"      },
+  { id:"eats",    label:"Bites & Sips" },
   { id:"plan",    label:"Plan"      },
   { id:"budget",  label:"Budget"    },
   { id:"mood",    label:"Vibes"     },

@@ -11,7 +11,6 @@ import StaysTab from './components/tabs/StaysTab.jsx';
 import EatsTab from './components/tabs/EatsTab.jsx';
 import ExperiencesTab from './components/tabs/ExperiencesTab.jsx';
 import PlanTab from './components/tabs/PlanTab.jsx';
-import BudgetTab from './components/tabs/BudgetTab.jsx';
 import MoodTab from './components/tabs/MoodTab.jsx';
 import MOHTab from './components/tabs/MOHTab.jsx';
 import DayOfTab from './components/tabs/DayOfTab.jsx';
@@ -118,7 +117,6 @@ export default function App() {
         {tab==="eats"        && <EatsTab groupSize={groupSize} />}
         {tab==="experiences" && <ExperiencesTab groupSize={groupSize} setGroupSize={setGroupSize} user={user} />}
         {tab==="plan"    && <PlanTab groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} user={user} onSignUp={()=>setUser(null)} />}
-        {tab==="budget"  && <BudgetTab groupSize={groupSize} user={user} onSignUp={()=>setUser(null)} />}
         {tab==="mood"    && <MoodTab setTab={setTab} />}
         {tab==="moh"     && <MOHTab groupSize={groupSize} />}
         {tab==="dayof"   && <DayOfTab />}
@@ -126,7 +124,7 @@ export default function App() {
         {tab==="shop"    && <ShopTab cart={cart} setCart={setCart} />}
         {tab==="alerts"  && <AlertsTab user={user} onSignUp={()=>setUser(null)} />}
         {tab==="decor"   && <DecorTab groupSize={groupSize} cart={cart} setCart={setCart} setTab={setTab} openCart={()=>setCartOpen(true)} />}
-        {tab==="profile" && <ProfileTab user={user} onLogout={()=>setUser(null)} cart={cart} groupSize={groupSize} />}
+        {tab==="profile" && <ProfileTab user={user} onLogout={()=>setUser(null)} cart={cart} groupSize={groupSize} setGroupSize={setGroupSize} setTab={setTab} />}
         {tab==="polls"   && <PollsTab user={user} onSignUp={()=>setUser(null)} />}
         {tab==="explore"  && <ExploreTab groupSize={groupSize} setTab={setTab} />}
         {tab==="media"    && <MediaTab user={user} onSignUp={()=>setUser(null)} />}
@@ -144,10 +142,9 @@ export default function App() {
                 {[
                   { id:"flights", label:"Flights",   sub:"Search & compare"        },
                   { id:"stays",   label:"Stays",     sub:"Airbnb, Vrbo & hotels"   },
-                  { id:"eats",         label:"Eats",        sub:"Restaurants & brunch"       },
+                  { id:"eats",         label:"Bites & Sips", sub:"Restaurants & brunch"       },
                   { id:"experiences", label:"Experiences", sub:"Activities & adventures"   },
                   { id:"plan",    label:"Itinerary",  sub:"Trip builder"             },
-                  { id:"budget",  label:"Budget",    sub:"Estimate trip cost"       },
                   ...(user.email ? [
                     { id:"split", label:"Split",     sub:"Divide expenses"          },
                     { id:"dayof", label:"Day-Of",    sub:"Live itinerary mode"      },

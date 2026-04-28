@@ -3,6 +3,7 @@ import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE, GREEN } from '../../constan
 import { C, BP, BS, IN } from '../../constants/styles.js';
 import { DESTS, BUDGET_DATA } from '../../constants/data.js';
 import SH from '../ui/SH.jsx';
+import PlanTab from './PlanTab.jsx';
 import {
   isConfigured, getDb,
   collection, addDoc, doc, updateDoc,
@@ -584,7 +585,7 @@ function Section({ title, children, defaultOpen }) {
 }
 
 // ─── Main ProfileTab ──────────────────────────────────────────────────────────
-export default function ProfileTab({ user, onLogout, cart, groupSize }) {
+export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSize, setTab }) {
   const [editing, setEditing] = useState(false);
   const [displayName, setDisplayName] = useState(user.name);
   const expSaved = (() => { try { return JSON.parse(localStorage.getItem(`bh_exp_saved_${user.id}`) || "[]").length; } catch { return 0; } })();
@@ -650,6 +651,11 @@ export default function ProfileTab({ user, onLogout, cart, groupSize }) {
       {/* ── Group Polls ── */}
       <Section title="Group Polls">
         <PollsSection user={user} />
+      </Section>
+
+      {/* ── Build Your Itinerary ── */}
+      <Section title="Build Your Itinerary">
+        <PlanTab groupSize={groupSize} setGroupSize={setGroupSize || (()=>{})} setTab={setTab || (()=>{})} user={user} onSignUp={()=>{}} />
       </Section>
 
       {/* ── Budget Calculator ── */}
