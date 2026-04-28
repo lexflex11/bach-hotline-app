@@ -465,6 +465,7 @@ export const SHOP_CATS = [
   { id:"Treat Bags & Boxes",  label:"Treat Bags & Boxes"  },
   { id:"Balloons",            label:"Balloons"            },
   { id:"Party Accessories",   label:"Accessories"         },
+  { id:"Apparel",             label:"Apparel"             },
 ];
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
