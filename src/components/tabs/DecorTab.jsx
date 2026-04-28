@@ -3580,7 +3580,10 @@ export const TABLEWARE = [
   },
   {
     id:"treatbag-diamond", type:"treatbag", name:"Diamond Treat Bags",
-    desc:"10 ct · 10\"l × 6.5\"h", bullets:["Set of 10","Size: 10\"l x 6.5\"h"], price:"$8.00",
+    desc:"Add a pop of yellow fun with these diamond treat bags, great for snacks or small gifts.",
+    bullets:["Set of 10","Size: 10\"l x 6.5\"h","Ships flat, easy to assemble"],
+    price:"$8.00",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/diamond-treat-bags",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/9f063251-2cfa-4fa5-a6b4-c945e8d14048/Ebook+Thumbnail+with+Video+-+2025-12-31T235300.051.png",
     bg:"#FFF9C4", accent:"#FFD700",
     tags:["yellow","gold","white","crystal-clear","champagne","glam","bachelorette","blue","baby-blue","navy","royal-blue","monet","teal","green","lime-green","empower-mint"],
