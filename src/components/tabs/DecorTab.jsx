@@ -3590,8 +3590,11 @@ export const TABLEWARE = [
   },
   {
     id:"treatbag-lunar-dragon", type:"treatbag", name:"Lunar Dragon Treat Box",
-    desc:"6 ct · takeout-style w/ gold foil", bullets:["Set of 6","Takeout-style w/ gold foil"], price:"$12.24",
-    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/6824f23e19aabf2f07a2ed44/1767924305633/Ebook+Thumbnail+with+Video+-+2025-05-13T192702.718.png?format=1500w",
+    desc:"Packed with style and lucky vibes. Your Lunar New Year just got extra.",
+    bullets:["Set of 6","Size: 11.8\"l x 9.8\"w","Metal handles","Ships flat, easy to assemble"],
+    price:"$12.24",
+    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/b84ae199-7202-4eef-b3dd-114e67b293bc/Ebook+Thumbnail+with+Video+-+2025-05-13T192702.718.png",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/lunar-dragon-treat-boxes",
     bg:"#B71C1C", accent:"#FFD700",
     tags:["red","cranberry","cherry","gold","black","dark","spooky","glam"],
   },
