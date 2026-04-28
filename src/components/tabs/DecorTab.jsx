@@ -827,7 +827,7 @@ export const TABLEWARE = [
     desc:"Serve cosmic vibes and star powered style with these Libra paper plates perfect for celestial queens and astrology lovers alike! Make every gathering feel written in the stars.",
     bullets:["Set of 8","Dimensions: 10\"l x 10\"w","Durable, lightweight, and disposable for easy cleanup"],
     price:"$12.66",
-    image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/1767900151827/Ebook+Thumbnail+with+Video+-+2025-06-19T151048.912.png?format=1500w",
+    image:"https://static1.squarespace.com/static/66c512fff5e80a05a6127fea/678ec191cd961b05ac3e19ad/685dce002eea6715dcbbd0d5/1767900151827/Ebook+Thumbnail+with+Video+-+2025-06-19T151048.912.png?format=1500w",
     bg:"#F4A7B9", accent:"#FFD700",
     tags:["blush","baby-pink","pink","cameo","lavender","blossom","gold","champagne","white","silver","peri"],
   },
