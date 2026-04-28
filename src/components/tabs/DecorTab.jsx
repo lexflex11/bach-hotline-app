@@ -3638,8 +3638,11 @@ export const TABLEWARE = [
   },
   {
     id:"banner-floral-garland", type:"banner", name:"Floral Garland",
-    desc:"6ft–10ft", price:"$44.89",
+    desc:"Petals, parties, and glow. This floral garland adds instant charm to bachelorette celebrations and whimsical garden theme setups.",
+    bullets:["Set of 1","Size: 6ft–10ft"],
+    price:"$44.89",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/3fd46307-1fc7-42cb-8845-08587f5013e4/Ebook+Thumbnail+with+Video-434.png",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/floral-garland",
     bg:"#F8BBD0", accent:"#A5D6A7",
     tags:["pink","baby-pink","blush","blossom","floral","green","lime-green","white","pastel","whimsy","bachelorette"],
   },
