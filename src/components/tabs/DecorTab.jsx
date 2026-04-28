@@ -3570,8 +3570,11 @@ export const TABLEWARE = [
   // ── Treat Bags ────────────────────────────────────────────────────────────────
   {
     id:"treatbag-envelope-boxes", type:"treatbag", name:"Envelope Treat Boxes",
-    desc:"8 ct · 4\"l × 3\"w × 5\"h", bullets:["Set of 8","Size: 4\"l x 3\"w x 5\"h"], price:"$16.33",
+    desc:"Party ready and totally cute! Fill these bachelorette treat boxes with fun favors to keep the celebration going.",
+    bullets:["Set of 8","Size: 4\"l x 3\"w x 5\"h","Ships flat, easy to assemble"],
+    price:"$16.33",
     image:"https://images.squarespace-cdn.com/content/v1/66c512fff5e80a05a6127fea/ad30a4bb-2235-4d7d-bed8-25f93f5ddbce/Ebook+Thumbnail+with+Video-381.png",
+    etsyUrl:"https://bachhotline.squarespace.com/decorations/p/envelope-treat-boxes",
     bg:"#FFF8E1", accent:"#FFD700",
     tags:["white","cream","gold","champagne","lace","bachelorette","bride","hotpink","pink","baby-pink","blush","blossom","coral","peach"],
   },
