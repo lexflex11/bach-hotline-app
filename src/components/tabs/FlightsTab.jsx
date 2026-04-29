@@ -223,70 +223,32 @@ export default function FlightsTab({ groupSize, initialDest }) {
         )}
       </div>
 
-      {/* ── FLIGHT PLATFORM CARDS ── */}
+      {/* ── EXPEDIA RESULTS CARD ── */}
       {showResults && selectedDest && (() => {
         const toCode = selectedDest.airportCode;
-        const platforms = [
-          {
-            key:"google",
-            name:"Google Flights",
-            logo:"🔍",
-            desc:"Best overall price comparison — shows all airlines side by side",
-            badge:"Most Popular",
-            url: googleFlightsUrl(fromCode, toCode, depDate, retDate, groupSize),
-          },
-          {
-            key:"expedia",
-            name:"Expedia",
-            logo:"✈️",
-            desc:"Book flights + hotel together for group package deals",
-            badge:"Bundle & Save",
-            url: expediaFlightUrl(fromCode, toCode, depDate, retDate, groupSize, depTime, retTime),
-          },
-          {
-            key:"kayak",
-            name:"Kayak",
-            logo:"🛫",
-            desc:"Flexible date search and price alerts for your group",
-            badge:"Price Alerts",
-            url: kayakFlightUrl(fromCode, toCode, depDate, retDate, groupSize),
-          },
-          {
-            key:"sky",
-            name:"Skyscanner",
-            logo:"🌐",
-            desc:"Searches hundreds of airlines including budget carriers",
-            badge:"Lowest Fares",
-            url: skyscannerUrl(fromCode, toCode, depDate, retDate, groupSize),
-          },
-        ];
+        const url = expediaFlightUrl(fromCode, toCode, depDate, retDate, groupSize, depTime, retTime);
         return (
           <div>
             <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:"1.5px",marginBottom:12}}>
               Live Flight Results — {fromCode} → {selectedDest.name}
             </div>
-            {platforms.map(p => (
-              <div key={p.key} style={{...C, marginBottom:10, cursor:"pointer"}} onClick={()=>window.open(p.url,"_blank")}>
-                <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-                  <div style={{display:"flex", alignItems:"center", gap:12}}>
-                    <div style={{fontSize:28}}>{p.logo}</div>
-                    <div>
-                      <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{p.name}</div>
-                      <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:2,opacity:0.8}}>{p.desc}</div>
-                    </div>
-                  </div>
-                  <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:6,flexShrink:0}}>
-                    <span style={{fontSize:9,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",background:SOFT,border:`1px solid ${MID}`,borderRadius:50,padding:"3px 8px",whiteSpace:"nowrap"}}>{p.badge}</span>
-                    <span style={{color:HOT,fontSize:18}}>›</span>
+            <div style={{...C, marginBottom:10, cursor:"pointer"}} onClick={()=>window.open(url,"_blank")}>
+              <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
+                <div style={{display:"flex", alignItems:"center", gap:14}}>
+                  <div style={{fontSize:32}}>✈️</div>
+                  <div>
+                    <div style={{fontSize:15,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Expedia</div>
+                    <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:2,opacity:0.8}}>Compare hundreds of airlines — real-time fares for your group</div>
                   </div>
                 </div>
-                <div style={{marginTop:12,padding:"8px 12px",background:SOFT,borderRadius:10,fontSize:11,fontFamily:"'Nunito',sans-serif",color:HOT}}>
-                  {groupSize} travelers · {depDate || "flexible dates"}{retDate ? ` → ${retDate}` : ""} · tap to see live prices
-                </div>
+                <span style={{color:HOT,fontSize:22,flexShrink:0}}>›</span>
               </div>
-            ))}
-            <div style={{fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif",textAlign:"center",marginTop:4,marginBottom:16}}>
-              Prices update in real time — tap any platform to search live fares
+              <div style={{marginTop:12,padding:"10px 14px",background:SOFT,borderRadius:10,fontSize:11,fontFamily:"'Nunito',sans-serif",color:HOT}}>
+                {groupSize} travelers · {depDate || "flexible dates"}{retDate ? ` → ${retDate}` : ""} · tap to see live prices
+              </div>
+            </div>
+            <div style={{fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif",textAlign:"center",marginBottom:16}}>
+              Prices update in real time on Expedia
             </div>
           </div>
         );
