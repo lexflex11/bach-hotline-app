@@ -26,12 +26,6 @@ const CATEGORIES = [
 const NUN = "'Plus Jakarta Sans',sans-serif";
 
 export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, setCity }) {
-  const minDate = new Date().toISOString().split("T")[0];
-
-  function handleSearch() {
-    if (city) setTab("flights");
-  }
-
   return (
     <div style={{ margin:"0 -14px" }}>
 
@@ -83,20 +77,6 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, s
             </div>
           </div>
 
-          {/* Search CTA */}
-          <button
-            onClick={handleSearch}
-            style={{
-              width:"100%", padding:"15px", borderRadius:50,
-              background:`linear-gradient(135deg,#f472b0,${HOT})`,
-              color:WHITE, border:"none", fontFamily:NUN,
-              fontSize:16, fontWeight:800, cursor:"pointer",
-              boxShadow:"0 4px 16px rgba(244,114,176,0.45)",
-              letterSpacing:"0.2px",
-            }}
-          >
-            Search
-          </button>
         </div>
       </div>
 
