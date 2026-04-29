@@ -116,7 +116,6 @@ export default function App() {
                       <button key={item.id} onClick={()=>{ navigateTo(item.id); setDrawerOpen(false); }}
                         style={{ display:"block", width:"100%", background:"none", border:"none", padding:"10px 18px", cursor:"pointer", textAlign:"left" }}>
                         <div style={{ fontSize:13, fontFamily:"'Playfair Display',Georgia,serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
-                        <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.7, marginTop:2 }}>{item.sub}</div>
                       </button>
                     ))}
                   </div>
@@ -144,7 +143,6 @@ export default function App() {
                       <button key={item.id} onClick={()=>{ navigateTo(item.id); setDrawerOpen(false); }}
                         style={{ display:"block", width:"100%", background:"none", border:"none", padding:"10px 18px", cursor:"pointer", textAlign:"left" }}>
                         <div style={{ fontSize:13, fontFamily:"'Playfair Display',Georgia,serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
-                        <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.7, marginTop:2 }}>{item.sub}</div>
                       </button>
                     ))}
                   </div>
@@ -168,7 +166,6 @@ export default function App() {
                       <button key={item.id} onClick={()=>{ navigateTo(item.id); setDrawerOpen(false); }}
                         style={{ display:"block", width:"100%", background:"none", border:"none", padding:"10px 18px", cursor:"pointer", textAlign:"left" }}>
                         <div style={{ fontSize:13, fontFamily:"'Playfair Display',Georgia,serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
-                        <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.7, marginTop:2 }}>{item.sub}</div>
                       </button>
                     ))}
                   </div>
