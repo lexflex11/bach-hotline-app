@@ -251,49 +251,6 @@ export default function App() {
         {tab==="explore"  && <ExploreTab groupSize={groupSize} setTab={setTab} />}
         {tab==="media"    && <MediaTab user={user} onSignUp={()=>setUser(null)} />}
       </div>
-      {/* ── MORE DRAWER ── */}
-      {drawerOpen && (
-        <>
-          <div onClick={() => setDrawerOpen(false)} style={{ position:"fixed", inset:0, background:"rgba(45,10,24,0.3)", zIndex:190, backdropFilter:"blur(3px)" }} />
-          <div style={{ position:"fixed", top:0, left:"50%", transform:"translateX(-50%)", width:"min(100%, 600px)", background:WHITE, borderRadius:"0 0 20px 20px", zIndex:195, boxShadow:`0 4px 32px rgba(230,101,130,0.18)`, maxHeight:"80vh", overflowY:"auto" }}>
-            <div style={{ width:36, height:4, borderRadius:2, background:MID, margin:"0 auto 14px", paddingTop:14 }} />
-            <div style={{ padding:"16px 20px 32px" }}>
-              <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"1.5px", marginBottom:18 }}>All Features</div>
-              <div style={{ marginBottom:10 }}></div>
-              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:20 }}>
-                {[
-                  { id:"flights", label:"Flights",   sub:"Search & compare"        },
-                  { id:"stays",   label:"Stays",     sub:"Airbnb, Vrbo & hotels"   },
-                  { id:"eats",         label:"Bites & Sips", sub:"Restaurants & brunch"       },
-                  { id:"experiences", label:"Experiences", sub:"Activities & adventures"   },
-                  ...(user.email ? [
-                    { id:"split", label:"Split",     sub:"Divide expenses"          },
-                    { id:"dayof", label:"Day-Of",    sub:"Live itinerary mode"      },
-                  ] : []),
-                ].map(item => (
-                  <button key={item.id} onClick={() => { navigateTo(item.id); setDrawerOpen(false); }}
-                    style={{ background: tab===item.id ? SOFT : PAGE, border:`1.5px solid ${tab===item.id ? HOT : BORDER}`, borderRadius:14, padding:"12px 13px", cursor:"pointer", textAlign:"left", transition:"all 0.15s" }}>
-                    <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color: tab===item.id ? HOT : DARK }}>{item.label}</div>
-                  </button>
-                ))}
-              </div>
-              <div style={{ marginBottom:10 }}></div>
-              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8 }}>
-                {[
-                  ...(user.email ? [
-                    { id:"alerts", label:"Alerts",      sub:"Members-only price drops"   },
-                  ] : []),
-                ].map(item => (
-                  <button key={item.id} onClick={() => { navigateTo(item.id); setDrawerOpen(false); }}
-                    style={{ background: tab===item.id ? SOFT : PAGE, border:`1.5px solid ${tab===item.id ? HOT : BORDER}`, borderRadius:14, padding:"12px 13px", cursor:"pointer", textAlign:"left", transition:"all 0.15s" }}>
-                    <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color: tab===item.id ? HOT : DARK }}>{item.label}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </>
-      )}
 
       {/* ── GLOBAL CART DRAWER ── */}
       {cartOpen && (
