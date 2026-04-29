@@ -25,22 +25,23 @@ export const px = url => `https://images.weserv.nl/?url=${encodeURIComponent(url
 
 // Expedia — builds a pre-filled search URL that opens directly to results
 // FROM, TO, DATE, TIME OF DAY, and PASSENGERS are all pre-filled
-export function expediaFlightUrl(fromCode, toCode, depDate, retDate, passengers, depTime="ANYTIME", retTime="ANYTIME") {
-  // Convert YYYY-MM-DD → MMDDYYYY (Expedia's required date format)
-  const fmt = d => { const [y,m,day] = d.split("-"); return `${m}${day}${y}`; };
-
+export function expediaFlightUrl(fromCode, toCode, depDate, retDate, passengers) {
+  // Expedia simple deep-link format — most reliable across regions
+  const base = "https://www.expedia.com/Flights-Search";
   const trip = retDate ? "roundtrip" : "oneway";
-
-  let leg1 = `from%3A${fromCode}%2Cto%3A${toCode}`;
-  if (depDate) leg1 += `%2Cdeparture%3A${fmt(depDate)}${depTime}`;
-
-  let legs = `leg1=${leg1}`;
-  if (retDate) {
-    legs += `&leg2=from%3A${toCode}%2Cto%3A${fromCode}%2Cdeparture%3A${fmt(retDate)}${retTime}`;
-  }
-
-  // Direct Expedia search URL — opens straight to results, no extra searching needed
-  return `https://www.expedia.com/Flights-Search?trip=${trip}&${legs}&passengers=adults%3A${passengers}%2Cseniors%3A0%2Cchildren%3A0&options=cabinClass%3Aeconomy&mode=search`;
+  const params = new URLSearchParams({
+    trip,
+    mode: "search",
+    adults: String(passengers),
+    children: "0",
+    seniors: "0",
+    cabinclass: "economy",
+    origin1: fromCode,
+    destination1: toCode,
+  });
+  if (depDate) params.set("departuredate1", depDate);
+  if (retDate) params.set("returndate", retDate);
+  return `${base}?${params.toString()}`;
 }
 
 // Kayak — opens directly to results with from/to/dates/passengers pre-filled
