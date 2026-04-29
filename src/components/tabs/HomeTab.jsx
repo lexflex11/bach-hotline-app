@@ -52,14 +52,6 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, s
           </div>
         </div>
 
-        {/* Summary pill */}
-        {(city || groupSize) && (
-          <div style={{ marginTop:14, padding:"8px 14px", background:SOFT, borderRadius:50, display:"inline-flex", alignItems:"center", gap:8 }}>
-            <span style={{ fontSize:12, fontFamily:"'Nunito',sans-serif", color:HOT, fontWeight:300 }}>
-              {groupSize} girls{selectedDest ? ` · ${selectedDest.name}` : ""}
-            </span>
-          </div>
-        )}
       </div>
 
       <SH title="What do you need?" weight={300} />
