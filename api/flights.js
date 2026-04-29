@@ -1,23 +1,5 @@
-// Vercel serverless function — proxies Amadeus Flight Offers API
-// Keeps API credentials server-side (never exposed to browser)
-
-const AMADEUS_BASE = process.env.AMADEUS_ENV === "production"
-  ? "https://api.amadeus.com"
-  : "https://test.api.amadeus.com";
-
-async function getToken() {
-  const res = await fetch(`${AMADEUS_BASE}/v1/security/oauth2/token`, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({
-      grant_type:    "client_credentials",
-      client_id:     process.env.AMADEUS_CLIENT_ID     || "",
-      client_secret: process.env.AMADEUS_CLIENT_SECRET || "",
-    }),
-  });
-  const data = await res.json();
-  return data.access_token;
-}
+// Vercel serverless function — proxies Kiwi Tequila Flight Search API
+// API key stays server-side, never exposed to the browser
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -30,35 +12,90 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing params: from, to, date" });
   }
 
-  try {
-    const token = await getToken();
-    if (!token) return res.status(500).json({ error: "Auth failed — check AMADEUS_CLIENT_ID and AMADEUS_CLIENT_SECRET in Vercel env vars" });
+  const apiKey = process.env.KIWI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: "Missing KIWI_API_KEY — add it in Vercel Environment Variables" });
+  }
 
-    // Amadeus caps at 9 adults per call — for larger groups show per-person price
-    const adultCount = Math.min(Number(adults) || 1, 9);
+  try {
+    // Kiwi Tequila expects dates as DD/MM/YYYY
+    function toKiwiDate(iso) {
+      const [y, m, d] = iso.split("-");
+      return `${d}/${m}/${y}`;
+    }
+
+    const depKiwi = toKiwiDate(date);
+    const retKiwi = returnDate ? toKiwiDate(returnDate) : null;
 
     const params = new URLSearchParams({
-      originLocationCode:      from.toUpperCase(),
-      destinationLocationCode: to.toUpperCase(),
-      departureDate:           date,
-      adults:                  String(adultCount),
-      max:                     "15",
-      currencyCode:            "USD",
+      fly_from:       from.toUpperCase(),
+      fly_to:         to.toUpperCase(),
+      date_from:      depKiwi,
+      date_to:        depKiwi,
+      adults:         String(Math.min(Number(adults) || 1, 9)),
+      curr:           "USD",
+      limit:          "15",
+      sort:           "price",
+      flight_type:    retKiwi ? "round" : "oneway",
+      max_stopovers:  "2",
     });
-    if (returnDate) params.set("returnDate", returnDate);
 
-    const flightRes = await fetch(
-      `${AMADEUS_BASE}/v2/shopping/flight-offers?${params}`,
-      { headers: { Authorization: `Bearer ${token}` } }
+    if (retKiwi) {
+      params.set("return_from", retKiwi);
+      params.set("return_to",   retKiwi);
+    }
+
+    const response = await fetch(
+      `https://api.tequila.kiwi.com/v2/search?${params}`,
+      { headers: { apikey: apiKey } }
     );
 
-    const data = await flightRes.json();
+    const data = await response.json();
 
-    // Pass original groupSize back so UI can extrapolate total price
-    data._groupSize = Number(adults) || 1;
-    data._adultCount = adultCount;
+    if (!response.ok || data.error) {
+      return res.status(500).json({ error: data.error || "Flight search failed" });
+    }
 
-    return res.status(200).json(data);
+    // Normalize to a simple format the UI can use
+    const flights = (data.data || []).map(f => ({
+      id:         f.id,
+      airline:    f.airlines?.[0] || f.operating_carrier || "—",
+      price:      parseFloat(f.price),
+      currency:   "USD",
+      outbound: {
+        depCode:  f.flyFrom,
+        arrCode:  f.flyTo,
+        depTime:  new Date(f.local_departure).toISOString(),
+        arrTime:  new Date(f.local_arrival).toISOString(),
+        duration: f.duration?.departure,   // seconds
+        stops:    f.route?.filter(r => r.return === 0).length - 1,
+        segments: (f.route || []).filter(r => r.return === 0).map(r => ({
+          dep: r.flyFrom, arr: r.flyTo,
+          depTime: new Date(r.local_departure).toISOString(),
+          arrTime: new Date(r.local_arrival).toISOString(),
+          carrier: r.airline,
+          flightNo: `${r.airline}${r.flight_no}`,
+        })),
+      },
+      inbound: retKiwi ? {
+        depCode:  f.flyTo,
+        arrCode:  f.flyFrom,
+        depTime:  new Date(f.route?.find(r => r.return === 1)?.local_departure || f.local_arrival).toISOString(),
+        arrTime:  new Date(f.local_arrival).toISOString(),
+        duration: f.duration?.return,
+        stops:    Math.max(0, f.route?.filter(r => r.return === 1).length - 1),
+        segments: (f.route || []).filter(r => r.return === 1).map(r => ({
+          dep: r.flyFrom, arr: r.flyTo,
+          depTime: new Date(r.local_departure).toISOString(),
+          arrTime: new Date(r.local_arrival).toISOString(),
+          carrier: r.airline,
+          flightNo: `${r.airline}${r.flight_no}`,
+        })),
+      } : null,
+      deepLink: f.deep_link || null,
+    }));
+
+    return res.status(200).json({ flights, groupSize: Number(adults) });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

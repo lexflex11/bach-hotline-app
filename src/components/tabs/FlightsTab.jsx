@@ -84,109 +84,89 @@ const usDests   = DESTS.filter(d => !d.international);
 const intlDests = DESTS.filter(d =>  d.international);
 
 // ── Flight result card ─────────────────────────────────────────────────────
-function FlightCard({ offer, groupSize, fromCode, toCode, depDate, retDate }) {
-  const pricePerPerson = parseFloat(offer.price.grandTotal || offer.price.total);
-  const totalPrice     = (pricePerPerson * groupSize).toFixed(2);
+function fmtSecs(secs) {
+  if (!secs) return "";
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  return `${h}h ${m}m`;
+}
 
-  // Outbound leg
-  const out      = offer.itineraries[0];
-  const outSegs  = out.segments;
-  const outDep   = outSegs[0].departure;
-  const outArr   = outSegs[outSegs.length - 1].arrival;
-  const outStops = outSegs.length - 1;
-  const carrier  = outSegs[0].carrierCode;
-
-  // Return leg (if round trip)
-  const ret     = offer.itineraries[1];
-  const retSegs = ret?.segments;
-  const retDep  = retSegs?.[0].departure;
-  const retArr  = retSegs?.[retSegs.length - 1].arrival;
-  const retStops = retSegs ? retSegs.length - 1 : null;
+function FlightCard({ flight, groupSize, fromCode, toCode, depDate, retDate }) {
+  const totalPrice = (flight.price * groupSize).toFixed(0);
 
   function book() {
-    const url = expediaFlightUrl(fromCode, toCode, depDate, retDate, groupSize);
-    window.open(url, "_blank");
+    // Use Kiwi deep link if available, otherwise fall back to Expedia
+    if (flight.deepLink) {
+      window.open(flight.deepLink, "_blank");
+    } else {
+      window.open(expediaFlightUrl(fromCode, toCode, depDate, retDate, groupSize), "_blank");
+    }
   }
 
   return (
     <div style={{ ...C, marginBottom:12, padding:"16px" }}>
-      {/* Airline + price row */}
+      {/* Airline + price */}
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:14 }}>
         <div style={{ fontFamily:NUN, fontSize:13, fontWeight:700, color:DARK }}>
-          {carrierName(carrier)}
+          {carrierName(flight.airline)}
         </div>
         <div style={{ textAlign:"right" }}>
           <div style={{ fontFamily:NUN, fontSize:18, fontWeight:800, color:DARK }}>
-            ${pricePerPerson.toLocaleString("en-US", { minimumFractionDigits:0 })}
+            ${Number(flight.price).toLocaleString()}
             <span style={{ fontSize:11, fontWeight:500, color:"#999" }}>/person</span>
           </div>
           <div style={{ fontFamily:NUN, fontSize:11, color:HOT, fontWeight:600 }}>
-            ${parseFloat(totalPrice).toLocaleString("en-US", { minimumFractionDigits:0 })} total for {groupSize}
+            ${Number(totalPrice).toLocaleString()} total for {groupSize}
           </div>
         </div>
       </div>
 
-      {/* Outbound flight row */}
-      <FlightRow
-        dep={outDep} arr={outArr}
-        duration={parseDuration(out.duration)}
-        stops={outStops}
-        label={ret ? "Outbound" : null}
-      />
+      {/* Outbound */}
+      <FlightRow leg={flight.outbound} label={flight.inbound ? "Outbound" : null} />
 
-      {/* Return flight row */}
-      {ret && (
-        <FlightRow
-          dep={retDep} arr={retArr}
-          duration={parseDuration(ret.duration)}
-          stops={retStops}
-          label="Return"
-        />
-      )}
+      {/* Return */}
+      {flight.inbound && <FlightRow leg={flight.inbound} label="Return" />}
 
       {/* Book button */}
-      <button
-        onClick={book}
-        style={{
-          marginTop:14, width:"100%", padding:"13px",
-          background:`linear-gradient(135deg,#f472b0,${HOT})`,
-          color:WHITE, border:"none", borderRadius:50,
-          fontFamily:NUN, fontSize:14, fontWeight:800,
-          cursor:"pointer", letterSpacing:"0.2px",
-        }}
-      >
-        Book Flight on Expedia
+      <button onClick={book} style={{
+        marginTop:14, width:"100%", padding:"13px",
+        background:`linear-gradient(135deg,#f472b0,${HOT})`,
+        color:WHITE, border:"none", borderRadius:50,
+        fontFamily:NUN, fontSize:14, fontWeight:800,
+        cursor:"pointer", letterSpacing:"0.2px",
+      }}>
+        Book Flight
       </button>
     </div>
   );
 }
 
-function FlightRow({ dep, arr, duration, stops, label }) {
+function FlightRow({ leg, label }) {
+  const stops = Math.max(0, leg.stops ?? 0);
   return (
-    <div style={{ marginBottom:label==="Return" ? 0 : 10 }}>
+    <div style={{ marginBottom: label === "Return" ? 0 : 12 }}>
       {label && (
         <div style={{ fontFamily:NUN, fontSize:10, fontWeight:700, color:"#aaa", textTransform:"uppercase", letterSpacing:1, marginBottom:6 }}>
           {label}
         </div>
       )}
-      <div style={{ display:"flex", alignItems:"center", gap:0 }}>
-        {/* Dep time */}
+      <div style={{ display:"flex", alignItems:"center" }}>
+        {/* Departure */}
         <div style={{ minWidth:72 }}>
-          <div style={{ fontFamily:NUN, fontSize:16, fontWeight:800, color:DARK }}>{fmtTime(dep.at)}</div>
-          <div style={{ fontFamily:NUN, fontSize:11, color:"#999", fontWeight:600 }}>{dep.iataCode}</div>
-          <div style={{ fontFamily:NUN, fontSize:10, color:"#bbb" }}>{fmtDate(dep.at)}</div>
+          <div style={{ fontFamily:NUN, fontSize:16, fontWeight:800, color:DARK }}>{fmtTime(leg.depTime)}</div>
+          <div style={{ fontFamily:NUN, fontSize:11, color:"#999", fontWeight:600 }}>{leg.depCode}</div>
+          <div style={{ fontFamily:NUN, fontSize:10, color:"#bbb" }}>{fmtDate(leg.depTime)}</div>
         </div>
 
-        {/* Duration line */}
+        {/* Duration + stops */}
         <div style={{ flex:1, textAlign:"center", padding:"0 8px" }}>
-          <div style={{ fontFamily:NUN, fontSize:11, color:"#999", fontWeight:600, marginBottom:4 }}>{duration}</div>
+          <div style={{ fontFamily:NUN, fontSize:11, color:"#999", fontWeight:600, marginBottom:4 }}>{fmtSecs(leg.duration)}</div>
           <div style={{ display:"flex", alignItems:"center", gap:4 }}>
             <div style={{ flex:1, height:1.5, background:BORDER }} />
             <div style={{
-              fontFamily:NUN, fontSize:9, fontWeight:700,
-              color: stops === 0 ? "#22c55e" : HOT,
-              whiteSpace:"nowrap",
+              fontFamily:NUN, fontSize:9, fontWeight:700, whiteSpace:"nowrap",
               padding:"2px 7px", borderRadius:50,
+              color:      stops === 0 ? "#22c55e" : HOT,
               background: stops === 0 ? "#f0fdf4" : "#fff0f6",
               border:`1px solid ${stops === 0 ? "#86efac" : "#fbc8dc"}`,
             }}>
@@ -196,11 +176,11 @@ function FlightRow({ dep, arr, duration, stops, label }) {
           </div>
         </div>
 
-        {/* Arr time */}
+        {/* Arrival */}
         <div style={{ minWidth:72, textAlign:"right" }}>
-          <div style={{ fontFamily:NUN, fontSize:16, fontWeight:800, color:DARK }}>{fmtTime(arr.at)}</div>
-          <div style={{ fontFamily:NUN, fontSize:11, color:"#999", fontWeight:600 }}>{arr.iataCode}</div>
-          <div style={{ fontFamily:NUN, fontSize:10, color:"#bbb" }}>{fmtDate(arr.at)}</div>
+          <div style={{ fontFamily:NUN, fontSize:16, fontWeight:800, color:DARK }}>{fmtTime(leg.arrTime)}</div>
+          <div style={{ fontFamily:NUN, fontSize:11, color:"#999", fontWeight:600 }}>{leg.arrCode}</div>
+          <div style={{ fontFamily:NUN, fontSize:10, color:"#bbb" }}>{fmtDate(leg.arrTime)}</div>
         </div>
       </div>
     </div>
@@ -250,10 +230,12 @@ export default function FlightsTab({ groupSize, initialDest }) {
       const res  = await fetch(`/api/flights?${params}`);
       const data = await res.json();
 
-      if (data.errors || data.error) {
-        setError(data.errors?.[0]?.detail || data.error || "No flights found for this route.");
+      if (data.error) {
+        setError(data.error);
+      } else if (!data.flights || data.flights.length === 0) {
+        setError("No flights found for this route and date. Try adjusting your dates.");
       } else {
-        setFlights(data.data || []);
+        setFlights(data.flights);
       }
     } catch (e) {
       setError("Could not reach the flight API. Please try again.");
@@ -381,10 +363,10 @@ export default function FlightsTab({ groupSize, initialDest }) {
               No flights available for this route and date. Try adjusting your dates.
             </div>
           )}
-          {flights.map(offer => (
+          {flights.map(flight => (
             <FlightCard
-              key={offer.id}
-              offer={offer}
+              key={flight.id}
+              flight={flight}
               groupSize={groupSize}
               fromCode={fromCode}
               toCode={selectedDest?.airportCode}
