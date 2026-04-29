@@ -3775,22 +3775,22 @@ function RestaurantCard({ r, onView }) {
       <div style={{ padding:"14px 16px 16px" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:4 }}>
           <div style={{ flex:1, paddingRight:8 }}>
-            <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:2 }}>{r.name}</div>
+            <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:2 }}>{r.name}</div>
           </div>
         </div>
         <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:6 }}>
           <Stars rating={r.rating} />
-          <span style={{ fontSize:12, fontWeight:300, color:DARK, fontFamily:"'Nunito',sans-serif" }}>{r.rating}</span>
-          <span style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>({r.reviews} reviews)</span>
+          <span style={{ fontSize:12, fontWeight:300, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{r.rating}</span>
+          <span style={{ fontSize:11, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>({r.reviews} reviews)</span>
         </div>
-        <div style={{ fontSize:11, color:"#888", fontFamily:"'Nunito',sans-serif", marginBottom:12, lineHeight:1.4 }}>
+        <div style={{ fontSize:11, color:"#888", fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:12, lineHeight:1.4 }}>
           {r.vibe}
         </div>
         <button onClick={()=>onView(r)} style={{
           width:"100%", padding:"11px",
           background:`linear-gradient(135deg,#f472b0,${HOT})`,
           color:WHITE, border:"none", borderRadius:50,
-          fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
+          fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:700,
           cursor:"pointer", letterSpacing:"0.2px",
         }}>
           View More Details →
@@ -3814,7 +3814,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
         display:"flex", alignItems:"center", gap:6,
         background:WHITE, border:`1.5px solid ${BORDER}`,
         borderRadius:50, padding:"9px 16px", margin:"14px 16px 0",
-        fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:300,
+        fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:300,
         color:DARK, cursor:"pointer",
         boxShadow:"0 2px 8px rgba(0,0,0,0.08)", zIndex:10,
       }}>
@@ -3825,14 +3825,14 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 
         {/*  Title + meta  */}
         <div style={{ marginTop:16, marginBottom:14 }}>
-          <h1 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:24, fontWeight:700, color:DARK, margin:"0 0 8px", lineHeight:1.2 }}>
+          <h1 style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:24, fontWeight:700, color:DARK, margin:"0 0 8px", lineHeight:1.2 }}>
             {r.name}
           </h1>
           <div style={{ display:"flex", flexWrap:"wrap", gap:14, alignItems:"center", marginBottom:8 }}>
             <div style={{ display:"flex", alignItems:"center", gap:5 }}>
               <Stars rating={r.rating} />
-              <span style={{ fontSize:13, fontWeight:300, color:DARK, fontFamily:"'Nunito',sans-serif" }}>{r.rating}</span>
-              <span style={{ fontSize:12, fontWeight:300, color:HOT, fontFamily:"'Nunito',sans-serif", textDecoration:"underline" }}>{r.reviews} Reviews</span>
+              <span style={{ fontSize:13, fontWeight:300, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{r.rating}</span>
+              <span style={{ fontSize:12, fontWeight:300, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textDecoration:"underline" }}>{r.reviews} Reviews</span>
             </div>
           </div>
         </div>
@@ -3848,7 +3848,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
               <div style={{
                 position:"absolute", bottom:10, right:10,
                 background:"rgba(0,0,0,0.6)", color:WHITE,
-                fontSize:11, fontFamily:"'Nunito',sans-serif", fontWeight:700,
+                fontSize:11, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700,
                 padding:"4px 10px", borderRadius:20,
               }}>
                 {imgIdx+1} / {imgs.length}  · tap to cycle
@@ -3873,39 +3873,39 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 
         {/*  About this restaurant  */}
         <div style={{ ...C, marginBottom:14 }}>
-          <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:10 }}>
+          <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:10 }}>
             About this Restaurant
           </div>
-          <p style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>
+          <p style={{ fontSize:13, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>
             {r.desc}
           </p>
 
           {/* Details grid */}
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:16 }}>
             <div style={{ background:SOFT, borderRadius:12, padding:"10px 12px" }}>
-              <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Hours</div>
-              <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif" }}>
+              <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Hours</div>
+              <div style={{ fontSize:12, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
                 {r.hours.split(" · ").map((slot, i) => (
                   <div key={i} style={{ marginBottom:6 }}>{slot}</div>
                 ))}
               </div>
             </div>
             <div style={{ background:SOFT, borderRadius:12, padding:"10px 12px" }}>
-              <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Group Size</div>
-              <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif" }}>Up to {r.groupMax} guests</div>
+              <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Group Size</div>
+              <div style={{ fontSize:12, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Up to {r.groupMax} guests</div>
             </div>
           </div>
 
           {/* Address */}
           <div style={{ display:"flex", gap:8, alignItems:"flex-start", padding:"10px 12px", background:SOFT, borderRadius:12 }}>
-            <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, whiteSpace:"nowrap", marginTop:1 }}>Address:</div>
-            <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.5 }}>{r.address}</div>
+            <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textTransform:"uppercase", letterSpacing:1, whiteSpace:"nowrap", marginTop:1 }}>Address:</div>
+            <div style={{ fontSize:12, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.5 }}>{r.address}</div>
           </div>
         </div>
 
         {/*  Menu Highlights  */}
         <div style={{ ...C, marginBottom:14 }}>
-          <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12 }}>
+          <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:12 }}>
             Menu Highlights
           </div>
           <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
@@ -3913,7 +3913,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
               <div key={i} style={{
                 padding:"7px 13px", borderRadius:50,
                 background:SOFT, border:`1.5px solid ${BORDER}`,
-                fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", fontWeight:500,
+                fontSize:12, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:500,
               }}>
                 {item}
               </div>
@@ -3923,7 +3923,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 
         {/*  Why we love it  */}
         <div style={{ ...C, marginBottom:14 }}>
-          <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12 }}>
+          <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:12 }}>
             Why We Love It for Your Group
           </div>
           {r.whyWeLoveIt.map((reason, i) => (
@@ -3932,19 +3932,19 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
                 width:22, height:22, borderRadius:"50%", flexShrink:0,
                 background:`linear-gradient(135deg,#f472b0,${HOT})`,
                 display:"flex", alignItems:"center", justifyContent:"center",
-                fontSize:11, fontWeight:700, color:WHITE, fontFamily:"'Nunito',sans-serif",
+                fontSize:11, fontWeight:700, color:WHITE, fontFamily:"'Plus Jakarta Sans',sans-serif",
               }}>{i+1}</div>
-              <div style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.6, paddingTop:2 }}>{reason}</div>
+              <div style={{ fontSize:13, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.6, paddingTop:2 }}>{reason}</div>
             </div>
           ))}
         </div>
 
         {/*  Make a Reservation  */}
         <div style={{ background:WHITE, borderRadius:20, padding:"20px 18px", marginBottom:14, border:`1.5px solid ${BORDER}` }}>
-          <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, marginBottom:4 }}>
+          <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:HOT, marginBottom:4 }}>
             Book Your Table
           </div>
-          <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:16 }}>
+          <div style={{ fontSize:12, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:16 }}>
             {groupSize} guests{date ? ` · ${date}` : ""}: secure your spot before it fills up
           </div>
           <a href={r.reserveUrl} target="_blank" rel="noreferrer" style={{ textDecoration:"none" }}>
@@ -3952,7 +3952,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
               width:"100%", padding:"16px",
               background:`linear-gradient(135deg,#f472b0,${HOT})`,
               color:WHITE, border:"none", borderRadius:14,
-              fontFamily:"'Nunito',sans-serif", fontSize:15, fontWeight:800,
+              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:15, fontWeight:800,
               cursor:"pointer", letterSpacing:"0.3px",
               boxShadow:"0 4px 16px rgba(233,30,140,0.35)",
             }}>
@@ -4029,13 +4029,13 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
 
   const inputStyle = {
     width:"100%", maxWidth:"100%", padding:"10px 8px", borderRadius:10,
-    border:`1.5px solid ${BORDER}`, fontFamily:"'Nunito',sans-serif",
+    border:`1.5px solid ${BORDER}`, fontFamily:"'Plus Jakarta Sans',sans-serif",
     fontSize:13, color:DARK, background:WHITE, boxSizing:"border-box", outline:"none",
   };
 
   const labelStyle = {
     fontSize:10, fontWeight:700, color:HOT,
-    fontFamily:"'Nunito',sans-serif",
+    fontFamily:"'Plus Jakarta Sans',sans-serif",
     textTransform:"uppercase", letterSpacing:1, marginBottom:6,
   };
 
@@ -4053,13 +4053,13 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:6 }}>
           <div style={labelStyle}>Destination</div>
           {city && !showCityPicker && (
-            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
+            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
           )}
         </div>
         {city && !showCityPicker ? (
           <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
             <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || ""}</span>
-            <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
+            <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
           </div>
         ) : (
           <select value={city} onChange={e=>{ const v=e.target.value; setCity(v); setShowCityPicker(false); setResults(v ? RESTAURANTS[v] || DEFAULT_RESTAURANTS : null); }} style={{ ...inputStyle, appearance:"none" }}>
@@ -4089,9 +4089,9 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
       <div style={{ ...C, marginBottom:14 }}>
         <div style={labelStyle}>Group Size</div>
         <div style={{ display:"flex", alignItems:"center", gap:16, marginTop:4 }}>
-          <button onClick={()=>setGroupSize(g=>Math.max(1,g-1))} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Nunito',sans-serif" }}>−</button>
-          <div style={{ fontSize:22, fontWeight:300, color:DARK, fontFamily:"'Playfair Display',Georgia,serif", minWidth:24, textAlign:"center" }}>{groupSize}</div>
-          <button onClick={()=>setGroupSize(g=>Math.min(50,g+1))} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Nunito',sans-serif" }}>+</button>
+          <button onClick={()=>setGroupSize(g=>Math.max(1,g-1))} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>−</button>
+          <div style={{ fontSize:22, fontWeight:300, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", minWidth:24, textAlign:"center" }}>{groupSize}</div>
+          <button onClick={()=>setGroupSize(g=>Math.min(50,g+1))} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>+</button>
         </div>
       </div>
 
@@ -4103,7 +4103,7 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
             <button key={cat.id} onClick={()=>setCategory(cat.id)} style={{
               flexShrink:0, display:"flex", alignItems:"center", gap:5,
               padding:"8px 14px", borderRadius:50, fontSize:12, fontWeight:700,
-              fontFamily:"'Nunito',sans-serif", cursor:"pointer",
+              fontFamily:"'Plus Jakarta Sans',sans-serif", cursor:"pointer",
               background: category===cat.id ? "#F496C2" : WHITE,
               color: category===cat.id ? WHITE : DARK,
               border: category===cat.id ? "none" : `1.5px solid ${BORDER}`,
@@ -4120,10 +4120,10 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
       <div style={{ ...C, background:SOFT, border:`1.5px solid ${MID}`, marginBottom:20 }}>
         {city && (
           <>
-            <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>
+            <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:4 }}>
               {selectedDest?.name}
             </div>
-            <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:14, opacity:0.85 }}>
+            <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:14, opacity:0.85 }}>
               {groupSize} guests{date ? ` · ${date}` : " · flexible date"}{time ? ` at ${time}` : ""}
             </div>
           </>
@@ -4133,12 +4133,12 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
           background: city ? `linear-gradient(135deg,#f472b0,${HOT})` : MID,
           color:WHITE, border:"none", borderRadius:14,
           padding:"15px", cursor: city ? "pointer" : "not-allowed",
-          fontFamily:"'Nunito',sans-serif", fontSize:14, fontWeight:800,
+          fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:14, fontWeight:800,
           letterSpacing:"0.3px", opacity: city ? 1 : 0.55,
         }}>
           Find Best Tables
         </button>
-        <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:8, textAlign:"center" }}>
+        <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:8, textAlign:"center" }}>
           {city ? "Curated spots perfect for bachelorette groups" : "Pick a destination above to get started"}
         </div>
       </div>
@@ -4149,15 +4149,15 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
       {filteredResults && (
         <>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
-            <div style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:17, fontWeight:700, color:DARK }}>
+            <div style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:17, fontWeight:700, color:DARK }}>
               {filteredResults.length} Restaurant{filteredResults.length !== 1 ? "s" : ""} Found
             </div>
-            <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif" }}>
+            <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
               {selectedDest?.name}
             </div>
           </div>
           {filteredResults.length === 0 ? (
-            <div style={{ textAlign:"center", padding:"32px 16px", color:DARK, fontFamily:"'Nunito',sans-serif" }}>
+            <div style={{ textAlign:"center", padding:"32px 16px", color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
               <div style={{ fontSize:28, marginBottom:8 }}></div>
               <div style={{ fontSize:14, fontWeight:700, marginBottom:4 }}>No matches for this category</div>
               <div style={{ fontSize:12, color:HOT, opacity:0.8 }}>Try a different cuisine or pick "All"</div>

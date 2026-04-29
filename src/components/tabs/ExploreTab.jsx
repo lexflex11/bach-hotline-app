@@ -577,7 +577,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
 
   const inputStyle = {
     flex:1, padding:"10px 12px", borderRadius:10,
-    border:`1.5px solid #e0d0e8`, fontFamily:"'Nunito',sans-serif",
+    border:`1.5px solid #e0d0e8`, fontFamily:"'Plus Jakarta Sans',sans-serif",
     fontSize:13, color:"#1a1a2e", background:WHITE, boxSizing:"border-box",
   };
 
@@ -586,7 +586,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
       {/* Back button */}
       <button onClick={onBack} style={{
         display:"flex", alignItems:"center", gap:6, background:"none", border:"none",
-        color:HOT, fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
+        color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:700,
         cursor:"pointer", padding:"12px 0 8px",
       }}>
         ← Back to Explore
@@ -596,7 +596,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
       <div style={{ width:"100%", height:220, borderRadius:18, overflow:"hidden", marginBottom:12, position:"relative" }}>
         <img src={photo} alt={e.name} style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
         {e.hot && (
-          <div style={{ position:"absolute", bottom:12, left:12, background:PUNCH, borderRadius:50, padding:"3px 10px", fontSize:9, fontWeight:800, color:WHITE, fontFamily:"'Nunito',sans-serif" }}>
+          <div style={{ position:"absolute", bottom:12, left:12, background:PUNCH, borderRadius:50, padding:"3px 10px", fontSize:9, fontWeight:800, color:WHITE, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
              POPULAR
           </div>
         )}
@@ -613,16 +613,16 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
 
       {/* Title + meta */}
       <div style={{ marginBottom:16 }}>
-        <div style={{ display:"inline-block", background:SOFT, border:`1px solid ${MID}`, borderRadius:50, padding:"3px 10px", fontSize:9, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:8 }}>
+        <div style={{ display:"inline-block", background:SOFT, border:`1px solid ${MID}`, borderRadius:50, padding:"3px 10px", fontSize:9, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:8 }}>
            {e.badge}
         </div>
-        <div style={{ fontSize:20, fontWeight:800, fontFamily:"'Playfair Display',Georgia,serif", color:"#1a1a2e", lineHeight:1.25, marginBottom:10 }}>
+        <div style={{ fontSize:20, fontWeight:800, fontFamily:"'Plus Jakarta Sans',sans-serif", color:"#1a1a2e", lineHeight:1.25, marginBottom:10 }}>
           {e.name}
         </div>
         <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
-          <span style={{ fontSize:12, color:"#555", fontFamily:"'Nunito',sans-serif" }}> {e.rating} rating</span>
-          <span style={{ fontSize:12, color:"#555", fontFamily:"'Nunito',sans-serif" }}> {dur}</span>
-          <span style={{ fontSize:12, color:PUNCH, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Starting at {price}/person</span>
+          <span style={{ fontSize:12, color:"#555", fontFamily:"'Plus Jakarta Sans',sans-serif" }}> {e.rating} rating</span>
+          <span style={{ fontSize:12, color:"#555", fontFamily:"'Plus Jakarta Sans',sans-serif" }}> {dur}</span>
+          <span style={{ fontSize:12, color:PUNCH, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Starting at {price}/person</span>
         </div>
       </div>
 
@@ -631,7 +631,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
         <button style={{
           width:"100%", background:`linear-gradient(135deg,#f472b0,${HOT})`,
           color:WHITE, border:"none", borderRadius:14, padding:"15px",
-          fontFamily:"'Nunito',sans-serif", fontSize:15, fontWeight:800,
+          fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:15, fontWeight:800,
           cursor:"pointer", letterSpacing:"0.3px",
         }}>
           Book Now →
@@ -640,26 +640,26 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
 
       {/* About */}
       <div style={{ background:WHITE, borderRadius:16, padding:"16px", marginBottom:12, boxShadow:"0 2px 12px rgba(45,10,24,0.08)" }}>
-        <div style={{ fontSize:15, fontWeight:800, fontFamily:"'Playfair Display',Georgia,serif", color:"#1a1a2e", marginBottom:10 }}>
+        <div style={{ fontSize:15, fontWeight:800, fontFamily:"'Plus Jakarta Sans',sans-serif", color:"#1a1a2e", marginBottom:10 }}>
           About this Experience
         </div>
-        <div style={{ fontSize:12, color:"#555", fontFamily:"'Nunito',sans-serif", lineHeight:1.7, marginBottom:14 }}>
+        <div style={{ fontSize:12, color:"#555", fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.7, marginBottom:14 }}>
           {desc}
         </div>
-        <div style={{ fontSize:13, fontWeight:700, color:"#1a1a2e", fontFamily:"'Nunito',sans-serif", marginBottom:8 }}>
+        <div style={{ fontSize:13, fontWeight:700, color:"#1a1a2e", fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:8 }}>
           Why we love it for your party:
         </div>
         {bullets.map((b, i) => (
           <div key={i} style={{ display:"flex", gap:8, marginBottom:6, alignItems:"flex-start" }}>
             <span style={{ color:HOT, fontWeight:900, flexShrink:0 }}>•</span>
-            <span style={{ fontSize:12, color:"#555", fontFamily:"'Nunito',sans-serif", lineHeight:1.5 }}>{b}</span>
+            <span style={{ fontSize:12, color:"#555", fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.5 }}>{b}</span>
           </div>
         ))}
       </div>
 
       {/* Check Availability */}
       <div style={{ background:"#1a1a2e", borderRadius:16, padding:"16px", marginBottom:12 }}>
-        <div style={{ fontSize:15, fontWeight:800, fontFamily:"'Playfair Display',Georgia,serif", color:WHITE, marginBottom:14 }}>
+        <div style={{ fontSize:15, fontWeight:800, fontFamily:"'Plus Jakarta Sans',sans-serif", color:WHITE, marginBottom:14 }}>
           Check Availability
         </div>
         <div style={{ display:"flex", gap:8, marginBottom:10 }}>
@@ -674,7 +674,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
           <button style={{
             width:"100%", background:`linear-gradient(135deg,#f472b0,${HOT})`,
             color:WHITE, border:"none", borderRadius:12, padding:"13px",
-            fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:800, cursor:"pointer",
+            fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:800, cursor:"pointer",
           }}>
             Select Option →
           </button>
@@ -683,14 +683,14 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
 
       {/* Cancellation policy */}
       <div style={{ background:WHITE, borderRadius:16, padding:"14px 16px", marginBottom:12, boxShadow:"0 2px 12px rgba(45,10,24,0.08)" }}>
-        <div style={{ fontSize:13, fontWeight:800, fontFamily:"'Playfair Display',Georgia,serif", color:"#1a1a2e", marginBottom:8 }}>
+        <div style={{ fontSize:13, fontWeight:800, fontFamily:"'Plus Jakarta Sans',sans-serif", color:"#1a1a2e", marginBottom:8 }}>
           Cancellation Policy
         </div>
         <div style={{ display:"flex", gap:10, alignItems:"flex-start" }}>
           <span style={{ fontSize:18 }}></span>
           <div>
-            <div style={{ fontSize:12, fontWeight:700, color:"#1a1a2e", fontFamily:"'Nunito',sans-serif" }}>Flexible Cancellation</div>
-            <div style={{ fontSize:11, color:"#888", fontFamily:"'Nunito',sans-serif", marginTop:3, lineHeight:1.5 }}>
+            <div style={{ fontSize:12, fontWeight:700, color:"#1a1a2e", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Flexible Cancellation</div>
+            <div style={{ fontSize:11, color:"#888", fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:3, lineHeight:1.5 }}>
               Cancel up to 24 hours in advance for a full refund. Policies may vary by provider.
             </div>
           </div>
@@ -701,8 +701,8 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
       <div style={{ background:WHITE, borderRadius:16, padding:"14px 16px", marginBottom:16, boxShadow:"0 2px 12px rgba(45,10,24,0.08)" }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
           <div>
-            <div style={{ fontSize:13, fontWeight:800, fontFamily:"'Playfair Display',Georgia,serif", color:"#1a1a2e" }}>Reviews</div>
-            <div style={{ fontSize:11, color:"#888", fontFamily:"'Nunito',sans-serif" }}> {e.rating} · Bachelorette approved</div>
+            <div style={{ fontSize:13, fontWeight:800, fontFamily:"'Plus Jakarta Sans',sans-serif", color:"#1a1a2e" }}>Reviews</div>
+            <div style={{ fontSize:11, color:"#888", fontFamily:"'Plus Jakarta Sans',sans-serif" }}> {e.rating} · Bachelorette approved</div>
           </div>
         </div>
         {[
@@ -711,16 +711,16 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
         ].map((r, i) => (
           <div key={i} style={{ borderTop:`1px solid ${SOFT}`, paddingTop:10, marginTop:10 }}>
             <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:6 }}>
-              <div style={{ width:32, height:32, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", color:WHITE, fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", flexShrink:0 }}>
+              <div style={{ width:32, height:32, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", color:WHITE, fontSize:13, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", flexShrink:0 }}>
                 {r.name[0]}
               </div>
               <div>
-                <div style={{ fontSize:12, fontWeight:700, color:"#1a1a2e", fontFamily:"'Nunito',sans-serif" }}>{r.name}</div>
-                <div style={{ fontSize:10, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>{r.date} · Bachelorette Party</div>
+                <div style={{ fontSize:12, fontWeight:700, color:"#1a1a2e", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{r.name}</div>
+                <div style={{ fontSize:10, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{r.date} · Bachelorette Party</div>
               </div>
             </div>
             <div style={{ fontSize:10, color:"#f59e0b" }}></div>
-            <div style={{ fontSize:12, color:"#555", fontFamily:"'Nunito',sans-serif", marginTop:4, lineHeight:1.5 }}>{r.text}</div>
+            <div style={{ fontSize:12, color:"#555", fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:4, lineHeight:1.5 }}>{r.text}</div>
           </div>
         ))}
       </div>
@@ -728,7 +728,7 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
       {/* Similar Experiences */}
       {similar.length > 0 && (
         <div>
-          <div style={{ fontSize:14, fontWeight:800, fontFamily:"'Playfair Display',Georgia,serif", color:"#1a1a2e", marginBottom:12 }}>
+          <div style={{ fontSize:14, fontWeight:800, fontFamily:"'Plus Jakarta Sans',sans-serif", color:"#1a1a2e", marginBottom:12 }}>
             Similar Experiences
           </div>
           <div style={{ display:"flex", gap:12, overflowX:"auto", paddingBottom:8, scrollbarWidth:"none" }}>
@@ -736,11 +736,11 @@ function ExperienceDetail({ e, groupSize, onBack, cityName, similar, viatorUrl, 
               <div key={s.id} style={{ flexShrink:0, width:160, borderRadius:14, overflow:"hidden", boxShadow:"0 3px 12px rgba(45,10,24,0.10)", background:WHITE }}>
                 <div style={{ height:100, overflow:"hidden", position:"relative" }}>
                   <img src={IMG[s.cat]||IMG.activity} alt={s.name} style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
-                  <div style={{ position:"absolute", top:6, left:6, background:"rgba(0,0,0,0.45)", borderRadius:50, padding:"2px 8px", fontSize:8, fontWeight:700, color:WHITE, fontFamily:"'Nunito',sans-serif" }}> {s.badge}</div>
+                  <div style={{ position:"absolute", top:6, left:6, background:"rgba(0,0,0,0.45)", borderRadius:50, padding:"2px 8px", fontSize:8, fontWeight:700, color:WHITE, fontFamily:"'Plus Jakarta Sans',sans-serif" }}> {s.badge}</div>
                 </div>
                 <div style={{ padding:"8px 10px" }}>
-                  <div style={{ fontSize:10, fontWeight:700, color:"#1a1a2e", fontFamily:"'Nunito',sans-serif", lineHeight:1.3, marginBottom:4 }}>{s.name}</div>
-                  <div style={{ fontSize:9, color:"#888", fontFamily:"'Nunito',sans-serif" }}> {s.rating} · {s.price}</div>
+                  <div style={{ fontSize:10, fontWeight:700, color:"#1a1a2e", fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.3, marginBottom:4 }}>{s.name}</div>
+                  <div style={{ fontSize:9, color:"#888", fontFamily:"'Plus Jakarta Sans',sans-serif" }}> {s.rating} · {s.price}</div>
                 </div>
               </div>
             ))}
@@ -850,7 +850,7 @@ export default function ExploreTab({ groupSize }) {
             onChange={e => handleRegion(e.target.value)}
             style={{
               padding:"9px 32px 9px 12px", borderRadius:10, border:`1.5px solid ${BORDER}`,
-              fontFamily:"'Nunito',sans-serif", fontSize:12, fontWeight:700,
+              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, fontWeight:700,
               color:DARK, background:WHITE, cursor:"pointer", appearance:"none",
             }}
           >
@@ -866,7 +866,7 @@ export default function ExploreTab({ groupSize }) {
             style={{
               width:"100%", padding:"9px 32px 9px 12px",
               borderRadius:10, border:city !== "all" ? `2px solid ${HOT}` : `1.5px solid ${BORDER}`,
-              fontFamily:"'Nunito',sans-serif", fontSize:12, fontWeight:700,
+              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, fontWeight:700,
               color: city !== "all" ? HOT : "#aaa",
               background: city !== "all" ? SOFT : WHITE, cursor:"pointer", appearance:"none",
             }}
@@ -888,10 +888,10 @@ export default function ExploreTab({ groupSize }) {
       {/*  STEP 3: What do you want to do?  */}
       {city !== "all" && (
         <div style={{...C, marginBottom:12}}>
-          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Plus Jakarta Sans',sans-serif",color:DARK,marginBottom:4}}>
             What do you want to do?
           </div>
-          <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:12,opacity:0.8}}>
+          <div style={{fontSize:11,color:HOT,fontFamily:"'Plus Jakarta Sans',sans-serif",marginBottom:12,opacity:0.8}}>
             Pick all that apply — or leave blank for everything
           </div>
           <div style={{display:"flex",flexWrap:"wrap",gap:8}}>
@@ -905,7 +905,7 @@ export default function ExploreTab({ groupSize }) {
                   background:sel?HOT:WHITE,
                   color:sel?WHITE:DARK,
                   fontSize:12,fontWeight:700,
-                  fontFamily:"'Nunito',sans-serif",
+                  fontFamily:"'Plus Jakarta Sans',sans-serif",
                   cursor:"pointer",transition:"all 0.15s",
                 }}>
                   <span>{opt.icon}</span> {opt.label}
@@ -921,10 +921,10 @@ export default function ExploreTab({ groupSize }) {
       {Array.isArray(itin) && (
         <div style={{ marginBottom:20 }}>
           <div style={{ textAlign:"center", marginBottom:14 }}>
-            <div style={{ fontSize:18, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>
+            <div style={{ fontSize:18, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>
               Your {numDays}-Day {cityName} Itinerary
             </div>
-            <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:4, opacity:0.8 }}>
+            <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:4, opacity:0.8 }}>
               Built just for your group · Never cookie cutter
             </div>
           </div>
@@ -933,7 +933,7 @@ export default function ExploreTab({ groupSize }) {
             <div key={di} style={{ marginBottom:16 }}>
               <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:10 }}>
                 <div style={{ flex:1, height:1, background:BORDER }} />
-                <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, whiteSpace:"nowrap" }}>
+                <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:HOT, whiteSpace:"nowrap" }}>
                   Day {di + 1}
                 </div>
                 <div style={{ flex:1, height:1, background:BORDER }} />
@@ -952,14 +952,14 @@ export default function ExploreTab({ groupSize }) {
                   }}>
                     <div style={{ minWidth:58, textAlign:"center" }}>
                       <div style={{ fontSize:18 }}>{sl.emoji}</div>
-                      <div style={{ fontSize:9, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.5px", marginTop:2 }}>{sl.label}</div>
+                      <div style={{ fontSize:9, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textTransform:"uppercase", letterSpacing:"0.5px", marginTop:2 }}>{sl.label}</div>
                     </div>
                     <div style={{ flex:1 }}>
-                      <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:2 }}>
+                      <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:2 }}>
                         {item.name}
                       </div>
-                      <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8, marginBottom:4 }}>{item.vibe}</div>
-                      <div style={{ fontSize:9, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}> {item.rating} · {item.price}</div>
+                      <div style={{ fontSize:10, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", opacity:0.8, marginBottom:4 }}>{item.vibe}</div>
+                      <div style={{ fontSize:9, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif" }}> {item.rating} · {item.price}</div>
                     </div>
                     <a
                       href={isDining
@@ -973,7 +973,7 @@ export default function ExploreTab({ groupSize }) {
                       <div style={{
                         background:PUNCH, color:WHITE, borderRadius:8,
                         padding:"6px 10px", fontSize:10, fontWeight:700,
-                        fontFamily:"'Nunito',sans-serif", whiteSpace:"nowrap",
+                        fontFamily:"'Plus Jakarta Sans',sans-serif", whiteSpace:"nowrap",
                       }}>Book →</div>
                     </a>
                   </div>
@@ -986,7 +986,7 @@ export default function ExploreTab({ groupSize }) {
             <button onClick={handleGenerate} style={{
               background:"none", border:`1.5px solid ${HOT}`, borderRadius:10,
               padding:"8px 20px", color:HOT, fontSize:12, fontWeight:700,
-              fontFamily:"'Nunito',sans-serif", cursor:"pointer",
+              fontFamily:"'Plus Jakarta Sans',sans-serif", cursor:"pointer",
             }}>
               Shuffle Again ↺
             </button>
@@ -996,18 +996,18 @@ export default function ExploreTab({ groupSize }) {
 
 
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:14 }}>
-        <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>
+        <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>
           {cat === "all" ? `Popular Picks` : CATS.find(c=>c.id===cat)?.label}
           {city !== "all" && ` · ${cityName}`}
         </div>
-        <div style={{ fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif" }}>{filtered.length} found</div>
+        <div style={{ fontSize:11, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{filtered.length} found</div>
       </div>
 
       {filtered.length === 0 ? (
         <div style={{ textAlign:"center", padding:"40px 20px" }}>
           <div style={{ fontSize:32, marginBottom:10 }}></div>
-          <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>No results</div>
-          <div style={{ fontSize:12, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:6 }}>Try a different city or category</div>
+          <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>No results</div>
+          <div style={{ fontSize:12, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:6 }}>Try a different city or category</div>
         </div>
       ) : (
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }}>
@@ -1037,7 +1037,7 @@ export default function ExploreTab({ groupSize }) {
                     background:"rgba(0,0,0,0.45)", backdropFilter:"blur(6px)",
                     borderRadius:50, padding:"3px 10px",
                     fontSize:9, fontWeight:700, color:WHITE,
-                    fontFamily:"'Nunito',sans-serif", letterSpacing:"0.5px",
+                    fontFamily:"'Plus Jakarta Sans',sans-serif", letterSpacing:"0.5px",
                   }}> {e.badge}</div>
                   <button onClick={() => toggleSave(e.id)} style={{
                     position:"absolute", top:8, right:8,
@@ -1052,17 +1052,17 @@ export default function ExploreTab({ groupSize }) {
                       position:"absolute", bottom:8, left:10,
                       background:PUNCH, borderRadius:50, padding:"2px 8px",
                       fontSize:8, fontWeight:800, color:WHITE,
-                      fontFamily:"'Nunito',sans-serif",
+                      fontFamily:"'Plus Jakarta Sans',sans-serif",
                     }}> POPULAR</div>
                   )}
                 </div>
                 <div style={{ padding:"10px 12px 12px", flex:1, display:"flex", flexDirection:"column", justifyContent:"space-between" }}>
                   <div>
-                    <div style={{ fontSize:12, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:3, lineHeight:1.3 }}>{e.name}</div>
-                    <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8, marginBottom:6 }}>{e.vibe}</div>
+                    <div style={{ fontSize:12, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:3, lineHeight:1.3 }}>{e.name}</div>
+                    <div style={{ fontSize:10, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", opacity:0.8, marginBottom:6 }}>{e.vibe}</div>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:8 }}>
-                      <span style={{ fontSize:10, color:"#888", fontFamily:"'Nunito',sans-serif" }}> {e.rating}</span>
-                      <span style={{ fontSize:11, fontWeight:700, color:PUNCH, fontFamily:"'Nunito',sans-serif" }}>{e.price}</span>
+                      <span style={{ fontSize:10, color:"#888", fontFamily:"'Plus Jakarta Sans',sans-serif" }}> {e.rating}</span>
+                      <span style={{ fontSize:11, fontWeight:700, color:PUNCH, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{e.price}</span>
                     </div>
                   </div>
                   {['flight','car'].includes(CAT_GROUP[e.cat]) ? (
@@ -1086,7 +1086,7 @@ export default function ExploreTab({ groupSize }) {
         </div>
       )}
 
-      <div style={{ textAlign:"center", padding:"20px 0 8px", fontSize:10, color:"#ccc", fontFamily:"'Nunito',sans-serif" }}>
+      <div style={{ textAlign:"center", padding:"20px 0 8px", fontSize:10, color:"#ccc", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
         {groupSize} in your group · Tap  to save favorites
       </div>
     </div>

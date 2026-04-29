@@ -119,10 +119,10 @@ function ProductTile({ p, onView }) {
         )}
       </div>
       {/* Name + Price */}
-      <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Acme',sans-serif",lineHeight:1.3,marginBottom:3}}>
+      <div style={{fontSize:13,fontWeight:400,color:"#f496c3",fontFamily:"'Plus Jakarta Sans',sans-serif",lineHeight:1.3,marginBottom:3}}>
         {p.name}
       </div>
-      <div style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>
+      <div style={{fontSize:12,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif"}}>
         ${(+p.price || 0).toFixed(2)}
       </div>
     </div>
@@ -203,22 +203,22 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
   /*  Product info panel  */
   const InfoPanel = (
     <div style={{ flex:1, minWidth:0 }}>
-      <h2 style={{ fontFamily:"'Acme',sans-serif", fontSize:mobile?22:30, fontWeight:400, fontStyle:"normal", color:"#f496c3", margin:"0 0 10px", lineHeight:1.2 }}>
+      <h2 style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:mobile?22:30, fontWeight:400, fontStyle:"normal", color:"#f496c3", margin:"0 0 10px", lineHeight:1.2 }}>
         {p.name || ""}
       </h2>
-      <div style={{ fontSize:mobile?17:20, fontWeight:300, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
+      <div style={{ fontSize:mobile?17:20, fontWeight:300, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
         ${price.toFixed(2)}
       </div>
       {p.variants?.length > 0 && (
         <div style={{ marginBottom:20, paddingBottom:20, borderBottom:`1px solid ${BORDER}` }}>
-          <div style={{ fontSize:12, fontWeight:300, fontFamily:"'Nunito',sans-serif", color:DARK, marginBottom:10, textTransform:"uppercase", letterSpacing:"0.08em" }}>
+          <div style={{ fontSize:12, fontWeight:300, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:10, textTransform:"uppercase", letterSpacing:"0.08em" }}>
             {p.variantLabel || "Color"}: <span style={{ color:HOT }}>{p.variants[variantI].label}</span>
           </div>
           <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
             {p.variants.map((v,i) => (
               <button key={i} onClick={()=>{ setVariantI(i); setImgIdx(v.imgIdx ?? i); }} style={{
                 padding:"7px 14px", borderRadius:50, fontSize:12, fontWeight:300,
-                fontFamily:"'Nunito',sans-serif", cursor:"pointer",
+                fontFamily:"'Plus Jakarta Sans',sans-serif", cursor:"pointer",
                 background: i===variantI ? "#F496C2" : WHITE,
                 color: i===variantI ? WHITE : DARK,
                 border: i===variantI ? "none" : `1.5px solid ${BORDER}`,
@@ -230,11 +230,11 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
       <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:28, paddingBottom:28, borderBottom:`1px solid ${BORDER}` }}>
         <div style={{ display:"flex", alignItems:"center", gap:10, border:`1px solid ${BORDER}`, borderRadius:50, padding:"4px 12px" }}>
           <button onClick={()=>setQty(q=>Math.max(1,q-1))} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:DARK, lineHeight:1, padding:0 }}>−</button>
-          <span style={{ fontSize:13, fontWeight:300, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:16, textAlign:"center" }}>{qty}</span>
+          <span style={{ fontSize:13, fontWeight:300, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, minWidth:16, textAlign:"center" }}>{qty}</span>
           <button onClick={()=>setQty(q=>q+1)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:DARK, lineHeight:1, padding:0 }}>+</button>
         </div>
         <button onClick={()=>onAdd(p)} style={{
-          flex:1, padding:mobile?"12px":"14px", fontSize:mobile?14:16, fontFamily:"'Nunito',sans-serif",
+          flex:1, padding:mobile?"12px":"14px", fontSize:mobile?14:16, fontFamily:"'Plus Jakarta Sans',sans-serif",
           fontWeight:700, borderRadius:50, cursor:"pointer",
           background: inCart ? SOFT : "#F496C2",
           color: inCart ? HOT : WHITE, border: inCart ? `1.5px solid ${HOT}` : "none",
@@ -242,11 +242,11 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
           {inCart ? " In Cart" : "Add To Cart"}
         </button>
       </div>
-      {p.desc ? <p style={{ fontSize:mobile?13:15, fontWeight:300, color:DARK, fontFamily:"'Lato',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>{p.desc}</p> : null}
+      {p.desc ? <p style={{ fontSize:mobile?13:15, fontWeight:300, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>{p.desc}</p> : null}
       {(p.bullets?.length > 0) ? (
         <ul style={{ listStyle:"none", padding:0, margin:0 }}>
           {p.bullets.map((b,i) => (
-            <li key={i} style={{ fontSize:mobile?13:14, fontWeight:300, color:DARK, fontFamily:"'Lato',sans-serif", lineHeight:1.8, marginBottom:8, display:"flex", gap:10 }}>
+            <li key={i} style={{ fontSize:mobile?13:14, fontWeight:300, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.8, marginBottom:8, display:"flex", gap:10 }}>
               <span style={{ color:HOT, flexShrink:0 }}>·</span>{b}
             </li>
           ))}
@@ -261,7 +261,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
         display:"flex", alignItems:"center", gap:6,
         background:"none", border:`1.5px solid ${BORDER}`,
         borderRadius:50, padding:"8px 16px", marginBottom:20,
-        fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:400,
+        fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:400,
         color:DARK, cursor:"pointer",
       }}>← Back</button>
 
@@ -282,7 +282,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
       {/*  Recommended products  */}
       {recommended?.length > 0 && (
         <div style={{ marginTop:40, paddingTop:28, borderTop:`1.5px solid ${BORDER}` }}>
-          <div style={{ fontFamily:"'Acme',sans-serif", fontSize:mobile?18:22, color:"#f496c3", marginBottom:16 }}>
+          <div style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:mobile?18:22, color:"#f496c3", marginBottom:16 }}>
             You Might Also Like
           </div>
           <div style={{ display:"flex", flexDirection:"column", gap:0 }}>
@@ -304,8 +304,8 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
                 </div>
                 {/* Name + price */}
                 <div style={{ flex:1, minWidth:0 }}>
-                  <div style={{ fontFamily:"'Acme',sans-serif", fontSize:15, color:"#f496c3", lineHeight:1.3, marginBottom:3 }}>{r.name}</div>
-                  <div style={{ fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:300, color:DARK }}>${(+r.price||0).toFixed(2)}</div>
+                  <div style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:15, color:"#f496c3", lineHeight:1.3, marginBottom:3 }}>{r.name}</div>
+                  <div style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:300, color:DARK }}>${(+r.price||0).toFixed(2)}</div>
                 </div>
                 {/* Qty stepper — adjusting qty auto-adds/updates cart */}
                 {(() => {
@@ -328,7 +328,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
                   return (
                     <div onClick={e=>e.stopPropagation()} style={{ display:"flex", alignItems:"center", gap:0, border:`1.5px solid #F496C2`, borderRadius:50, overflow:"hidden", flexShrink:0 }}>
                       <button onClick={dec} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:"#F496C2", fontWeight:700, padding:"5px 10px", lineHeight:1, opacity: qty===0?0.3:1 }}>−</button>
-                      <span style={{ fontSize:13, fontWeight:300, fontFamily:"'Nunito',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{qty}</span>
+                      <span style={{ fontSize:13, fontWeight:300, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, minWidth:20, textAlign:"center" }}>{qty}</span>
                       <button onClick={inc} style={{ background:"none", border:"none", cursor:"pointer", fontSize:16, color:"#F496C2", fontWeight:700, padding:"5px 10px", lineHeight:1 }}>+</button>
                     </div>
                   );
@@ -369,14 +369,14 @@ function CartDrawer({ cart, setCart, onRemove, onClose }) {
         <div style={{width:44,height:4,borderRadius:2,background:MID,margin:"14px auto 10px"}}/>
         <div style={{padding:"0 18px"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
-            <h3 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:18,fontWeight:400,color:DARK,margin:0}}>
+            <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:18,fontWeight:400,color:DARK,margin:0}}>
               Your Cart ({cart.length})
             </h3>
             <button onClick={onClose} style={{background:"none",border:"none",fontSize:20,cursor:"pointer",color:"#aaa"}}>×</button>
           </div>
 
           {cart.length === 0 ? (
-            <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'Nunito',sans-serif",fontSize:13}}>
+            <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:13}}>
               Your cart is empty 
             </div>
           ) : (
@@ -389,21 +389,21 @@ function CartDrawer({ cart, setCart, onRemove, onClose }) {
                       {item.image ? <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"contain",padding:4,boxSizing:"border-box"}}/> : <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22}}></div>}
                     </div>
                     <div style={{flex:1,minWidth:0}}>
-                      <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
+                      <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif",marginBottom:5,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
                       <div style={{display:"flex",alignItems:"center",gap:8}}>
                         <div style={{display:"flex",alignItems:"center",border:`1.5px solid ${BORDER}`,borderRadius:50,overflow:"hidden"}}>
                           <button onClick={()=>adjQty(item,-1)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:HOT,fontWeight:700,padding:"2px 8px",lineHeight:1}}>−</button>
-                          <span style={{fontSize:12,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:16,textAlign:"center"}}>{qty}</span>
+                          <span style={{fontSize:12,fontWeight:300,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif",minWidth:16,textAlign:"center"}}>{qty}</span>
                           <button onClick={()=>adjQty(item,1)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:HOT,fontWeight:700,padding:"2px 8px",lineHeight:1}}>+</button>
                         </div>
-                        <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${(item.price||0).toFixed(2)}</div>
+                        <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif"}}>${(item.price||0).toFixed(2)}</div>
                       </div>
                     </div>
                     <button onClick={()=>onRemove(item.id)} style={{background:SOFT,border:`1px solid ${BORDER}`,borderRadius:"50%",width:28,height:28,cursor:"pointer",color:PUNCH,fontSize:14,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>×</button>
                   </div>
                 );
               })}
-              <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Nunito',sans-serif",fontWeight:300,fontSize:15,color:DARK}}>
+              <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Plus Jakarta Sans',sans-serif",fontWeight:300,fontSize:15,color:DARK}}>
                 <span>Total</span>
                 <span>${total.toFixed(2)}</span>
               </div>
@@ -502,7 +502,7 @@ export default function ShopTab({ cart, setCart }) {
         <div style={{width:mobile?88:130,flexShrink:0,paddingRight:mobile?8:16,paddingTop:4}}>
           {SHOP_CATS.map(c=>(
             <div key={c.id} onClick={()=>setCat(c.id)} style={{
-              fontFamily:"'Playfair Display',Georgia,serif",
+              fontFamily:"'Plus Jakarta Sans',sans-serif",
               fontSize:mobile?12:15,
               fontWeight: cat===c.id ? 500 : 300,
               color: cat===c.id ? HOT : DARK,
@@ -527,7 +527,7 @@ export default function ShopTab({ cart, setCart }) {
           ) : (
             <div style={{textAlign:"center",padding:"48px 20px"}}>
               <div style={{fontSize:36,marginBottom:12}}></div>
-              <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>No products found</div>
+              <div style={{fontSize:14,fontWeight:400,fontFamily:"'Plus Jakarta Sans',sans-serif",color:DARK,marginBottom:8}}>No products found</div>
               <button onClick={()=>setCat("all")} style={{...BS,fontSize:12}}>Clear filters</button>
             </div>
           )}

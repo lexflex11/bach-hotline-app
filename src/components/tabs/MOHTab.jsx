@@ -46,12 +46,12 @@ Powered by Bach Hotline `;
 
       {/* Countdown */}
       <div style={{...C,marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}> Trip Date</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Plus Jakarta Sans',sans-serif",color:DARK,marginBottom:12}}> Trip Date</div>
         <input type="date" value={tripDate} onChange={e=>setTripDate(e.target.value)} style={{...IN,marginBottom:daysUntil!==null?10:0}} />
         {daysUntil !== null && (
           <div style={{textAlign:"center",padding:"12px",background:SOFT,borderRadius:12,border:`1.5px solid ${MID}`}}>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1}}>Days Until the Bach </div>
-            <div style={{fontSize:44,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif",marginTop:4}}>{daysUntil}</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Plus Jakarta Sans',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1}}>Days Until the Bach </div>
+            <div style={{fontSize:44,fontWeight:900,color:PUNCH,fontFamily:"'Plus Jakarta Sans',sans-serif",marginTop:4}}>{daysUntil}</div>
           </div>
         )}
       </div>
@@ -59,18 +59,18 @@ Powered by Bach Hotline `;
       {/* Progress */}
       <div style={{...C,marginBottom:12}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
-          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}> Planning Progress</div>
-          <div style={{fontSize:14,fontWeight:900,color:pct>=80?GREEN:pct>=50?GOLD:PUNCH,fontFamily:"'Playfair Display',Georgia,serif"}}>{pct}%</div>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Plus Jakarta Sans',sans-serif",color:DARK}}> Planning Progress</div>
+          <div style={{fontSize:14,fontWeight:900,color:pct>=80?GREEN:pct>=50?GOLD:PUNCH,fontFamily:"'Plus Jakarta Sans',sans-serif"}}>{pct}%</div>
         </div>
         <div style={{height:8,background:SOFT,borderRadius:50,overflow:"hidden"}}>
           <div style={{height:"100%",width:`${pct}%`,background:`linear-gradient(90deg,${HOT},${PUNCH})`,borderRadius:50,transition:"width 0.5s"}} />
         </div>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:6,opacity:0.75}}>{done} of {checklist.length} tasks complete</div>
+        <div style={{fontSize:11,color:HOT,fontFamily:"'Plus Jakarta Sans',sans-serif",marginTop:6,opacity:0.75}}>{done} of {checklist.length} tasks complete</div>
       </div>
 
       {/* Invite Generator */}
       <div style={{...C,marginBottom:12,background:SOFT,border:`1.5px solid ${MID}`}}>
-        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}> Digital Invite Generator</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Plus Jakarta Sans',sans-serif",color:DARK,marginBottom:10}}> Digital Invite Generator</div>
         <select value={tripDest} onChange={e=>setTripDest(e.target.value)} style={{...IN,marginBottom:10}}>
           <option value="">Pick destination...</option>
           {DESTS.map(d=><option key={d.id} value={d.id}>{d.emoji} {d.name}</option>)}
@@ -88,13 +88,13 @@ Powered by Bach Hotline `;
       <SH title="The Complete Checklist" sub="Check off as you go — shared with the whole group" />
       {categories.map(cat=>(
         <div key={cat} style={{marginBottom:16}}>
-          <div style={{fontSize:10,fontWeight:700,color:PUNCH,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1.5,marginBottom:8,paddingLeft:2}}>{cat}</div>
+          <div style={{fontSize:10,fontWeight:700,color:PUNCH,fontFamily:"'Plus Jakarta Sans',sans-serif",textTransform:"uppercase",letterSpacing:1.5,marginBottom:8,paddingLeft:2}}>{cat}</div>
           {checklist.filter(i=>i.category===cat).map(item=>(
             <button key={item.id} onClick={()=>toggle(item.id)} style={{...C,display:"flex",alignItems:"center",gap:12,cursor:"pointer",width:"100%",marginBottom:6,padding:"11px 13px",textAlign:"left",background:item.done?"rgba(46,125,50,0.06)":WHITE,border:item.done?"1.5px solid rgba(46,125,50,0.3)":`1.5px solid ${BORDER}`}}>
               <div style={{width:22,height:22,borderRadius:"50%",border:`2px solid ${item.done?GREEN:BORDER}`,background:item.done?GREEN:WHITE,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,fontSize:12,color:WHITE,transition:"all 0.2s"}}>
                 {item.done?"":""}
               </div>
-              <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:item.done?"#888":DARK,fontWeight:item.done?400:500,textDecoration:item.done?"line-through":"none"}}>{item.item}</div>
+              <div style={{fontSize:13,fontFamily:"'Plus Jakarta Sans',sans-serif",color:item.done?"#888":DARK,fontWeight:item.done?400:500,textDecoration:item.done?"line-through":"none"}}>{item.item}</div>
             </button>
           ))}
         </div>

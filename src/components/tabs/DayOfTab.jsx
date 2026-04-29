@@ -50,15 +50,15 @@ export default function DayOfTab() {
 
       {/* Current stop hero */}
       <div style={{borderRadius:20,padding:"22px 18px",background:`linear-gradient(135deg,${SOFT},${MID})`,border:`1.5px solid ${MID}`,marginBottom:14,textAlign:"center"}}>
-        <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:6}}>
+        <div style={{fontSize:11,color:HOT,fontFamily:"'Plus Jakarta Sans',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:6}}>
           Stop {currentStop+1} of {stops.length}
         </div>
         <div style={{fontSize:36,marginBottom:8}}>{currentItem.icon}</div>
-        <div style={{fontSize:20,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>{currentItem.name}</div>
-        <div style={{fontSize:14,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600,marginBottom:6}}> {currentItem.time}</div>
-        <div style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif",opacity:0.75,marginBottom:14}}>{currentItem.address}</div>
+        <div style={{fontSize:20,fontWeight:700,fontFamily:"'Plus Jakarta Sans',sans-serif",color:DARK,marginBottom:4}}>{currentItem.name}</div>
+        <div style={{fontSize:14,color:HOT,fontFamily:"'Plus Jakarta Sans',sans-serif",fontWeight:600,marginBottom:6}}> {currentItem.time}</div>
+        <div style={{fontSize:12,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif",opacity:0.75,marginBottom:14}}>{currentItem.address}</div>
         {currentItem.note && (
-          <div style={{background:WHITE,borderRadius:10,padding:"10px 12px",marginBottom:14,fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif",textAlign:"left",lineHeight:1.5}}>
+          <div style={{background:WHITE,borderRadius:10,padding:"10px 12px",marginBottom:14,fontSize:12,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif",textAlign:"left",lineHeight:1.5}}>
              <strong>MOH tip:</strong> {currentItem.note}
           </div>
         )}
@@ -84,8 +84,8 @@ export default function DayOfTab() {
         <button key={i} onClick={()=>setCurrentStop(i)} style={{...C,display:"flex",alignItems:"center",gap:12,cursor:"pointer",width:"100%",marginBottom:8,textAlign:"left",background:currentStop===i?SOFT:WHITE,border:currentStop===i?`2px solid ${HOT}`:`1.5px solid ${BORDER}`}}>
           <div style={{width:36,height:36,borderRadius:"50%",background:currentStop===i?HOT:SOFT,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,flexShrink:0}}>{stop.icon}</div>
           <div style={{flex:1}}>
-            <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{stop.name}</div>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:2,opacity:0.75}}>{stop.time} · {stop.address}</div>
+            <div style={{fontSize:13,fontWeight:400,fontFamily:"'Plus Jakarta Sans',sans-serif",color:DARK}}>{stop.name}</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Plus Jakarta Sans',sans-serif",marginTop:2,opacity:0.75}}>{stop.time} · {stop.address}</div>
           </div>
           {currentStop===i && <span style={{color:HOT,fontSize:14}}></span>}
         </button>

@@ -304,7 +304,7 @@ function StayDetail({ stay, onBack }) {
     <div>
       <button onClick={onBack} style={{
         background:"none", border:"none", cursor:"pointer",
-        color:HOT, fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
+        color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:700,
         padding:"0 0 10px 0", display:"flex", alignItems:"center", gap:4,
       }}>
         Back to results
@@ -345,20 +345,20 @@ function StayDetail({ stay, onBack }) {
 
       {/* Name + meta */}
       <div style={{ ...C, marginBottom:12 }}>
-        <div style={{ fontSize:16, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:6 }}>
+        <div style={{ fontSize:16, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:6 }}>
           {stay.name}
         </div>
         <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:8 }}>
-          <span style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>
+          <span style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700 }}>
             {stay.type}
           </span>
-          <span style={{ fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif" }}>
+          <span style={{ fontSize:11, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
             Sleeps {stay.sleeps} · {stay.bedrooms} BR
           </span>
-          <span style={{ fontSize:11, color:DARK, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>
+          <span style={{ fontSize:11, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700 }}>
             ~${stay.pricePerNight}/night
           </span>
-          <span style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif" }}>
+          <span style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
             {stay.rating} ({stay.reviews} reviews)
           </span>
         </div>
@@ -367,7 +367,7 @@ function StayDetail({ stay, onBack }) {
             <span key={t} style={{
               fontSize:10, fontWeight:700, padding:"3px 9px", borderRadius:20,
               background:SOFT, color:HOT, border:`1px solid ${MID}`,
-              fontFamily:"'Nunito',sans-serif",
+              fontFamily:"'Plus Jakarta Sans',sans-serif",
             }}>{t}</span>
           ))}
         </div>
@@ -375,14 +375,14 @@ function StayDetail({ stay, onBack }) {
 
       {/* Description */}
       <div style={{ ...C, marginBottom:12 }}>
-        <div style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.6 }}>
+        <div style={{ fontSize:13, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.6 }}>
           {stay.desc}
         </div>
       </div>
 
       {/* Amenities */}
       <div style={{ ...C, marginBottom:12 }}>
-        <div style={{ fontSize:12, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:8, textTransform:"uppercase", letterSpacing:0.5 }}>
+        <div style={{ fontSize:12, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:8, textTransform:"uppercase", letterSpacing:0.5 }}>
           Amenities
         </div>
         <div style={{ display:"flex", flexWrap:"wrap", gap:6 }}>
@@ -390,7 +390,7 @@ function StayDetail({ stay, onBack }) {
             <span key={a} style={{
               fontSize:11, padding:"4px 10px", borderRadius:20,
               background:SOFT, color:DARK, border:`1px solid ${BORDER}`,
-              fontFamily:"'Nunito',sans-serif",
+              fontFamily:"'Plus Jakarta Sans',sans-serif",
             }}>{a}</span>
           ))}
         </div>
@@ -398,7 +398,7 @@ function StayDetail({ stay, onBack }) {
 
       {/* Why We Love It */}
       <div style={{ ...C, marginBottom:14 }}>
-        <div style={{ fontSize:12, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:8, textTransform:"uppercase", letterSpacing:0.5 }}>
+        <div style={{ fontSize:12, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:8, textTransform:"uppercase", letterSpacing:0.5 }}>
           Why We Love It
         </div>
         {stay.whyWeLoveIt.map((item, i) => (
@@ -408,16 +408,16 @@ function StayDetail({ stay, onBack }) {
               background:`linear-gradient(135deg,#f472b0,${HOT})`,
               color:WHITE, fontSize:10, fontWeight:800,
               display:"flex", alignItems:"center", justifyContent:"center",
-              fontFamily:"'Nunito',sans-serif", marginTop:1,
+              fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:1,
             }}>{i+1}</div>
-            <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.5 }}>{item}</div>
+            <div style={{ fontSize:12, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.5 }}>{item}</div>
           </div>
         ))}
       </div>
 
       {/* Book CTA */}
       <div style={{ ...C, background:SOFT, border:`1.5px solid ${MID}`, textAlign:"center" }}>
-        <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:12, opacity:0.8 }}>
+        <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:12, opacity:0.8 }}>
           Prices are estimated — check Airbnb for real-time availability
         </div>
         <button
@@ -427,7 +427,7 @@ function StayDetail({ stay, onBack }) {
             background:`linear-gradient(135deg,#f472b0,${HOT})`,
             color:WHITE, border:"none", borderRadius:14,
             padding:"15px", cursor:"pointer",
-            fontFamily:"'Nunito',sans-serif", fontSize:14, fontWeight:800,
+            fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:14, fontWeight:800,
             letterSpacing:"0.3px",
           }}
         >
@@ -482,20 +482,20 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
   const SM = {
     background: SOFT, border: `1.5px solid ${MID}`, color: HOT,
     borderRadius: 8, width: 28, height: 28, cursor: "pointer",
-    fontFamily: "'Nunito',sans-serif", fontWeight: 700, fontSize: 15,
+    fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: 15,
     display: "flex", alignItems: "center", justifyContent: "center",
   };
 
   const inputStyle = {
     width: "100%", padding: "10px 12px", borderRadius: 10,
-    border: `1.5px solid ${BORDER}`, fontFamily: "'Nunito',sans-serif",
+    border: `1.5px solid ${BORDER}`, fontFamily: "'Plus Jakarta Sans',sans-serif",
     fontSize: 13, color: DARK, background: WHITE, boxSizing: "border-box",
     outline: "none",
   };
 
   const labelStyle = {
     fontSize: 10, fontWeight: 700, color: HOT,
-    fontFamily: "'Nunito',sans-serif",
+    fontFamily: "'Plus Jakarta Sans',sans-serif",
     textTransform: "uppercase", letterSpacing: 1, marginBottom: 6,
   };
 
@@ -510,16 +510,16 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
       <div>
         <button onClick={() => { setResults(null); setSelected(null); }} style={{
           background:"none", border:"none", cursor:"pointer",
-          color:HOT, fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700,
+          color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:700,
           padding:"0 0 10px 0", display:"flex", alignItems:"center", gap:4,
         }}>
           Back to search
         </button>
 
-        <div style={{ fontSize:15, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>
+        <div style={{ fontSize:15, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:4 }}>
           Stays in {selectedDest?.name}
         </div>
-        <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:14, opacity:0.85 }}>
+        <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:14, opacity:0.85 }}>
           {results.length} curated picks · {groupSize} guests
           {nights > 0 ? ` · ${nights} night${nights!==1?"s":""}` : ""}
         </div>
@@ -536,16 +536,16 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
                   style={{ width:"100%", height:"100%", objectFit:"cover" }} />
               </div>
               <div style={{ padding:"8px 10px 10px" }}>
-                <div style={{ fontSize:11, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.3, marginBottom:3 }}>
+                <div style={{ fontSize:11, fontWeight:700, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.3, marginBottom:3 }}>
                   {stay.name}
                 </div>
-                <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:3 }}>
+                <div style={{ fontSize:10, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:3 }}>
                   {stay.type} · Sleeps {stay.sleeps}
                 </div>
-                <div style={{ fontSize:10, color:DARK, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>
+                <div style={{ fontSize:10, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700 }}>
                   ~${stay.pricePerNight}/night
                 </div>
-                <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Nunito',sans-serif" }}>
+                <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
                   {stay.rating} ({stay.reviews})
                 </div>
               </div>
@@ -554,7 +554,7 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
         </div>
 
         <div style={{ ...C, background:SOFT, border:`1.5px solid ${MID}`, textAlign:"center", marginBottom:14 }}>
-          <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:8 }}>
+          <div style={{ fontSize:12, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:8 }}>
             Don't see what you're looking for?
           </div>
           <button
@@ -568,7 +568,7 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
             style={{
               background:"none", border:`1.5px solid ${HOT}`, borderRadius:10,
               color:HOT, padding:"8px 20px", cursor:"pointer",
-              fontFamily:"'Nunito',sans-serif", fontSize:12, fontWeight:700,
+              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, fontWeight:700,
             }}
           >
             Search all of Airbnb
@@ -588,15 +588,15 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:6 }}>
           <div style={labelStyle}>Destination</div>
           {city && !showCityPicker && (
-            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
+            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
           )}
         </div>
         {city && !showCityPicker ? (
           <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
             <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || ""}</span>
             <div>
-              <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
-              <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8 }}>{groupSize} guests</div>
+              <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
+              <div style={{ fontSize:10, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", opacity:0.8 }}>{groupSize} guests</div>
             </div>
           </div>
         ) : (
@@ -646,7 +646,7 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
           <div style={labelStyle}>Group Size</div>
           <div style={{ display:"flex", alignItems:"center", gap:10, marginTop:4 }}>
             <button style={SM} onClick={() => setGroupSize(g => Math.max(1, g-1))}>−</button>
-            <div style={{ fontSize:22, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif", minWidth:30, textAlign:"center" }}>
+            <div style={{ fontSize:22, fontWeight:900, color:PUNCH, fontFamily:"'Plus Jakarta Sans',sans-serif", minWidth:30, textAlign:"center" }}>
               {groupSize}
             </div>
             <button style={SM} onClick={() => setGroupSize(g => Math.min(50, g+1))}>+</button>
@@ -654,10 +654,10 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
         </div>
         {nights > 0 && (
           <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: HOT, fontFamily: "'Nunito',sans-serif" }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: HOT, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
               {nights} night{nights !== 1 ? "s" : ""}
             </div>
-            <div style={{ fontSize: 11, color: "#bbb", fontFamily: "'Nunito',sans-serif" }}>
+            <div style={{ fontSize: 11, color: "#bbb", fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
               {checkIn} → {checkOut}
             </div>
           </div>
@@ -668,10 +668,10 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
       <div style={{ ...C, background: SOFT, border: `1.5px solid ${MID}`, marginBottom: 14 }}>
         {city ? (
           <>
-            <div style={{ fontSize: 14, fontWeight: 400, fontFamily: "'Playfair Display',Georgia,serif", color: DARK, marginBottom: 4 }}>
+            <div style={{ fontSize: 14, fontWeight: 400, fontFamily: "'Plus Jakarta Sans',sans-serif", color: DARK, marginBottom: 4 }}>
               {selectedDest?.name}
             </div>
-            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Nunito',sans-serif", marginBottom: 14, opacity: 0.85 }}>
+            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Plus Jakarta Sans',sans-serif", marginBottom: 14, opacity: 0.85 }}>
               {groupSize} guests
               {nights > 0 ? ` · ${nights} nights · ${checkIn} → ${checkOut}` : " · flexible dates"}
             </div>
@@ -680,19 +680,19 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
               background: `linear-gradient(135deg,#f472b0,${HOT})`,
               color: WHITE, border: "none", borderRadius: 14,
               padding: "15px", cursor: "pointer",
-              fontFamily: "'Nunito',sans-serif", fontSize: 14, fontWeight: 800,
+              fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 14, fontWeight: 800,
               letterSpacing: "0.3px",
             }}>
               Find Best Stays
             </button>
-            <div style={{ fontSize: 10, color: "#bbb", fontFamily: "'Nunito',sans-serif", marginTop: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: "#bbb", fontFamily: "'Plus Jakarta Sans',sans-serif", marginTop: 8, textAlign: "center" }}>
               We'll surface the best available options for your group
             </div>
           </>
         ) : (
           <div style={{ textAlign: "center", padding: "8px 0" }}>
-            <div style={{ fontSize: 13, fontWeight: 400, fontFamily: "'Playfair Display',Georgia,serif", color: DARK }}>Pick a destination above</div>
-            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Nunito',sans-serif", marginTop: 4, opacity: 0.75 }}>
+            <div style={{ fontSize: 13, fontWeight: 400, fontFamily: "'Plus Jakarta Sans',sans-serif", color: DARK }}>Pick a destination above</div>
+            <div style={{ fontSize: 11, color: HOT, fontFamily: "'Plus Jakarta Sans',sans-serif", marginTop: 4, opacity: 0.75 }}>
               Then we'll find the best stays for {groupSize} people
             </div>
           </div>

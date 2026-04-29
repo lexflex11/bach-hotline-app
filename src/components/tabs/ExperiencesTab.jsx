@@ -162,7 +162,7 @@ function ExperienceDetail({ item, onBack, groupSize, date }) {
   return (
     <div>
       {/* Back */}
-      <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", display:"flex", alignItems:"center", gap:6, color:HOT, fontFamily:"'Nunito',sans-serif", fontSize:13, fontWeight:700, marginBottom:14, padding:0 }}>
+      <button onClick={onBack} style={{ background:"none", border:"none", cursor:"pointer", display:"flex", alignItems:"center", gap:6, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, fontWeight:700, marginBottom:14, padding:0 }}>
         ← Back to results
       </button>
 
@@ -178,8 +178,8 @@ function ExperienceDetail({ item, onBack, groupSize, date }) {
 
       {/* Name + rating */}
       <div style={{ marginBottom:6 }}>
-        <div style={{ fontSize:22, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>{item.name}</div>
-        <div style={{ display:"flex", alignItems:"center", gap:10, fontFamily:"'Nunito',sans-serif", fontSize:12 }}>
+        <div style={{ fontSize:22, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:4 }}>{item.name}</div>
+        <div style={{ display:"flex", alignItems:"center", gap:10, fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12 }}>
           <span style={{ color:HOT, fontWeight:700 }}> {item.rating}</span>
           <span style={{ color:"#aaa" }}>({item.reviews} reviews)</span>
           <span style={{ color:HOT }}>{item.priceRange}</span>
@@ -189,45 +189,45 @@ function ExperienceDetail({ item, onBack, groupSize, date }) {
       {/* Meta pills */}
       <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:16 }}>
         {[item.category, item.vibe].map((t,i) => (
-          <div key={i} style={{ background:SOFT, border:`1px solid ${MID}`, borderRadius:20, padding:"4px 12px", fontSize:11, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:HOT }}>{t}</div>
+          <div key={i} style={{ background:SOFT, border:`1px solid ${MID}`, borderRadius:20, padding:"4px 12px", fontSize:11, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:HOT }}>{t}</div>
         ))}
       </div>
 
       {/* Description */}
-      <p style={{ fontSize:14, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.75, marginBottom:20 }}>{item.desc}</p>
+      <p style={{ fontSize:14, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.75, marginBottom:20 }}>{item.desc}</p>
 
       {/* Highlights */}
       <div style={{ marginBottom:20 }}>
-        <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12 }}>What's Included</div>
+        <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:12 }}>What's Included</div>
         <div style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
           {item.highlights.map((h,i) => (
-            <div key={i} style={{ background:SOFT, border:`1px solid ${MID}`, borderRadius:20, padding:"5px 12px", fontSize:12, fontFamily:"'Nunito',sans-serif", color:DARK }}>{h}</div>
+            <div key={i} style={{ background:SOFT, border:`1px solid ${MID}`, borderRadius:20, padding:"5px 12px", fontSize:12, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{h}</div>
           ))}
         </div>
       </div>
 
       {/* Why we love it */}
       <div style={{ marginBottom:24 }}>
-        <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12 }}>Why We Love It for Your Group</div>
+        <div style={{ fontSize:16, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:12 }}>Why We Love It for Your Group</div>
         {item.whyWeLoveIt.map((w,i) => (
           <div key={i} style={{ display:"flex", gap:12, marginBottom:10, alignItems:"flex-start" }}>
             <div style={{ width:22, height:22, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:11, fontWeight:700, color:WHITE, flexShrink:0 }}>{i+1}</div>
-            <div style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", lineHeight:1.6 }}>{w}</div>
+            <div style={{ fontSize:13, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.6 }}>{w}</div>
           </div>
         ))}
       </div>
 
       {/* Book CTA */}
       <div style={{ background:SOFT, border:`1.5px solid ${MID}`, borderRadius:18, padding:"18px 16px", marginBottom:24 }}>
-        <div style={{ fontSize:18, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, marginBottom:4 }}>Book This Experience</div>
-        <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:16, opacity:0.75 }}>
+        <div style={{ fontSize:18, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:HOT, marginBottom:4 }}>Book This Experience</div>
+        <div style={{ fontSize:12, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:16, opacity:0.75 }}>
           {groupSize} guests{date ? ` · ${date}` : ""}: check availability and secure your spot
         </div>
         <a href={item.bookUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration:"none" }}>
           <button style={{
             width:"100%", background:`linear-gradient(135deg,#f472b0,${HOT})`,
             color:WHITE, border:"none", borderRadius:14, padding:"15px",
-            fontFamily:"'Nunito',sans-serif", fontSize:14, fontWeight:800,
+            fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:14, fontWeight:800,
             letterSpacing:"0.3px", cursor:"pointer",
           }}>
             Book on Viator →
@@ -297,13 +297,13 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
 
   const inputStyle = {
     width:"100%", padding:"10px 12px", borderRadius:10,
-    border:`1.5px solid ${BORDER}`, fontFamily:"'Nunito',sans-serif",
+    border:`1.5px solid ${BORDER}`, fontFamily:"'Plus Jakarta Sans',sans-serif",
     fontSize:13, color:DARK, background:WHITE, boxSizing:"border-box", outline:"none",
   };
 
   const labelStyle = {
     fontSize:10, fontWeight:700, color:HOT,
-    fontFamily:"'Nunito',sans-serif",
+    fontFamily:"'Plus Jakarta Sans',sans-serif",
     textTransform:"uppercase", letterSpacing:1, marginBottom:6,
   };
 
@@ -319,13 +319,13 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
         <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:6 }}>
           <div style={labelStyle}>Destination</div>
           {city && !showCityPicker && (
-            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
+            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
           )}
         </div>
         {city && !showCityPicker ? (
           <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
             <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || ""}</span>
-            <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
+            <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
           </div>
         ) : (
           <select value={city} onChange={e=>{ setCity(e.target.value); setShowCityPicker(false); setResults(null); }} style={{ ...inputStyle, appearance:"none" }}>
@@ -356,7 +356,7 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
         <div style={labelStyle}>Group Size</div>
         <div style={{ display:"flex", alignItems:"center", gap:16, marginTop:4 }}>
           <button onClick={()=>adjGroupSize(groupSize-1)} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>−</button>
-          <div style={{ fontSize:22, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif", minWidth:24, textAlign:"center" }}>{groupSize}</div>
+          <div style={{ fontSize:22, fontWeight:900, color:PUNCH, fontFamily:"'Plus Jakarta Sans',sans-serif", minWidth:24, textAlign:"center" }}>{groupSize}</div>
           <button onClick={()=>adjGroupSize(groupSize+1)} style={{ width:32, height:32, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:20, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>+</button>
         </div>
       </div>
@@ -365,27 +365,27 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
       <div style={{ ...C, background:SOFT, border:`1.5px solid ${MID}`, marginBottom:20 }}>
         {city ? (
           <>
-            <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>
+            <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:4 }}>
               {selectedDest?.name}
             </div>
-            <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:14, opacity:0.85 }}>
+            <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:14, opacity:0.85 }}>
               {groupSize} guests{vibe ? ` · ${VIBES.find(v=>v.id===vibe)?.label}` : ""}{date ? ` · ${date}` : " · flexible date"}
             </div>
             <button onClick={findExperiences} style={{
               width:"100%", background:`linear-gradient(135deg,#f472b0,${HOT})`,
               color:WHITE, border:"none", borderRadius:14, padding:"15px", cursor:"pointer",
-              fontFamily:"'Nunito',sans-serif", fontSize:14, fontWeight:800, letterSpacing:"0.3px",
+              fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:14, fontWeight:800, letterSpacing:"0.3px",
             }}>
               Find Best Experiences
             </button>
-            <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:8, textAlign:"center" }}>
+            <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:8, textAlign:"center" }}>
               Curated activities perfect for bachelorette groups
             </div>
           </>
         ) : (
           <div style={{ textAlign:"center", padding:"8px 0" }}>
-            <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>Pick a destination above</div>
-            <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:4, opacity:0.75 }}>
+            <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>Pick a destination above</div>
+            <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:4, opacity:0.75 }}>
               Then we'll find the best experiences for {groupSize} people
             </div>
           </div>
@@ -396,14 +396,14 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
       {results !== null && (
         results.length === 0 ? (
           <div style={{ textAlign:"center", padding:"32px 16px", background:SOFT, borderRadius:18 }}>
-            <div style={{ fontSize:13, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:4 }}>No experiences found for that vibe yet</div>
-            <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>Try selecting "Any vibe" to see all options</div>
+            <div style={{ fontSize:13, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:4 }}>No experiences found for that vibe yet</div>
+            <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Try selecting "Any vibe" to see all options</div>
           </div>
         ) : (
           <>
             <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:12 }}>
-              <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{results.length} Experience{results.length !== 1 ? "s" : ""} Found</div>
-              <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>{selectedDest?.name}</div>
+              <div style={{ fontSize:14, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{results.length} Experience{results.length !== 1 ? "s" : ""} Found</div>
+              <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{selectedDest?.name}</div>
             </div>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:8, marginBottom:24 }}>
               {results.map(item => (
@@ -411,7 +411,7 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
                   style={{ borderRadius:12, overflow:"hidden", cursor:"pointer", background:WHITE, boxShadow:"0 2px 10px rgba(0,0,0,0.08)", transition:"transform 0.15s" }}>
                   <div style={{ position:"relative", width:"100%", aspectRatio:"1/1", overflow:"hidden" }}>
                     <img src={item.image} alt={item.name} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
-                    <div style={{ position:"absolute", top:5, left:5, background:"rgba(0,0,0,0.55)", color:WHITE, fontSize:8, fontWeight:700, fontFamily:"'Nunito',sans-serif", padding:"2px 6px", borderRadius:20 }}>
+                    <div style={{ position:"absolute", top:5, left:5, background:"rgba(0,0,0,0.55)", color:WHITE, fontSize:8, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", padding:"2px 6px", borderRadius:20 }}>
                       {item.category}
                     </div>
                     <button onClick={e=>toggleSave(e,item)} style={{ position:"absolute", top:5, right:5, width:26, height:26, borderRadius:"50%", background:"rgba(255,255,255,0.9)", border:"none", cursor:user?.email?"pointer":"default", display:"flex", alignItems:"center", justifyContent:"center", padding:0 }}>
@@ -421,10 +421,10 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
                     </button>
                   </div>
                   <div style={{ padding:"6px 7px 8px" }}>
-                    <div style={{ fontSize:10, fontWeight:700, color:DARK, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1.25, marginBottom:3 }}>{item.name}</div>
+                    <div style={{ fontSize:10, fontWeight:700, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.25, marginBottom:3 }}>{item.name}</div>
                     <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-                      <div style={{ fontSize:9, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:600 }}> {item.rating}</div>
-                      <div style={{ fontSize:9, color:PUNCH, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>{item.priceRange}</div>
+                      <div style={{ fontSize:9, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:600 }}> {item.rating}</div>
+                      <div style={{ fontSize:9, color:PUNCH, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700 }}>{item.priceRange}</div>
                     </div>
                   </div>
                 </div>

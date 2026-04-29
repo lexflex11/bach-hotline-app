@@ -22,7 +22,7 @@ const CATEGORIES = [
   { label:"Party Supply Shop", sub:"Decor, details, and party must-haves",      tab:"shop",        img:"https://images.unsplash.com/photo-1513151233558-d860c5398176?w=400&q=80" },
 ];
 
-const NUN = "'Nunito',sans-serif";
+const NUN = "'Plus Jakarta Sans',sans-serif";
 
 export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, setCity }) {
   const minDate = new Date().toISOString().split("T")[0];

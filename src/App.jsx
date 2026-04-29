@@ -69,7 +69,7 @@ export default function App() {
   if (!user) return <AuthScreen onLogin={setUser} LOGO_SRC={LOGO_SRC} />;
 
   return (
-    <div style={{ minHeight:"100vh", background:PAGE, color:DARK, fontFamily:"'Playfair Display',Georgia,serif" }}>
+    <div style={{ minHeight:"100vh", background:PAGE, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>
       <div style={{ background:WHITE, position:"sticky", top:0, zIndex:100, boxShadow:`0 1px 4px rgba(0,0,0,0.06)` }}>
         <div style={{ padding:"0 24px", display:"flex", alignItems:"center", justifyContent:"space-between", maxWidth:1200, margin:"0 auto", height:76 }}>
           {/* Logo */}
@@ -84,7 +84,7 @@ export default function App() {
                   <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
                 </svg>
-                <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{cart.length}</span>
+                <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{cart.length}</span>
               </div>
               {/* Hamburger */}
               <button onClick={()=>setMobileMenuOpen(p=>!p)} style={{ background:"none", border:"none", cursor:"pointer", padding:4, display:"flex", flexDirection:"column", gap:5, alignItems:"center", justifyContent:"center" }}>
@@ -98,13 +98,13 @@ export default function App() {
             <div style={{ display:"flex", alignItems:"center", gap:4 }} onMouseLeave={()=>setDrawerOpen(false)}>
               {/* Home */}
               <button onClick={()=>{ navigateTo("home"); setDrawerOpen(false); }}
-                style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Nunito',sans-serif", fontWeight:400, color: tab==="home" && !drawerOpen ? HOT : DARK, borderBottom: tab==="home" && !drawerOpen ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s" }}>
+                style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:400, color: tab==="home" && !drawerOpen ? HOT : DARK, borderBottom: tab==="home" && !drawerOpen ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s" }}>
                 Home
               </button>
 
               {/* Shop dropdown */}
               <div style={{ position:"relative" }} onMouseEnter={()=>setDrawerOpen("shop")} >
-                <button style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Nunito',sans-serif", fontWeight:400, color: drawerOpen==="shop" || ["shop","decor"].includes(tab) && !drawerOpen ? HOT : DARK, borderBottom: drawerOpen==="shop" || (["shop","decor"].includes(tab) && !drawerOpen) ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s", display:"flex", alignItems:"center", gap:4 }}>
+                <button style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:400, color: drawerOpen==="shop" || ["shop","decor"].includes(tab) && !drawerOpen ? HOT : DARK, borderBottom: drawerOpen==="shop" || (["shop","decor"].includes(tab) && !drawerOpen) ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s", display:"flex", alignItems:"center", gap:4 }}>
                   Shop <span style={{ fontSize:10 }}></span>
                 </button>
                 {drawerOpen==="shop" && (
@@ -115,7 +115,7 @@ export default function App() {
                     ].map(item => (
                       <button key={item.id} onClick={()=>{ navigateTo(item.id); setDrawerOpen(false); }}
                         style={{ display:"block", width:"100%", background:"none", border:"none", padding:"10px 18px", cursor:"pointer", textAlign:"left" }}>
-                        <div style={{ fontSize:13, fontFamily:"'Playfair Display',Georgia,serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
+                        <div style={{ fontSize:13, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
                       </button>
                     ))}
                   </div>
@@ -124,7 +124,7 @@ export default function App() {
 
               {/* Planning dropdown */}
               <div style={{ position:"relative" }} onMouseEnter={()=>setDrawerOpen("planning")}>
-                <button style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Nunito',sans-serif", fontWeight:400, color: drawerOpen==="planning" || ["flights","stays","eats","experiences","plan"].includes(tab) ? HOT : DARK, borderBottom: drawerOpen==="planning" || ["flights","stays","eats","experiences","plan"].includes(tab) ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s", display:"flex", alignItems:"center", gap:4 }}>
+                <button style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:400, color: drawerOpen==="planning" || ["flights","stays","eats","experiences","plan"].includes(tab) ? HOT : DARK, borderBottom: drawerOpen==="planning" || ["flights","stays","eats","experiences","plan"].includes(tab) ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s", display:"flex", alignItems:"center", gap:4 }}>
                   Planning <span style={{ fontSize:10 }}></span>
                 </button>
                 {drawerOpen==="planning" && (
@@ -142,7 +142,7 @@ export default function App() {
                     ].map(item => (
                       <button key={item.id} onClick={()=>{ navigateTo(item.id); setDrawerOpen(false); }}
                         style={{ display:"block", width:"100%", background:"none", border:"none", padding:"10px 18px", cursor:"pointer", textAlign:"left" }}>
-                        <div style={{ fontSize:13, fontFamily:"'Playfair Display',Georgia,serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
+                        <div style={{ fontSize:13, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
                       </button>
                     ))}
                   </div>
@@ -151,7 +151,7 @@ export default function App() {
 
               {/* My Profile dropdown */}
               <div style={{ position:"relative" }} onMouseEnter={()=>setDrawerOpen("profile")}>
-                <button style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Nunito',sans-serif", fontWeight:400, color: drawerOpen==="profile" || ["profile","alerts","mood"].includes(tab) ? HOT : DARK, borderBottom: drawerOpen==="profile" || ["profile","alerts","mood"].includes(tab) ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s", display:"flex", alignItems:"center", gap:4 }}>
+                <button style={{ background:"none", border:"none", cursor:"pointer", padding:"6px 14px", fontSize:15, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:400, color: drawerOpen==="profile" || ["profile","alerts","mood"].includes(tab) ? HOT : DARK, borderBottom: drawerOpen==="profile" || ["profile","alerts","mood"].includes(tab) ? `2px solid ${HOT}` : "2px solid transparent", transition:"color 0.18s", display:"flex", alignItems:"center", gap:4 }}>
                   My Profile <span style={{ fontSize:10 }}></span>
                 </button>
                 {drawerOpen==="profile" && (
@@ -165,7 +165,7 @@ export default function App() {
                     ].map(item => (
                       <button key={item.id} onClick={()=>{ navigateTo(item.id); setDrawerOpen(false); }}
                         style={{ display:"block", width:"100%", background:"none", border:"none", padding:"10px 18px", cursor:"pointer", textAlign:"left" }}>
-                        <div style={{ fontSize:13, fontFamily:"'Playfair Display',Georgia,serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
+                        <div style={{ fontSize:13, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:400, color:tab===item.id?HOT:DARK }}>{item.label}</div>
                       </button>
                     ))}
                   </div>
@@ -178,7 +178,7 @@ export default function App() {
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                   </svg>
-                  {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-5, width:14, height:14, borderRadius:"50%", background:HOT, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'Nunito',sans-serif", color:WHITE }}>{alertCount}</div>}
+                  {alertCount>0&&<div style={{ position:"absolute", top:-4, right:-5, width:14, height:14, borderRadius:"50%", background:HOT, display:"flex", alignItems:"center", justifyContent:"center", fontSize:8, fontWeight:800, fontFamily:"'Plus Jakarta Sans',sans-serif", color:WHITE }}>{alertCount}</div>}
                 </div>
               )}
               {/* Cart */}
@@ -187,7 +187,7 @@ export default function App() {
                   <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
                 </svg>
-                <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{cart.length}</span>
+                <span style={{ fontSize:13, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{cart.length}</span>
               </div>
             </div>
           )}
@@ -221,7 +221,7 @@ export default function App() {
               ].map(n => (
                 <button key={n.id} onClick={()=>{ navigateTo(n.id); setMobileMenuOpen(false); setDrawerOpen(false); }}
                   style={{ width:"100%", background:"none", border:"none", borderBottom:`1px solid ${BORDER}`, padding:"18px 24px", cursor:"pointer", textAlign:"right", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-                  <span style={{ fontSize:22, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color: tab===n.id ? HOT : DARK }}>{n.label}</span>
+                  <span style={{ fontSize:22, fontWeight:300, fontFamily:"'Plus Jakarta Sans',sans-serif", color: tab===n.id ? HOT : DARK }}>{n.label}</span>
                   <span style={{ fontSize:16, color:"#ddd" }}>›</span>
                 </button>
               ))}
@@ -257,13 +257,13 @@ export default function App() {
             <div style={{width:44,height:4,borderRadius:2,background:MID,margin:"14px auto 10px"}}/>
             <div style={{padding:"0 18px"}}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16}}>
-                <h3 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:18,fontWeight:400,color:DARK,margin:0}}>
+                <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:18,fontWeight:400,color:DARK,margin:0}}>
                   Your Cart ({cart.length})
                 </h3>
                 <button onClick={()=>setCartOpen(false)} style={{background:"none",border:"none",fontSize:20,cursor:"pointer",color:"#aaa"}}>×</button>
               </div>
               {cart.length === 0 ? (
-                <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'Nunito',sans-serif",fontSize:13}}>
+                <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:13}}>
                   Your cart is empty 
                 </div>
               ) : (
@@ -282,25 +282,25 @@ export default function App() {
                           {item.image ? <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"contain",padding:4,boxSizing:"border-box"}}/> : ""}
                         </div>
                         <div style={{flex:1,minWidth:0}}>
-                          <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
+                          <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif",marginBottom:5,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
                           <div style={{display:"flex",alignItems:"center",gap:8}}>
                             <div style={{display:"flex",alignItems:"center",border:`1.5px solid ${BORDER}`,borderRadius:50,overflow:"hidden"}}>
                               <button onClick={()=>adjQty(-1)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:HOT,fontWeight:700,padding:"2px 8px",lineHeight:1}}>−</button>
-                              <span style={{fontSize:12,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",minWidth:16,textAlign:"center"}}>{qty}</span>
+                              <span style={{fontSize:12,fontWeight:300,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif",minWidth:16,textAlign:"center"}}>{qty}</span>
                               <button onClick={()=>adjQty(1)} style={{background:"none",border:"none",cursor:"pointer",fontSize:14,color:HOT,fontWeight:700,padding:"2px 8px",lineHeight:1}}>+</button>
                             </div>
-                            <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif"}}>${(item.price||0).toFixed(2)}</div>
+                            <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Plus Jakarta Sans',sans-serif"}}>${(item.price||0).toFixed(2)}</div>
                           </div>
                         </div>
                         <button onClick={()=>setCart(p=>p.filter(c=>c.id!==item.id))} style={{background:SOFT,border:`1px solid ${BORDER}`,borderRadius:"50%",width:28,height:28,cursor:"pointer",color:PUNCH,fontSize:14,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>×</button>
                       </div>
                     );
                   })}
-                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Nunito',sans-serif",fontWeight:300,fontSize:15,color:DARK}}>
+                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:16,fontFamily:"'Plus Jakarta Sans',sans-serif",fontWeight:300,fontSize:15,color:DARK}}>
                     <span>Total</span>
                     <span>${cart.reduce((s,i)=>s+(i.price||0),0).toFixed(2)}</span>
                   </div>
-                  <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:50,padding:"14px",fontSize:14,fontWeight:700,fontFamily:"'Nunito',sans-serif",cursor:"pointer",width:"100%"}}>
+                  <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:50,padding:"14px",fontSize:14,fontWeight:700,fontFamily:"'Plus Jakarta Sans',sans-serif",cursor:"pointer",width:"100%"}}>
                     Checkout — ${cart.reduce((s,i)=>s+(i.price||0),0).toFixed(2)}
                   </button>
                 </>

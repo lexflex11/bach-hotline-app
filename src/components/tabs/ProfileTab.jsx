@@ -26,10 +26,10 @@ const POLL_TEMPLATES = [
 ];
 
 const card   = { background:WHITE, borderRadius:18, padding:"18px 16px", marginBottom:12, border:`1.5px solid ${BORDER}` };
-const btn1   = { background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none", borderRadius:50, padding:"13px 0", fontFamily:"'Nunito',sans-serif", fontWeight:700, fontSize:14, cursor:"pointer", width:"100%", letterSpacing:"0.5px" };
-const btnG   = { background:"none", border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"11px 0", fontFamily:"'Nunito',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", width:"100%", color:HOT };
-const pollInp = { width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Nunito',sans-serif", fontSize:14, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box" };
-const lbl    = { fontSize:11, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:6, display:"block" };
+const btn1   = { background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, border:"none", borderRadius:50, padding:"13px 0", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:14, cursor:"pointer", width:"100%", letterSpacing:"0.5px" };
+const btnG   = { background:"none", border:`1.5px solid ${BORDER}`, borderRadius:50, padding:"11px 0", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", width:"100%", color:HOT };
+const pollInp = { width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:14, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box" };
+const lbl    = { fontSize:11, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:6, display:"block" };
 
 function PollsSection({ user }) {
   const [screen, setScreen] = useState("list");
@@ -75,7 +75,7 @@ function PollsSection({ user }) {
 
   if (!isConfigured) return (
     <div style={{ ...card, textAlign:"center", padding:"20px" }}>
-      <div style={{ fontSize:13, color:"#888", fontFamily:"'Nunito',sans-serif", lineHeight:1.6 }}>
+      <div style={{ fontSize:13, color:"#888", fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.6 }}>
         Polls require a Firebase setup. See the Planning tab for setup instructions.
       </div>
     </div>
@@ -83,16 +83,16 @@ function PollsSection({ user }) {
 
   // Vote screen
   if (screen === "vote" && activePollId) {
-    if (!poll) return <div style={{ textAlign:"center", padding:24, color:"#aaa", fontFamily:"'Nunito',sans-serif", fontSize:12 }}>Loading poll...</div>;
+    if (!poll) return <div style={{ textAlign:"center", padding:24, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12 }}>Loading poll...</div>;
     const total = Object.values(poll.votes||{}).reduce((s,v)=>s+v.length,0);
     const maxVotes = Math.max(...Object.values(poll.votes||{}).map(v=>v.length), 0);
     return (
       <div>
-        <button onClick={()=>{ setScreen("list"); setPoll(null); setVoted(false); setVotedOptId(null); }} style={{ background:"none", border:"none", color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", marginBottom:14, padding:0 }}>← All polls</button>
+        <button onClick={()=>{ setScreen("list"); setPoll(null); setVoted(false); setVotedOptId(null); }} style={{ background:"none", border:"none", color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", marginBottom:14, padding:0 }}>← All polls</button>
         <div style={card}>
-          {poll.tripName && <div style={{ fontSize:10, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:6 }}>{poll.tripName}</div>}
-          <div style={{ fontSize:17, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>{poll.question}</div>
-          <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:18 }}>{total} vote{total!==1?"s":""} · by {poll.createdBy}</div>
+          {poll.tripName && <div style={{ fontSize:10, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:6 }}>{poll.tripName}</div>}
+          <div style={{ fontSize:17, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:4 }}>{poll.question}</div>
+          <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:18 }}>{total} vote{total!==1?"s":""} · by {poll.createdBy}</div>
           {(poll.options||[]).map(opt => {
             const count = (poll.votes?.[opt.id]||[]).length;
             const pct   = total>0 ? Math.round((count/total)*100) : 0;
@@ -106,17 +106,17 @@ function PollsSection({ user }) {
                   <div style={{ position:"relative", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
                     <div style={{ display:"flex", alignItems:"center", gap:8 }}>
                       {isMe && <span style={{ color:HOT }}></span>}
-                      <span style={{ fontSize:13, fontFamily:"'Nunito',sans-serif", fontWeight:isMe?700:500, color:DARK }}>{opt.text}</span>
-                      {isTop && <span style={{ fontSize:10, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"2px 8px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Leading</span>}
+                      <span style={{ fontSize:13, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:isMe?700:500, color:DARK }}>{opt.text}</span>
+                      {isTop && <span style={{ fontSize:10, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"2px 8px", borderRadius:50, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Leading</span>}
                     </div>
-                    {voted && <span style={{ fontSize:12, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:isMe?HOT:"#aaa" }}>{pct}%</span>}
+                    {voted && <span style={{ fontSize:12, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:isMe?HOT:"#aaa" }}>{pct}%</span>}
                   </div>
                 </button>
               </div>
             );
           })}
-          {!voted && <div style={{ textAlign:"center", fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:6 }}>Tap an option to vote</div>}
-          {voted  && <div style={{ textAlign:"center", fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, marginTop:6 }}>You voted! Results update live</div>}
+          {!voted && <div style={{ textAlign:"center", fontSize:11, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:6 }}>Tap an option to vote</div>}
+          {voted  && <div style={{ textAlign:"center", fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, marginTop:6 }}>You voted! Results update live</div>}
         </div>
         <button onClick={()=>navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?poll=${activePollId}`)} style={{ ...btnG, maxWidth:220, margin:"0 auto", display:"block" }}>Copy share link</button>
       </div>
@@ -127,12 +127,12 @@ function PollsSection({ user }) {
   if (screen === "create") {
     if (step === 0) return (
       <div>
-        <button onClick={()=>setScreen("list")} style={{ background:"none", border:"none", color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", marginBottom:14, padding:0 }}>← Back</button>
-        <div style={{ fontSize:15, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12 }}>Pick a template</div>
+        <button onClick={()=>setScreen("list")} style={{ background:"none", border:"none", color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", marginBottom:14, padding:0 }}>← Back</button>
+        <div style={{ fontSize:15, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:12 }}>Pick a template</div>
         {POLL_TEMPLATES.map((t,i) => (
           <button key={i} onClick={()=>{ setQuestion(t.label); setOptions([...t.options.filter(Boolean),"",""].slice(0,4)); setStep(1); }}
             style={{ ...card, display:"block", width:"100%", textAlign:"left", cursor:"pointer", padding:"12px 14px", marginBottom:8 }}>
-            <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:DARK }}>{t.label}</div>
+            <div style={{ fontSize:13, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{t.label}</div>
             {t.options[0] && <div style={{ fontSize:11, color:"#aaa", marginTop:3 }}>{t.options.slice(0,2).join(" · ")}...</div>}
           </button>
         ))}
@@ -140,7 +140,7 @@ function PollsSection({ user }) {
     );
     if (step === 1) return (
       <div>
-        <button onClick={()=>setStep(0)} style={{ background:"none", border:"none", color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", marginBottom:14, padding:0 }}>← Back</button>
+        <button onClick={()=>setStep(0)} style={{ background:"none", border:"none", color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:13, cursor:"pointer", marginBottom:14, padding:0 }}>← Back</button>
         <div style={card}>
           <span style={lbl}>Question</span>
           <input style={pollInp} value={question} onChange={e=>setQuestion(e.target.value)} placeholder="e.g. Where should we go?" />
@@ -167,9 +167,9 @@ function PollsSection({ user }) {
     );
     return (
       <div>
-        <div style={{ fontSize:16, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>Poll Created!</div>
+        <div style={{ fontSize:16, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:4 }}>Poll Created!</div>
         <div style={{ ...card, textAlign:"center" }}>
-          <div style={{ fontSize:11, fontFamily:"'Nunito',sans-serif", color:"#888", marginBottom:10 }}>Anyone with this link can vote!</div>
+          <div style={{ fontSize:11, fontFamily:"'Plus Jakarta Sans',sans-serif", color:"#888", marginBottom:10 }}>Anyone with this link can vote!</div>
           <div style={{ background:"#fdf8fb", borderRadius:10, padding:"10px 14px", fontSize:11, fontFamily:"monospace", color:DARK, wordBreak:"break-all", marginBottom:14, border:`1px solid ${BORDER}` }}>{shareUrl}</div>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
             <button onClick={()=>navigator.clipboard.writeText(shareUrl)} style={btnG}>Copy link</button>
@@ -186,9 +186,9 @@ function PollsSection({ user }) {
     <div>
       <button onClick={()=>{ setScreen("create"); setStep(0); }} style={{ ...btn1, marginBottom:14 }}>+ Create a Poll</button>
       {loading
-        ? <div style={{ textAlign:"center", padding:24, color:"#aaa", fontFamily:"'Nunito',sans-serif", fontSize:12 }}>Loading...</div>
+        ? <div style={{ textAlign:"center", padding:24, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12 }}>Loading...</div>
         : polls.length === 0
-          ? <div style={{ ...card, textAlign:"center", padding:"24px 16px" }}><div style={{ fontSize:13, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>No polls yet. Create one and share it with your group.</div></div>
+          ? <div style={{ ...card, textAlign:"center", padding:"24px 16px" }}><div style={{ fontSize:13, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>No polls yet. Create one and share it with your group.</div></div>
           : polls.map(p => {
               const total = Object.values(p.votes||{}).reduce((s,v)=>s+v.length,0);
               const hasVoted = Object.values(p.votes||{}).flat().includes(voterId);
@@ -196,14 +196,14 @@ function PollsSection({ user }) {
                 <button key={p.id} onClick={()=>{ setActivePollId(p.id); setScreen("vote"); }} style={{ ...card, display:"block", width:"100%", textAlign:"left", cursor:"pointer", padding:"12px 14px" }}>
                   <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start" }}>
                     <div style={{ flex:1 }}>
-                      {p.tripName && <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:2 }}>{p.tripName}</div>}
-                      <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:3 }}>{p.question}</div>
-                      <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>{total} vote{total!==1?"s":""}</div>
+                      {p.tripName && <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textTransform:"uppercase", letterSpacing:"0.8px", marginBottom:2 }}>{p.tripName}</div>}
+                      <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:3 }}>{p.question}</div>
+                      <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{total} vote{total!==1?"s":""}</div>
                     </div>
                     <div style={{ marginLeft:10 }}>
                       {hasVoted
-                        ? <span style={{ fontSize:11, background:SOFT, color:HOT, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Voted</span>
-                        : <span style={{ fontSize:11, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Vote</span>}
+                        ? <span style={{ fontSize:11, background:SOFT, color:HOT, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Voted</span>
+                        : <span style={{ fontSize:11, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Vote</span>}
                     </div>
                   </div>
                 </button>
@@ -283,15 +283,15 @@ function MediaSection({ user }) {
       {/* Hero */}
       <div style={{ borderRadius:18, padding:"18px 16px", marginBottom:14, textAlign:"center", background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`, border:`1.5px solid ${MID}` }}>
         <div style={{ fontSize:32, marginBottom:6 }}></div>
-        <div style={{ fontSize:17, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>Pics or It Didn't Happen</div>
-        <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.85, lineHeight:1.5 }}>
+        <div style={{ fontSize:17, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK, marginBottom:4 }}>Pics or It Didn't Happen</div>
+        <div style={{ fontSize:12, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", opacity:0.85, lineHeight:1.5 }}>
           Drop your pics and vids — your memories help other bach crews plan smarter.
         </div>
       </div>
 
       {success && (
         <div style={{ padding:"12px 14px", borderRadius:12, background:"rgba(46,125,50,0.1)", border:"1.5px solid rgba(46,125,50,0.35)", marginBottom:14, textAlign:"center" }}>
-          <div style={{ fontSize:13, fontWeight:700, color:"#2e7d32", fontFamily:"'Nunito',sans-serif" }}>Submitted! Thanks for sharing.</div>
+          <div style={{ fontSize:13, fontWeight:700, color:"#2e7d32", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Submitted! Thanks for sharing.</div>
         </div>
       )}
 
@@ -300,7 +300,7 @@ function MediaSection({ user }) {
         <div style={{ marginBottom:12 }}>
           <span style={lbl}>Select Your Trip</span>
           <select value={dest} onChange={e=>setDest(e.target.value)}
-            style={{ width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Nunito',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box", appearance:"none" }}>
+            style={{ width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box", appearance:"none" }}>
             <option value="">Choose a destination…</option>
             {DESTS.filter(d => d.id && d.id !== "all").map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
           </select>
@@ -313,7 +313,7 @@ function MediaSection({ user }) {
               <button key={m.id} onClick={()=>setMoment(m.id)} style={{
                 padding:"9px 10px", border:moment===m.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,
                 borderRadius:12, background:moment===m.id?SOFT:WHITE, cursor:"pointer",
-                fontFamily:"'Nunito',sans-serif", fontSize:12, fontWeight:600,
+                fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, fontWeight:600,
                 color:moment===m.id?HOT:DARK, textAlign:"left",
               }}>{m.label}</button>
             ))}
@@ -330,9 +330,9 @@ function MediaSection({ user }) {
             style={{ border:`2px dashed ${dragging?HOT:BORDER}`, borderRadius:14, padding:"24px 16px", textAlign:"center", background:dragging?SOFT:"#fdf8fb", cursor:"pointer" }}
           >
             <div style={{ fontSize:28, marginBottom:6 }}></div>
-            <div style={{ fontSize:13, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:4 }}>Upload Photos & Videos</div>
-            <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:12 }}>Drag and drop here or</div>
-            <div style={{ display:"inline-block", padding:"8px 20px", borderRadius:50, border:`1.5px solid ${DARK}`, fontFamily:"'Nunito',sans-serif", fontSize:12, fontWeight:700, color:DARK, background:WHITE }}>
+            <div style={{ fontSize:13, fontWeight:700, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:4 }}>Upload Photos & Videos</div>
+            <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:12 }}>Drag and drop here or</div>
+            <div style={{ display:"inline-block", padding:"8px 20px", borderRadius:50, border:`1.5px solid ${DARK}`, fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12, fontWeight:700, color:DARK, background:WHITE }}>
               Select from your device
             </div>
             <input ref={fileRef} type="file" multiple accept="image/*,video/*" style={{ display:"none" }} onChange={e=>processFiles(e.target.files)} />
@@ -352,16 +352,16 @@ function MediaSection({ user }) {
         <div style={{ marginBottom:14 }}>
           <span style={lbl}>Caption (optional)</span>
           <textarea value={caption} onChange={e=>setCaption(e.target.value)} placeholder="Tell us about this moment" rows={3}
-            style={{ width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Nunito',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box", resize:"none", lineHeight:1.5 }} />
+            style={{ width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box", resize:"none", lineHeight:1.5 }} />
         </div>
-        <div style={{ fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginBottom:12, lineHeight:1.5 }}>
+        <div style={{ fontSize:11, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:12, lineHeight:1.5 }}>
           Your upload goes directly to our media library so we can review and share it.
         </div>
         {uploading && (
           <div style={{ marginBottom:12 }}>
             <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
-              <span style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>Uploading...</span>
-              <span style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif" }}>{progress}%</span>
+              <span style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700 }}>Uploading...</span>
+              <span style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{progress}%</span>
             </div>
             <div style={{ height:6, borderRadius:6, background:SOFT, overflow:"hidden" }}>
               <div style={{ height:"100%", width:`${progress}%`, background:`linear-gradient(90deg,#f472b0,${HOT})`, borderRadius:6, transition:"width 0.3s" }} />
@@ -375,7 +375,7 @@ function MediaSection({ user }) {
 
       {submitted.length > 0 && submitted.map(s => (
         <div key={s.id} style={{ ...card }}>
-          <div style={{ fontSize:12, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", marginBottom:4 }}>{s.dest} · {s.moment} · {s.date}</div>
+          <div style={{ fontSize:12, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:4 }}>{s.dest} · {s.moment} · {s.date}</div>
           {s.files.length > 0 && (
             <div style={{ display:"grid", gridTemplateColumns:`repeat(${Math.min(s.files.length,3)},1fr)`, gap:6, marginBottom:8 }}>
               {s.files.map(f => (
@@ -385,8 +385,8 @@ function MediaSection({ user }) {
               ))}
             </div>
           )}
-          {s.caption && <div style={{ fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", fontStyle:"italic", opacity:0.85 }}>"{s.caption}"</div>}
-          <div style={{ marginTop:8, padding:"5px 10px", borderRadius:8, background:SOFT, display:"inline-block", fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>Submitted for review</div>
+          {s.caption && <div style={{ fontSize:12, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif", fontStyle:"italic", opacity:0.85 }}>"{s.caption}"</div>}
+          <div style={{ marginTop:8, padding:"5px 10px", borderRadius:8, background:SOFT, display:"inline-block", fontSize:10, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700 }}>Submitted for review</div>
         </div>
       ))}
     </div>
@@ -398,7 +398,7 @@ function BudgetSection({ groupSize }) {
   const [city,  setCity]  = useState("");
   const [nights, setNights] = useState(3);
   const [tier,  setTier]  = useState("mid");
-  const SM2 = { background:SOFT, border:`1.5px solid ${MID}`, color:HOT, borderRadius:8, width:28, height:28, cursor:"pointer", fontFamily:"'Nunito',sans-serif", fontWeight:700, fontSize:15, display:"flex", alignItems:"center", justifyContent:"center" };
+  const SM2 = { background:SOFT, border:`1.5px solid ${MID}`, color:HOT, borderRadius:8, width:28, height:28, cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:15, display:"flex", alignItems:"center", justifyContent:"center" };
 
   const dest = DESTS.find(d => d.id === city);
   const data = city && BUDGET_DATA?.[city]?.[tier];
@@ -418,7 +418,7 @@ function BudgetSection({ groupSize }) {
         <div style={{ marginBottom:12 }}>
           <span style={lbl}>Destination</span>
           <select value={city} onChange={e=>setCity(e.target.value)}
-            style={{ width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Nunito',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box", appearance:"none" }}>
+            style={{ width:"100%", border:`1.5px solid ${BORDER}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box", appearance:"none" }}>
             <option value="">Choose a city…</option>
             {DESTS.filter(d=>d.id&&d.id!=="all"&&BUDGET_DATA?.[d.id]).map(d=><option key={d.id} value={d.id}>{d.name}</option>)}
           </select>
@@ -429,7 +429,7 @@ function BudgetSection({ groupSize }) {
             <span style={lbl}>Nights</span>
             <div style={{ display:"flex", alignItems:"center", gap:8 }}>
               <button style={SM2} onClick={()=>setNights(n=>Math.max(1,n-1))}>−</button>
-              <span style={{ fontWeight:900, color:PUNCH, fontSize:20, minWidth:24, textAlign:"center", fontFamily:"'Playfair Display',Georgia,serif" }}>{nights}</span>
+              <span style={{ fontWeight:900, color:PUNCH, fontSize:20, minWidth:24, textAlign:"center", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{nights}</span>
               <button style={SM2} onClick={()=>setNights(n=>Math.min(14,n+1))}>+</button>
             </div>
           </div>
@@ -437,7 +437,7 @@ function BudgetSection({ groupSize }) {
             <span style={lbl}>Budget Style</span>
             <div style={{ display:"flex", gap:6 }}>
               {[["budget","Budget"],["mid","Mid"],["luxury","Luxury"]].map(([id,label])=>(
-                <button key={id} onClick={()=>setTier(id)} style={{ flex:1, padding:"8px 4px", borderRadius:10, border:`1.5px solid ${tier===id?HOT:BORDER}`, background:tier===id?SOFT:WHITE, cursor:"pointer", fontFamily:"'Nunito',sans-serif", fontSize:11, fontWeight:700, color:tier===id?HOT:DARK }}>{label}</button>
+                <button key={id} onClick={()=>setTier(id)} style={{ flex:1, padding:"8px 4px", borderRadius:10, border:`1.5px solid ${tier===id?HOT:BORDER}`, background:tier===id?SOFT:WHITE, cursor:"pointer", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11, fontWeight:700, color:tier===id?HOT:DARK }}>{label}</button>
               ))}
             </div>
           </div>
@@ -448,19 +448,19 @@ function BudgetSection({ groupSize }) {
             <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:12 }}>
               {cats.map(c => (
                 <div key={c.label} style={{ background:SOFT, borderRadius:12, padding:"10px 12px" }}>
-                  <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:0.5, marginBottom:2 }}>{c.label}</div>
-                  <div style={{ fontSize:16, fontWeight:900, color:DARK, fontFamily:"'Playfair Display',Georgia,serif" }}>${c.val.toLocaleString()}</div>
+                  <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textTransform:"uppercase", letterSpacing:0.5, marginBottom:2 }}>{c.label}</div>
+                  <div style={{ fontSize:16, fontWeight:900, color:DARK, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>${c.val.toLocaleString()}</div>
                 </div>
               ))}
             </div>
             <div style={{ borderRadius:14, padding:"14px 16px", background:`linear-gradient(135deg,${SOFT},${MID})`, border:`1.5px solid ${MID}`, textAlign:"center" }}>
-              <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Total for {groupSize} people · {nights} nights</div>
-              <div style={{ fontSize:28, fontWeight:900, color:PUNCH, fontFamily:"'Playfair Display',Georgia,serif" }}>${total.toLocaleString()}</div>
-              <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:4, opacity:0.8 }}>${Math.round(total/groupSize).toLocaleString()} per person</div>
+              <div style={{ fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>Total for {groupSize} people · {nights} nights</div>
+              <div style={{ fontSize:28, fontWeight:900, color:PUNCH, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>${total.toLocaleString()}</div>
+              <div style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:4, opacity:0.8 }}>${Math.round(total/groupSize).toLocaleString()} per person</div>
             </div>
           </>
         ) : (
-          <div style={{ textAlign:"center", padding:"16px 0", color:"#bbb", fontFamily:"'Nunito',sans-serif", fontSize:12 }}>
+          <div style={{ textAlign:"center", padding:"16px 0", color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:12 }}>
             Pick a destination to see the estimate
           </div>
         )}
@@ -507,8 +507,8 @@ function MealPlannerSection({ user }) {
             color:activeDay===i?WHITE:HOT, cursor:"pointer",
             display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center",
           }}>
-            <div style={{ fontSize:8, fontWeight:700, fontFamily:"'Nunito',sans-serif", letterSpacing:"0.5px", opacity:0.85 }}>DAY</div>
-            <div style={{ fontSize:18, fontWeight:900, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1.1 }}>{i+1}</div>
+            <div style={{ fontSize:8, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", letterSpacing:"0.5px", opacity:0.85 }}>DAY</div>
+            <div style={{ fontSize:18, fontWeight:900, fontFamily:"'Plus Jakarta Sans',sans-serif", lineHeight:1.1 }}>{i+1}</div>
           </button>
         ))}
         {days < 7 && (
@@ -523,7 +523,7 @@ function MealPlannerSection({ user }) {
         const isEd = editing === k;
         return (
           <div key={slot.id} style={{ marginBottom:10 }}>
-            <div style={{ fontSize:10, fontWeight:700, fontFamily:"'Nunito',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"1px", marginBottom:5, display:"flex", alignItems:"center", gap:5 }}>
+            <div style={{ fontSize:10, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", color:HOT, textTransform:"uppercase", letterSpacing:"1px", marginBottom:5, display:"flex", alignItems:"center", gap:5 }}>
               <span>{slot.icon}</span>{slot.label}
             </div>
             {isEd ? (
@@ -534,18 +534,18 @@ function MealPlannerSection({ user }) {
                   onChange={e=>setEditVal(e.target.value)}
                   onKeyDown={e=>{ if(e.key==="Enter") commit(); if(e.key==="Escape") setEditing(null); }}
                   placeholder="e.g. Hash Kitchen, hotel brunch..."
-                  style={{ flex:1, border:`1.5px solid ${HOT}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Nunito',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box" }}
+                  style={{ flex:1, border:`1.5px solid ${HOT}`, borderRadius:12, padding:"11px 14px", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:13, background:"#fdf8fb", color:DARK, outline:"none", boxSizing:"border-box" }}
                 />
                 <button onClick={commit} style={{ ...btn1, width:"auto", padding:"11px 18px", borderRadius:12, fontSize:13 }}>Save</button>
               </div>
             ) : val ? (
               <button onClick={()=>startEdit(activeDay,slot.id)} style={{ width:"100%", textAlign:"left", background:SOFT, border:`1.5px solid ${MID}`, borderRadius:14, padding:"13px 14px", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-                <span style={{ fontSize:13, fontFamily:"'Nunito',sans-serif", fontWeight:600, color:DARK }}>{val}</span>
-                <span style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif" }}>Edit ›</span>
+                <span style={{ fontSize:13, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:600, color:DARK }}>{val}</span>
+                <span style={{ fontSize:11, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>Edit ›</span>
               </button>
             ) : (
               <button onClick={()=>startEdit(activeDay,slot.id)} style={{ width:"100%", textAlign:"left", background:"#fdf4f8", border:`1.5px dashed ${MID}`, borderRadius:14, padding:"14px 16px", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-                <span style={{ fontSize:12, fontFamily:"'Nunito',sans-serif", color:"rgba(213,36,56,0.35)" }}>{slot.empty}</span>
+                <span style={{ fontSize:12, fontFamily:"'Plus Jakarta Sans',sans-serif", color:"rgba(213,36,56,0.35)" }}>{slot.empty}</span>
                 <span style={{ fontSize:22, color:MID, lineHeight:1 }}>+</span>
               </button>
             )}
@@ -554,7 +554,7 @@ function MealPlannerSection({ user }) {
       })}
 
       {hasAny(activeDay) && (
-        <button onClick={()=>clearDay(activeDay)} style={{ background:"none", border:"none", color:"#ccc", fontFamily:"'Nunito',sans-serif", fontSize:11, cursor:"pointer", marginTop:4, padding:0 }}>
+        <button onClick={()=>clearDay(activeDay)} style={{ background:"none", border:"none", color:"#ccc", fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:11, cursor:"pointer", marginTop:4, padding:0 }}>
           Clear Day {activeDay+1}
         </button>
       )}
@@ -572,7 +572,7 @@ function Section({ title, children, defaultOpen }) {
         background:WHITE, border:`1.5px solid ${BORDER}`, borderRadius:open?`14px 14px 0 0`:14,
         padding:"14px 16px", cursor:"pointer", textAlign:"left",
       }}>
-        <div style={{ fontSize:15, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{title}</div>
+        <div style={{ fontSize:15, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{title}</div>
         <span style={{ color:HOT, fontSize:18, fontWeight:700, transform:open?"rotate(90deg)":"none", transition:"transform 0.2s" }}>›</span>
       </button>
       {open && (
@@ -607,20 +607,20 @@ export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSi
             <button onClick={()=>setEditing(false)} style={{ ...BP, padding:"8px 14px", fontSize:12 }}>Save</button>
           </div>
         ) : (
-          <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", marginBottom:4, color:DARK }}>
+          <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Plus Jakarta Sans',sans-serif", marginBottom:4, color:DARK }}>
             {displayName} <button onClick={()=>setEditing(true)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:14, color:HOT, verticalAlign:"middle" }}></button>
           </div>
         )}
-        <div style={{ fontSize:13, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:600 }}>{ROLE_MAP[user.role]||"Bach Tribe"}</div>
-        <div style={{ fontSize:11, color:`rgba(45,10,24,0.5)`, fontFamily:"'Nunito',sans-serif", marginTop:4 }}>{user.email}</div>
+        <div style={{ fontSize:13, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:600 }}>{ROLE_MAP[user.role]||"Bach Tribe"}</div>
+        <div style={{ fontSize:11, color:`rgba(45,10,24,0.5)`, fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:4 }}>{user.email}</div>
       </div>
 
       {/*  Stats  */}
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:16 }}>
         {[["Cart Items",String(cart.length)],["Experiences Saved",String(expSaved)]].map(([label,val])=>(
           <div key={label} style={{ ...C, textAlign:"center", padding:"14px 10px" }}>
-            <div style={{ fontSize:20, fontWeight:900, color:HOT, fontFamily:"'Playfair Display',Georgia,serif" }}>{val}</div>
-            <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Nunito',sans-serif" }}>{label}</div>
+            <div style={{ fontSize:20, fontWeight:900, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{val}</div>
+            <div style={{ fontSize:10, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{label}</div>
           </div>
         ))}
       </div>
@@ -634,10 +634,10 @@ export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSi
         <div key={i} style={{ ...C, marginBottom:10, display:"flex", alignItems:"center", gap:14 }}>
           <div style={{ fontSize:30 }}>{t.emoji}</div>
           <div style={{ flex:1 }}>
-            <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{t.dest} Bachelorette</div>
-            <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:2, opacity:0.75 }}>{t.dates} · {t.members} ladies</div>
+            <div style={{ fontSize:14, fontWeight:400, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{t.dest} Bachelorette</div>
+            <div style={{ fontSize:12, color:HOT, fontFamily:"'Plus Jakarta Sans',sans-serif", marginTop:2, opacity:0.75 }}>{t.dates} · {t.members} ladies</div>
           </div>
-          <div style={{ fontSize:11, fontWeight:700, padding:"4px 10px", borderRadius:20, background:t.status==="Planning"?`rgba(46,125,50,0.1)`:SOFT, color:t.status==="Planning"?GREEN:HOT, border:`1px solid ${t.status==="Planning"?"rgba(46,125,50,0.25)":MID}`, fontFamily:"'Nunito',sans-serif" }}>{t.status}</div>
+          <div style={{ fontSize:11, fontWeight:700, padding:"4px 10px", borderRadius:20, background:t.status==="Planning"?`rgba(46,125,50,0.1)`:SOFT, color:t.status==="Planning"?GREEN:HOT, border:`1px solid ${t.status==="Planning"?"rgba(46,125,50,0.25)":MID}`, fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{t.status}</div>
         </div>
       ))}
 
@@ -678,8 +678,8 @@ export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSi
       ].map(([label,sub,hasToggle,isOn])=>(
         <div key={label} style={{ ...C, marginBottom:8, display:"flex", alignItems:"center", gap:14, cursor:"pointer" }}>
           <div style={{ flex:1 }}>
-            <div style={{ fontSize:13, fontWeight:600, fontFamily:"'Nunito',sans-serif", color:DARK }}>{label}</div>
-            <div style={{ fontSize:11, color:"#bbb", fontFamily:"'Nunito',sans-serif" }}>{sub}</div>
+            <div style={{ fontSize:13, fontWeight:600, fontFamily:"'Plus Jakarta Sans',sans-serif", color:DARK }}>{label}</div>
+            <div style={{ fontSize:11, color:"#bbb", fontFamily:"'Plus Jakarta Sans',sans-serif" }}>{sub}</div>
           </div>
           {hasToggle
             ? <div style={{ width:40, height:22, borderRadius:50, background:isOn?HOT:SOFT, border:`1.5px solid ${isOn?HOT:MID}`, display:"flex", alignItems:"center", padding:2, cursor:"pointer" }}><div style={{ width:17, height:17, borderRadius:"50%", background:WHITE, marginLeft:isOn?17:0, transition:"margin 0.2s", boxShadow:"0 1px 4px rgba(0,0,0,0.15)" }} /></div>
