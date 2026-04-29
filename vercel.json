@@ -2,5 +2,9 @@
   "buildCommand": "cd src && npm install && npm run build",
   "outputDirectory": "dist",
   "installCommand": "echo 'skip'",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)",     "destination": "/index.html" }
+  ]
 }
