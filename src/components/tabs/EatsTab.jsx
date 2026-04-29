@@ -4013,6 +4013,7 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
   const [category,   setCategory]   = useState("all");
   const [results,    setResults]    = useState(() => initialCity ? (RESTAURANTS[initialCity] || DEFAULT_RESTAURANTS) : null);
   const [selected,   setSelected]   = useState(null);  // restaurant detail view
+  const [showCityPicker, setShowCityPicker] = useState(!initialCity);
 
   const selectedDest = DESTS.find(d => d.id === city);
 
@@ -4049,13 +4050,25 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
 
       {/* Search form */}
       <div style={{ ...C, marginBottom:12 }}>
-        <div style={labelStyle}>Destination</div>
-        <select value={city} onChange={e=>{ const v=e.target.value; setCity(v); setResults(v ? RESTAURANTS[v] || DEFAULT_RESTAURANTS : null); }} style={{ ...inputStyle, appearance:"none" }}>
-          <option value="">Choose a city…</option>
-          {DESTS.filter(d => d.id !== "all").map(d => (
-            <option key={d.id} value={d.id}>{d.name}</option>
-          ))}
-        </select>
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:6 }}>
+          <div style={labelStyle}>Destination</div>
+          {city && !showCityPicker && (
+            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
+          )}
+        </div>
+        {city && !showCityPicker ? (
+          <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
+            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || "📍"}</span>
+            <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
+          </div>
+        ) : (
+          <select value={city} onChange={e=>{ const v=e.target.value; setCity(v); setShowCityPicker(false); setResults(v ? RESTAURANTS[v] || DEFAULT_RESTAURANTS : null); }} style={{ ...inputStyle, appearance:"none" }}>
+            <option value="">Choose a city…</option>
+            {DESTS.filter(d => d.id !== "all").map(d => (
+              <option key={d.id} value={d.id}>{d.name}</option>
+            ))}
+          </select>
+        )}
       </div>
 
       <div style={{ ...C, marginBottom:12, display:"flex", gap:10, overflow:"hidden" }}>

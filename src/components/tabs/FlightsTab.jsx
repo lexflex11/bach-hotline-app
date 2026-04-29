@@ -58,6 +58,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
   const [depTime,  setDepTime]    = useState("ANYTIME");
   const [retTime,  setRetTime]    = useState("ANYTIME");
   const [dest,     setDest]       = useState(initialDest || null);
+  const [showDestPicker, setShowDestPicker] = useState(!initialDest);
   const [section,  setSection]    = useState("us"); // "us" | "intl"
   const [showResults, setShowResults] = useState(false);
   const [detailOpen,  setDetailOpen]  = useState(false);
@@ -123,22 +124,39 @@ export default function FlightsTab({ groupSize, initialDest }) {
 
       {/* ── STEP 2 — Destination ── */}
       <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>
-          Where are you going?
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>
+            Where are you going?
+          </div>
+          {dest && !showDestPicker && (
+            <button onClick={()=>setShowDestPicker(true)} style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",background:"none",border:"none",cursor:"pointer",textDecoration:"underline",padding:0}}>
+              Change
+            </button>
+          )}
         </div>
-        <select
-          value={dest || ""}
-          onChange={e => setDest(e.target.value || null)}
-          style={{width:"100%",padding:"10px 12px",borderRadius:10,border:`1.5px solid ${BORDER}`,fontFamily:"'Nunito',sans-serif",fontSize:13,color:DARK,background:WHITE,appearance:"none",cursor:"pointer"}}
-        >
-          <option value="">Choose a city…</option>
-          <optgroup label="US Cities">
-            {usDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
-          </optgroup>
-          <optgroup label="International">
-            {intlDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
-          </optgroup>
-        </select>
+        {dest && !showDestPicker ? (
+          <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",borderRadius:10,border:`1.5px solid ${HOT}`,background:SOFT}}>
+            <span style={{fontSize:18}}>{DESTS.find(d=>d.id===dest)?.emoji || "📍"}</span>
+            <div>
+              <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{DESTS.find(d=>d.id===dest)?.name}</div>
+              <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>{groupSize} travelers</div>
+            </div>
+          </div>
+        ) : (
+          <select
+            value={dest || ""}
+            onChange={e => { setDest(e.target.value || null); setShowDestPicker(false); }}
+            style={{width:"100%",padding:"10px 12px",borderRadius:10,border:`1.5px solid ${BORDER}`,fontFamily:"'Nunito',sans-serif",fontSize:13,color:DARK,background:WHITE,appearance:"none",cursor:"pointer"}}
+          >
+            <option value="">Choose a city…</option>
+            <optgroup label="US Cities">
+              {usDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </optgroup>
+            <optgroup label="International">
+              {intlDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </optgroup>
+          </select>
+        )}
       </div>
 
       {/* ── STEP 3 — Dates & Times ── */}

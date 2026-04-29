@@ -246,6 +246,7 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
   const [groupSize,  setGroupSize] = useState(initialGroupSize || 8);
   const [results,    setResults]   = useState(() => initialCity ? (EXPERIENCES[initialCity] || null) : null);
   const [selected,   setSelected]  = useState(null);   // detail view
+  const [showCityPicker, setShowCityPicker] = useState(!initialCity);
 
   const savedKey = user ? `bh_exp_saved_${user.id}` : null;
   const [saved, setSaved] = useState(() => {
@@ -315,13 +316,25 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
 
       {/* Destination */}
       <div style={{ ...C, marginBottom:12 }}>
-        <div style={labelStyle}>Destination</div>
-        <select value={city} onChange={e=>{ setCity(e.target.value); setResults(null); }} style={{ ...inputStyle, appearance:"none" }}>
-          <option value="">Choose a city…</option>
-          {DESTS.filter(d => d.id !== "all").map(d => (
-            <option key={d.id} value={d.id}>{d.name}</option>
-          ))}
-        </select>
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:6 }}>
+          <div style={labelStyle}>Destination</div>
+          {city && !showCityPicker && (
+            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
+          )}
+        </div>
+        {city && !showCityPicker ? (
+          <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
+            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || "📍"}</span>
+            <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
+          </div>
+        ) : (
+          <select value={city} onChange={e=>{ setCity(e.target.value); setShowCityPicker(false); setResults(null); }} style={{ ...inputStyle, appearance:"none" }}>
+            <option value="">Choose a city…</option>
+            {DESTS.filter(d => d.id !== "all").map(d => (
+              <option key={d.id} value={d.id}>{d.name}</option>
+            ))}
+          </select>
+        )}
       </div>
 
       {/* Vibe */}

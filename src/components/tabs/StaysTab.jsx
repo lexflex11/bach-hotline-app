@@ -449,6 +449,7 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
   const [checkOut,  setCheckOut]  = useState("");
   const [results,   setResults]   = useState(() => { if (!initialCity) return null; const s = STAYS[initialCity]; return s?.length ? s.filter(x=>x.sleeps>=(initialGroupSize||8)) || s : null; });
   const [selected,  setSelected]  = useState(null);
+  const [showCityPicker, setShowCityPicker] = useState(!initialCity);
 
   const nights = (() => {
     if (!checkIn || !checkOut) return 0;
@@ -584,20 +585,35 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
 
       {/* Destination */}
       <div style={{ ...C, marginBottom: 12 }}>
-        <div style={labelStyle}>Destination</div>
-        <select
-          value={city}
-          onChange={e => { setCity(e.target.value); setResults(null); }}
-          style={{ ...inputStyle, appearance: "none" }}
-        >
-          <option value="">Choose a city…</option>
-          <optgroup label="US Cities">
-            {usDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
-          </optgroup>
-          <optgroup label="International">
-            {intlDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
-          </optgroup>
-        </select>
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:6 }}>
+          <div style={labelStyle}>Destination</div>
+          {city && !showCityPicker && (
+            <button onClick={()=>setShowCityPicker(true)} style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", background:"none", border:"none", cursor:"pointer", textDecoration:"underline", padding:0 }}>Change</button>
+          )}
+        </div>
+        {city && !showCityPicker ? (
+          <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
+            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || "📍"}</span>
+            <div>
+              <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
+              <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8 }}>{groupSize} guests</div>
+            </div>
+          </div>
+        ) : (
+          <select
+            value={city}
+            onChange={e => { setCity(e.target.value); setShowCityPicker(false); setResults(null); }}
+            style={{ ...inputStyle, appearance: "none" }}
+          >
+            <option value="">Choose a city…</option>
+            <optgroup label="US Cities">
+              {usDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </optgroup>
+            <optgroup label="International">
+              {intlDests.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </optgroup>
+          </select>
+        )}
       </div>
 
       {/* Dates */}
