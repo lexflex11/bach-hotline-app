@@ -42,13 +42,13 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, s
         {/* Group Size */}
         <div>
           <div style={{ fontSize:10, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:8 }}>Group Size</div>
-          <div style={{ display:"flex", alignItems:"center", gap:16 }}>
-            <button onClick={()=>setGroupSize(g=>Math.max(1,g-1))} style={{ width:36, height:36, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:22, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>−</button>
-            <div style={{ textAlign:"center", minWidth:60 }}>
-              <div style={{ fontSize:28, fontWeight:300, color:DARK, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1 }}>{groupSize}</div>
-              <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:3, opacity:0.75 }}>girls going</div>
+          <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+            <button onClick={()=>setGroupSize(g=>Math.max(1,g-1))} style={{ width:26, height:26, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:16, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>−</button>
+            <div style={{ textAlign:"center", minWidth:36 }}>
+              <div style={{ fontSize:18, fontWeight:300, color:DARK, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1 }}>{groupSize}</div>
+              <div style={{ fontSize:9, color:HOT, fontFamily:"'Nunito',sans-serif", marginTop:2, opacity:0.75 }}>girls going</div>
             </div>
-            <button onClick={()=>setGroupSize(g=>Math.min(50,g+1))} style={{ width:36, height:36, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:22, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>+</button>
+            <button onClick={()=>setGroupSize(g=>Math.min(50,g+1))} style={{ width:26, height:26, borderRadius:"50%", border:`1.5px solid ${BORDER}`, background:"none", fontSize:16, color:HOT, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>+</button>
           </div>
         </div>
 
