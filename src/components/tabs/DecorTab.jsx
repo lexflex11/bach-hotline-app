@@ -14,13 +14,13 @@ import { OrbitControls } from '@react-three/drei';
 import { SOFT, MID, HOT, PUNCH, DARK, BORDER, WHITE } from '../../constants/colors.js';
 import { BP, BS } from '../../constants/styles.js';
 
-// ─── Packages ────────────────────────────────────────────────────────────────
+//  Packages 
 const PACKAGES = [
   {
     id: "mini",
     name: "Mini Package",
     tagline: "Glam on a budget",
-    emoji: "🎈",
+    emoji: "",
     price: "$99",
     bg: "#FFF0F6",
     border: "#E91E8C",
@@ -42,7 +42,7 @@ const PACKAGES = [
     id: "full",
     name: "Full Package",
     tagline: "Go all out — make it fun!",
-    emoji: "🪩",
+    emoji: "",
     price: "$199",
     bg: "#F8F0FF",
     border: "#9C27B0",
@@ -65,7 +65,7 @@ const PACKAGES = [
     id: "brides-room",
     name: "Bride's Room",
     tagline: "A room fit for a queen",
-    emoji: "👰",
+    emoji: "",
     price: "$149",
     bg: "#f9f9f9",
     border: "#C0C0C0",
@@ -87,7 +87,7 @@ const PACKAGES = [
     id: "pool",
     name: "Pool Decor",
     tagline: "Soak up the bach life",
-    emoji: "🏊",
+    emoji: "",
     price: "$129",
     bg: "#F0F8FF",
     border: "#29B6F6",
@@ -107,7 +107,7 @@ const PACKAGES = [
   },
 ];
 
-// ─── Decoration overlays ──────────────────────────────────────────────────────
+//  Decoration overlays 
 function ClassicOverlay({ vibe }) {
   const [c1, c2, c3, c4] = vibe.colors;
   const balloons = [
@@ -142,7 +142,7 @@ function ClassicOverlay({ vibe }) {
       </div>
       {/* Ring accent */}
       <div style={{position:"absolute",top:"7%",left:"50%",marginLeft:116,fontSize:26,
-        filter:"drop-shadow(2px 3px 6px rgba(0,0,0,0.3))"}}>💍</div>
+        filter:"drop-shadow(2px 3px 6px rgba(0,0,0,0.3))"}}></div>
       {/* Floor balloons */}
       {balloons.map((b,i)=>(
         <div key={i} style={{
@@ -203,7 +203,7 @@ function PinkOverlay({ vibe }) {
         background:"linear-gradient(0deg,rgba(0,0,0,0.22),transparent)",
         display:"flex",alignItems:"flex-end",justifyContent:"center",gap:14,paddingBottom:8,
       }}>
-        {["🥂","🎂","🌸","🥂","🌸","🎂","🥂"].map((e,i)=>(
+        {["","","","","","",""].map((e,i)=>(
           <span key={i} style={{fontSize:20,filter:"drop-shadow(0 2px 4px rgba(0,0,0,0.4))"}}>{e}</span>
         ))}
       </div>
@@ -224,7 +224,7 @@ function BohoOverlay({ vibe }) {
             width:`${55+Math.sin(i*0.9)*28}%`,transform:`rotate(${-14+i*2.5}deg)`,
             transformOrigin:"left center",marginBottom:i%3===0?5:1}}/>
         ))}
-        <span style={{fontSize:26,marginBottom:-4,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>🌾</span>
+        <span style={{fontSize:26,marginBottom:-4,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}></span>
       </div>
       {/* Pampas right */}
       <div style={{position:"absolute",bottom:0,right:0,width:"16%",height:"65%",display:"flex",flexDirection:"column",justifyContent:"flex-end",alignItems:"flex-end",paddingRight:6,gap:2}}>
@@ -233,7 +233,7 @@ function BohoOverlay({ vibe }) {
             width:`${55+Math.sin(i*0.9)*28}%`,transform:`rotate(${14-i*2.5}deg)`,
             transformOrigin:"right center",marginBottom:i%3===0?5:1}}/>
         ))}
-        <span style={{fontSize:26,marginBottom:-4,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>🌾</span>
+        <span style={{fontSize:26,marginBottom:-4,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}></span>
       </div>
       {/* Gold BRIDE balloons */}
       <div style={{position:"absolute",top:"10%",left:"50%",transform:"translateX(-50%)",display:"flex",gap:7,zIndex:10}}>
@@ -251,14 +251,14 @@ function BohoOverlay({ vibe }) {
       {/* Champagne + florals */}
       <div style={{position:"absolute",bottom:"8%",left:"50%",transform:"translateX(-50%)",textAlign:"center"}}>
         <div style={{display:"flex",gap:6,justifyContent:"center"}}>
-          {["🥂","🥂","🥂"].map((e,i)=><span key={i} style={{fontSize:22,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>{e}</span>)}
+          {["","",""].map((e,i)=><span key={i} style={{fontSize:22,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>{e}</span>)}
         </div>
         <div style={{display:"flex",gap:10,justifyContent:"center",marginTop:3}}>
-          {["🌸","✨","🌸"].map((e,i)=><span key={i} style={{fontSize:18}}>{e}</span>)}
+          {["","",""].map((e,i)=><span key={i} style={{fontSize:18}}>{e}</span>)}
         </div>
       </div>
-      <div style={{position:"absolute",bottom:"10%",left:"22%",fontSize:18}}>🕯️</div>
-      <div style={{position:"absolute",bottom:"10%",right:"22%",fontSize:18}}>🕯️</div>
+      <div style={{position:"absolute",bottom:"10%",left:"22%",fontSize:18}}></div>
+      <div style={{position:"absolute",bottom:"10%",right:"22%",fontSize:18}}></div>
     </>
   );
 }
@@ -266,7 +266,7 @@ function BohoOverlay({ vibe }) {
 // Pool overlay — floats, foil letters, outdoor balloon poofs
 function PoolOverlay({ vibe }) {
   const [c1, c2, c3, c4] = vibe.colors;
-  const floatEmojis = ["🦩","🦢","🍉","🦄"];
+  const floatEmojis = ["","","",""];
   const poof = [
     {l:"4%",b:"18%",s:48},{l:"16%",b:"22%",s:42},{l:"72%",b:"20%",s:46},{l:"84%",b:"16%",s:50},
   ];
@@ -305,7 +305,7 @@ function PoolOverlay({ vibe }) {
       </div>
       {/* Drink pouches */}
       <div style={{position:"absolute",bottom:"14%",right:"10%",display:"flex",gap:6}}>
-        {["🍹","🍹","🍹"].map((e,i)=>(
+        {["","",""].map((e,i)=>(
           <span key={i} style={{fontSize:20,filter:"drop-shadow(1px 2px 4px rgba(0,0,0,0.3))"}}>{e}</span>
         ))}
       </div>
@@ -322,9 +322,9 @@ function DecorationOverlay({ pkg, vibe }) {
   return null;
 }
 
-// ─── Balloon Garland Builder ──────────────────────────────────────────────────
+//  Balloon Garland Builder 
 const BALLOON_COLORS = [
-  // ── Pinks / Blush / Rose ──────────────────────────────────────────────────
+  //  Pinks / Blush / Rose 
   { id:"blush",            label:"Blush",              color:"#F4A7B9", dot:"#F4A7B9" },
   { id:"cameo",            label:"Cameo",              color:"#E8B4B8", dot:"#E8B4B8" },
   { id:"romey",            label:"Romey",              color:"#F5B8A0", dot:"#F5B8A0" },
@@ -340,20 +340,20 @@ const BALLOON_COLORS = [
   { id:"crystal-magenta",  label:"Crystal Magenta",    color:"#D9148A", dot:"#D9148A" },
   { id:"crystal-burgundy", label:"Crystal Burgundy",   color:"#A31045", dot:"#A31045" },
   { id:"sangria",          label:"Sangria",            color:"#7D2248", dot:"#7D2248" },
-  // ── Reds ─────────────────────────────────────────────────────────────────
+  //  Reds 
   { id:"scarlett",              label:"Scarlett",            color:"#CC2936", dot:"#CC2936" },
   { id:"samba",                 label:"Samba",               color:"#B8001F", dot:"#B8001F" },
   { id:"red",                   label:"Red",                 color:"#E8112D", dot:"#E8112D" },
   { id:"crystal-red",           label:"Crystal Red",         color:"#D7282F", dot:"#D7282F" },
   { id:"metallic-starfire-red", label:"Metallic Starfire Red", color:"#C8002D", dot:"#C8002D" },
-  // ── Oranges / Warm Tones ─────────────────────────────────────────────────
+  //  Oranges / Warm Tones 
   { id:"aloha",            label:"Aloha",              color:"#FF8C69", dot:"#FF8C69" },
   { id:"metallic-rose-gold",label:"Metallic Rose Gold",color:"#E8937B", dot:"#E8937B" },
   { id:"burnt-orange",     label:"Burnt Orange",       color:"#D4541C", dot:"#D4541C" },
   { id:"orange",           label:"Orange",             color:"#FF6B1A", dot:"#FF6B1A" },
   { id:"cheeky",           label:"Cheeky",             color:"#FF9B7A", dot:"#FF9B7A" },
   { id:"terracotta",       label:"Terracotta",         color:"#C4956A", dot:"#C4956A" },
-  // ── Yellows ──────────────────────────────────────────────────────────────
+  //  Yellows 
   { id:"lemonade",         label:"Lemonade",           color:"#FFEA5A", dot:"#FFEA5A" },
   { id:"crystal-yellow",   label:"Crystal Yellow",     color:"#EFEF1E", dot:"#EFEF1E" },
   { id:"yellow",           label:"Yellow",             color:"#FFE800", dot:"#FFE800" },
@@ -361,7 +361,7 @@ const BALLOON_COLORS = [
   { id:"mustard",          label:"Mustard",            color:"#D4A820", dot:"#D4A820" },
   { id:"gold",             label:"Metallic Gold",      color:"#C8960C", dot:"#C8960C" },
   { id:"champagne",        label:"Champagne",          color:"#F5DEB3", dot:"#F5DEB3" },
-  // ── Greens ───────────────────────────────────────────────────────────────
+  //  Greens 
   { id:"lime-green",           label:"Lime Green",          color:"#A8D700", dot:"#A8D700" },
   { id:"fiona",                label:"Fiona",               color:"#C5D5C5", dot:"#C5D5C5" },
   { id:"green",                label:"Green",               color:"#4CAF50", dot:"#4CAF50" },
@@ -374,13 +374,13 @@ const BALLOON_COLORS = [
   { id:"empower-mint",         label:"Empower-Mint",        color:"#87C5A4", dot:"#87C5A4" },
   { id:"mint",                 label:"Mint",                color:"#80CBC4", dot:"#80CBC4" },
   { id:"sage",                 label:"Sage",                color:"#8FAF8F", dot:"#8FAF8F" },
-  // ── Teals / Turquoise ────────────────────────────────────────────────────
+  //  Teals / Turquoise 
   { id:"metallic-teal",  label:"Metallic Teal",  color:"#007B82", dot:"#007B82" },
   { id:"teal",           label:"Teal",           color:"#00A591", dot:"#00A591" },
   { id:"sea-glass",      label:"Sea Glass",      color:"#A8D8D8", dot:"#A8D8D8" },
   { id:"seafoam",        label:"Seafoam",        color:"#68DACA", dot:"#68DACA" },
   { id:"turquoise",      label:"Turquoise",      color:"#00B5CC", dot:"#00B5CC" },
-  // ── Blues ────────────────────────────────────────────────────────────────
+  //  Blues 
   { id:"monet",                  label:"Monet",                   color:"#C5D9F0", dot:"#C5D9F0" },
   { id:"baby-blue",              label:"Baby Blue",               color:"#B8D8E8", dot:"#B8D8E8" },
   { id:"georgia",                label:"Georgia",                 color:"#7BA7BC", dot:"#7BA7BC" },
@@ -392,7 +392,7 @@ const BALLOON_COLORS = [
   { id:"navy",                   label:"Navy",                    color:"#003F7F", dot:"#003F7F" },
   { id:"naval",                  label:"Naval",                   color:"#002E6D", dot:"#002E6D" },
   { id:"metallic-midnight-blue", label:"Metallic Midnight Blue",  color:"#002366", dot:"#002366" },
-  // ── Purples ──────────────────────────────────────────────────────────────
+  //  Purples 
   { id:"peri",           label:"Peri",           color:"#7B8ED6", dot:"#7B8ED6" },
   { id:"blossom",        label:"Blossom",         color:"#CF7EB8", dot:"#CF7EB8" },
   { id:"lavender",       label:"Lavender",        color:"#C0A0D0", dot:"#C0A0D0" },
@@ -400,7 +400,7 @@ const BALLOON_COLORS = [
   { id:"purple",         label:"Purple",          color:"#9C27B0", dot:"#9C27B0" },
   { id:"plum",           label:"Plum Purple",     color:"#7F2F92", dot:"#7F2F92" },
   { id:"crystal-purple", label:"Crystal Purple",  color:"#5C1A7F", dot:"#5C1A7F" },
-  // ── Neutrals / Whites ────────────────────────────────────────────────────
+  //  Neutrals / Whites 
   { id:"white",          label:"White",           color:"#F8F8F8", dot:"#E8E8E8" },
   { id:"sugar",          label:"Sugar",           color:"#FFF0F5", dot:"#F0E0E8" },
   { id:"crystal-clear",  label:"Crystal Clear",   color:"#DFF0F8", dot:"#C8E0EE" },
@@ -408,7 +408,7 @@ const BALLOON_COLORS = [
   { id:"silver",         label:"Metallic Silver", color:"#C0C0C0", dot:"#B0B0B0" },
   { id:"gray-smoke",     label:"Gray Smoke",      color:"#888888", dot:"#888888" },
   { id:"black",          label:"Black",           color:"#1A1A1A", dot:"#111"    },
-  // ── Browns / Earthy ──────────────────────────────────────────────────────
+  //  Browns / Earthy 
   { id:"lace",           label:"Lace",            color:"#F5ECD7", dot:"#EAD8BE" },
   { id:"muse",           label:"Muse",            color:"#C8A882", dot:"#C8A882" },
   { id:"stone",          label:"Stone",           color:"#B5A898", dot:"#B5A898" },
@@ -435,11 +435,11 @@ const GARLAND_BALLOONS = [
 
 function PatternDots() { return null; }
 
-// ── 3D Garland Preview ────────────────────────────────────────────────────────
+//  3D Garland Preview 
 // Two distinct clusters (upper-left + lower-right) joined by a narrow bridge
 // [x, y, z, radius, colorIndex]
 const GARLAND_3D_LAYOUT = [
-  // ══ CLUSTER 1 — upper-left ═══════════════════════════════════════════════
+  //  CLUSTER 1 — upper-left 
   // XL heroes
   [-3.0,  0.8,  0.2, 1.22, 0],
   [-1.6,  1.7, -0.2, 1.10, 1],
@@ -472,7 +472,7 @@ const GARLAND_3D_LAYOUT = [
   [-3.0, -0.6,  0.0, 0.26, 3],
   [-1.6, -0.6, -0.1, 0.26, 4],
 
-  // ══ BRIDGE — narrow spine connecting the two clusters ════════════════════
+  //  BRIDGE — narrow spine connecting the two clusters 
   [ 0.2,  0.1,  0.2, 0.75, 0],
   [ 1.0,  0.5, -0.2, 0.72, 1],
   [ 1.6, -0.2,  0.2, 0.70, 2],
@@ -483,7 +483,7 @@ const GARLAND_3D_LAYOUT = [
   [ 2.1, -0.7, -0.1, 0.34, 1],
   [-0.3, -0.6,  0.1, 0.34, 2],
 
-  // ══ CLUSTER 2 — lower-right ══════════════════════════════════════════════
+  //  CLUSTER 2 — lower-right 
   // XL heroes
   [ 2.9, -1.0,  0.2, 1.20, 3],
   [ 4.1, -0.2, -0.2, 1.10, 4],
@@ -512,7 +512,7 @@ const GARLAND_3D_LAYOUT = [
   [ 2.4, -3.1, -0.1, 0.26, 2],
   [ 1.4, -2.5,  0.1, 0.26, 3],
 
-  // ══ TINY GAP FILLERS ═════════════════════════════════════════════════════
+  //  TINY GAP FILLERS 
   [-1.8,  0.1,  0.0, 0.16, 4],
   [-2.5,  0.1,  0.0, 0.16, 0],
   [-0.6,  0.1,  0.0, 0.16, 1],
@@ -608,21 +608,21 @@ function GarlandPreview({ selectedColors, arrangement }) {
         </Canvas>
       </div>
       <div style={{textAlign:"center",fontSize:10,color:"#bbb",fontFamily:"'Nunito',sans-serif",padding:"5px 0 6px",background:bg,letterSpacing:"0.5px"}}>
-        ✦ Drag to rotate 360° ✦
+         Drag to rotate 360° 
       </div>
     </div>
   );
 }
 
-// ─── Tableware data ───────────────────────────────────────────────────────────
-// 💡 TO ADD YOUR PRODUCT PHOTOS: replace `image: null` with the URL of your photo.
+//  Tableware data 
+//  TO ADD YOUR PRODUCT PHOTOS: replace `image: null` with the URL of your photo.
 //    Option A – Host on Squarespace: upload the image to your Squarespace Media folder,
 //               then right-click the image → Copy Image Address, and paste it here, e.g.:
 //               image: "https://images.squarespace-cdn.com/content/.../your-photo.jpg"
 //    Option B – Any direct image link works (Google Drive public link, Dropbox, etc.)
 //    If image is null, a color-matched placeholder shape is shown instead.
 export const TABLEWARE = [
-  // ── Plates (real products from bachhotlinesupplies.etsy.com) ────────────────
+  //  Plates (real products from bachhotlinesupplies.etsy.com) 
   {
     id:"plate-xo", type:"plate", name:"XO Plates",
     desc:"Show your love in style with these adorable XO paper plates. A chic design that is perfect for serving appetizers, desserts, or snacks at your event.",
@@ -1546,7 +1546,7 @@ export const TABLEWARE = [
     tags:["blue","orange","red","black","navy"],
     etsyUrl:"https://bachhotline.squarespace.com/decorations/p/fire-flames-checker-plates",
   },
-  // ── Napkins ───────────────────────────────────────────────────────────────────
+  //  Napkins 
   {
     id:"napkin-black-heart", type:"napkin", name:"Mini Heart Napkins",
     desc:"Love is in the air and it is ready to be served with these sweet little details! Hand drawn with love, subtle, and style.",
@@ -2348,7 +2348,7 @@ export const TABLEWARE = [
     tags:["blue","baby-blue","monet","georgia","blue-slate","navy","crystal-sapphire","silver","gray-smoke","fog","white","crystal-clear","sugar"],
   },
 
-  // ── Cups ─────────────────────────────────────────────────────────────────────
+  //  Cups 
   {
     id:"cup-pink-lemonade", type:"cup", name:"Pink Lemonade Cups",
     desc:"Sip happy with our pink lemonade cups. Bright, bold, and full of fun.",
@@ -2683,7 +2683,7 @@ export const TABLEWARE = [
     etsyUrl:"https://bachhotlinesupplies.etsy.com",
   },
 
-  // ── Foil Balloons ─────────────────────────────────────────────────────────────
+  //  Foil Balloons 
 
 
 
@@ -3567,7 +3567,7 @@ export const TABLEWARE = [
     tags:["blue","baby-blue","monet","teal","white","crystal-clear","pastel","lavender","silver"],
   },
 
-  // ── Treat Bags ────────────────────────────────────────────────────────────────
+  //  Treat Bags 
   {
     id:"treatbag-envelope-boxes", type:"treatbag", name:"Envelope Treat Boxes",
     desc:"Party ready and totally cute! Fill these bachelorette treat boxes with fun favors to keep the celebration going.",
@@ -3653,7 +3653,7 @@ export const TABLEWARE = [
     tags:["black","white","silver","crystal-clear","dark","glam","bachelorette","retro"],
   },
 
-  // ── Banners & Backdrops ───────────────────────────────────────────────────────
+  //  Banners & Backdrops 
   {
     id:"banner-star", type:"banner", name:"Star Banner",
     desc:"Written in the stars. This banner brings cosmic sparkle to bachelorette nights and party perfect moments.",
@@ -3705,7 +3705,7 @@ export const TABLEWARE = [
     tags:["hotpink","pink","baby-pink","blush","iridescent","silver","glam","bachelorette","bride"],
   },
 
-  // ── Confetti ──────────────────────────────────────────────────────────────────
+  //  Confetti 
   {
     id:"confetti-whimsy", type:"confetti", name:"Whimsy Confetti",
     desc:"Make it pop with our whimsy confetti! Hand pressed; adds instant party fun.",
@@ -4077,7 +4077,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
             borderRadius:20,padding:"6px 0",width:"100%",
             fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",
           }}>
-            {inCart(item.id)?"✓ Added":"+ Add"}
+            {inCart(item.id)?" Added":"+ Add"}
           </button>
         </div>
       </div>
@@ -4087,7 +4087,7 @@ function TablewearRecommendations({ selectedColors, cart, setCart }) {
   return (
     <div style={{marginTop:20,paddingTop:18,borderTop:`1.5px solid ${SOFT}`}}>
       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:14}}>
-        <div style={{fontSize:16}}>🍽️</div>
+        <div style={{fontSize:16}}></div>
         <div>
           <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Matching Tableware</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.85}}>Coordinated with your garland — add to your package</div>
@@ -4207,7 +4207,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
                   {c.pattern && <PatternDots pattern={c.pattern} size={44}/>}
                   {isSel && (
                     <div style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(233,30,140,0.18)"}}>
-                      <span style={{fontSize:14,color:HOT,fontWeight:900}}>✓</span>
+                      <span style={{fontSize:14,color:HOT,fontWeight:900}}></span>
                     </div>
                   )}
                 </div>
@@ -4261,7 +4261,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
             background: SOFT, color: HOT, border: `1.5px solid ${HOT}`,
           } : {}),
         }}>
-          {cart.some(c=>c.id===`garland-${arrangement}`) ? "✓ Garland Added to Package" : "Add Garland to My Package"}
+          {cart.some(c=>c.id===`garland-${arrangement}`) ? " Garland Added to Package" : "Add Garland to My Package"}
         </button>
       )}
       <div style={{height:20}}/>
@@ -4270,7 +4270,7 @@ function GarlandBuilder({ cart, setCart, setTab, selected, setSelected }) {
   );
 }
 
-// ─── Reusable Carousel ────────────────────────────────────────────────────────
+//  Reusable Carousel 
 function Carousel({ items, renderItem }) {
   const [page, setPage] = useState(0);
   const perPage = 3;
@@ -4310,7 +4310,7 @@ function Carousel({ items, renderItem }) {
   );
 }
 
-// ─── Product Step ─────────────────────────────────────────────────────────────
+//  Product Step 
 function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, cart, setCart }) {
   const mobile = useIsMobile();
   const items = TABLEWARE.filter(i => i.type === type);
@@ -4386,7 +4386,7 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
             border:added?`1.5px solid ${HOT}`:"none",
             borderRadius:20, padding:"5px 0", width:"100%",
             fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-          }}>{added ? "✓ Added" : "+ Add"}</button>
+          }}>{added ? " Added" : "+ Add"}</button>
         </div>
       </div>
     );
@@ -4412,8 +4412,8 @@ function ProductStep({ stepNum, emoji, title, subtitle, type, selectedColors, ca
   );
 }
 
-// ─── Confetti Step (with size selector) ──────────────────────────────────────
-// ─── Party Accessories Step ───────────────────────────────────────────────────
+//  Confetti Step (with size selector) 
+//  Party Accessories Step 
 export const PARTY_ACCESSORIES = [
   {
     id:"acc-kick-the-dick",
@@ -4965,7 +4965,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
             border:added?`1.5px solid ${HOT}`:"none",
             borderRadius:20, padding:"5px 0", width:"100%",
             fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-          }}>{added ? "✓ Added" : "+ Add"}</button>
+          }}>{added ? " Added" : "+ Add"}</button>
         </div>
       </div>
     );
@@ -4981,7 +4981,7 @@ function PartyAccessoriesStep({ stepNum, cart, setCart }) {
       </div>
       {PARTY_ACCESSORIES.length === 0 ? (
         <div style={{textAlign:"center",padding:"28px 20px",background:SOFT,borderRadius:16}}>
-          <div style={{fontSize:28,marginBottom:8}}>🎀</div>
+          <div style={{fontSize:28,marginBottom:8}}></div>
           <div style={{fontSize:13,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:4}}>Coming Soon</div>
           <div style={{fontSize:11,color:"#aaa",fontFamily:"'Nunito',sans-serif",lineHeight:1.5}}>Party accessories are being added. Check back soon!</div>
         </div>
@@ -5061,7 +5061,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
             background:added?SOFT:`#f496c3`, color:added?HOT:WHITE, border:added?`1.5px solid ${HOT}`:"none",
             borderRadius:20, padding:"5px 0", width:"100%",
             fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-          }}>{added ? "✓ Added" : "+ Add"}</button>
+          }}>{added ? " Added" : "+ Add"}</button>
         </div>
       </div>
     );
@@ -5087,7 +5087,7 @@ function ConfettiStep({ stepNum, selectedColors, cart, setCart }) {
   );
 }
 
-// ─── Foil Balloon Step ────────────────────────────────────────────────────────
+//  Foil Balloon Step 
 function FoilStep({ stepNum, selectedColors, cart, setCart }) {
   const items = TABLEWARE.filter(i => i.type === "foil");
   const scored = items.map(item => ({
@@ -5161,7 +5161,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
       const btnBg = hasNums ? SOFT : `#f496c3`;
       const btnColor = hasNums ? HOT : WHITE;
       const btnBorder = hasNums ? `1.5px solid ${HOT}` : "none";
-      const btnLabel = hasNums ? `#${selectedNums.join(", ")} ✓` : "Pick Numbers";
+      const btnLabel = hasNums ? `#${selectedNums.join(", ")} ` : "Pick Numbers";
       return (
         <div key={item.id} style={{background:WHITE,borderRadius:"0 0 18px 18px",boxShadow:shadow,transition:"all 0.2s",display:"flex",flexDirection:"column"}}>
           <div style={{position:"relative",width:"100%",aspectRatio:"1/1",overflow:"hidden",flexShrink:0}}>
@@ -5205,7 +5205,7 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
             border:added?`1.5px solid ${HOT}`:"none",
             borderRadius:20, padding:"5px 0", width:"100%",
             fontFamily:"'Nunito',sans-serif", fontSize:9, fontWeight:700, cursor:"pointer",
-          }}>{added ? "✓ Added" : "+ Add"}</button>
+          }}>{added ? " Added" : "+ Add"}</button>
         </div>
       </div>
     );
@@ -5261,12 +5261,12 @@ function FoilStep({ stepNum, selectedColors, cart, setCart }) {
   );
 }
 
-// ─── Curated Themes ───────────────────────────────────────────────────────────
+//  Curated Themes 
 const CURATED_THEMES = [
   {
     id:"theme-zesty-bride",
     name:"Zesty Bride",
-    emoji:"🍋",
+    emoji:"",
     desc:"A fresh, playful mix of pinks, blues, and sunny lemon yellows for a bright, bold, and citrus sweet party.",
     colors:["#F4A7B9","#87CEEB","#FFD700","#E91E8C"],
     items:[
@@ -5284,7 +5284,7 @@ const CURATED_THEMES = [
   {
     id:"theme-flutter-glow",
     name:"Flutter & Glow",
-    emoji:"🦋",
+    emoji:"",
     desc:"Soft pastels, garden lanterns, and delicate butterflies come together for a dreamy, magical celebration.",
     colors:["#FFB6C1","#DDA0DD","#B0E0E6","#FFE4B5"],
     items:[
@@ -5301,7 +5301,7 @@ const CURATED_THEMES = [
   {
     id:"theme-deal-me-love",
     name:"Deal Me Love",
-    emoji:"🃏",
+    emoji:"",
     desc:"Bold red hues, sleek black accents, and edgy queen card details create a fierce, flirty energy for an unapologetic girls only gathering.",
     colors:["#E8112D","#1A1A1A","#F4A7B9","#E91E8C"],
     items:[
@@ -5388,10 +5388,10 @@ function CuratedThemes({ cart, setCart }) {
                     <div key={id} style={{display:"flex",alignItems:"center",gap:8,padding:"7px 10px",borderRadius:10,background:added?SOFT:WHITE,border:`1px solid ${added?HOT:BORDER}`}}>
                       {imgSrc
                         ? <img src={imgSrc} alt={item.name} style={{width:34,height:34,objectFit:"contain",borderRadius:6,background:"#fff",border:`1px solid ${BORDER}`,padding:2,boxSizing:"border-box",flexShrink:0}}/>
-                        : <div style={{width:34,height:34,borderRadius:6,background:SOFT,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>🎀</div>
+                        : <div style={{width:34,height:34,borderRadius:6,background:SOFT,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}></div>
                       }
                       <div style={{flex:1,minWidth:0}}>
-                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:400,color:added?HOT:DARK,lineHeight:1.3,overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{added?"✓ ":""}{item.name}</div>
+                        <div style={{fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:400,color:added?HOT:DARK,lineHeight:1.3,overflow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis"}}>{added?" ":""}{item.name}</div>
                         <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,color:"#aaa",marginTop:1}}>Set of {setSize}</div>
                         <div style={{fontFamily:"'Nunito',sans-serif",fontSize:10,color:"#aaa",marginTop:1}}>{item.price}</div>
                       </div>
@@ -5408,7 +5408,7 @@ function CuratedThemes({ cart, setCart }) {
                 ...BP,width:"100%",padding:"12px",fontSize:13,
                 ...(allAdded?{background:SOFT,color:HOT,border:`1.5px solid ${HOT}`}:{}),
               }}>
-                {allAdded?"✓ All Items Added":`Add ${theme.name} Set →`}
+                {allAdded?" All Items Added":`Add ${theme.name} Set →`}
               </button>
             </div>
           );
@@ -5418,7 +5418,7 @@ function CuratedThemes({ cart, setCart }) {
   );
 }
 
-// ─── Package card ─────────────────────────────────────────────────────────────
+//  Package card 
 function PackageCard({ pkg, selected, onClick }) {
   return (
     <button onClick={onClick} style={{
@@ -5436,14 +5436,14 @@ function PackageCard({ pkg, selected, onClick }) {
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+//  Main component 
 export default function DecorTab({ groupSize, cart, setCart, setTab, openCart }) {
   const [selected, setSelected] = useState([]); // shared garland colors → drives sort order in all steps
 
   return (
     <div style={{paddingBottom:32}}>
 
-      {/* ── Hero ── */}
+      {/*  Hero  */}
       <div style={{
         borderRadius:22,padding:"22px 18px",marginBottom:18,textAlign:"center",
         background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`,
@@ -5457,19 +5457,19 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
         </p>
       </div>
 
-      {/* ── Step 1: Balloon Garland ── */}
+      {/*  Step 1: Balloon Garland  */}
       <GarlandBuilder
         cart={cart||[]} setCart={setCart||(_=>{})} setTab={setTab}
         selected={selected} setSelected={setSelected}
       />
 
-      {/* ── Step 2: Foil Balloons ── */}
+      {/*  Step 2: Foil Balloons  */}
       <FoilStep
         stepNum={2} selectedColors={selected}
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Step 3: Plates ── */}
+      {/*  Step 3: Plates  */}
       <ProductStep
         stepNum={3} emoji="" title="Pick Your Plates"
         subtitle=""
@@ -5477,7 +5477,7 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Step 4: Cups ── */}
+      {/*  Step 4: Cups  */}
       <ProductStep
         stepNum={4} emoji="" title="Pick Your Cups"
         subtitle=""
@@ -5485,7 +5485,7 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Step 5: Napkins ── */}
+      {/*  Step 5: Napkins  */}
       <ProductStep
         stepNum={5} emoji="" title="Pick Your Napkins"
         subtitle=""
@@ -5493,13 +5493,13 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Step 6: Confetti ── */}
+      {/*  Step 6: Confetti  */}
       <ConfettiStep
         stepNum={6} selectedColors={selected}
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Step 7: Treat Bags ── */}
+      {/*  Step 7: Treat Bags  */}
       <ProductStep
         stepNum={7} emoji="" title="Pick Your Treat Bags"
         subtitle=""
@@ -5507,7 +5507,7 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Step 8: Banners & Backdrops ── */}
+      {/*  Step 8: Banners & Backdrops  */}
       <ProductStep
         stepNum={8} emoji="" title="Banners & Backdrops"
         subtitle=""
@@ -5515,19 +5515,19 @@ export default function DecorTab({ groupSize, cart, setCart, setTab, openCart })
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Step 9: Party Accessories ── */}
+      {/*  Step 9: Party Accessories  */}
       <PartyAccessoriesStep
         stepNum={9}
         cart={cart||[]} setCart={setCart||(_=>{})}
       />
 
-      {/* ── Curated Themes ── */}
+      {/*  Curated Themes  */}
       <CuratedThemes cart={cart||[]} setCart={setCart||(_=>{})}/>
 
-      {/* ── Cart Summary ── */}
+      {/*  Cart Summary  */}
       {(cart||[]).length > 0 && (
         <div style={{marginTop:28,padding:"16px",borderRadius:18,background:`linear-gradient(135deg,${SOFT},${MID})`,border:`1.5px solid ${MID}`}}>
-          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🎉 Your Party Package</div>
+          <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}> Your Party Package</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:12,opacity:0.85}}>Everything you've added — one checkout</div>
           {cart.map(item=>(
             <div key={item.id} style={{display:"flex",justifyContent:"space-between",marginBottom:6,fontFamily:"'Nunito',sans-serif",fontSize:12}}>

@@ -18,7 +18,7 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, s
         <p style={{ fontSize:13, color:HOT, fontFamily:"'Nunito',sans-serif", margin:"0 0 6px", opacity:0.85 }}>Flights · Stays · Eats · Decor</p>
       </div>
 
-      {/* ── Trip Setup ── */}
+      {/*  Trip Setup  */}
       <div style={{ ...C, marginBottom:16 }}>
         <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:14 }}>
           Plan your trip
@@ -56,11 +56,11 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, s
 
       <SH title="What do you need?" weight={300} />
       {[
-        { icon:"✈️", label:"Group Flights",      sub:"Seamless travel for your entire crew",          tab:"flights"      },
-        { icon:"🏠", label:"Accommodations",     sub:"Stay together in style",                        tab:"stays"        },
-        { icon:"🍽️", label:"Bites & Sips",       sub:"Top spots for every vibe from day to night",   tab:"eats"         },
-        { icon:"🎉", label:"Experiences",        sub:"Curated activities for your perfect itinerary", tab:"experiences"  },
-        { icon:"🎀", label:"Party Supply Shop",  sub:"Decor, details, and party must haves",          tab:"shop"         },
+        { icon:"", label:"Group Flights",      sub:"Seamless travel for your entire crew",          tab:"flights"      },
+        { icon:"", label:"Accommodations",     sub:"Stay together in style",                        tab:"stays"        },
+        { icon:"", label:"Bites & Sips",       sub:"Top spots for every vibe from day to night",   tab:"eats"         },
+        { icon:"", label:"Experiences",        sub:"Curated activities for your perfect itinerary", tab:"experiences"  },
+        { icon:"", label:"Party Supply Shop",  sub:"Decor, details, and party must haves",          tab:"shop"         },
       ].map(item => (
         <button key={item.tab} onClick={()=>setTab(item.tab)} style={{ ...C, display:"flex", alignItems:"center", gap:14, cursor:"pointer", textAlign:"left", width:"100%", marginBottom:8 }}>
           <span style={{ fontSize:24 }}>{item.icon}</span>

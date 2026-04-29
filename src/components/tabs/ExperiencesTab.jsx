@@ -4,7 +4,7 @@ import { C, BP } from '../../constants/styles.js';
 import { DESTS } from '../../constants/data.js';
 import SH from '../ui/SH.jsx';
 
-// ─── Curated experiences per destination ──────────────────────────────────────
+//  Curated experiences per destination 
 const EXPERIENCES = {
   miami: [
     { id:"mia-1", name:"Private Yacht Charter", category:"Boat/Yacht", priceRange:"$$$$", vibe:"Luxury · Water · Group-Friendly", rating:5.0, reviews:312, tags:["boat","yacht","luxury"],
@@ -155,7 +155,7 @@ const EXPERIENCES = {
   ],
 };
 
-// ─── Experience Detail Page ───────────────────────────────────────────────────
+//  Experience Detail Page 
 function ExperienceDetail({ item, onBack, groupSize, date }) {
   const [imgIdx, setImgIdx] = useState(0);
   const imgs = item.images || [item.image];
@@ -180,7 +180,7 @@ function ExperienceDetail({ item, onBack, groupSize, date }) {
       <div style={{ marginBottom:6 }}>
         <div style={{ fontSize:22, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>{item.name}</div>
         <div style={{ display:"flex", alignItems:"center", gap:10, fontFamily:"'Nunito',sans-serif", fontSize:12 }}>
-          <span style={{ color:HOT, fontWeight:700 }}>⭐ {item.rating}</span>
+          <span style={{ color:HOT, fontWeight:700 }}> {item.rating}</span>
           <span style={{ color:"#aaa" }}>({item.reviews} reviews)</span>
           <span style={{ color:HOT }}>{item.priceRange}</span>
         </div>
@@ -238,7 +238,7 @@ function ExperienceDetail({ item, onBack, groupSize, date }) {
   );
 }
 
-// ─── Main ExperiencesTab ──────────────────────────────────────────────────────
+//  Main ExperiencesTab 
 export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSize: setGlobalGroupSize, user, initialCity }) {
   const [city,       setCity]      = useState(initialCity || "");
   const [date,       setDate]      = useState("");
@@ -324,7 +324,7 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
         </div>
         {city && !showCityPicker ? (
           <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
-            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || "📍"}</span>
+            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || ""}</span>
             <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
           </div>
         ) : (
@@ -423,7 +423,7 @@ export default function ExperiencesTab({ groupSize: initialGroupSize, setGroupSi
                   <div style={{ padding:"6px 7px 8px" }}>
                     <div style={{ fontSize:10, fontWeight:700, color:DARK, fontFamily:"'Playfair Display',Georgia,serif", lineHeight:1.25, marginBottom:3 }}>{item.name}</div>
                     <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
-                      <div style={{ fontSize:9, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:600 }}>⭐ {item.rating}</div>
+                      <div style={{ fontSize:9, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:600 }}> {item.rating}</div>
                       <div style={{ fontSize:9, color:PUNCH, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>{item.priceRange}</div>
                     </div>
                   </div>

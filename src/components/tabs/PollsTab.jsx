@@ -13,11 +13,11 @@ function getVoterId() {
 }
 
 const TEMPLATES = [
-  { label: "🌴  Where should we go?",  options: ["Nashville", "Miami", "Scottsdale", "New Orleans"] },
-  { label: "🏨  Which hotel?",          options: ["Option A", "Option B", "Option C", ""] },
-  { label: "🎉  What activity?",        options: ["Cocktail class", "Boat party", "Spa day", "Dance class"] },
-  { label: "🍽️  Restaurant vote",       options: ["Italian", "Rooftop bar", "Sushi", "BBQ"] },
-  { label: "✏️  Custom question",        options: ["", "", "", ""] },
+  { label: "  Where should we go?",  options: ["Nashville", "Miami", "Scottsdale", "New Orleans"] },
+  { label: "  Which hotel?",          options: ["Option A", "Option B", "Option C", ""] },
+  { label: "  What activity?",        options: ["Cocktail class", "Boat party", "Spa day", "Dance class"] },
+  { label: "  Restaurant vote",       options: ["Italian", "Rooftop bar", "Sushi", "BBQ"] },
+  { label: "  Custom question",        options: ["", "", "", ""] },
 ];
 
 const card = { background:WHITE, borderRadius:18, padding:"18px 16px", marginBottom:14, boxShadow:"0 2px 12px rgba(230,101,130,0.08)", border:`1.5px solid ${BORDER}` };
@@ -32,9 +32,9 @@ function SH({ title, sub }) {
 function SetupPrompt() {
   return (
     <div>
-      <SH title="Group Polls 🗳️" sub="Vote together on destinations, hotels & activities" />
+      <SH title="Group Polls " sub="Vote together on destinations, hotels & activities" />
       <div style={{ ...card, textAlign:"center", padding:"28px 20px" }}>
-        <div style={{ fontSize:40, marginBottom:12 }}>🔥</div>
+        <div style={{ fontSize:40, marginBottom:12 }}></div>
         <div style={{ fontSize:16, fontWeight:800, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:8 }}>One quick setup needed</div>
         <div style={{ fontSize:13, color:"#888", fontFamily:"'Nunito',sans-serif", lineHeight:1.6, marginBottom:20 }}>Polls use Firebase (free) to sync votes across your group in real time. Takes about 5 minutes.</div>
         <div style={{ background:SOFT, borderRadius:14, padding:"16px", marginBottom:16, textAlign:"left" }}>
@@ -63,10 +63,10 @@ function PollList({ user, onSelect, onCreateNew }) {
   }, []);
   return (
     <div>
-      <SH title="Group Polls 🗳️" sub="Vote on destinations, hotels, activities & more" />
+      <SH title="Group Polls " sub="Vote on destinations, hotels, activities & more" />
       <button onClick={onCreateNew} style={{ ...btn1, marginBottom:20 }}>+ Create a Poll</button>
       {loading ? <div style={{ textAlign:"center", padding:40, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>Loading...</div>
-        : polls.length === 0 ? <div style={{ ...card, textAlign:"center", padding:"32px 20px" }}><div style={{ fontSize:36, marginBottom:8 }}>🗳️</div><div style={{ color:"#aaa", fontFamily:"'Nunito',sans-serif", fontSize:13 }}>No polls yet! Create one and share it with your group.</div></div>
+        : polls.length === 0 ? <div style={{ ...card, textAlign:"center", padding:"32px 20px" }}><div style={{ fontSize:36, marginBottom:8 }}></div><div style={{ color:"#aaa", fontFamily:"'Nunito',sans-serif", fontSize:13 }}>No polls yet! Create one and share it with your group.</div></div>
         : polls.map(poll => {
           const total = Object.values(poll.votes||{}).reduce((s,v)=>s+v.length,0);
           const hasVoted = Object.values(poll.votes||{}).flat().includes(voterId);
@@ -79,7 +79,7 @@ function PollList({ user, onSelect, onCreateNew }) {
                   <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif" }}>{total} vote{total!==1?"s":""}</div>
                 </div>
                 <div style={{ marginLeft:10 }}>
-                  {hasVoted ? <span style={{ fontSize:11, background:SOFT, color:HOT, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Voted ✓</span>
+                  {hasVoted ? <span style={{ fontSize:11, background:SOFT, color:HOT, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Voted </span>
                     : <span style={{ fontSize:11, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"3px 10px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Vote</span>}
                 </div>
               </div>
@@ -137,20 +137,20 @@ function CreatePoll({ user, onCreated, onBack }) {
         const ref=await addDoc(collection(db,"polls"),{ question:question.trim(), tripName:tripName.trim()||"Bachelorette Poll", createdBy:user?.name||"MOH", createdAt:serverTimestamp(), options:valid.map((text,i)=>({id:`opt_${i}`,text})), votes });
         const url=`${window.location.origin}${window.location.pathname}?poll=${ref.id}`;
         setShareUrl(url); setStep(2); setCreating(false); onCreated&&onCreated(ref.id);
-      }}>{creating?"Creating...":"Create Poll & Get Link ✨"}</button>
+      }}>{creating?"Creating...":"Create Poll & Get Link "}</button>
     </div>
   );
 
   return (
     <div>
-      <SH title="Poll Created! 🎉" sub="Share the link with your group" />
+      <SH title="Poll Created! " sub="Share the link with your group" />
       <div style={{ ...card, textAlign:"center" }}>
-        <div style={{ fontSize:36, marginBottom:8 }}>🔗</div>
+        <div style={{ fontSize:36, marginBottom:8 }}></div>
         <div style={{ fontSize:13, fontFamily:"'Nunito',sans-serif", color:"#888", marginBottom:12 }}>Anyone with this link can vote!</div>
         <div style={{ background:PAGE, borderRadius:10, padding:"10px 14px", fontSize:11, fontFamily:"monospace", color:DARK, wordBreak:"break-all", marginBottom:16, border:`1px solid ${BORDER}` }}>{shareUrl}</div>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10 }}>
-          <button onClick={()=>navigator.clipboard.writeText(shareUrl)} style={btnG}>📋 Copy link</button>
-          <button onClick={()=>window.open(`sms:?body=${encodeURIComponent("Vote on my bachelorette poll! 🥂✨\n"+shareUrl)}`)} style={btn1}>💬 iMessage</button>
+          <button onClick={()=>navigator.clipboard.writeText(shareUrl)} style={btnG}> Copy link</button>
+          <button onClick={()=>window.open(`sms:?body=${encodeURIComponent("Vote on my bachelorette poll! \n"+shareUrl)}`)} style={btn1}> iMessage</button>
         </div>
       </div>
       <button onClick={()=>{ setStep(0); setQuestion(""); setOptions(["",""]); setShareUrl(""); onBack(); }} style={{ ...btnG, marginTop:8 }}>← Back to polls</button>
@@ -200,7 +200,7 @@ function VoteScreen({ pollId, onBack }) {
                 {voted&&<div style={{ position:"absolute", left:0, top:0, height:"100%", width:`${pct}%`, background:isMe?`linear-gradient(90deg,${SOFT},rgba(255,231,249,0))`:`linear-gradient(90deg,rgba(253,245,250,1),rgba(253,245,250,0))`, transition:"width 0.6s ease", borderRadius:12 }}/>}
                 <div style={{ position:"relative", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
                   <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                    {isMe&&<span>✓</span>}
+                    {isMe&&<span></span>}
                     <span style={{ fontSize:14, fontFamily:"'Nunito',sans-serif", fontWeight:isMe?700:500, color:DARK }}>{opt.text}</span>
                     {isTop&&<span style={{ fontSize:11, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"2px 8px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Leading</span>}
                   </div>
@@ -211,9 +211,9 @@ function VoteScreen({ pollId, onBack }) {
           );
         })}
         {!voted&&<div style={{ textAlign:"center", fontSize:12, color:"#bbb", fontFamily:"'Nunito',sans-serif", marginTop:8 }}>Tap an option to vote</div>}
-        {voted&&<div style={{ textAlign:"center", fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, marginTop:8 }}>You voted! Results update live 🗳️</div>}
+        {voted&&<div style={{ textAlign:"center", fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, marginTop:8 }}>You voted! Results update live </div>}
       </div>
-      <button onClick={()=>navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?poll=${pollId}`)} style={{ ...btnG, maxWidth:200, margin:"0 auto", display:"block" }}>📋 Share this poll</button>
+      <button onClick={()=>navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?poll=${pollId}`)} style={{ ...btnG, maxWidth:200, margin:"0 auto", display:"block" }}> Share this poll</button>
     </div>
   );
 }
@@ -221,7 +221,7 @@ function VoteScreen({ pollId, onBack }) {
 function AccountGate({ onSignUp }) {
   return (
     <div style={{textAlign:"center",padding:"48px 24px"}}>
-      <div style={{fontSize:48,marginBottom:16}}>🗳️</div>
+      <div style={{fontSize:48,marginBottom:16}}></div>
       <h2 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:22,fontWeight:700,color:HOT,margin:"0 0 10px"}}>Members Only</h2>
       <p style={{fontSize:13,color:"#888",fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:28}}>
         Group Polls is for the bride tribe only.<br/>Create a free account to create and vote on polls.

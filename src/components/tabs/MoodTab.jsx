@@ -17,7 +17,7 @@ export default function MoodTab({ setTab }) {
   const fileRef = useRef();
 
   const aesthetic = selected === "custom"
-    ? { id:"custom", name:customName||"My Custom Theme", emoji:"✨", vibe:customVibe||"Your unique vibe", colors:[customColors,"#FFB3D1","#FFE4F0"], palette:["Primary","Accent","Light"], outfits:[], decor:[], shots:[], hashtags:[], shopItems:[9,12,6] }
+    ? { id:"custom", name:customName||"My Custom Theme", emoji:"", vibe:customVibe||"Your unique vibe", colors:[customColors,"#FFB3D1","#FFE4F0"], palette:["Primary","Accent","Light"], outfits:[], decor:[], shots:[], hashtags:[], shopItems:[9,12,6] }
     : AESTHETICS.find(a => a.id === selected);
 
   const handleFile = e => {
@@ -55,17 +55,17 @@ export default function MoodTab({ setTab }) {
       setResult(JSON.parse(data.content.map(i => i.text || "").join("").replace(/```json|```/g, "").trim()));
     } catch (err) {
       console.error(err);
-      setResult({ headline:"Oops — try again 😅", vision:"Something went wrong. Make sure your API key is set up in Vercel.", keyPieces:[], shoppingList:[] });
+      setResult({ headline:"Oops — try again ", vision:"Something went wrong. Make sure your API key is set up in Vercel.", keyPieces:[], shoppingList:[] });
     }
     setLoading(false);
   };
 
-  // ── THEME GRID (home screen) ──────────────────────────────────────────────
+  //  THEME GRID (home screen) 
   if (!selected && !customMode) return (
     <div>
       <SH title="Vibes & Décor" sub="Pick your aesthetic — outfits, décor, AI space visualizer" />
       <div style={{fontSize:13,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.8}}>
-        Choose a theme and we'll give you the full guide — outfits, décor ideas, photo inspo, hashtags, and AI visualization of your actual space. ✨
+        Choose a theme and we'll give you the full guide — outfits, décor ideas, photo inspo, hashtags, and AI visualization of your actual space. 
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
         {AESTHETICS.map(a => (
@@ -87,7 +87,7 @@ export default function MoodTab({ setTab }) {
           style={{background:`linear-gradient(135deg,${SOFT},${MID})`,border:`2px dashed ${HOT}`,borderRadius:18,padding:"16px 14px",cursor:"pointer",textAlign:"left",transition:"all 0.2s",boxShadow:`0 2px 10px rgba(230,101,130,0.07)`}}
           onMouseEnter={e=>{e.currentTarget.style.boxShadow=`0 6px 20px rgba(230,101,130,0.18)`;e.currentTarget.style.transform="translateY(-2px)"}}
           onMouseLeave={e=>{e.currentTarget.style.boxShadow=`0 2px 10px rgba(230,101,130,0.07)`;e.currentTarget.style.transform="translateY(0)"}}>
-          <div style={{fontSize:28,marginBottom:8}}>🎨</div>
+          <div style={{fontSize:28,marginBottom:8}}></div>
           <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:HOT,marginBottom:4}}>Build Your Own</div>
           <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",lineHeight:1.4,opacity:0.8}}>Name your vibe, pick your colors, get a custom AI décor plan</div>
         </button>
@@ -95,7 +95,7 @@ export default function MoodTab({ setTab }) {
     </div>
   );
 
-  // ── CUSTOM THEME BUILDER ──────────────────────────────────────────────────
+  //  CUSTOM THEME BUILDER 
   if (customMode && !selected) return (
     <div>
       <button onClick={() => setCustomMode(false)} style={{...BG,marginBottom:16,fontSize:12,padding:"7px 14px"}}>← All Themes</button>
@@ -142,7 +142,7 @@ export default function MoodTab({ setTab }) {
         onClick={() => { if (customName && customVibe) setSelected("custom"); }}
         disabled={!customName || !customVibe}
         style={{...BP,width:"100%",padding:"13px",fontSize:14,borderRadius:14,opacity:(!customName||!customVibe)?0.4:1}}>
-        ✨ Build My Custom Theme
+         Build My Custom Theme
       </button>
       {(!customName || !customVibe) && (
         <div style={{textAlign:"center",fontSize:11,color:"#bbb",fontFamily:"'Nunito',sans-serif",marginTop:8}}>
@@ -152,7 +152,7 @@ export default function MoodTab({ setTab }) {
     </div>
   );
 
-  // ── THEME DETAIL + AI VISUALIZER ─────────────────────────────────────────
+  //  THEME DETAIL + AI VISUALIZER 
   return (
     <div>
       <button onClick={goBack} style={{...BG,marginBottom:16,fontSize:12,padding:"7px 14px"}}>← All Themes</button>
@@ -188,7 +188,7 @@ export default function MoodTab({ setTab }) {
         <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Décor Ideas</div>
         {aesthetic.decor.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
-            <span style={{color:HOT,fontSize:12}}>✦</span>
+            <span style={{color:HOT,fontSize:12}}></span>
             <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:DARK}}>{item}</div>
           </div>
         ))}
@@ -199,7 +199,7 @@ export default function MoodTab({ setTab }) {
         <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Photo Moments</div>
         {aesthetic.shots.map((item,i) => (
           <div key={i} style={{display:"flex",gap:10,marginBottom:8,alignItems:"center"}}>
-            <span style={{fontSize:14}}>📷</span>
+            <span style={{fontSize:14}}></span>
             <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:DARK}}>{item}</div>
           </div>
         ))}
@@ -215,10 +215,10 @@ export default function MoodTab({ setTab }) {
         </div>
       </div>}
 
-      {/* ── AI DÉCOR VISUALIZER ───────────────────────────────────────────── */}
+      {/*  AI DÉCOR VISUALIZER  */}
       <div style={{...C, marginBottom:12, border:`2px solid ${HOT}`, background:SOFT}}>
         <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
-          ✨ AI Décor Visualizer
+           AI Décor Visualizer
         </div>
         <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>
           Upload a photo of your party space and AI will show you exactly how to style it in the <strong>{aesthetic.name}</strong> theme.
@@ -228,24 +228,24 @@ export default function MoodTab({ setTab }) {
 
         {!photo ? (
           <button onClick={() => fileRef.current?.click()} style={{...BP,width:"100%",padding:"13px",borderRadius:14}}>
-            📷 Upload Your Space Photo
+             Upload Your Space Photo
           </button>
         ) : (
           <div>
             <img src={photo} alt="Your space" style={{width:"100%",borderRadius:12,maxHeight:180,objectFit:"cover",border:`1.5px solid ${MID}`,marginBottom:8}} />
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",fontFamily:"'Nunito',sans-serif",fontSize:13,marginBottom:12}}>
-              <span style={{color:GREEN,fontWeight:700}}>✅ Photo ready!</span>
+              <span style={{color:GREEN,fontWeight:700}}> Photo ready!</span>
               <button onClick={() => { setPhoto(null); setResult(null); }} style={{...BG,fontSize:12,padding:"4px 12px"}}>Change</button>
             </div>
             <button onClick={runAI} disabled={loading} style={{...BP,width:"100%",padding:"13px",fontSize:14,borderRadius:14,opacity:loading?0.6:1}}>
-              {loading ? "✨ Transforming your space..." : `Transform in ${aesthetic.name} Style`}
+              {loading ? " Transforming your space..." : `Transform in ${aesthetic.name} Style`}
             </button>
           </div>
         )}
 
         {loading && (
           <div style={{textAlign:"center",padding:"24px 0",color:HOT,fontFamily:"'Nunito',sans-serif",fontSize:13}}>
-            ✨ Analyzing your space and applying the {aesthetic.name} theme...
+             Analyzing your space and applying the {aesthetic.name} theme...
           </div>
         )}
 
@@ -259,7 +259,7 @@ export default function MoodTab({ setTab }) {
                 <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Key Décor Pieces</div>
                 {result.keyPieces.map((p,i) => (
                   <div key={i} style={{display:"flex",gap:8,marginBottom:6,fontFamily:"'Nunito',sans-serif",fontSize:12}}>
-                    <span style={{color:HOT}}>✦</span>
+                    <span style={{color:HOT}}></span>
                     <span style={{color:DARK,opacity:0.85}}>{p}</span>
                   </div>
                 ))}
@@ -268,21 +268,21 @@ export default function MoodTab({ setTab }) {
 
             {result.lighting && (
               <div style={{padding:"10px 12px",borderRadius:10,background:WHITE,border:`1px solid ${BORDER}`,marginBottom:10}}>
-                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif"}}>💡 Lighting: </span>
+                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif"}}> Lighting: </span>
                 <span style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>{result.lighting}</span>
               </div>
             )}
 
             {result.photoMoment && (
               <div style={{padding:"10px 12px",borderRadius:10,background:WHITE,border:`1px solid ${BORDER}`,marginBottom:12}}>
-                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif"}}>📸 Photo Moment: </span>
+                <span style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif"}}> Photo Moment: </span>
                 <span style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif"}}>{result.photoMoment}</span>
               </div>
             )}
 
             {result.shoppingList?.length > 0 && (
               <div style={{background:WHITE,border:`1.5px solid ${BORDER}`,borderRadius:12,padding:"11px 13px",marginBottom:12}}>
-                <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>🛍️ Shopping List</div>
+                <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}> Shopping List</div>
                 {result.shoppingList.map((item,i) => (
                   <div key={i} style={{fontSize:12,fontFamily:"'Nunito',sans-serif",color:DARK,opacity:0.8,marginBottom:4}}>• {item}</div>
                 ))}
@@ -290,7 +290,7 @@ export default function MoodTab({ setTab }) {
             )}
 
             <button onClick={() => setTab("shop")} style={{...BP,width:"100%",fontSize:12,padding:"11px"}}>
-              🛍️ Shop These Items on Etsy
+               Shop These Items on Etsy
             </button>
           </div>
         )}
@@ -318,7 +318,7 @@ export default function MoodTab({ setTab }) {
         </div>
         <a href="https://bachhotlinesupplies.etsy.com" target="_blank" rel="noreferrer"
           style={{...BP,display:"block",textAlign:"center",textDecoration:"none",marginTop:12,fontSize:12,padding:"10px"}}>
-          Shop All 534 Items on Etsy 🛍️
+          Shop All 534 Items on Etsy 
         </a>
       </div>
     </div>

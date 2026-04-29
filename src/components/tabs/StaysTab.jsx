@@ -4,7 +4,7 @@ import { C, BP } from '../../constants/styles.js';
 import { DESTS } from '../../constants/data.js';
 import SH from '../ui/SH.jsx';
 
-// ─── Curated stay listings per destination ───────────────────────────────────
+//  Curated stay listings per destination 
 const STAYS = {
   miami: [
     {
@@ -296,7 +296,7 @@ const STAYS = {
   ],
 };
 
-// ─── Stay Detail View ────────────────────────────────────────────────────────
+//  Stay Detail View 
 function StayDetail({ stay, onBack }) {
   const [imgIdx, setImgIdx] = useState(0);
   const imgs = stay.images || [stay.image];
@@ -438,7 +438,7 @@ function StayDetail({ stay, onBack }) {
   );
 }
 
-// ─── Main StaysTab ────────────────────────────────────────────────────────────
+//  Main StaysTab 
 const usDests   = DESTS.filter(d => !d.international && d.id !== "all");
 const intlDests = DESTS.filter(d =>  d.international);
 
@@ -499,12 +499,12 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
     textTransform: "uppercase", letterSpacing: 1, marginBottom: 6,
   };
 
-  // ── Detail view ──
+  //  Detail view 
   if (selected) {
     return <StayDetail stay={selected} onBack={() => setSelected(null)} />;
   }
 
-  // ── Results view ──
+  //  Results view 
   if (results) {
     return (
       <div>
@@ -578,7 +578,7 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
     );
   }
 
-  // ── Search form ──
+  //  Search form 
   return (
     <div>
       <SH title="Find Your Stay" sub="Search real availability for your crew" />
@@ -593,7 +593,7 @@ export default function StaysTab({ groupSize: initialGroupSize, initialCity }) {
         </div>
         {city && !showCityPicker ? (
           <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
-            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || "📍"}</span>
+            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || ""}</span>
             <div>
               <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
               <div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.8 }}>{groupSize} guests</div>

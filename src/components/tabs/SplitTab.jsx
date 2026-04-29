@@ -6,7 +6,7 @@ import SH from '../ui/SH.jsx';
 function AccountGate({ onSignUp }) {
   return (
     <div style={{textAlign:"center",padding:"48px 24px"}}>
-      <div style={{fontSize:48,marginBottom:16}}>🧾</div>
+      <div style={{fontSize:48,marginBottom:16}}></div>
       <h2 style={{fontFamily:"'Playfair Display',Georgia,serif",fontSize:22,fontWeight:700,color:HOT,margin:"0 0 10px"}}>Members Only</h2>
       <p style={{fontSize:13,color:"#888",fontFamily:"'Nunito',sans-serif",lineHeight:1.6,marginBottom:28}}>
         Split the Bill is for the bride tribe only.<br/>Create a free account to access this feature.
@@ -29,11 +29,11 @@ export default function SplitTab({ groupSize, user, onSignUp }) {
     { id:5, name:"Ashley",        paid:false },
   ]);
   const [expenses] = useState([
-    { id:1, name:"Airbnb — 3 nights", amount:840, cat:"🏠" },
-    { id:2, name:"Flights (avg)",      amount:536, cat:"✈️" },
-    { id:3, name:"Bottomless Brunch",  amount:320, cat:"🥂" },
-    { id:4, name:"Pole Dance Class",   amount:180, cat:"💃" },
-    { id:5, name:"Party Supplies",     amount:95,  cat:"🎀" },
+    { id:1, name:"Airbnb — 3 nights", amount:840, cat:"" },
+    { id:2, name:"Flights (avg)",      amount:536, cat:"" },
+    { id:3, name:"Bottomless Brunch",  amount:320, cat:"" },
+    { id:4, name:"Pole Dance Class",   amount:180, cat:"" },
+    { id:5, name:"Party Supplies",     amount:95,  cat:"" },
   ]);
   const [view, setView] = useState("summary");
   const [newMember, setNewMember] = useState("");
@@ -50,7 +50,7 @@ export default function SplitTab({ groupSize, user, onSignUp }) {
         <div style={{ ...C, textAlign:"center" }}><div style={{ fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:5 }}>Per Person</div><div style={{ fontSize:26, fontWeight:900, color:HOT, fontFamily:"'Playfair Display',Georgia,serif" }}>${perPerson.toFixed(0)}</div></div>
       </div>
       <div style={{ background:SOFT, border:`1.5px solid ${MID}`, borderRadius:12, padding:"11px 14px", marginBottom:14, fontFamily:"'Nunito',sans-serif", fontSize:12, color:DARK }}>
-        <div style={{ fontSize:10, fontWeight:700, color:HOT, textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}>👰 Bride Coverage Rule</div>
+        <div style={{ fontSize:10, fontWeight:700, color:HOT, textTransform:"uppercase", letterSpacing:1, marginBottom:4 }}> Bride Coverage Rule</div>
         The bride's share is automatically split among the group — she pays $0!
       </div>
       <div style={{ display:"flex", gap:6, marginBottom:14 }}>
@@ -65,11 +65,11 @@ export default function SplitTab({ groupSize, user, onSignUp }) {
         return (
           <div key={m.id} style={{ ...C, marginBottom:8, display:"flex", alignItems:"center", gap:12 }}>
             <div style={{ width:36, height:36, borderRadius:"50%", background:SOFT, border:`1.5px solid ${MID}`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:18 }}>
-              {isBride?"👰":m.name.includes("MOH")?"💍":"👯"}
+              {isBride?"":m.name.includes("MOH")?"":""}
             </div>
             <div style={{ flex:1 }}>
               <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{m.name}</div>
-              {isBride && <div style={{ fontSize:11, color:GOLD, fontFamily:"'Nunito',sans-serif" }}>🎉 Pays nothing!</div>}
+              {isBride && <div style={{ fontSize:11, color:GOLD, fontFamily:"'Nunito',sans-serif" }}> Pays nothing!</div>}
             </div>
             <div style={{ textAlign:"right" }}>
               <div style={{ fontSize:18, fontWeight:900, color:isBride?GOLD:PUNCH, fontFamily:"'Playfair Display',Georgia,serif" }}>{isBride?"$0":`$${perPerson.toFixed(0)}`}</div>
@@ -94,10 +94,10 @@ export default function SplitTab({ groupSize, user, onSignUp }) {
         <div>
           {members.map(m => (
             <div key={m.id} style={{ ...C, marginBottom:8, display:"flex", alignItems:"center", gap:12 }}>
-              <div style={{ fontSize:24 }}>{m.name.includes("Bride")?"👰":m.name.includes("MOH")?"💍":"👯"}</div>
+              <div style={{ fontSize:24 }}>{m.name.includes("Bride")?"":m.name.includes("MOH")?"":""}</div>
               <div style={{ flex:1 }}>
                 <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{m.name}</div>
-                <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.75 }}>{m.name.includes("Bride")?"Queen — pays nothing 👑":`Owes: $${perPerson.toFixed(0)}`}</div>
+                <div style={{ fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.75 }}>{m.name.includes("Bride")?"Queen — pays nothing ":`Owes: $${perPerson.toFixed(0)}`}</div>
               </div>
               <button onClick={()=>toggle(m.id)} style={{ fontSize:11, padding:"5px 12px", borderRadius:20, border:`1.5px solid ${m.paid?"rgba(46,125,50,0.3)":MID}`, cursor:"pointer", fontFamily:"'Nunito',sans-serif", fontWeight:700, background:m.paid?`rgba(46,125,50,0.08)`:SOFT, color:m.paid?GREEN:HOT }}>
                 {m.paid?"Paid":"Unpaid"}

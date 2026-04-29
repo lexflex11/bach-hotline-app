@@ -15,10 +15,10 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
   const [result,  setResult]  = useState(null);
 
   const BUDGET_TIERS = [
-    { id:"budget",   label:"Budget",   range:"$300–600",   desc:"Smart savings, still iconic",  emoji:"💸", color:"#4CAF50" },
-    { id:"moderate", label:"Moderate", range:"$600–1,200", desc:"Best of both worlds",           emoji:"✨", color:HOT       },
-    { id:"luxury",   label:"Luxury",   range:"$1,200–2,500",desc:"All the yes, none of the stress",emoji:"👑",color:PUNCH   },
-    { id:"custom",   label:"Custom",   range:"You decide", desc:"Set your own per-person budget",emoji:"🎯", color:"#9C27B0" },
+    { id:"budget",   label:"Budget",   range:"$300–600",   desc:"Smart savings, still iconic",  emoji:"", color:"#4CAF50" },
+    { id:"moderate", label:"Moderate", range:"$600–1,200", desc:"Best of both worlds",           emoji:"", color:HOT       },
+    { id:"luxury",   label:"Luxury",   range:"$1,200–2,500",desc:"All the yes, none of the stress",emoji:"",color:PUNCH   },
+    { id:"custom",   label:"Custom",   range:"You decide", desc:"Set your own per-person budget",emoji:"", color:"#9C27B0" },
   ];
 
   const activeBudget = BUDGET_TIERS.find(b => b.id === budget);
@@ -26,7 +26,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
     ? `$${customBudget}/person`
     : activeBudget?.range || "";
 
-  const tEmoji = { morning:"🌅", afternoon:"☀️", evening:"🌆", nightlife:"🌙" };
+  const tEmoji = { morning:"", afternoon:"", evening:"", nightlife:"" };
 
   const slotBookingUrl = (slot, activityName, destName) => {
     if (slot === "evening") return opentableUrl(activityName, destName);
@@ -43,7 +43,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
     const b = selectedBride;
     try {
       if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === "YOUR_API_KEY_HERE") {
-        setResult({ title:"API Key Missing 🔑", tagline:"Almost there!", brideMessage:"Add your Anthropic API key to unlock AI itineraries. Go to console.anthropic.com to get your free key.", days:[], mustPack:["1. Go to console.anthropic.com","2. Create an API key","3. Paste it into src/constants/api.js"], proTip:"Once your key is added, AI will generate a fully personalized itinerary based on your bride's personality!", estimatedBudget:"Free to start" });
+        setResult({ title:"API Key Missing ", tagline:"Almost there!", brideMessage:"Add your Anthropic API key to unlock AI itineraries. Go to console.anthropic.com to get your free key.", days:[], mustPack:["1. Go to console.anthropic.com","2. Create an API key","3. Paste it into src/constants/api.js"], proTip:"Once your key is added, AI will generate a fully personalized itinerary based on your bride's personality!", estimatedBudget:"Free to start" });
         setLoading(false); return;
       }
       const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -69,7 +69,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         const isAuthErr = errType.includes("auth") || res.status === 401;
         const isBilling = errType.includes("billing") || errMsg.includes("credit");
         setResult({
-          title: isAuthErr ? "Invalid API Key 🔑" : isBilling ? "Billing Issue 💳" : "API Error ⚠️",
+          title: isAuthErr ? "Invalid API Key " : isBilling ? "Billing Issue " : "API Error ",
           tagline: errMsg,
           brideMessage: isAuthErr
             ? "Your Anthropic API key is invalid or not set in Vercel. Go to Vercel → Settings → Environment Variables and confirm VITE_ANTHROPIC_KEY is correct."
@@ -91,16 +91,16 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
       setResult(JSON.parse(data.content.map(i=>i.text||"").join("").replace(/```json|```/g,"").trim()));
     } catch(err) {
       console.error("AI error:", err);
-      setResult({ title:"Connection Error 📡", tagline:"Could not reach the AI.", brideMessage:`Error: ${err.message}. This is usually a network issue or an invalid API key. Check Vercel → Settings → Environment Variables → VITE_ANTHROPIC_KEY.`, days:[], mustPack:["✓ Confirm VITE_ANTHROPIC_KEY is set in Vercel","✓ Key must start with sk-ant-","✓ Redeploy after adding/changing the key"], proTip:`Raw error: ${err.message}`, estimatedBudget:"" });
+      setResult({ title:"Connection Error ", tagline:"Could not reach the AI.", brideMessage:`Error: ${err.message}. This is usually a network issue or an invalid API key. Check Vercel → Settings → Environment Variables → VITE_ANTHROPIC_KEY.`, days:[], mustPack:[" Confirm VITE_ANTHROPIC_KEY is set in Vercel"," Key must start with sk-ant-"," Redeploy after adding/changing the key"], proTip:`Raw error: ${err.message}`, estimatedBudget:"" });
     }
     setLoading(false);
   };
 
-  // ── Members-only gate ──────────────────────────────────────────────────────
+  //  Members-only gate 
   if (!user || user.id === "g") {
     return (
       <div style={{ textAlign:"center", padding:"60px 24px" }}>
-        <div style={{ fontSize:52, marginBottom:16 }}>🗺️</div>
+        <div style={{ fontSize:52, marginBottom:16 }}></div>
         <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:24, fontWeight:700, color:HOT, margin:"0 0 10px", lineHeight:1.2 }}>
           Members Only
         </h2>
@@ -124,7 +124,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
   return (
     <div>
 
-      {/* ── HERO ── */}
+      {/*  HERO  */}
       <div style={{
         borderRadius:22, padding:"22px 18px",
         background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`,
@@ -138,7 +138,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         </p>
       </div>
 
-      {/* ── GROUP SIZE ── */}
+      {/*  GROUP SIZE  */}
       <div style={{...C, marginBottom:12, display:"flex", alignItems:"center", justifyContent:"space-between"}}>
         <div>
           <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Your Bride Tribe</div>
@@ -150,13 +150,13 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         </div>
       </div>
 
-      {/* ── STEP 1: Bride personality ── */}
+      {/*  STEP 1: Bride personality  */}
       <div style={{...C, marginBottom:12}}>
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
           <div style={{width:26,height:26,borderRadius:"50%",background:bt?`linear-gradient(135deg,#f472b0,${HOT})`:`linear-gradient(135deg,${MID},${SOFT})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:11,fontWeight:700,color:bt?WHITE:HOT,flexShrink:0}}>1</div>
           <div>
             <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>What kind of bride is she?</div>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Every personality gets a completely different itinerary ✨</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>Every personality gets a completely different itinerary </div>
           </div>
         </div>
 
@@ -184,7 +184,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         )}
       </div>
 
-      {/* ── STEP 2: Destination — reveals after bride type picked ── */}
+      {/*  STEP 2: Destination — reveals after bride type picked  */}
       {bt && (
         <div style={{...C, marginBottom:12}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
@@ -201,8 +201,8 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
             onChange={e=>{setRegion(e.target.value);setDest(null);}}
             style={{width:"100%",marginBottom:10,padding:"10px 12px",borderRadius:10,border:`1.5px solid ${BORDER}`,fontFamily:"'Nunito',sans-serif",fontSize:13,color:DARK,background:WHITE,appearance:"none",backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e66582' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`,backgroundRepeat:"no-repeat",backgroundPosition:"right 12px center",cursor:"pointer"}}
           >
-            <option value="us">🇺🇸 United States</option>
-            <option value="intl">✈️ International</option>
+            <option value="us"> United States</option>
+            <option value="intl"> International</option>
           </select>
 
           {/* City dropdown */}
@@ -220,7 +220,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         </div>
       )}
 
-      {/* ── STEP 3: Budget — reveals after destination picked ── */}
+      {/*  STEP 3: Budget — reveals after destination picked  */}
       {bt && dest && (
         <div style={{...C, marginBottom:12}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
@@ -250,7 +250,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           {/* Custom budget input */}
           {budget === "custom" && (
             <div style={{display:"flex",alignItems:"center",gap:8,padding:"10px 14px",background:SOFT,borderRadius:12,border:`1.5px solid ${MID}`}}>
-              <span style={{fontSize:16}}>💵</span>
+              <span style={{fontSize:16}}></span>
               <span style={{fontSize:13,fontWeight:700,color:DARK,fontFamily:"'Nunito',sans-serif"}}>$</span>
               <input
                 type="number"
@@ -283,7 +283,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         </div>
       )}
 
-      {/* ── STEP 4: Days — reveals after budget picked ── */}
+      {/*  STEP 4: Days — reveals after budget picked  */}
       {bt && dest && budget && (budget !== "custom" || customBudget) && (
         <div style={{...C, marginBottom:14}}>
           <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
@@ -310,29 +310,29 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
         </div>
       )}
 
-      {/* ── GENERATE BUTTON ── */}
+      {/*  GENERATE BUTTON  */}
       {bt && dest && budget && (budget !== "custom" || customBudget) && (
         <button onClick={generate} disabled={loading} style={{
           ...BP, width:"100%", padding:"14px", fontSize:14, borderRadius:14, marginBottom:16,
         }}>
           {loading
-            ? `✨ Planning the perfect ${selectedBride?.label||""} trip...`
+            ? ` Planning the perfect ${selectedBride?.label||""} trip...`
             : `Generate My ${days} Day ${selectedDest?.name||""} Itinerary`}
         </button>
       )}
 
 
-      {/* ── LOADING ── */}
+      {/*  LOADING  */}
       {loading && (
         <div style={{textAlign:"center",padding:"32px"}}>
           <div style={{fontSize:14,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,marginBottom:6}}>
             Creating the perfect {selectedBride?.label} trip...
           </div>
-          <div style={{fontSize:12,color:"#bbb",fontFamily:"'Nunito',sans-serif"}}>Tailoring every detail to her vibe ✨</div>
+          <div style={{fontSize:12,color:"#bbb",fontFamily:"'Nunito',sans-serif"}}>Tailoring every detail to her vibe </div>
         </div>
       )}
 
-      {/* ── RESULTS ── */}
+      {/*  RESULTS  */}
       {result?.days?.length > 0 && (
         <div>
           {/* Result hero */}
@@ -341,7 +341,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
             <div style={{fontSize:13,color:selectedBride?.color||HOT,fontFamily:"'Nunito',sans-serif",marginTop:5}}>{result.tagline}</div>
             {result.brideMessage && (
               <div style={{marginTop:12,padding:"10px 12px",background:WHITE,borderRadius:10,border:`1px solid ${selectedBride?.border||MID}`}}>
-                <div style={{fontSize:10,color:selectedBride?.color||HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:5}}>💌 Message to the bride</div>
+                <div style={{fontSize:10,color:selectedBride?.color||HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:5}}> Message to the bride</div>
                 <div style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif",fontStyle:"italic",lineHeight:1.5}}>"{result.brideMessage}"</div>
               </div>
             )}
@@ -370,12 +370,12 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
                           <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{item.activity}</div>
                           <div style={{fontSize:12,color:PUNCH,fontFamily:"'Nunito',sans-serif",fontWeight:700,flexShrink:0,marginLeft:8}}>{item.cost}</div>
                         </div>
-                        <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:3,fontStyle:"italic",opacity:0.8}}>💡 {item.tip}</div>
-                        {item.bookingTip && <div style={{fontSize:10,color:"#888",fontFamily:"'Nunito',sans-serif",marginTop:5,background:"#fdf5fa",border:`1px solid ${BORDER}`,borderRadius:8,padding:"4px 9px",display:"inline-block"}}>🔗 {item.bookingTip}</div>}
+                        <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:3,fontStyle:"italic",opacity:0.8}}> {item.tip}</div>
+                        {item.bookingTip && <div style={{fontSize:10,color:"#888",fontFamily:"'Nunito',sans-serif",marginTop:5,background:"#fdf5fa",border:`1px solid ${BORDER}`,borderRadius:8,padding:"4px 9px",display:"inline-block"}}> {item.bookingTip}</div>}
                         <div style={{marginTop:8}}>
                           <a href={slotBookingUrl(slot, item.activity, selectedDest?.name||"")} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
                             <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:20,padding:"5px 14px",fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer"}}>
-                              {slot==="evening"?"🍽 Reserve →":"🎯 Book →"}
+                              {slot==="evening"?" Reserve →":" Book →"}
                             </button>
                           </a>
                         </div>
@@ -393,7 +393,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
               <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>Must-Pack for the {selectedBride?.label}</div>
               {result.mustPack.map((item,i)=>(
                 <div key={i} style={{display:"flex",gap:8,marginBottom:6,fontFamily:"'Nunito',sans-serif",fontSize:12}}>
-                  <span style={{color:selectedBride?.color||HOT}}>✦</span>
+                  <span style={{color:selectedBride?.color||HOT}}></span>
                   <span style={{color:DARK,opacity:0.85}}>{item}</span>
                 </div>
               ))}
@@ -403,15 +403,15 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
           {/* Pro tip */}
           {result.proTip && (
             <div style={{padding:"14px 16px",borderRadius:14,background:selectedBride?.bg||SOFT,border:`1.5px solid ${selectedBride?.border||MID}`,marginBottom:14}}>
-              <div style={{fontSize:10,color:selectedBride?.color||PUNCH,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:5}}>✨ Pro Tip</div>
+              <div style={{fontSize:10,color:selectedBride?.color||PUNCH,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:5}}> Pro Tip</div>
               <div style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif",lineHeight:1.55}}>{result.proTip}</div>
             </div>
           )}
 
           {/* Book Your Full Trip */}
           <div style={{...C,background:SOFT,border:`1.5px solid ${MID}`,marginBottom:14}}>
-            <div style={{fontSize:15,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>🗓 Book Your Full Trip</div>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>Tap any activity to book — she just has to show up 💅</div>
+            <div style={{fontSize:15,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}> Book Your Full Trip</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginBottom:14,opacity:0.85}}>Tap any activity to book — she just has to show up </div>
 
             {/* Activity-by-activity checklist */}
             {result.days.map((day,di)=>(
@@ -430,7 +430,7 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
                       </div>
                       <a href={slotBookingUrl(slot, item.activity, selectedDest?.name||"")} target="_blank" rel="noreferrer" style={{textDecoration:"none",flexShrink:0}}>
                         <button style={{background:`linear-gradient(135deg,#f472b0,${HOT})`,color:WHITE,border:"none",borderRadius:20,padding:"6px 14px",fontFamily:"'Nunito',sans-serif",fontSize:11,fontWeight:700,cursor:"pointer",whiteSpace:"nowrap"}}>
-                          {slot==="evening"?"🍽 Reserve":"🎯 Book"}
+                          {slot==="evening"?" Reserve":" Book"}
                         </button>
                       </a>
                     </div>
@@ -446,10 +446,10 @@ export default function PlanTab({ groupSize, setGroupSize, setTab, user, onSignU
             <div style={{fontSize:11,fontWeight:700,color:HOT,fontFamily:"'Nunito',sans-serif",textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Flights & Hotel</div>
             <div style={{display:"flex",flexDirection:"column",gap:8}}>
               <a href={flightUrl(selectedDest?.toFull||"",groupSize)} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-                <button style={{...BP,width:"100%",fontSize:13,padding:"11px"}}>✈️ Find Best Prices</button>
+                <button style={{...BP,width:"100%",fontSize:13,padding:"11px"}}> Find Best Prices</button>
               </a>
               <a href={airbnbUrl(selectedDest?.name||"",groupSize)} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>
-                <button style={{width:"100%",background:"linear-gradient(135deg,#FF5A5F,#FF3D42)",color:WHITE,border:"none",borderRadius:50,padding:"11px",fontFamily:"'Nunito',sans-serif",fontSize:13,fontWeight:700,cursor:"pointer"}}>🏠 Search Airbnbs for {groupSize} ladies</button>
+                <button style={{width:"100%",background:"linear-gradient(135deg,#FF5A5F,#FF3D42)",color:WHITE,border:"none",borderRadius:50,padding:"11px",fontFamily:"'Nunito',sans-serif",fontSize:13,fontWeight:700,cursor:"pointer"}}> Search Airbnbs for {groupSize} ladies</button>
               </a>
             </div>
           </div>

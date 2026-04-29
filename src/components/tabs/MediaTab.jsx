@@ -4,21 +4,21 @@ import { C, BP, BS, IN } from '../../constants/styles.js';
 import { DESTS } from '../../constants/data.js';
 
 const MOMENTS = [
-  { id:"gettingready", label:"💄 Getting Ready"   },
-  { id:"pool",         label:"👙 Pool Party"       },
-  { id:"nightout",     label:"🌙 Night Out"        },
-  { id:"brunch",       label:"🥂 Brunch"           },
-  { id:"activities",   label:"🎉 Activities"       },
-  { id:"travel",       label:"✈️ Travel"           },
-  { id:"spa",          label:"💆 Spa Day"          },
-  { id:"other",        label:"📸 Other"            },
+  { id:"gettingready", label:" Getting Ready"   },
+  { id:"pool",         label:" Pool Party"       },
+  { id:"nightout",     label:" Night Out"        },
+  { id:"brunch",       label:" Brunch"           },
+  { id:"activities",   label:" Activities"       },
+  { id:"travel",       label:" Travel"           },
+  { id:"spa",          label:" Spa Day"          },
+  { id:"other",        label:" Other"            },
 ];
 
-// ─── Account gate ─────────────────────────────────────────────────────────────
+//  Account gate 
 function AccountGate({ onSignUp }) {
   return (
     <div style={{ textAlign:"center", padding:"48px 24px" }}>
-      <div style={{ fontSize:52, marginBottom:16 }}>📸</div>
+      <div style={{ fontSize:52, marginBottom:16 }}></div>
       <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:24, fontWeight:700, color:HOT, margin:"0 0 10px", lineHeight:1.2 }}>
         Pics or It Didn't Happen
       </h2>
@@ -39,14 +39,14 @@ function AccountGate({ onSignUp }) {
   );
 }
 
-// ─── Photo thumbnail ───────────────────────────────────────────────────────────
+//  Photo thumbnail 
 function MediaThumb({ item, onRemove }) {
   return (
     <div style={{ position:"relative", aspectRatio:"1/1", borderRadius:10, overflow:"hidden", background:SOFT }}>
       <img src={item.url} alt="" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
       {item.isVideo && (
         <div style={{ position:"absolute", inset:0, display:"flex", alignItems:"center", justifyContent:"center" }}>
-          <div style={{ width:32, height:32, borderRadius:"50%", background:"rgba(0,0,0,0.5)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:14 }}>▶</div>
+          <div style={{ width:32, height:32, borderRadius:"50%", background:"rgba(0,0,0,0.5)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:14 }}></div>
         </div>
       )}
       <button onClick={()=>onRemove(item.id)} style={{
@@ -58,7 +58,7 @@ function MediaThumb({ item, onRemove }) {
   );
 }
 
-// ─── Main tab ─────────────────────────────────────────────────────────────────
+//  Main tab 
 export default function MediaTab({ user, onSignUp }) {
   if (!user || user.id === "g") return <AccountGate onSignUp={onSignUp} />;
 
@@ -98,7 +98,7 @@ export default function MediaTab({ user, onSignUp }) {
     setSubmitted(p => [...p, {
       id: Date.now(),
       dest: destObj?.name || dest,
-      destEmoji: destObj?.emoji || "📍",
+      destEmoji: destObj?.emoji || "",
       moment: momentObj?.label || moment,
       caption,
       files: [...files],
@@ -114,7 +114,7 @@ export default function MediaTab({ user, onSignUp }) {
   return (
     <div style={{ paddingBottom:24 }}>
 
-      {/* ── Hero ── */}
+      {/*  Hero  */}
       <div style={{
         borderRadius:22, padding:"22px 18px", marginBottom:16, textAlign:"center",
         background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`,
@@ -124,23 +124,23 @@ export default function MediaTab({ user, onSignUp }) {
           Bach Hotline Community
         </div>
         <h2 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:22, fontWeight:900, margin:"0 0 6px", color:DARK }}>
-          Pics or It Didn't Happen <span style={{ fontStyle:"normal" }}>📸</span>
+          Pics or It Didn't Happen <span style={{ fontStyle:"normal" }}></span>
         </h2>
         <p style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", margin:0, opacity:0.85, lineHeight:1.6 }}>
           You lived it. You filmed it. Drop your pics & vids — your memories help other bach crews plan smarter and party harder.
         </p>
       </div>
 
-      {/* ── Success banner ── */}
+      {/*  Success banner  */}
       {success && (
         <div style={{ padding:"12px 16px", borderRadius:14, background:"rgba(46,125,50,0.1)", border:"1.5px solid rgba(46,125,50,0.35)", marginBottom:16, textAlign:"center", fontFamily:"'Nunito',sans-serif" }}>
-          <div style={{ fontSize:20, marginBottom:4 }}>🎉</div>
+          <div style={{ fontSize:20, marginBottom:4 }}></div>
           <div style={{ fontSize:13, fontWeight:700, color:"#2e7d32" }}>Submitted! Thanks for sharing.</div>
           <div style={{ fontSize:11, color:"#888", marginTop:2 }}>Your content could be featured in the Bach Hotline community.</div>
         </div>
       )}
 
-      {/* ── Upload form ── */}
+      {/*  Upload form  */}
       <div style={{ ...C, marginBottom:14 }}>
 
         {/* Select trip */}
@@ -194,7 +194,7 @@ export default function MediaTab({ user, onSignUp }) {
               cursor:"pointer", transition:"all 0.2s",
             }}
           >
-            <div style={{ fontSize:36, marginBottom:8 }}>📷</div>
+            <div style={{ fontSize:36, marginBottom:8 }}></div>
             <div style={{ fontSize:14, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:4 }}>Upload Photos & Videos</div>
             <div style={{ fontSize:12, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:14 }}>Drag and drop here or</div>
             <div style={{
@@ -230,7 +230,7 @@ export default function MediaTab({ user, onSignUp }) {
           <textarea
             value={caption}
             onChange={e => setCaption(e.target.value)}
-            placeholder="Tell us about this moment 💕"
+            placeholder="Tell us about this moment "
             rows={3}
             style={{ ...IN, resize:"none", lineHeight:1.5 }}
           />
@@ -248,7 +248,7 @@ export default function MediaTab({ user, onSignUp }) {
         </button>
       </div>
 
-      {/* ── Past submissions ── */}
+      {/*  Past submissions  */}
       {submitted.length > 0 && (
         <div>
           <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:14 }}>
@@ -279,7 +279,7 @@ export default function MediaTab({ user, onSignUp }) {
                 <div style={{ fontSize:13, color:DARK, fontFamily:"'Nunito',sans-serif", fontStyle:"italic", opacity:0.85 }}>"{s.caption}"</div>
               )}
               <div style={{ marginTop:8, padding:"6px 10px", borderRadius:8, background:SOFT, display:"inline-block", fontSize:10, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700 }}>
-                ✓ Submitted for review
+                 Submitted for review
               </div>
             </div>
           ))}

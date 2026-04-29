@@ -7,7 +7,7 @@ import SH from '../ui/SH.jsx';
 function MembersGate({ onSignUp }) {
   return (
     <div style={{ textAlign:"center", padding:"48px 24px" }}>
-      <div style={{ fontSize:52, marginBottom:16 }}>💎</div>
+      <div style={{ fontSize:52, marginBottom:16 }}></div>
       <h2 style={{ fontFamily:"'Acme',sans-serif", fontSize:26, fontWeight:400, color:"#f496c3", margin:"0 0 10px" }}>
         Members Only
       </h2>
@@ -16,10 +16,10 @@ function MembersGate({ onSignUp }) {
       </p>
       <div style={{ display:"flex", flexDirection:"column", gap:10, maxWidth:300, margin:"0 auto" }}>
         {[
-          ["💸","Full trip cost breakdown"],
-          ["🏨","Hotel, flights & activities"],
-          ["👯","Per-person cost calculator"],
-          ["✨","Budget vs. luxury estimates"],
+          ["","Full trip cost breakdown"],
+          ["","Hotel, flights & activities"],
+          ["","Per-person cost calculator"],
+          ["","Budget vs. luxury estimates"],
         ].map(([icon, label]) => (
           <div key={label} style={{ display:"flex", alignItems:"center", gap:10, background:SOFT, borderRadius:12, padding:"10px 14px" }}>
             <span style={{ fontSize:18 }}>{icon}</span>
@@ -74,7 +74,7 @@ export default function BudgetTab({ groupSize, user, onSignUp }) {
 
       {/* Destination */}
       <div style={{...C, marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>📍 Pick a destination</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}> Pick a destination</div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
           {DESTS.map(d=>(
             <button key={d.id} onClick={()=>setDest(d.id)} style={{background:dest===d.id?SOFT:WHITE,border:dest===d.id?`2px solid ${HOT}`:`1.5px solid ${BORDER}`,borderRadius:12,padding:"10px",cursor:"pointer",textAlign:"left",transition:"all 0.2s"}}>
@@ -98,7 +98,7 @@ export default function BudgetTab({ groupSize, user, onSignUp }) {
           </div>
           <div style={{textAlign:"right"}}>
             <div style={{fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1}}>Group of</div>
-            <div style={{fontSize:20,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif",marginTop:4}}>{groupSize} 👯</div>
+            <div style={{fontSize:20,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif",marginTop:4}}>{groupSize} </div>
           </div>
         </div>
         <div style={{fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:HOT,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Budget Style</div>
@@ -119,7 +119,7 @@ export default function BudgetTab({ groupSize, user, onSignUp }) {
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Estimated Per Person</div>
             <div style={{fontSize:42,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif"}}>${perPerson}</div>
             <div style={{fontSize:12,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:6,opacity:0.8}}>
-              {nights} nights · Group of {groupSize} · Bride's share covered 👰
+              {nights} nights · Group of {groupSize} · Bride's share covered 
             </div>
             <div style={{fontSize:13,color:DARK,fontFamily:"'Nunito',sans-serif",marginTop:8,fontWeight:600}}>
               Group total: ${groupTotal.toLocaleString()}
@@ -128,11 +128,11 @@ export default function BudgetTab({ groupSize, user, onSignUp }) {
 
           {/* Line items */}
           {[
-            ["✈️", "Flights",    breakdown.flights,    "Round trip per person"],
-            ["🏠", "Stay",       breakdown.stay,       `${nights} nights · split ${groupSize} ways`],
-            ["🍽️","Food & Drinks",breakdown.food,      "Meals + nightlife per person"],
-            ["🎯", "Activities", breakdown.activities, "Tours, experiences, shows"],
-            ["🎀", "Misc & Swag",breakdown.misc,       "Tips, extras, party supplies"],
+            ["", "Flights",    breakdown.flights,    "Round trip per person"],
+            ["", "Stay",       breakdown.stay,       `${nights} nights · split ${groupSize} ways`],
+            ["","Food & Drinks",breakdown.food,      "Meals + nightlife per person"],
+            ["", "Activities", breakdown.activities, "Tours, experiences, shows"],
+            ["", "Misc & Swag",breakdown.misc,       "Tips, extras, party supplies"],
           ].map(([icon,label,cost,sub])=>(
             <div key={label} style={{...C,marginBottom:8,display:"flex",alignItems:"center",gap:12}}>
               <span style={{fontSize:22}}>{icon}</span>
@@ -148,7 +148,7 @@ export default function BudgetTab({ groupSize, user, onSignUp }) {
           ))}
 
           <div style={{background:SOFT,border:`1.5px solid ${MID}`,borderRadius:12,padding:"11px 14px",marginTop:6,fontFamily:"'Nunito',sans-serif",fontSize:12,color:DARK}}>
-            <div style={{fontSize:10,fontWeight:700,color:HOT,textTransform:"uppercase",letterSpacing:1,marginBottom:4}}>💡 Tip</div>
+            <div style={{fontSize:10,fontWeight:700,color:HOT,textTransform:"uppercase",letterSpacing:1,marginBottom:4}}> Tip</div>
             These are estimates based on real bachelorette trip data. Actual costs vary by season, destination, and group size.
           </div>
         </div>

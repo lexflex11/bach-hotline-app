@@ -21,21 +21,21 @@ export default function MOHTab({ groupSize }) {
 
   const generateInvite = () => {
     const dest = DESTS.find(d=>d.id===tripDest);
-    const text = `💌 You're invited to the Bach!
+    const text = ` You're invited to the Bach!
 
-🎉 ${dest ? dest.name : "[Destination]"} Bachelorette Weekend
-📅 ${tripDate || "[Date TBD]"}
-👯 Group of ${groupSize}
+ ${dest ? dest.name : "[Destination]"} Bachelorette Weekend
+ ${tripDate || "[Date TBD]"}
+ Group of ${groupSize}
 
 You're officially part of the bride tribe — and this is going to be the best weekend of her life.
 
-✨ More details coming soon via Bach Hotline
-💰 Estimated cost: $[X] per person
-🎀 Theme: [Your Theme]
+ More details coming soon via Bach Hotline
+ Estimated cost: $[X] per person
+ Theme: [Your Theme]
 
 RSVP by replying to this message!
 
-Powered by Bach Hotline 🪩`;
+Powered by Bach Hotline `;
     setInviteText(text);
     setShowInvite(true);
   };
@@ -46,11 +46,11 @@ Powered by Bach Hotline 🪩`;
 
       {/* Countdown */}
       <div style={{...C,marginBottom:12}}>
-        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}>📅 Trip Date</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:12}}> Trip Date</div>
         <input type="date" value={tripDate} onChange={e=>setTripDate(e.target.value)} style={{...IN,marginBottom:daysUntil!==null?10:0}} />
         {daysUntil !== null && (
           <div style={{textAlign:"center",padding:"12px",background:SOFT,borderRadius:12,border:`1.5px solid ${MID}`}}>
-            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1}}>Days Until the Bach 🪩</div>
+            <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:700,textTransform:"uppercase",letterSpacing:1}}>Days Until the Bach </div>
             <div style={{fontSize:44,fontWeight:900,color:PUNCH,fontFamily:"'Playfair Display',Georgia,serif",marginTop:4}}>{daysUntil}</div>
           </div>
         )}
@@ -59,7 +59,7 @@ Powered by Bach Hotline 🪩`;
       {/* Progress */}
       <div style={{...C,marginBottom:12}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
-          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>✅ Planning Progress</div>
+          <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}> Planning Progress</div>
           <div style={{fontSize:14,fontWeight:900,color:pct>=80?GREEN:pct>=50?GOLD:PUNCH,fontFamily:"'Playfair Display',Georgia,serif"}}>{pct}%</div>
         </div>
         <div style={{height:8,background:SOFT,borderRadius:50,overflow:"hidden"}}>
@@ -70,12 +70,12 @@ Powered by Bach Hotline 🪩`;
 
       {/* Invite Generator */}
       <div style={{...C,marginBottom:12,background:SOFT,border:`1.5px solid ${MID}`}}>
-        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}>💌 Digital Invite Generator</div>
+        <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:10}}> Digital Invite Generator</div>
         <select value={tripDest} onChange={e=>setTripDest(e.target.value)} style={{...IN,marginBottom:10}}>
           <option value="">Pick destination...</option>
           {DESTS.map(d=><option key={d.id} value={d.id}>{d.emoji} {d.name}</option>)}
         </select>
-        <button onClick={generateInvite} style={{...BP,width:"100%",fontSize:12,padding:"10px"}}>✨ Generate Invite Text</button>
+        <button onClick={generateInvite} style={{...BP,width:"100%",fontSize:12,padding:"10px"}}> Generate Invite Text</button>
         {showInvite && inviteText && (
           <div style={{marginTop:12}}>
             <textarea readOnly value={inviteText} style={{...IN,borderRadius:12,height:180,resize:"none",fontSize:12,lineHeight:1.6}} />
@@ -92,7 +92,7 @@ Powered by Bach Hotline 🪩`;
           {checklist.filter(i=>i.category===cat).map(item=>(
             <button key={item.id} onClick={()=>toggle(item.id)} style={{...C,display:"flex",alignItems:"center",gap:12,cursor:"pointer",width:"100%",marginBottom:6,padding:"11px 13px",textAlign:"left",background:item.done?"rgba(46,125,50,0.06)":WHITE,border:item.done?"1.5px solid rgba(46,125,50,0.3)":`1.5px solid ${BORDER}`}}>
               <div style={{width:22,height:22,borderRadius:"50%",border:`2px solid ${item.done?GREEN:BORDER}`,background:item.done?GREEN:WHITE,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,fontSize:12,color:WHITE,transition:"all 0.2s"}}>
-                {item.done?"✓":""}
+                {item.done?"":""}
               </div>
               <div style={{fontSize:13,fontFamily:"'Nunito',sans-serif",color:item.done?"#888":DARK,fontWeight:item.done?400:500,textDecoration:item.done?"line-through":"none"}}>{item.item}</div>
             </button>

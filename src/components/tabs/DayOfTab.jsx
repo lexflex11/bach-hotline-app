@@ -11,18 +11,18 @@ export default function DayOfTab() {
 
   const ITINERARIES = {
     nashville:[
-      { time:"2:00 PM", name:"Check into the Airbnb",       icon:"🏠", address:"123 Music Row, Nashville TN", note:"Code: 4821. Closest parking: Nissan Stadium lot.", dur:60 },
-      { time:"4:00 PM", name:"Getting ready together",       icon:"💄", address:"At the Airbnb",               note:"Allow 90 mins. Designate one bathroom per pair.", dur:90 },
-      { time:"6:00 PM", name:"Welcome dinner — The Gulch",   icon:"🥂", address:"1214 3rd Ave S, Nashville TN",note:"Reservation under 'Jessica'. Mention bachelorette for a surprise!", dur:120 },
-      { time:"8:30 PM", name:"Broadway bar crawl kicks off", icon:"🎸", address:"Lower Broadway, Nashville TN", note:"Start at Honky Tonk Central. Work your way down to Luke's.", dur:180 },
-      { time:"11:30 PM",name:"Late night hot chicken run",   icon:"🍗", address:"Prince's Hot Chicken, Nashville",note:"Nashville tradition. Get the medium heat, trust us.", dur:45 },
-      { time:"1:00 AM", name:"Head back to the Airbnb",      icon:"🏠", address:"123 Music Row, Nashville TN", note:"Order Ubers NOW before surge pricing. Split into 2 cars.", dur:0  },
+      { time:"2:00 PM", name:"Check into the Airbnb",       icon:"", address:"123 Music Row, Nashville TN", note:"Code: 4821. Closest parking: Nissan Stadium lot.", dur:60 },
+      { time:"4:00 PM", name:"Getting ready together",       icon:"", address:"At the Airbnb",               note:"Allow 90 mins. Designate one bathroom per pair.", dur:90 },
+      { time:"6:00 PM", name:"Welcome dinner — The Gulch",   icon:"", address:"1214 3rd Ave S, Nashville TN",note:"Reservation under 'Jessica'. Mention bachelorette for a surprise!", dur:120 },
+      { time:"8:30 PM", name:"Broadway bar crawl kicks off", icon:"", address:"Lower Broadway, Nashville TN", note:"Start at Honky Tonk Central. Work your way down to Luke's.", dur:180 },
+      { time:"11:30 PM",name:"Late night hot chicken run",   icon:"", address:"Prince's Hot Chicken, Nashville",note:"Nashville tradition. Get the medium heat, trust us.", dur:45 },
+      { time:"1:00 AM", name:"Head back to the Airbnb",      icon:"", address:"123 Music Row, Nashville TN", note:"Order Ubers NOW before surge pricing. Split into 2 cars.", dur:0  },
     ],
     miami:[
-      { time:"1:00 PM", name:"Airbnb check-in",              icon:"🌴", address:"Collins Ave, Miami Beach FL",  note:"Pool opens at 12. Rooftop access until 10pm.", dur:60 },
-      { time:"3:00 PM", name:"South Beach time",             icon:"🏖️", address:"Ocean Drive, Miami Beach FL",  note:"Chairs at 9th Street. Water is COLD in the morning.", dur:180 },
-      { time:"7:00 PM", name:"Dinner at Catch Miami",        icon:"🦞", address:"1901 Collins Ave, Miami FL",   note:"Res under 'Bach Hotline'. Ask for the rooftop.", dur:120 },
-      { time:"10:00 PM",name:"LIV at Fontainebleau",         icon:"🎰", address:"4441 Collins Ave, Miami FL",   note:"Be on the list — tell door you're a bachelorette party.", dur:240 },
+      { time:"1:00 PM", name:"Airbnb check-in",              icon:"", address:"Collins Ave, Miami Beach FL",  note:"Pool opens at 12. Rooftop access until 10pm.", dur:60 },
+      { time:"3:00 PM", name:"South Beach time",             icon:"", address:"Ocean Drive, Miami Beach FL",  note:"Chairs at 9th Street. Water is COLD in the morning.", dur:180 },
+      { time:"7:00 PM", name:"Dinner at Catch Miami",        icon:"", address:"1901 Collins Ave, Miami FL",   note:"Res under 'Bach Hotline'. Ask for the rooftop.", dur:120 },
+      { time:"10:00 PM",name:"LIV at Fontainebleau",         icon:"", address:"4441 Collins Ave, Miami FL",   note:"Be on the list — tell door you're a bachelorette party.", dur:240 },
     ],
   };
 
@@ -55,19 +55,19 @@ export default function DayOfTab() {
         </div>
         <div style={{fontSize:36,marginBottom:8}}>{currentItem.icon}</div>
         <div style={{fontSize:20,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>{currentItem.name}</div>
-        <div style={{fontSize:14,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600,marginBottom:6}}>🕐 {currentItem.time}</div>
+        <div style={{fontSize:14,color:HOT,fontFamily:"'Nunito',sans-serif",fontWeight:600,marginBottom:6}}> {currentItem.time}</div>
         <div style={{fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif",opacity:0.75,marginBottom:14}}>{currentItem.address}</div>
         {currentItem.note && (
           <div style={{background:WHITE,borderRadius:10,padding:"10px 12px",marginBottom:14,fontSize:12,color:DARK,fontFamily:"'Nunito',sans-serif",textAlign:"left",lineHeight:1.5}}>
-            💡 <strong>MOH tip:</strong> {currentItem.note}
+             <strong>MOH tip:</strong> {currentItem.note}
           </div>
         )}
         <div style={{display:"flex",gap:8,justifyContent:"center",flexWrap:"wrap"}}>
           <a href={`https://maps.google.com/maps?q=${encodeURIComponent(currentItem.address)}`} target="_blank" rel="noreferrer" style={{...BP,textDecoration:"none",display:"inline-block",fontSize:12,padding:"9px 16px"}}>
-            🗺️ Open in Maps
+             Open in Maps
           </a>
           <button onClick={()=>shareAddress(currentItem.address)} style={{...BS,fontSize:12,padding:"9px 16px"}}>
-            📋 Copy Address
+             Copy Address
           </button>
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function DayOfTab() {
             <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{stop.name}</div>
             <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:2,opacity:0.75}}>{stop.time} · {stop.address}</div>
           </div>
-          {currentStop===i && <span style={{color:HOT,fontSize:14}}>📍</span>}
+          {currentStop===i && <span style={{color:HOT,fontSize:14}}></span>}
         </button>
       ))}
     </div>

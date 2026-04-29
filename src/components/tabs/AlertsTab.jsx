@@ -5,16 +5,16 @@ import { DESTS } from '../../constants/data.js';
 import SH from '../ui/SH.jsx';
 
 const ALERT_TYPES = [
-  { id:"flight",   icon:"✈️", label:"Flight"        },
-  { id:"stay",     icon:"🏠", label:"Stay"          },
-  { id:"car",      icon:"🚗", label:"Car Rental"    },
-  { id:"activity", icon:"🎉", label:"Activity"      },
+  { id:"flight",   icon:"", label:"Flight"        },
+  { id:"stay",     icon:"", label:"Stay"          },
+  { id:"car",      icon:"", label:"Car Rental"    },
+  { id:"activity", icon:"", label:"Activity"      },
 ];
 
 function AccountGate({ onSignUp }) {
   return (
     <div style={{textAlign:"center", padding:"48px 24px"}}>
-      <div style={{fontSize:52, marginBottom:16}}>🔔</div>
+      <div style={{fontSize:52, marginBottom:16}}></div>
       <h2 style={{fontFamily:"'Playfair Display',Georgia,serif", fontSize:22, fontWeight:700, color:HOT, margin:"0 0 10px"}}>
         Members-Only Deals
       </h2>
@@ -25,10 +25,10 @@ function AccountGate({ onSignUp }) {
       {/* Deal type preview */}
       <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:28, textAlign:"left"}}>
         {[
-          { icon:"✈️", label:"Flight Deals",    desc:"Alerts when fares drop for your destination" },
-          { icon:"🏠", label:"Stay Deals",       desc:"Airbnb & hotel price drops for your dates"   },
-          { icon:"🚗", label:"Car Rental Deals", desc:"Turo & rental alerts for group pickups"       },
-          { icon:"🎉", label:"Activity Deals",   desc:"Discounts on tours, spas & experiences"      },
+          { icon:"", label:"Flight Deals",    desc:"Alerts when fares drop for your destination" },
+          { icon:"", label:"Stay Deals",       desc:"Airbnb & hotel price drops for your dates"   },
+          { icon:"", label:"Car Rental Deals", desc:"Turo & rental alerts for group pickups"       },
+          { icon:"", label:"Activity Deals",   desc:"Discounts on tours, spas & experiences"      },
         ].map(d => (
           <div key={d.icon} style={{background:SOFT, border:`1px solid ${MID}`, borderRadius:14, padding:"12px 12px"}}>
             <div style={{fontSize:22, marginBottom:6}}>{d.icon}</div>
@@ -56,10 +56,10 @@ export default function AlertsTab({ user, onSignUp }) {
   if (!user || user.id === "g") return <AccountGate onSignUp={onSignUp} />;
 
   const [alerts, setAlerts] = useState([
-    { id:1, label:"NYC → Nashville flights under $75",     current:67,  threshold:75,  triggered:true,  active:true, icon:"✈️" },
-    { id:2, label:"Nashville Airbnb under $300/night",      current:280, threshold:300, triggered:true,  active:true, icon:"🏠" },
-    { id:3, label:"Turo car rental in Nashville under $80", current:95,  threshold:80,  triggered:false, active:true, icon:"🚗" },
-    { id:4, label:"Nashville spa activity under $120",      current:140, threshold:120, triggered:false, active:true, icon:"🎉" },
+    { id:1, label:"NYC → Nashville flights under $75",     current:67,  threshold:75,  triggered:true,  active:true, icon:"" },
+    { id:2, label:"Nashville Airbnb under $300/night",      current:280, threshold:300, triggered:true,  active:true, icon:"" },
+    { id:3, label:"Turo car rental in Nashville under $80", current:95,  threshold:80,  triggered:false, active:true, icon:"" },
+    { id:4, label:"Nashville spa activity under $120",      current:140, threshold:120, triggered:false, active:true, icon:"" },
   ]);
   const [showNew, setShowNew] = useState(false);
   const [newA, setNewA] = useState({ type:"flight", dest:"Nashville", threshold:"" });
@@ -73,7 +73,7 @@ export default function AlertsTab({ user, onSignUp }) {
       id: Date.now(),
       label: `${newA.dest} ${typeInfo?.label||newA.type} under $${newA.threshold}`,
       current: 999, threshold: parseFloat(newA.threshold),
-      triggered: false, active: true, icon: typeInfo?.icon || "🔔",
+      triggered: false, active: true, icon: typeInfo?.icon || "",
     }]);
     setNewA({ type:"flight", dest:"Nashville", threshold:"" });
     setShowNew(false);
@@ -89,21 +89,21 @@ export default function AlertsTab({ user, onSignUp }) {
       {/* Enable notifications banner */}
       {!notif && (
         <div style={{...C, marginBottom:14, background:SOFT, border:`1.5px solid ${MID}`}}>
-          <div style={{fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, textTransform:"uppercase", letterSpacing:1, marginBottom:6}}>🔔 Enable Push Notifications</div>
+          <div style={{fontSize:11, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:700, textTransform:"uppercase", letterSpacing:1, marginBottom:6}}> Enable Push Notifications</div>
           <div style={{fontSize:12, color:DARK, fontFamily:"'Nunito',sans-serif", opacity:0.75, marginBottom:12}}>Turn on alerts so we ping you the moment a deal drops!</div>
           <button onClick={()=>setNotif(true)} style={{...BP, width:"100%", padding:"11px", fontSize:13}}>Enable Deal Alerts</button>
         </div>
       )}
       {notif && (
         <div style={{padding:"10px 14px", borderRadius:12, background:"rgba(46,125,50,0.08)", border:"1px solid rgba(46,125,50,0.25)", marginBottom:14, fontFamily:"'Nunito',sans-serif", fontSize:13, color:GREEN}}>
-          ✅ Push notifications enabled!
+           Push notifications enabled!
         </div>
       )}
 
       {/* Triggered deals */}
       {triggered.length > 0 && (
         <div style={{marginBottom:16}}>
-          <div style={{fontSize:11, fontWeight:700, color:PUNCH, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}>🚨 DEALS FOUND — Act Fast!</div>
+          <div style={{fontSize:11, fontWeight:700, color:PUNCH, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}> DEALS FOUND — Act Fast!</div>
           {triggered.map(a => (
             <div key={a.id} style={{...C, marginBottom:10, background:"rgba(46,125,50,0.05)", border:"2px solid rgba(46,125,50,0.3)", position:"relative"}}>
               <div style={{position:"absolute", top:14, right:14, width:9, height:9, borderRadius:"50%", background:GREEN}}/>
@@ -118,7 +118,7 @@ export default function AlertsTab({ user, onSignUp }) {
                 </div>
               </div>
               <button style={{...BP, width:"100%", marginTop:12, fontSize:12, padding:"9px", background:`linear-gradient(135deg,${GREEN},#1b5e20)`, boxShadow:"none"}}>
-                🔥 Book Now
+                 Book Now
               </button>
             </div>
           ))}
@@ -128,7 +128,7 @@ export default function AlertsTab({ user, onSignUp }) {
       {/* Watching */}
       {watching.length > 0 && (
         <div style={{marginBottom:16}}>
-          <div style={{fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}>👀 Watching</div>
+          <div style={{fontSize:11, fontWeight:700, color:HOT, fontFamily:"'Nunito',sans-serif", textTransform:"uppercase", letterSpacing:1, marginBottom:10}}> Watching</div>
           {watching.map(a => (
             <div key={a.id} style={{...C, marginBottom:8}}>
               <div style={{display:"flex", alignItems:"center", gap:12}}>
@@ -142,7 +142,7 @@ export default function AlertsTab({ user, onSignUp }) {
                     <div style={{height:"100%", width:`${Math.min(100,(a.threshold/a.current)*100)}%`, background:`linear-gradient(90deg,${HOT},${PUNCH})`, borderRadius:2}}/>
                   </div>
                 </div>
-                <button onClick={()=>toggle(a.id)} style={{background:"none", border:"none", cursor:"pointer", color:HOT, fontSize:18}}>⏸</button>
+                <button onClick={()=>toggle(a.id)} style={{background:"none", border:"none", cursor:"pointer", color:HOT, fontSize:18}}></button>
               </div>
             </div>
           ))}
@@ -152,7 +152,7 @@ export default function AlertsTab({ user, onSignUp }) {
       {/* New alert form */}
       {showNew ? (
         <div style={{...C, border:`1.5px solid ${HOT}`}}>
-          <div style={{fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12}}>🔔 New Alert</div>
+          <div style={{fontSize:14, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12}}> New Alert</div>
 
           {/* Type selector */}
           <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:6, marginBottom:12}}>
@@ -179,7 +179,7 @@ export default function AlertsTab({ user, onSignUp }) {
           />
           <div style={{display:"flex", gap:8}}>
             <button onClick={()=>setShowNew(false)} style={{...BS, flex:1}}>Cancel</button>
-            <button onClick={addAlert} style={{...BP, flex:2}}>🔔 Create Alert</button>
+            <button onClick={addAlert} style={{...BP, flex:2}}> Create Alert</button>
           </div>
         </div>
       ) : (

@@ -4,7 +4,7 @@ import { C, BP } from '../../constants/styles.js';
 import { DESTS } from '../../constants/data.js';
 import SH from '../ui/SH.jsx';
 
-// ─── Restaurant data per destination ─────────────────────────────────────────
+//  Restaurant data per destination 
 const RESTAURANTS = {
   miami: [
     {
@@ -193,7 +193,7 @@ const RESTAURANTS = {
     },
   ],
   scottsdale: [
-    // ── Brunch ───────────────────────────────────────────────────────────────
+    //  Brunch 
     {
       id:"scot-1", name:"Hash Kitchen", cuisine:"Brunch / American", priceRange:"$$",
       vibe:"Gainey Village · DJ Brunch · BYO Bloody Mary Bar",
@@ -316,7 +316,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["One of Scottsdale's most Instagrammable interiors: dramatic wood, plants, and lighting create a stunning backdrop","Full cocktail bar with premium tequila and mezcal-focused drinks designed for group toasting","Saturday hours run until 1am: easy to transition from brunch to a full night out"],
       reserveUrl:"https://www.opentable.com/r/toca-madera-scottsdale",
     },
-    // ── Sushi & Seafood ──────────────────────────────────────────────────────
+    //  Sushi & Seafood 
     {
       id:"scot-9", name:"Roka Akor", cuisine:"Japanese / Robata / Sushi", priceRange:"$$$$",
       vibe:"North Scottsdale · Robata-Grilled · Nationally Acclaimed",
@@ -387,7 +387,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["Sunday raw bar brunch with fresh oysters, sushi, and bottomless mimosas: a complete bachelorette experience in one stop","Happy hour features discounted oysters daily: great for a pre-dinner meet-up with the full group","Wide-ranging menu means every guest finds something they love from sushi to shrimp risotto"],
       reserveUrl:"https://buckandrider.com/north-scottsdale/",
     },
-    // ── Mexican ──────────────────────────────────────────────────────────────
+    //  Mexican 
     {
       id:"scot-14", name:"La Hacienda at Fairmont Princess", cuisine:"Mexican / Upscale", priceRange:"$$$$",
       vibe:"North Scottsdale · Fairmont Resort · 200+ Tequilas",
@@ -463,7 +463,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["The upstairs cantina is designed specifically for bachelorette and private group events with dedicated service","100 hand-selected premium tequilas: a personalized tequila tasting experience for the group","Happy hour seven days a week 3–6pm: afternoon bachelorette kickoffs are very wallet-friendly"],
       reserveUrl:"https://www.opentable.com/r/cien-agaves-tacos-and-tequila-scottsdale",
     },
-    // ── American ─────────────────────────────────────────────────────────────
+    //  American 
     {
       id:"scot-19", name:"Maple & Ash", cuisine:"Steakhouse / American / Fire-Cooked", priceRange:"$$$$",
       vibe:"Old Town Waterfront · Nationally Acclaimed · IDGAF Menu",
@@ -1979,7 +1979,7 @@ const RESTAURANTS = {
       websiteUrl:"https://rocknsake.com/",
     },
 
-    // ── MEXICAN ──────────────────────────────────────────────────────────────
+    //  MEXICAN 
     {
       id:"nola-16", name:"Acamaya", cuisine:"Mexican Seafood", priceRange:"$$$",
       vibe:"Bywater · Upscale · Chef-Driven",
@@ -2038,7 +2038,7 @@ const RESTAURANTS = {
       websiteUrl:"https://elgatonegronola.com/",
     },
 
-    // ── AMERICAN ─────────────────────────────────────────────────────────────
+    //  AMERICAN 
     {
       id:"nola-19", name:"Port of Call", cuisine:"Burgers & Steaks", priceRange:"$$",
       vibe:"French Quarter · Icon · Casual",
@@ -2097,7 +2097,7 @@ const RESTAURANTS = {
       websiteUrl:"https://bubsnola.com/",
     },
 
-    // ── ASIAN ────────────────────────────────────────────────────────────────
+    //  ASIAN 
     {
       id:"nola-22", name:"LUFU NOLA", cuisine:"Indian", priceRange:"$$",
       vibe:"CBD · Michelin-Recognized · Elevated",
@@ -2156,7 +2156,7 @@ const RESTAURANTS = {
       websiteUrl:"https://www.redschinese.com/",
     },
 
-    // ── SWEET TREATS ─────────────────────────────────────────────────────────
+    //  SWEET TREATS 
     {
       id:"nola-25", name:"Café du Monde", cuisine:"Beignets & Café Au Lait", priceRange:"$",
       vibe:"French Quarter · Iconic · Open Late",
@@ -2215,7 +2215,7 @@ const RESTAURANTS = {
       websiteUrl:"https://lorettaspralines.com/",
     },
 
-    // ── COFFEE ───────────────────────────────────────────────────────────────
+    //  COFFEE 
     {
       id:"nola-28", name:"Backatown Coffee Parlour", cuisine:"Coffee & Light Fare", priceRange:"$",
       vibe:"Near French Quarter · Community Hub · Local",
@@ -2274,7 +2274,7 @@ const RESTAURANTS = {
       websiteUrl:"https://www.frenchtruckcoffee.com/",
     },
 
-    // ── COCKTAILS ────────────────────────────────────────────────────────────
+    //  COCKTAILS 
     {
       id:"nola-31", name:"Jewel of the South", cuisine:"Cocktail Bar & Small Plates", priceRange:"$$$",
       vibe:"French Quarter · James Beard · World's 50 Best",
@@ -2600,7 +2600,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["Most affordable steakhouse on this list — stretch the group budget without sacrificing prime beef","Historic 1934 NOLA atmosphere provides an authentic local experience","Private booth reservations available for a cozy, semi-private group setting"],
       reserveUrl:"https://www.opentable.com/crescent-city-steak-house",
     },
-    // ── Italian ──────────────────────────────────────────────────────────────
+    //  Italian 
     {
       id:"nola-49", name:"Irene's", cuisine:"Italian / Creole Fusion", priceRange:"$$$$",
       vibe:"French Quarter · Candlelit · Live Piano",
@@ -2741,7 +2741,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["The whimsical Mona Lisa-everywhere decor is instantly fun and highly Instagrammable: photos before the food even arrives","Affordable and casual for a laid-back bachelorette dinner without sacrificing flavor","Royal Street location between the Lower Quarter art galleries and Bourbon Street bars"],
       reserveUrl:"https://www.monalisaneworleans.com",
     },
-    // ── Mediterranean ────────────────────────────────────────────────────────
+    //  Mediterranean 
     {
       id:"nola-59", name:"Shaya", cuisine:"Israeli / Mediterranean", priceRange:"$$",
       vibe:"Uptown · James Beard Award · Wood-Fired",
@@ -2826,7 +2826,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["Sangria pitchers and a rotating small-plates menu are perfectly built for group grazing and celebrating","Chef Xavier often interacts with guests personally: a truly intimate, special occasion feel","Large parties (10+) can book an exclusive group set menu experience"],
       reserveUrl:"http://barcelonanola.com",
     },
-    // ── Plant-Based ──────────────────────────────────────────────────────────
+    //  Plant-Based 
     {
       id:"nola-65", name:"Seed", cuisine:"Vegan / Plant-Based", priceRange:"$$",
       vibe:"Lower Garden District · Fully Vegan · Pioneer Since 2011",
@@ -3457,7 +3457,7 @@ const RESTAURANTS = {
     },
   ],
   portaransas: [
-    // ── Cuisines ──
+    //  Cuisines 
     {
       id:"porta-1", name:"BlueWater Cowboy Saloon & Mercantile", cuisine:"Seafood & Sushi", priceRange:"$$",
       vibe:"Rooftop · Panoramic Gulf Views · Cocktails",
@@ -3577,7 +3577,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["Daily happy hour 3–6pm: perfect pre-dinner drinks for the crew","Open 8am–9pm: works for brunch or dinner any day","In-house bakery means fresh pastries and treats on site"],
       reserveUrl:"https://www.ridleysontheisland.com",
     },
-    // ── Bars ──
+    //  Bars 
     {
       id:"porta-8", name:"Sip Yard Port A", cuisine:"Bar & Food Court", priceRange:"$$",
       vibe:"Outdoor · Multi-Vendor · Cocktails",
@@ -3612,7 +3612,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["Perfect grab-and-go stop before hitting the beach","Frozen cocktails that taste like a vacation in a cup","Fun, island-party energy the whole crew will love"],
       reserveUrl:"https://bronsbeachcarts.com/shaved-ice-%26-to-go-bar",
     },
-    // ── Coffee ──
+    //  Coffee 
     {
       id:"porta-10", name:"Coffee Waves", cuisine:"Coffee & Café", priceRange:"$",
       vibe:"Artisan · Coastal · Chill",
@@ -3647,7 +3647,7 @@ const RESTAURANTS = {
       whyWeLoveIt:["Opens at 6am: perfect for early beach days or airport runs","Organic and fair-trade sourcing for the conscious queen","Sunny patio is the perfect morning vibe for the group"],
       reserveUrl:"https://barefootbeans.com",
     },
-    // ── Sweets & Treats ──
+    //  Sweets & Treats 
     {
       id:"porta-12", name:"Winton's Candy Co", cuisine:"Sweets & Candy", priceRange:"$",
       vibe:"Nostalgic · Family-Owned · Island Treat",
@@ -3743,16 +3743,16 @@ const DEFAULT_RESTAURANTS = [
   },
 ];
 
-// ─── Star Rating component ────────────────────────────────────────────────────
+//  Star Rating component 
 function Stars({ rating }) {
   return (
     <span style={{ color:"#FFB800", fontSize:12 }}>
-      {"★".repeat(Math.floor(rating))}{"☆".repeat(5 - Math.floor(rating))}
+      {"".repeat(Math.floor(rating))}{"".repeat(5 - Math.floor(rating))}
     </span>
   );
 }
 
-// ─── Restaurant Card ──────────────────────────────────────────────────────────
+//  Restaurant Card 
 function RestaurantCard({ r, onView }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   return (
@@ -3800,7 +3800,7 @@ function RestaurantCard({ r, onView }) {
   );
 }
 
-// ─── Restaurant Detail Page ───────────────────────────────────────────────────
+//  Restaurant Detail Page 
 function RestaurantDetail({ r, onBack, groupSize, date }) {
   const [imgIdx, setImgIdx] = useState(0);
   const imgs = r.images || [r.image];
@@ -3823,7 +3823,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
 
       <div style={{ padding:"0 16px 48px" }}>
 
-        {/* ── Title + meta ── */}
+        {/*  Title + meta  */}
         <div style={{ marginTop:16, marginBottom:14 }}>
           <h1 style={{ fontFamily:"'Playfair Display',Georgia,serif", fontSize:24, fontWeight:700, color:DARK, margin:"0 0 8px", lineHeight:1.2 }}>
             {r.name}
@@ -3837,7 +3837,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
           </div>
         </div>
 
-        {/* ── Photo Gallery ── */}
+        {/*  Photo Gallery  */}
         <div style={{ marginBottom:20, borderRadius:16, overflow:"hidden" }}>
           {/* Main image */}
           <div style={{ position:"relative", width:"100%", aspectRatio:"16/9", marginBottom:4, cursor:"pointer" }}
@@ -3871,7 +3871,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
           )}
         </div>
 
-        {/* ── About this restaurant ── */}
+        {/*  About this restaurant  */}
         <div style={{ ...C, marginBottom:14 }}>
           <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:10 }}>
             About this Restaurant
@@ -3903,7 +3903,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
           </div>
         </div>
 
-        {/* ── Menu Highlights ── */}
+        {/*  Menu Highlights  */}
         <div style={{ ...C, marginBottom:14 }}>
           <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12 }}>
             Menu Highlights
@@ -3921,7 +3921,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
           </div>
         </div>
 
-        {/* ── Why we love it ── */}
+        {/*  Why we love it  */}
         <div style={{ ...C, marginBottom:14 }}>
           <div style={{ fontSize:16, fontWeight:300, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:12 }}>
             Why We Love It for Your Group
@@ -3939,7 +3939,7 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
           ))}
         </div>
 
-        {/* ── Make a Reservation ── */}
+        {/*  Make a Reservation  */}
         <div style={{ background:WHITE, borderRadius:20, padding:"20px 18px", marginBottom:14, border:`1.5px solid ${BORDER}` }}>
           <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", color:HOT, marginBottom:4 }}>
             Book Your Table
@@ -3966,22 +3966,22 @@ function RestaurantDetail({ r, onBack, groupSize, date }) {
   );
 }
 
-// ─── Main EatsTab ─────────────────────────────────────────────────────────────
+//  Main EatsTab 
 const CUISINE_CATS = [
-  { id:"all",          label:"All",              emoji:"🍽️" },
-  { id:"brunch",       label:"Brunch",           emoji:"🥞" },
-  { id:"sushi-seafood",label:"Sushi & Seafood",  emoji:"🍣" },
-  { id:"mexican",      label:"Mexican",          emoji:"🌮" },
-  { id:"american",     label:"American",         emoji:"🍔" },
-  { id:"steakhouse",   label:"Steakhouse",       emoji:"🥩" },
-  { id:"bbq",          label:"BBQ",              emoji:"🔥" },
-  { id:"mediterranean",label:"Mediterranean",    emoji:"🫒" },
-  { id:"cocktails",    label:"Sips",             emoji:"🍷" },
-  { id:"asian",        label:"Asian",            emoji:"🥢" },
-  { id:"italian",      label:"Italian",          emoji:"🍝" },
-  { id:"plantbased",   label:"Plant-Based",      emoji:"🌿" },
-  { id:"coffee",       label:"Coffee",           emoji:"☕" },
-  { id:"sweets",       label:"Sweet Treats",     emoji:"🍰" },
+  { id:"all",          label:"All",              emoji:"" },
+  { id:"brunch",       label:"Brunch",           emoji:"" },
+  { id:"sushi-seafood",label:"Sushi & Seafood",  emoji:"" },
+  { id:"mexican",      label:"Mexican",          emoji:"" },
+  { id:"american",     label:"American",         emoji:"" },
+  { id:"steakhouse",   label:"Steakhouse",       emoji:"" },
+  { id:"bbq",          label:"BBQ",              emoji:"" },
+  { id:"mediterranean",label:"Mediterranean",    emoji:"" },
+  { id:"cocktails",    label:"Sips",             emoji:"" },
+  { id:"asian",        label:"Asian",            emoji:"" },
+  { id:"italian",      label:"Italian",          emoji:"" },
+  { id:"plantbased",   label:"Plant-Based",      emoji:"" },
+  { id:"coffee",       label:"Coffee",           emoji:"" },
+  { id:"sweets",       label:"Sweet Treats",     emoji:"" },
 ];
 
 function matchCategory(r, cat) {
@@ -4058,7 +4058,7 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
         </div>
         {city && !showCityPicker ? (
           <div style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 12px", borderRadius:10, border:`1.5px solid ${HOT}`, background:SOFT }}>
-            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || "📍"}</span>
+            <span style={{ fontSize:18 }}>{DESTS.find(d=>d.id===city)?.emoji || ""}</span>
             <div style={{ fontSize:13, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK }}>{DESTS.find(d=>d.id===city)?.name}</div>
           </div>
         ) : (
@@ -4143,9 +4143,9 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
         </div>
       </div>
 
-      {/* ── View Toggle ── */}
+      {/*  View Toggle  */}
 
-      {/* ── Results ── */}
+      {/*  Results  */}
       {filteredResults && (
         <>
           <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:12 }}>
@@ -4158,7 +4158,7 @@ export default function EatsTab({ groupSize: initialGroupSize, initialCity }) {
           </div>
           {filteredResults.length === 0 ? (
             <div style={{ textAlign:"center", padding:"32px 16px", color:DARK, fontFamily:"'Nunito',sans-serif" }}>
-              <div style={{ fontSize:28, marginBottom:8 }}>🔍</div>
+              <div style={{ fontSize:28, marginBottom:8 }}></div>
               <div style={{ fontSize:14, fontWeight:700, marginBottom:4 }}>No matches for this category</div>
               <div style={{ fontSize:12, color:HOT, opacity:0.8 }}>Try a different cuisine or pick "All"</div>
             </div>

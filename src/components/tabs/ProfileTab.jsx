@@ -11,7 +11,7 @@ import {
 } from '../../firebase.js';
 import { useEffect } from 'react';
 
-// ─── Polls ────────────────────────────────────────────────────────────────────
+//  Polls 
 function getVoterId() {
   let id = localStorage.getItem('bachVoterId');
   if (!id) { id = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('bachVoterId', id); }
@@ -105,7 +105,7 @@ function PollsSection({ user }) {
                   {voted && <div style={{ position:"absolute", left:0, top:0, height:"100%", width:`${pct}%`, background:isMe?`linear-gradient(90deg,${SOFT},rgba(255,231,249,0))`:`linear-gradient(90deg,rgba(253,245,250,1),rgba(253,245,250,0))`, transition:"width 0.6s ease", borderRadius:12 }}/>}
                   <div style={{ position:"relative", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
                     <div style={{ display:"flex", alignItems:"center", gap:8 }}>
-                      {isMe && <span style={{ color:HOT }}>✓</span>}
+                      {isMe && <span style={{ color:HOT }}></span>}
                       <span style={{ fontSize:13, fontFamily:"'Nunito',sans-serif", fontWeight:isMe?700:500, color:DARK }}>{opt.text}</span>
                       {isTop && <span style={{ fontSize:10, background:`linear-gradient(135deg,#f472b0,${HOT})`, color:WHITE, padding:"2px 8px", borderRadius:50, fontWeight:700, fontFamily:"'Nunito',sans-serif" }}>Leading</span>}
                     </div>
@@ -214,7 +214,7 @@ function PollsSection({ user }) {
   );
 }
 
-// ─── Media Upload ─────────────────────────────────────────────────────────────
+//  Media Upload 
 const MOMENTS = [
   { id:"gettingready", label:"Getting Ready"  },
   { id:"pool",         label:"Pool Party"      },
@@ -282,7 +282,7 @@ function MediaSection({ user }) {
     <div>
       {/* Hero */}
       <div style={{ borderRadius:18, padding:"18px 16px", marginBottom:14, textAlign:"center", background:`linear-gradient(135deg,${SOFT} 0%,${MID} 100%)`, border:`1.5px solid ${MID}` }}>
-        <div style={{ fontSize:32, marginBottom:6 }}>📸</div>
+        <div style={{ fontSize:32, marginBottom:6 }}></div>
         <div style={{ fontSize:17, fontWeight:400, fontFamily:"'Playfair Display',Georgia,serif", color:DARK, marginBottom:4 }}>Pics or It Didn't Happen</div>
         <div style={{ fontSize:12, color:HOT, fontFamily:"'Nunito',sans-serif", opacity:0.85, lineHeight:1.5 }}>
           Drop your pics and vids — your memories help other bach crews plan smarter.
@@ -329,7 +329,7 @@ function MediaSection({ user }) {
             onClick={()=>fileRef.current?.click()}
             style={{ border:`2px dashed ${dragging?HOT:BORDER}`, borderRadius:14, padding:"24px 16px", textAlign:"center", background:dragging?SOFT:"#fdf8fb", cursor:"pointer" }}
           >
-            <div style={{ fontSize:28, marginBottom:6 }}>📷</div>
+            <div style={{ fontSize:28, marginBottom:6 }}></div>
             <div style={{ fontSize:13, fontWeight:700, color:DARK, fontFamily:"'Nunito',sans-serif", marginBottom:4 }}>Upload Photos & Videos</div>
             <div style={{ fontSize:11, color:"#aaa", fontFamily:"'Nunito',sans-serif", marginBottom:12 }}>Drag and drop here or</div>
             <div style={{ display:"inline-block", padding:"8px 20px", borderRadius:50, border:`1.5px solid ${DARK}`, fontFamily:"'Nunito',sans-serif", fontSize:12, fontWeight:700, color:DARK, background:WHITE }}>
@@ -393,7 +393,7 @@ function MediaSection({ user }) {
   );
 }
 
-// ─── Budget Section ───────────────────────────────────────────────────────────
+//  Budget Section 
 function BudgetSection({ groupSize }) {
   const [city,  setCity]  = useState("");
   const [nights, setNights] = useState(3);
@@ -469,12 +469,12 @@ function BudgetSection({ groupSize }) {
   );
 }
 
-// ─── Meal Planner ─────────────────────────────────────────────────────────────
+//  Meal Planner 
 const MEAL_SLOTS = [
-  { id:"brunch",    label:"BRUNCH",     icon:"🍴", empty:"No brunch planned yet"   },
-  { id:"lunch",     label:"LUNCH",      icon:"🥗", empty:"No lunch planned yet"    },
-  { id:"dinner",    label:"DINNER",     icon:"🍽️", empty:"No dinner planned yet"   },
-  { id:"lateNight", label:"LATE NIGHT", icon:"🌙", empty:"No late night plans yet" },
+  { id:"brunch",    label:"BRUNCH",     icon:"", empty:"No brunch planned yet"   },
+  { id:"lunch",     label:"LUNCH",      icon:"", empty:"No lunch planned yet"    },
+  { id:"dinner",    label:"DINNER",     icon:"", empty:"No dinner planned yet"   },
+  { id:"lateNight", label:"LATE NIGHT", icon:"", empty:"No late night plans yet" },
 ];
 
 function MealPlannerSection({ user }) {
@@ -562,7 +562,7 @@ function MealPlannerSection({ user }) {
   );
 }
 
-// ─── Collapsible section wrapper ──────────────────────────────────────────────
+//  Collapsible section wrapper 
 function Section({ title, children, defaultOpen }) {
   const [open, setOpen] = useState(defaultOpen || false);
   return (
@@ -584,7 +584,7 @@ function Section({ title, children, defaultOpen }) {
   );
 }
 
-// ─── Main ProfileTab ──────────────────────────────────────────────────────────
+//  Main ProfileTab 
 export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSize, setTab }) {
   const [editing, setEditing] = useState(false);
   const [displayName, setDisplayName] = useState(user.name);
@@ -593,7 +593,7 @@ export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSi
 
   return (
     <div>
-      {/* ── Profile header ── */}
+      {/*  Profile header  */}
       <div style={{ borderRadius:22, padding:"26px 18px", background:`linear-gradient(135deg,${SOFT},${MID})`, border:`1.5px solid ${MID}`, marginBottom:16, textAlign:"center" }}>
         <div style={{ width:68, height:68, borderRadius:"50%", background:`linear-gradient(135deg,#f472b0,${HOT})`, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 14px", boxShadow:`0 6px 22px rgba(213,36,56,0.25)`, border:`3px solid ${WHITE}` }}>
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -608,14 +608,14 @@ export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSi
           </div>
         ) : (
           <div style={{ fontSize:20, fontWeight:700, fontFamily:"'Playfair Display',Georgia,serif", marginBottom:4, color:DARK }}>
-            {displayName} <button onClick={()=>setEditing(true)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:14, color:HOT, verticalAlign:"middle" }}>✏️</button>
+            {displayName} <button onClick={()=>setEditing(true)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:14, color:HOT, verticalAlign:"middle" }}></button>
           </div>
         )}
         <div style={{ fontSize:13, color:HOT, fontFamily:"'Nunito',sans-serif", fontWeight:600 }}>{ROLE_MAP[user.role]||"Bach Tribe"}</div>
         <div style={{ fontSize:11, color:`rgba(45,10,24,0.5)`, fontFamily:"'Nunito',sans-serif", marginTop:4 }}>{user.email}</div>
       </div>
 
-      {/* ── Stats ── */}
+      {/*  Stats  */}
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, marginBottom:16 }}>
         {[["Cart Items",String(cart.length)],["Experiences Saved",String(expSaved)]].map(([label,val])=>(
           <div key={label} style={{ ...C, textAlign:"center", padding:"14px 10px" }}>
@@ -625,11 +625,11 @@ export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSi
         ))}
       </div>
 
-      {/* ── My Trips ── */}
+      {/*  My Trips  */}
       <SH title="My Trips" />
       {[
-        { dest:"Nashville", emoji:"🎸", dates:"Jun 14–17", members:8,  status:"Planning" },
-        { dest:"Miami",     emoji:"🌴", dates:"Aug 2–5",  members:10, status:"Saved"    },
+        { dest:"Nashville", emoji:"", dates:"Jun 14–17", members:8,  status:"Planning" },
+        { dest:"Miami",     emoji:"", dates:"Aug 2–5",  members:10, status:"Saved"    },
       ].map((t,i) => (
         <div key={i} style={{ ...C, marginBottom:10, display:"flex", alignItems:"center", gap:14 }}>
           <div style={{ fontSize:30 }}>{t.emoji}</div>
@@ -641,34 +641,34 @@ export default function ProfileTab({ user, onLogout, cart, groupSize, setGroupSi
         </div>
       ))}
 
-      {/* ── Meal Planner (members only) ── */}
+      {/*  Meal Planner (members only)  */}
       {user.role !== "guest" && (
-        <Section title="🍽️ Meal Planner" defaultOpen>
+        <Section title=" Meal Planner" defaultOpen>
           <MealPlannerSection user={user} />
         </Section>
       )}
 
-      {/* ── Group Polls ── */}
+      {/*  Group Polls  */}
       <Section title="Group Polls">
         <PollsSection user={user} />
       </Section>
 
-      {/* ── Build Your Itinerary ── */}
+      {/*  Build Your Itinerary  */}
       <Section title="Build Your Itinerary">
         <PlanTab groupSize={groupSize} setGroupSize={setGroupSize || (()=>{})} setTab={setTab || (()=>{})} user={user} onSignUp={()=>{}} />
       </Section>
 
-      {/* ── Budget Calculator ── */}
+      {/*  Budget Calculator  */}
       <Section title="Budget Calculator">
         <BudgetSection groupSize={groupSize || 8} />
       </Section>
 
-      {/* ── Share Media ── */}
+      {/*  Share Media  */}
       <Section title="Share Your Memories">
         <MediaSection user={user} />
       </Section>
 
-      {/* ── Settings ── */}
+      {/*  Settings  */}
       <SH title="Settings" sub={null} />
       {[
         ["Deal Alerts","Flights, Airbnb & Vrbo price drops",true,true],

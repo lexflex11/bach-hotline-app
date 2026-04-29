@@ -14,7 +14,7 @@ import { BP, BS, IN } from '../../constants/styles.js';
 import { PRODUCTS, SHOP_CATS } from '../../constants/data.js';
 import { TABLEWARE, PARTY_ACCESSORIES } from '../tabs/DecorTab.jsx';
 
-// ─── Map DecorTab types → ShopTab category IDs ───────────────────────────────
+//  Map DecorTab types → ShopTab category IDs 
 const TYPE_TO_CAT = {
   plate:     "Plates",
   napkin:    "Napkins",
@@ -88,7 +88,7 @@ const DECOR_PRODUCTS = [...TABLEWARE, ...PARTY_ACCESSORIES].map(p => {
   };
 });
 
-// ─── Product image tile ───────────────────────────────────────────────────────
+//  Product image tile 
 function ProductTile({ p, onView }) {
   const [loaded, setLoaded] = useState(false);
   const [err,    setErr]    = useState(false);
@@ -114,7 +114,7 @@ function ProductTile({ p, onView }) {
           />
         ) : (
           <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,color:"#f4a0c0"}}>
-            🎀
+            
           </div>
         )}
       </div>
@@ -129,7 +129,7 @@ function ProductTile({ p, onView }) {
   );
 }
 
-// ─── Product Detail Page (inline, no fixed overlay) ──────────────────────────
+//  Product Detail Page (inline, no fixed overlay) 
 function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart }) {
   const [imgIdx,   setImgIdx]   = useState(0);
   const [qty,      setQty]      = useState(1);
@@ -154,13 +154,13 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
   const selectedVariant = p.variants?.[variantI];
   const price = +(selectedVariant?.price ?? p.price) || 0;
 
-  /* ── Mobile image carousel (arrows inside) ── */
+  /*  Mobile image carousel (arrows inside)  */
   const ChevronLeft  = <svg width="10" height="18" viewBox="0 0 10 18" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9,1 1,9 9,17"/></svg>;
   const ChevronRight = <svg width="10" height="18" viewBox="0 0 10 18" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="1,1 9,9 1,17"/></svg>;
 
   const MobileCarousel = (
     <div style={{ position:"relative", aspectRatio:"1/1", background:"#fff", borderRadius:12, overflow:"hidden", marginBottom:6 }}>
-      {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", padding:10, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}>🎀</div>}
+      {src ? <img src={src} alt={p.name||""} style={{ width:"100%", height:"100%", objectFit:"contain", padding:10, boxSizing:"border-box", display:"block" }}/> : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:40 }}></div>}
       {total > 1 && <>
         <button onClick={()=>setImgIdx(i=>(i-1+total)%total)} style={{ position:"absolute", left:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>{ChevronLeft}</button>
         <button onClick={()=>setImgIdx(i=>(i+1)%total)} style={{ position:"absolute", right:8, top:"50%", transform:"translateY(-50%)", background:"rgba(255,255,255,0.9)", border:"none", borderRadius:"50%", width:32, height:32, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 1px 4px rgba(0,0,0,0.12)" }}>{ChevronRight}</button>
@@ -168,7 +168,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
     </div>
   );
 
-  /* ── Desktop image gallery: image (with overlapping arrows) | thumbnails ── */
+  /*  Desktop image gallery: image (with overlapping arrows) | thumbnails  */
   const DesktopGallery = (
     <div style={{ display:"flex", alignItems:"flex-start", gap:8 }}>
       {/* Image with arrows overlaid */}
@@ -180,7 +180,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
                 onMouseLeave={()=>{ setZoomed(false); setZoomOrigin("50% 50%"); }}
                 onMouseMove={handleZoomMove}
                 style={{ width:"100%", height:"100%", objectFit:"contain", objectPosition:"center", padding:8, boxSizing:"border-box", display:"block", transition:"transform 0.2s ease", transform:zoomed?"scale(2.5)":"scale(1)", transformOrigin:zoomOrigin, cursor:zoomed?"crosshair":"default" }}/>
-            : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:52 }}>🎀</div>}
+            : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:52 }}></div>}
         </div>
         {total > 1 && <>
           <button onClick={()=>{ setImgIdx(i=>(i-1+total)%total); setZoomed(false); }} style={{ position:"absolute", left:-20, top:"50%", transform:"translateY(-50%)", background:"none", border:"none", cursor:"pointer", padding:"0 8px", opacity:0.8 }}>{ChevronLeft}</button>
@@ -200,7 +200,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
     </div>
   );
 
-  /* ── Product info panel ── */
+  /*  Product info panel  */
   const InfoPanel = (
     <div style={{ flex:1, minWidth:0 }}>
       <h2 style={{ fontFamily:"'Acme',sans-serif", fontSize:mobile?22:30, fontWeight:400, fontStyle:"normal", color:"#f496c3", margin:"0 0 10px", lineHeight:1.2 }}>
@@ -239,7 +239,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
           background: inCart ? SOFT : "#F496C2",
           color: inCart ? HOT : WHITE, border: inCart ? `1.5px solid ${HOT}` : "none",
         }}>
-          {inCart ? "✓ In Cart" : "Add To Cart"}
+          {inCart ? " In Cart" : "Add To Cart"}
         </button>
       </div>
       {p.desc ? <p style={{ fontSize:mobile?13:15, fontWeight:300, color:DARK, fontFamily:"'Lato',sans-serif", lineHeight:1.8, margin:"0 0 16px" }}>{p.desc}</p> : null}
@@ -266,20 +266,20 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
       }}>← Back</button>
 
       {mobile ? (
-        /* ── MOBILE: image on top, info below ── */
+        /*  MOBILE: image on top, info below  */
         <div>
           <div style={{ marginBottom:20 }}>{MobileCarousel}</div>
           {InfoPanel}
         </div>
       ) : (
-        /* ── DESKTOP: info left, gallery right ── */
+        /*  DESKTOP: info left, gallery right  */
         <div style={{ display:"flex", gap:32, alignItems:"flex-start" }}>
           {InfoPanel}
           <div style={{ flexShrink:0, width:"40%" }}>{DesktopGallery}</div>
         </div>
       )}
 
-      {/* ── Recommended products ── */}
+      {/*  Recommended products  */}
       {recommended?.length > 0 && (
         <div style={{ marginTop:40, paddingTop:28, borderTop:`1.5px solid ${BORDER}` }}>
           <div style={{ fontFamily:"'Acme',sans-serif", fontSize:mobile?18:22, color:"#f496c3", marginBottom:16 }}>
@@ -299,7 +299,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
                 <div style={{ width:60, height:60, borderRadius:8, overflow:"hidden", background:WHITE, flexShrink:0, border:`1px solid ${BORDER}` }}>
                   {r.image
                     ? <img src={r.image} alt={r.name} style={{ width:"100%", height:"100%", objectFit:"contain", padding:4, boxSizing:"border-box" }}/>
-                    : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:24 }}>🎀</div>
+                    : <div style={{ width:"100%", height:"100%", display:"flex", alignItems:"center", justifyContent:"center", fontSize:24 }}></div>
                   }
                 </div>
                 {/* Name + price */}
@@ -342,7 +342,7 @@ function ProductDetail({ p, onBack, onAdd, inCart, recommended, onView, setCart 
   );
 }
 
-// ─── Cart Drawer ──────────────────────────────────────────────────────────────
+//  Cart Drawer 
 function CartDrawer({ cart, setCart, onRemove, onClose }) {
   const total = cart.reduce((s,i)=>s+(i.price||0),0);
 
@@ -377,7 +377,7 @@ function CartDrawer({ cart, setCart, onRemove, onClose }) {
 
           {cart.length === 0 ? (
             <div style={{textAlign:"center",padding:"32px 0",color:"#bbb",fontFamily:"'Nunito',sans-serif",fontSize:13}}>
-              Your cart is empty 💔
+              Your cart is empty 
             </div>
           ) : (
             <>
@@ -386,7 +386,7 @@ function CartDrawer({ cart, setCart, onRemove, onClose }) {
                 return (
                   <div key={item.id} style={{display:"flex",alignItems:"center",gap:12,marginBottom:14,paddingBottom:14,borderBottom:`1px solid ${BORDER}`}}>
                     <div style={{position:"relative",width:58,height:58,borderRadius:6,overflow:"hidden",background:"#FDF5F8",flexShrink:0}}>
-                      {item.image ? <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"contain",padding:4,boxSizing:"border-box"}}/> : <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22}}>🎀</div>}
+                      {item.image ? <img src={item.image} alt={item.name} style={{width:"100%",height:"100%",objectFit:"contain",padding:4,boxSizing:"border-box"}}/> : <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:22}}></div>}
                     </div>
                     <div style={{flex:1,minWidth:0}}>
                       <div style={{fontSize:13,fontWeight:300,color:DARK,fontFamily:"'Nunito',sans-serif",marginBottom:5,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{item.name}</div>
@@ -416,7 +416,7 @@ function CartDrawer({ cart, setCart, onRemove, onClose }) {
   );
 }
 
-// ─── Main Shop Tab ────────────────────────────────────────────────────────────
+//  Main Shop Tab 
 export default function ShopTab({ cart, setCart }) {
   const [cat,      setCat]      = useState("all");
   const [search,   setSearch]   = useState("");
@@ -495,10 +495,10 @@ export default function ShopTab({ cart, setCart }) {
   return (
     <div style={{paddingBottom:24}}>
 
-      {/* ── Two-column layout: sidebar + grid ── */}
+      {/*  Two-column layout: sidebar + grid  */}
       <div style={{display:"flex",gap:0,alignItems:"flex-start"}}>
 
-        {/* ── Left sidebar: plain text category list ── */}
+        {/*  Left sidebar: plain text category list  */}
         <div style={{width:mobile?88:130,flexShrink:0,paddingRight:mobile?8:16,paddingTop:4}}>
           {SHOP_CATS.map(c=>(
             <div key={c.id} onClick={()=>setCat(c.id)} style={{
@@ -516,7 +516,7 @@ export default function ShopTab({ cart, setCart }) {
           ))}
         </div>
 
-        {/* ── Right: product grid (2 cols mobile, 4 cols desktop) ── */}
+        {/*  Right: product grid (2 cols mobile, 4 cols desktop)  */}
         <div style={{flex:1,minWidth:0}}>
           {filtered.length > 0 ? (
             <div style={{display:"grid",gridTemplateColumns:mobile?"repeat(2,1fr)":"repeat(4,1fr)",gap:mobile?"16px 10px":"20px 12px"}}>
@@ -526,7 +526,7 @@ export default function ShopTab({ cart, setCart }) {
             </div>
           ) : (
             <div style={{textAlign:"center",padding:"48px 20px"}}>
-              <div style={{fontSize:36,marginBottom:12}}>🔍</div>
+              <div style={{fontSize:36,marginBottom:12}}></div>
               <div style={{fontSize:14,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:8}}>No products found</div>
               <button onClick={()=>setCat("all")} style={{...BS,fontSize:12}}>Clear filters</button>
             </div>

@@ -81,7 +81,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
     { code:"ANYTIME",   label:"Any Time",  icon:null },
     { code:"MORNING",   label:"Morning",   icon:null, sub:"6am – 12pm" },
     { code:"AFTERNOON", label:"Afternoon", icon:null, sub:"12pm – 6pm" },
-    { code:"EVENING",   label:"Evening",   icon:"🌙", sub:"6pm – midnight" },
+    { code:"EVENING",   label:"Evening",   icon:"", sub:"6pm – midnight" },
   ];
 
   const selectedDest = DESTS.find(d => d.id === dest);
@@ -103,7 +103,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
     <div>
       <SH title="Group Flight Search" sub="Find real flights for your whole crew" />
 
-      {/* ── STEP 1 — Departure city ── */}
+      {/*  STEP 1 — Departure city  */}
       <div style={{...C, marginBottom:12}}>
         <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK,marginBottom:4}}>
           Where are you flying from?
@@ -122,7 +122,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
         </select>
       </div>
 
-      {/* ── STEP 2 — Destination ── */}
+      {/*  STEP 2 — Destination  */}
       <div style={{...C, marginBottom:12}}>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:10}}>
           <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>
@@ -136,7 +136,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
         </div>
         {dest && !showDestPicker ? (
           <div style={{display:"flex",alignItems:"center",gap:10,padding:"10px 12px",borderRadius:10,border:`1.5px solid ${HOT}`,background:SOFT}}>
-            <span style={{fontSize:18}}>{DESTS.find(d=>d.id===dest)?.emoji || "📍"}</span>
+            <span style={{fontSize:18}}>{DESTS.find(d=>d.id===dest)?.emoji || ""}</span>
             <div>
               <div style={{fontSize:13,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{DESTS.find(d=>d.id===dest)?.name}</div>
               <div style={{fontSize:10,color:HOT,fontFamily:"'Nunito',sans-serif",opacity:0.8}}>{groupSize} travelers</div>
@@ -159,7 +159,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
         )}
       </div>
 
-      {/* ── STEP 3 — Dates & Times ── */}
+      {/*  STEP 3 — Dates & Times  */}
       <div style={{...C, marginBottom:14, overflow:"hidden"}}>
 
 
@@ -210,7 +210,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
         </div>
       </div>
 
-      {/* ── SEARCH CTA ── */}
+      {/*  SEARCH CTA  */}
       <div style={{...C, background:SOFT, border:`1.5px solid ${MID}`, marginBottom:14}}>
         {selectedDest ? (
           <>
@@ -242,7 +242,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
         )}
       </div>
 
-      {/* ── EXPEDIA RESULTS CARD ── */}
+      {/*  EXPEDIA RESULTS CARD  */}
       {showResults && selectedDest && (() => {
         const toCode = selectedDest.airportCode;
         const url = expediaFlightUrl(fromCode, toCode, depDate, retDate, groupSize, depTime, retTime);
@@ -255,7 +255,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
             <div style={{...C, marginBottom:10, cursor:"pointer"}} onClick={()=>setDetailOpen(true)}>
               <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                 <div style={{display:"flex", alignItems:"center", gap:14}}>
-                  <div style={{fontSize:32}}>✈️</div>
+                  <div style={{fontSize:32}}></div>
                   <div>
                     <div style={{fontSize:15,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{fromCode} → {selectedDest.airportCode || selectedDest.name}</div>
                     <div style={{fontSize:11,color:HOT,fontFamily:"'Nunito',sans-serif",marginTop:2,opacity:0.8}}>{groupSize} travelers · {depDate || "flexible dates"}{retDate ? ` → ${retDate}` : ""}</div>
@@ -267,7 +267,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
               </div>
             </div>
 
-            {/* ── FLIGHT DETAIL MODAL ── */}
+            {/*  FLIGHT DETAIL MODAL  */}
             {detailOpen && (
               <>
                 <div onClick={()=>setDetailOpen(false)} style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.5)",zIndex:500,backdropFilter:"blur(4px)"}}/>
@@ -275,12 +275,12 @@ export default function FlightsTab({ groupSize, initialDest }) {
                   {/* Header */}
                   <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:20}}>
                     <div style={{fontSize:18,fontWeight:400,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>Flight Details</div>
-                    <button onClick={()=>setDetailOpen(false)} style={{width:32,height:32,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:18,cursor:"pointer",color:DARK,display:"flex",alignItems:"center",justifyContent:"center"}}>✕</button>
+                    <button onClick={()=>setDetailOpen(false)} style={{width:32,height:32,borderRadius:"50%",border:`1.5px solid ${BORDER}`,background:"none",fontSize:18,cursor:"pointer",color:DARK,display:"flex",alignItems:"center",justifyContent:"center"}}></button>
                   </div>
 
                   {/* Flight card */}
                   <div style={{background:"#f8f9fa",borderRadius:14,padding:"18px",marginBottom:18}}>
-                    <div style={{fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:"#555",marginBottom:14}}>✈️ Multiple Airlines Available</div>
+                    <div style={{fontSize:12,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:"#555",marginBottom:14}}> Multiple Airlines Available</div>
                     <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
                       <div>
                         <div style={{fontSize:22,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{fromAirport?.label?.split(",")[0] || fromCode}</div>
@@ -290,7 +290,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
                       <div style={{textAlign:"center",padding:"0 12px",color:"#ccc"}}>
                         <div style={{fontSize:10,fontFamily:"'Nunito',sans-serif",color:"#aaa",marginBottom:4}}>Nonstop & 1-stop options</div>
                         <div style={{borderTop:"1.5px solid #ddd",width:80,margin:"0 auto"}}/>
-                        <div style={{fontSize:18,marginTop:4}}>✈</div>
+                        <div style={{fontSize:18,marginTop:4}}></div>
                       </div>
                       <div style={{textAlign:"right"}}>
                         <div style={{fontSize:22,fontWeight:700,fontFamily:"'Playfair Display',Georgia,serif",color:DARK}}>{selectedDest.name}</div>
