@@ -34,7 +34,7 @@ export default function HomeTab({ groupSize, setGroupSize, setTab, user, city, s
           >
             <option value="">Choose your destination…</option>
             {DESTS.filter(d => d.id !== "all").map(d => (
-              <option key={d.id} value={d.id}>{d.emoji ? `${d.emoji} ` : ""}{d.name}</option>
+              <option key={d.id} value={d.id}>{d.name}</option>
             ))}
           </select>
         </div>
