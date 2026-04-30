@@ -46,36 +46,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: data.message || "Flight search failed" });
     }
 
-    const flights = (data.data || []).map((f, i) => {
-      const dep = f.departure_at ? new Date(f.departure_at) : null;
-      const ret = f.return_at    ? new Date(f.return_at)    : null;
-
-      const depPart = dep
-        ? `${String(dep.getDate()).padStart(2,"0")}${String(dep.getMonth()+1).padStart(2,"0")}`
-        : "0101";
-      const retPart = ret
-        ? `${String(ret.getDate()).padStart(2,"0")}${String(ret.getMonth()+1).padStart(2,"0")}`
-        : null;
-
-      const bookingUrl = retPart
-        ? `https://www.aviasales.com/search/${fromCode}${depPart}/${toCode}${retPart}/${numAdults}1?marker=${MARKER}`
-        : `https://www.aviasales.com/search/${fromCode}${depPart}/${toCode}${numAdults}1?marker=${MARKER}`;
-
-      return {
-        id:          i,
-        airline:     AIRLINE_NAMES[f.airline] || f.airline || "Unknown Airline",
-        airlineCode: f.airline || "??",
-        price:       Math.round(f.price),
-        totalPrice:  Math.round(f.price * numAdults),
-        stops:       f.transfers ?? 0,
-        departureAt: dep ? dep.toISOString() : null,
-        returnAt:    ret ? ret.toISOString() : null,
-        depHour:     dep ? dep.getHours() : null,
-        bookingUrl,
-      };
-    }).sort((a, b) => a.price - b.price);
-
-    return res.status(200).json({ flights, groupSize: numAdults });
+    // Return first raw item so we can inspect actual field names
+    return res.status(200).json({ _raw: (data.data || []).slice(0, 2), groupSize: numAdults, flights: [] });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
