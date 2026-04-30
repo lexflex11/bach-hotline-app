@@ -17,18 +17,19 @@ export default async function handler(req, res) {
   const toCode    = to.toUpperCase();
 
   try {
-    // month-matrix returns one result per day — many more results than /latest
+    // calendar returns cheapest price per day for the given month
     const month = date ? date.substring(0, 7) : new Date().toISOString().substring(0, 7);
     const params = new URLSearchParams({
-      currency:    "USD",
-      origin:      fromCode,
-      destination: toCode,
-      month,
+      currency:       "usd",
+      origin:         fromCode,
+      destination:    toCode,
+      depart_date:    month,
+      calendar_type:  "departure_date",
       token,
     });
-    if (!returnDate) params.set("one_way", "true");
+    if (returnDate) params.set("return_date", returnDate.substring(0, 7));
 
-    const response = await fetch(`https://api.travelpayouts.com/v1/prices/month-matrix?${params}`);
+    const response = await fetch(`https://api.travelpayouts.com/v1/prices/calendar?${params}`);
     const raw  = await response.text();
     let data;
     try { data = JSON.parse(raw); }
@@ -38,7 +39,12 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: data.message || data.error || JSON.stringify(data) });
     }
 
-    const flights = (data.data || [])
+    // calendar API returns an object keyed by date, convert to array
+    const rawList = Array.isArray(data.data)
+      ? data.data
+      : Object.entries(data.data || {}).map(([k, v]) => ({ ...v, depart_date: v.depart_date || k }));
+
+    const flights = rawList
       .filter(f => f.show_to_affiliates !== false)
       .map((f, i) => {
         const depDate = f.depart_date || null;   // "YYYY-MM-DD"
