@@ -17,19 +17,18 @@ export default async function handler(req, res) {
   const toCode    = to.toUpperCase();
 
   try {
+    // month-matrix returns one result per day — many more results than /latest
+    const month = date ? date.substring(0, 7) : new Date().toISOString().substring(0, 7);
     const params = new URLSearchParams({
+      currency:    "USD",
       origin:      fromCode,
       destination: toCode,
-      currency:    "USD",
-      period_type: "month",
-      one_way:     returnDate ? "false" : "true",
-      page:        "1",
-      limit:       "30",
+      month,
       token,
     });
-    if (date) params.set("beginning_of_period", date.substring(0, 7) + "-01");
+    if (!returnDate) params.set("one_way", "true");
 
-    const response = await fetch(`https://api.travelpayouts.com/v2/prices/latest?${params}`);
+    const response = await fetch(`https://api.travelpayouts.com/v1/prices/month-matrix?${params}`);
     const data     = await response.json();
 
     if (!response.ok || !data.success) {
