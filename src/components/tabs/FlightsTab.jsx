@@ -7,24 +7,16 @@ import SH from '../ui/SH.jsx';
 const NUN = "'Plus Jakarta Sans',sans-serif";
 const CAMREF = "1011l4ma3h";
 
-function fmtExpediaDate(iso) {
-  // Expedia leg format needs MM/DD/YYYY
-  if (!iso) return "";
-  const [y, m, d] = iso.split("-");
-  return `${m}/${d}/${y}`;
-}
+const MARKER = "523908";
 
-function buildExpediaUrl(from, to, depDate, retDate, adults) {
-  const dep = fmtExpediaDate(depDate);
-  const ret = fmtExpediaDate(retDate);
-  const trip = retDate ? "roundtrip" : "oneway";
-  const leg1 = `from:${from},to:${to},departure:${dep}TANYT`;
-  const leg2 = retDate ? `from:${to},to:${from},departure:${ret}TANYT` : null;
-
-  const p = new URLSearchParams({ trip, passengers: `adults:${adults}`, options: "cabinclass:economy" });
-  p.set("leg1", leg1);
-  if (leg2) p.set("leg2", leg2);
-  return `https://www.expedia.com/Flights-Search?${p}`;
+function buildBookingUrl(from, to, depDate, retDate, adults) {
+  // Aviasales deep link — confirmed working format: {from}{DDMM}{to}{DDMM}/{pax}
+  const depPart = depDate ? depDate.slice(8,10) + depDate.slice(5,7) : "";
+  const retPart = retDate ? retDate.slice(8,10) + retDate.slice(5,7) : "";
+  if (retPart) {
+    return `https://www.aviasales.com/search/${from}${depPart}${to}${retPart}/${adults}?marker=${MARKER}`;
+  }
+  return `https://www.aviasales.com/search/${from}${depPart}${to}/${adults}?marker=${MARKER}`;
 }
 
 const AIRPORTS = [
@@ -242,7 +234,7 @@ function FaresPanel({ f, groupSize, onClose, expediaUrl }) {
         );
       })}
       <div style={{ fontFamily:NUN, fontSize:10, color:"#bbb", textAlign:"center", marginTop:8 }}>
-        Estimated fare tiers · Actual price confirmed at checkout on Expedia
+        Estimated fare tiers · Actual price confirmed at checkout on Aviasales
       </div>
     </Overlay>
   );
@@ -452,10 +444,10 @@ export default function FlightsTab({ groupSize, initialDest }) {
             </div>
             {visibleFlights.map(f => (
               <FlightRow key={f.id} f={f} groupSize={groupSize} onDetails={setDetailFlight}
-                expediaUrl={buildExpediaUrl(fromCode, selectedDest.airportCode, depDate, retDate, groupSize)} />
+                expediaUrl={buildBookingUrl(fromCode, selectedDest.airportCode, depDate, retDate, groupSize)} />
             ))}
             <div style={{ fontFamily:NUN, fontSize:10, color:"#bbb", textAlign:"center", marginTop:12, paddingTop:8 }}>
-              Prices per person · Booking completed securely on Expedia
+              Prices per person · Booking completed securely on Aviasales
             </div>
           </div>
         )
