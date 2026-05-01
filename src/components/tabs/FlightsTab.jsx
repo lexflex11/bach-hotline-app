@@ -469,7 +469,7 @@ export default function FlightsTab({ groupSize, initialDest }) {
           f={faresFlight}
           groupSize={groupSize}
           onClose={() => setFaresFlight(null)}
-          expediaUrl={buildExpediaUrl(fromCode, selectedDest?.airportCode, depDate, retDate, groupSize)}
+          expediaUrl={buildBookingUrl(fromCode, selectedDest?.airportCode || "", depDate, retDate, groupSize)}
         />
       )}
     </div>
