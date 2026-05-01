@@ -7,15 +7,23 @@ import SH from '../ui/SH.jsx';
 const NUN = "'Plus Jakarta Sans',sans-serif";
 const CAMREF = "1011l4ma3h";
 
+function fmtExpediaDate(iso) {
+  // Expedia leg format needs MM/DD/YYYY
+  if (!iso) return "";
+  const [y, m, d] = iso.split("-");
+  return `${m}/${d}/${y}`;
+}
+
 function buildExpediaUrl(from, to, depDate, retDate, adults) {
-  const p = new URLSearchParams({
-    trip:         retDate ? "roundtrip" : "oneway",
-    adults:       String(adults),
-    origin1:      from,
-    destination1: to,
-  });
-  if (depDate) p.set("departuredate1", depDate);
-  if (retDate) p.set("returndate",     retDate);
+  const dep = fmtExpediaDate(depDate);
+  const ret = fmtExpediaDate(retDate);
+  const trip = retDate ? "roundtrip" : "oneway";
+  const leg1 = `from:${from},to:${to},departure:${dep}TANYT`;
+  const leg2 = retDate ? `from:${to},to:${from},departure:${ret}TANYT` : null;
+
+  const p = new URLSearchParams({ trip, passengers: `adults:${adults}`, options: "cabinclass:economy" });
+  p.set("leg1", leg1);
+  if (leg2) p.set("leg2", leg2);
   return `https://www.expedia.com/Flights-Search?${p}`;
 }
 
