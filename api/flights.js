@@ -57,13 +57,13 @@ export default async function handler(req, res) {
         // duration is in minutes
         const dur = f.duration ? `${Math.floor(f.duration/60)}h ${f.duration%60}m` : null;
 
-        // Build Aviasales booking URL with affiliate marker
+        // Build Aviasales booking URL — correct format: {from}{DDMM}{to}{DDMM}/{pax}
         const depPart = depDate ? depDate.slice(8,10) + depDate.slice(5,7) : "0101";
         const retPart = retDate && retDate !== "" ? retDate.slice(8,10) + retDate.slice(5,7) : null;
 
         const bookingUrl = retPart
-          ? `https://www.aviasales.com/search/${origin}${depPart}/${dest}${retPart}/${numAdults}1?marker=${MARKER}`
-          : `https://www.aviasales.com/search/${origin}${depPart}/${dest}${numAdults}1?marker=${MARKER}`;
+          ? `https://www.aviasales.com/search/${origin}${depPart}${dest}${retPart}/${numAdults}?marker=${MARKER}`
+          : `https://www.aviasales.com/search/${origin}${depPart}${dest}/${numAdults}?marker=${MARKER}`;
 
         return {
           id:         i,
